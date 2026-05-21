@@ -64,39 +64,31 @@ export default function GlobalCTABar() {
   return (
     <div className="fixed bottom-0 left-0 w-full z-[100] border-t border-border-glass bg-surface-glass backdrop-blur-xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
 
-      {/* ── Mobile layout ── */}
-      <div className="md:hidden px-3 pt-2 pb-3 flex flex-col gap-2">
-        {/* 2-column grid for non-green items */}
-        <div className="grid grid-cols-2 gap-2">
-          {nonGreen.map((item) => (
+      {/* ── Mobile layout — single row tab bar ── */}
+      <div className="md:hidden flex items-stretch divide-x divide-white/5 pb-safe">
+        {items.map((item) =>
+          item.green ? (
             <Link
               key={item.labelEn}
               href={item.href}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg group transition-all duration-200 ${item.hover}`}
+              className="flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1 bg-[#06C755] active:brightness-90 transition-all"
             >
-              <item.icon size={16} className={`${item.color} shrink-0`} />
-              <div className="min-w-0">
-                <span className={`block text-[8px] ${item.color} uppercase font-bold tracking-tight opacity-70 leading-none mb-0.5`}>
-                  {item.labelEn}
-                </span>
-                <span className="block text-[11px] font-semibold text-on-surface leading-tight truncate">{item.labelTh}</span>
-              </div>
+              <item.icon size={18} className="text-white" />
+              <span className="text-[9px] font-bold text-white leading-none text-center">LINE OA</span>
             </Link>
-          ))}
-        </div>
-        {/* LINE OA — full width */}
-        <Link
-          href={green.href}
-          className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-[#06C755] hover:brightness-110 transition-all active:scale-95 shadow-md"
-        >
-          <green.icon size={16} className="text-white shrink-0" />
-          <div className="text-left">
-            <span className="block text-[8px] text-white/80 uppercase font-bold tracking-tight leading-none mb-0.5">
-              {green.labelEn}
-            </span>
-            <span className="block text-[11px] font-semibold text-white leading-tight">{green.labelTh}</span>
-          </div>
-        </Link>
+          ) : (
+            <Link
+              key={item.labelEn}
+              href={item.href}
+              className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1 active:bg-white/5 transition-all`}
+            >
+              <item.icon size={18} className={item.color} />
+              <span className={`text-[9px] font-medium ${item.color} leading-none text-center line-clamp-1 opacity-80`}>
+                {item.labelTh}
+              </span>
+            </Link>
+          )
+        )}
       </div>
 
       {/* ── Desktop layout (unchanged) ── */}
