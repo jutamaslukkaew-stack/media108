@@ -9,19 +9,28 @@ import TabBar from "../components/TabBar";
 /* ── Data ─────────────────────────────────────────────── */
 const leaders = [
   {
-    name: "Somchai Rattanakosin",
-    title: "Chief Executive Officer",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCSiwhtCiRFBbZdwsbw5XyhCWQ1etXM1uU8VZ9lbz_o9HZuRSH6OvXZsLmtehj-1vz7K9B82TUKy-S5kqfmei7x3qQzMxgMRQv0xb2YppbAumbijBm4LUt84VnKC2r5_15lpZ3l20JdiM_PnXQjjGJUDiostjR3ekcfr5s-njbRPcZWFRrcvIWfyzENDDzMV41tFSwej9I05NGZ5r6BWX_W8BC8C9kc9yZlXlVDcp-VzA5vsKl9Xj4M3Y4oXhotBLvsWi5Rp_0AGjc",
+    name: "Dr. Arisara Tan",
+    title: "CEO & Chief Visionary",
+    bio: "20+ years in regional DOOH and smart city infrastructure development.",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
   {
-    name: "Patreeya Suksiri",
-    title: "Director of Media Operations",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKBt0LpuVDJBejTzwP2txil_F1_d7are4iY_clKz3Hjl4RtUBahYhGqsXY6b6DyeNq7yVHBlRjyvSBotZfsumoSSorZoavKIvuVhjebvKjmUf0H9MiZnNK4fUNl52KU4Zhj_-xmafbfmX5rVXyh9hViUeIAKpC_nMNcKzcQ1McHLNjitjtVedl_hJ2bVb5EmNpwTToWuTX6ZlUmXRXe_Wz0nJzFvHgajH4O3W49YibC3MHFUrpB679l2k1OYaVq3Nwgh8mwU27o6w",
+    name: "Pakorn V.",
+    title: "Head of Data Science",
+    bio: "Former lead algorithm architect for global logistics networks.",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
   {
-    name: "Anan Wongsuwan",
-    title: "Head of Tech & Innovation",
-    img: "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=800&h=1000&fit=crop&crop=face",
+    name: "Sarah Jenkins",
+    title: "Chief Creative Officer",
+    bio: "Award-winning creative director specializing in immersive large-scale digital campaigns.",
+    img: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=800&h=1000&fit=crop&crop=face&facepad=3",
+  },
+  {
+    name: "Lester Cheng",
+    title: "Director of Operations",
+    bio: "Specialist in large-scale hardware rollout and smart-grid integration.",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
 ];
 
@@ -298,44 +307,64 @@ export default function AboutPage() {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-gutter">
             {leaders.map((leader) => (
               <div key={leader.name} className="group">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+                {/* Portrait */}
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-5 relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt={leader.name}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover object-top"
                     style={{
-                      filter: "grayscale(1) brightness(0.72) contrast(1.25)",
-                      transition: "filter 700ms ease, transform 700ms ease",
+                      filter: "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)",
+                      transition: "filter 800ms ease, transform 800ms cubic-bezier(0.16,1,0.3,1)",
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(0) brightness(0.85) contrast(1.1)";
+                        "grayscale(0.2) brightness(0.82) contrast(1.15) saturate(1.2)";
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(1) brightness(0.72) contrast(1.25)";
+                        "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)";
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
                     }}
                     src={leader.img}
                   />
-                  {/* Dark vignette — normalizes bright backgrounds */}
+
+                  {/* Deep cinematic vignette — corners & edges */}
                   <div className="absolute inset-0 pointer-events-none"
                     style={{
                       background:
-                        "radial-gradient(ellipse at center, transparent 30%, rgba(6,17,51,0.55) 100%), " +
-                        "linear-gradient(to top, rgba(6,17,51,0.95) 0%, rgba(6,17,51,0.2) 50%, rgba(6,17,51,0.4) 100%)",
+                        "radial-gradient(ellipse 80% 85% at 50% 40%, transparent 45%, rgba(3,8,30,0.75) 100%)",
                     }}
                   />
-                  {/* Subtle primary color tint on hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: "linear-gradient(135deg, rgba(230,57,70,0.12) 0%, transparent 60%)" }}
+                  {/* Bottom gradient — text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to top, rgba(6,17,51,0.98) 0%, transparent 100%)",
+                    }}
                   />
+                  {/* Hover: red brand tint */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: "linear-gradient(160deg, rgba(230,57,70,0.18) 0%, transparent 55%)" }}
+                  />
+
+                  {/* Name overlay inside card (bottom) */}
+                  <div className="absolute bottom-0 inset-x-0 p-4">
+                    <p className="font-label-md text-[10px] text-primary uppercase tracking-[0.2em] mb-1">
+                      {leader.title}
+                    </p>
+                    <h3 className="font-headline-md text-[18px] text-white leading-tight">
+                      {leader.name}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white mb-1">{leader.name}</h3>
-                <p className="font-label-md text-label-md text-primary uppercase tracking-wider">
-                  {leader.title}
+
+                {/* Bio below card */}
+                <p className="text-on-surface-variant text-sm leading-relaxed">
+                  {leader.bio}
                 </p>
               </div>
             ))}
