@@ -1,39 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import GlobalCTABar from "../components/GlobalCTABar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import {
+  PhoneCall, Headphones, Briefcase, CreditCard, Megaphone, CloudDownload,
+  MessageCircle, PlusCircle, MapPin, ChevronDown, ArrowRight, CheckCircle,
+  type LucideIcon,
+} from "lucide-react";
 
 /* ── Quick contact cards ─────────────────────────────── */
-const quickLinks = [
-  {
-    icon: "phone_in_talk",
-    title: "Phone",
-    body: "+66 (0) 38 123 4567",
-    span: false,
-  },
-  {
-    icon: "support_agent",
-    title: "Support",
-    body: "Report an Issue",
-    span: false,
-  },
-  {
-    icon: "work",
-    title: "Careers",
-    body: "Join our world-class media team",
-    span: true,
-    arrow: true,
-  },
+const quickLinks: { icon: LucideIcon; title: string; body: string; span: boolean; arrow?: boolean }[] = [
+  { icon: PhoneCall,  title: "Phone",   body: "062-563-6199",                   span: false },
+  { icon: Headphones, title: "Support", body: "Report an Issue",               span: false },
+  { icon: Briefcase,  title: "Careers", body: "Join our world-class media team", span: true, arrow: true },
 ];
 
 /* ── Desktop CTA bar items ───────────────────────────── */
-const ctaItems = [
-  { icon: "payments",       label: "Request Quotation",  href: "#form",      green: false },
-  { icon: "campaign",       label: "Book This Billboard", href: "/network",   green: false },
-  { icon: "cloud_download", label: "Media Kit",           href: "/media-kit", green: false },
-  { icon: "support_agent",  label: "Contact Sales",       href: "#form",      green: false },
-  { icon: "chat",           label: "LINE OA",             href: "#",          green: true  },
+const ctaItems: { icon: LucideIcon; label: string; href: string; green: boolean }[] = [
+  { icon: CreditCard,    label: "Request Quotation",  href: "#form",      green: false },
+  { icon: Megaphone,     label: "Book This Billboard", href: "/network",   green: false },
+  { icon: CloudDownload, label: "Media Kit",           href: "/media-kit", green: false },
+  { icon: Headphones,    label: "Contact Sales",       href: "#form",      green: false },
+  { icon: MessageCircle, label: "LINE OA",             href: "#",          green: true  },
 ];
 
 export default function ContactPage() {
@@ -44,25 +35,7 @@ export default function ContactPage() {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    // Scroll reveal
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("opacity-100", "translate-y-0");
-            e.target.classList.remove("opacity-0", "translate-y-8");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => {
-      el.classList.add("transition-all", "duration-700", "opacity-0", "translate-y-8");
-      observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -93,11 +66,17 @@ export default function ContactPage() {
       {/* ── Hero ── */}
       <section className="relative flex items-center justify-center pt-24 pb-16 px-6 md:px-margin-desktop bg-surface text-center">
         <div className="relative z-10 max-w-4xl">
-          <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white">
+          <h1
+            className="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white"
+            style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
+          >
             Contact Our{" "}
             <span className="text-primary italic">Media Specialists</span>
           </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+          <p
+            className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto"
+            style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
+          >
             Bridge the gap between your brand and millions of urban eyes. Our experts are ready to curate your
             global media footprint.
           </p>
@@ -109,7 +88,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
           {/* ── Left: Contact Form (7 cols) ── */}
-          <div className="reveal lg:col-span-7 glass-card p-8 md:p-12 rounded-xl">
+          <div className="sr sr-left lg:col-span-7 glass-card p-8 md:p-12 rounded-xl">
             <div className="flex items-center gap-4 mb-8">
               <span className="w-12 h-[2px] bg-primary shrink-0" />
               <h2 className="font-headline-md text-headline-md text-white">Request a Quotation</h2>
@@ -117,12 +96,7 @@ export default function ContactPage() {
 
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
-                <span
-                  className="material-symbols-outlined text-6xl text-primary"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                >
-                  check_circle
-                </span>
+                <CheckCircle size={56} className="text-primary fill-current" />
                 <h3 className="font-headline-md text-headline-md text-white">ส่งข้อมูลเรียบร้อยแล้ว!</h3>
                 <p className="text-on-surface-variant font-body-md max-w-sm">
                   ทีมงานของเราจะติดต่อกลับภายใน 1 วันทำการ ขอบคุณที่ไว้วางใจ Media108
@@ -202,9 +176,7 @@ export default function ContactPage() {
                       <option>Data Analytics &amp; Insights</option>
                       <option>Full Media Strategy</option>
                     </select>
-                    <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">
-                      expand_more
-                    </span>
+                    <ChevronDown size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" />
                   </div>
                 </div>
 
@@ -251,22 +223,27 @@ export default function ContactPage() {
           <div className="lg:col-span-5 flex flex-col gap-8">
 
             {/* LINE OA */}
-            <div className="reveal glass-card p-8 rounded-xl">
+            <div className="sr sr-right sr-d1 glass-card p-8 rounded-xl">
               <div className="flex items-center gap-4 mb-6">
-                <span className="material-symbols-outlined text-[#06C755] text-4xl">chat</span>
+                <MessageCircle size={36} className="text-[#06C755]" />
                 <div>
                   <h3 className="font-headline-md text-headline-md text-white">LINE Official Account</h3>
                   <p className="font-body-md text-on-surface-variant">Instant response from our team</p>
                 </div>
               </div>
-              <button className="w-full bg-[#06C755] hover:bg-[#05b14c] text-white py-4 rounded-lg font-bold flex items-center justify-center gap-3 transition-colors font-headline-md text-headline-md">
-                <span className="material-symbols-outlined">add_circle</span>
+              <a
+                href="https://lin.ee/NXKWYdJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-[#06C755] hover:bg-[#05b14c] text-white py-4 rounded-lg font-bold flex items-center justify-center gap-3 transition-colors font-headline-md text-headline-md"
+              >
+                <PlusCircle size={20} />
                 Add LINE OA
-              </button>
+              </a>
             </div>
 
             {/* Quick links grid */}
-            <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="sr sr-right sr-d2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {quickLinks.map((item) => (
                 <div
                   key={item.title}
@@ -276,16 +253,12 @@ export default function ContactPage() {
                 >
                   <div className={`flex ${item.span ? "justify-between items-center" : "flex-col"}`}>
                     <div>
-                      <span className="material-symbols-outlined text-primary mb-4 block group-hover:scale-110 transition-transform">
-                        {item.icon}
-                      </span>
+                      <item.icon size={22} className="text-primary mb-4 block group-hover:scale-110 transition-transform" />
                       <h4 className="font-headline-md text-headline-md text-white mb-1">{item.title}</h4>
                       <p className="font-body-md text-on-surface-variant">{item.body}</p>
                     </div>
                     {item.arrow && (
-                      <span className="material-symbols-outlined text-on-surface-variant group-hover:translate-x-2 transition-transform">
-                        arrow_forward
-                      </span>
+                      <ArrowRight size={20} className="text-on-surface-variant group-hover:translate-x-2 transition-transform" />
                     )}
                   </div>
                 </div>
@@ -293,10 +266,10 @@ export default function ContactPage() {
             </div>
 
             {/* Headquarters */}
-            <div className="reveal glass-card p-8 rounded-xl">
+            <div className="sr sr-right sr-d3 glass-card p-8 rounded-xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="bg-primary p-3 rounded-full shadow-lg shadow-primary/20 shrink-0">
-                  <span className="material-symbols-outlined text-on-primary">location_on</span>
+                  <MapPin size={20} className="text-on-primary" />
                 </div>
                 <div>
                   <h3 className="font-headline-md text-headline-md text-white">Headquarters</h3>
@@ -327,9 +300,7 @@ export default function ContactPage() {
                     : "text-on-surface hover:text-primary"
                 }`}
               >
-                <span className={`material-symbols-outlined ${item.green ? "text-[#06C755]" : "text-primary"}`}>
-                  {item.icon}
-                </span>
+                <item.icon size={20} className={item.green ? "text-[#06C755]" : "text-primary"} />
                 {item.label}
               </Link>
             ))}
@@ -337,22 +308,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── Mobile sticky footer bar ── */}
-      <div className="fixed bottom-0 z-40 w-full bg-surface-container-high/90 backdrop-blur-2xl border-t border-white/5 md:hidden">
-        <div className="flex justify-around items-center py-3">
-          {[
-            { icon: "request_quote", label: "Quotation", active: true,  color: "text-primary" },
-            { icon: "book_online",   label: "Book",      active: false, color: "text-on-surface-variant" },
-            { icon: "download",      label: "Kit",       active: false, color: "text-on-surface-variant" },
-            { icon: "chat",          label: "LINE",      active: false, color: "text-[#06C755]" },
-          ].map((btn) => (
-            <button key={btn.label} className={`flex flex-col items-center gap-1 ${btn.color}`}>
-              <span className="material-symbols-outlined">{btn.icon}</span>
-              <span className="text-[10px] font-bold uppercase">{btn.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <GlobalCTABar />
 
       {/* ── Footer ── */}
       <footer className="bg-surface-container-lowest border-t border-white/5 py-12">

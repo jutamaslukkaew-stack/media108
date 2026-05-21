@@ -4,8 +4,30 @@ import React, { use, useEffect } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
+import GlobalCTABar from "../../components/GlobalCTABar";
 import { billboards } from "../../data/billboards";
 import type { BillboardData } from "../../data/billboards";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import {
+  ArrowRight, Download, Play, MapPin, BookOpen, Users, TrendingUp,
+  Handshake, CheckCircle, ArrowUpRight, ShoppingCart, GraduationCap,
+  Hospital, Building2, Store, Umbrella, Hotel, Factory, Ship, Utensils,
+  type LucideIcon,
+} from "lucide-react";
+
+/* ── Map material-symbol strings → Lucide components ── */
+const iconMap: Record<string, LucideIcon> = {
+  shopping_cart:  ShoppingCart,
+  school:         GraduationCap,
+  local_hospital: Hospital,
+  apartment:      Building2,
+  local_mall:     Store,
+  beach_access:   Umbrella,
+  hotel:          Hotel,
+  factory:        Factory,
+  directions_boat: Ship,
+  local_dining:   Utensils,
+};
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -20,29 +42,15 @@ export default function BillboardDetailPage({ params }: PageProps) {
 
 /* ─────────────────────────────────────────────────────── */
 function BillboardDetail({ data }: { data: BillboardData }) {
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("opacity-100", "translate-y-0");
-            e.target.classList.remove("opacity-0", "translate-y-8");
-          }
-        });
-      },
-      { threshold: 0.08 }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => {
-      el.classList.add("transition-all", "duration-700", "opacity-0", "translate-y-8");
-      observer.observe(el);
-    });
+  useScrollReveal();
 
+  useEffect(() => {
     const onScroll = () => {
       const img = document.getElementById("hero-bg-img");
       if (img) img.style.transform = `translateY(${window.pageYOffset * 0.35}px)`;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => { observer.disconnect(); window.removeEventListener("scroll", onScroll); };
+    return () => { window.removeEventListener("scroll", onScroll); };
   }, []);
 
   const heroImg = data.imgHero ?? data.imgNight ?? data.imgDay;
@@ -67,26 +75,38 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
           <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop pb-20">
             <div className="flex flex-col gap-6 max-w-3xl">
-              <div className="flex items-center gap-3 flex-wrap">
+              <div
+                className="flex items-center gap-3 flex-wrap"
+                style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both" }}
+              >
                 <span className="px-3 py-1 bg-primary-container/20 border border-primary-container/30 rounded-full text-primary-container text-xs font-bold uppercase tracking-widest">
                   {data.tag}
                 </span>
                 <span className="text-outline text-xs font-data-mono uppercase tracking-widest">{data.subtitle}</span>
               </div>
-              <h1 className="font-headline-xl text-headline-xl text-white leading-none">
+              <h1
+                className="font-headline-xl text-headline-xl text-white leading-none"
+                style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.22s both" }}
+              >
                 {data.title.split(" ").slice(0, -2).join(" ")}{" "}
                 <span className="text-primary-container">{data.title.split(" ").slice(-2).join(" ")}</span>
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+              <p
+                className="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed"
+                style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both" }}
+              >
                 {data.description}
               </p>
-              <div className="flex flex-wrap gap-4 pt-4">
+              <div
+                className="flex flex-wrap gap-4 pt-4"
+                style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.48s both" }}
+              >
                 <button className="bg-primary-container hover:brightness-110 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(230,57,70,0.3)]">
                   Request Immediate Quote
-                  <span className="material-symbols-outlined">arrow_forward</span>
+                  <ArrowRight size={18} />
                 </button>
                 <button className="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all">
-                  <span className="material-symbols-outlined">download</span>
+                  <Download size={18} />
                   Download Media Kit
                 </button>
               </div>
@@ -103,27 +123,27 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="reveal space-y-4">
+            <div className="sr sr-up space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden glass-card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt="Day View" className="w-full h-full object-cover" src={data.imgDay} />
               </div>
               <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">Day Visibility (10,000 Nits)</p>
             </div>
-            <div className="reveal space-y-4">
+            <div className="sr sr-up space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden glass-card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt="Night View" className="w-full h-full object-cover brightness-75" src={data.imgNight} />
               </div>
               <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">Night Impact (Dynamic Contrast)</p>
             </div>
-            <div className="reveal space-y-4">
+            <div className="sr sr-up space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden glass-card relative group cursor-pointer">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt="Drone View" className="w-full h-full object-cover opacity-60" src={data.imgDrone ?? data.imgDay} />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-16 h-16 rounded-full bg-primary-container/20 border border-primary-container/50 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-primary-container text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
+                    <Play size={36} className="text-primary-container fill-current" />
                   </div>
                 </div>
               </div>
@@ -135,7 +155,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         {/* ── 3. Strategic Dominance ── */}
         <section className="py-24 bg-surface-container-lowest">
           <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-8 reveal">
+            <div className="sr sr-left space-y-8">
               <h2 className="font-headline-lg text-headline-lg text-white">
                 Strategic <span className="text-primary-container">Dominance</span>
               </h2>
@@ -143,18 +163,21 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 {data.strategicDescription ?? data.locationStory}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {data.nearby.map((place) => (
+                {data.nearby.map((place) => {
+                  const PlaceIcon = iconMap[place.icon] ?? MapPin;
+                  return (
                   <div key={place.name} className="flex items-start gap-4">
-                    <span className="material-symbols-outlined text-primary-container mt-0.5">{place.icon}</span>
+                    <PlaceIcon size={20} className="text-primary-container mt-0.5 flex-shrink-0" />
                     <div>
                       <p className="font-bold text-white">{place.name}</p>
                       <p className="text-sm text-outline">{place.distance}</p>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-            <div className="reveal glass-card rounded-2xl overflow-hidden aspect-square relative border border-white/10">
+            <div className="sr sr-right glass-card rounded-2xl overflow-hidden aspect-square relative border border-white/10">
               <div className="absolute inset-0 bg-[#0A1128] flex items-center justify-center">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -165,7 +188,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                   <div className="w-8 h-8 bg-primary-container rounded-full animate-ping absolute inset-0 opacity-75" />
                   <div className="w-8 h-8 bg-primary-container rounded-full relative flex items-center justify-center border-4 border-surface shadow-2xl">
-                    <span className="material-symbols-outlined text-white text-xs">location_on</span>
+                    <MapPin size={12} className="text-white" />
                   </div>
                 </div>
               </div>
@@ -185,7 +208,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             ].map((item) => (
               <div
                 key={item.label}
-                className={`reveal glass-card p-8 rounded-2xl ${item.accent ? "border-l-4 border-l-primary-container" : ""}`}
+                className={`sr sr-up glass-card p-8 rounded-2xl ${item.accent ? "border-l-4 border-l-primary-container" : ""}`}
               >
                 <p className="text-outline text-xs uppercase tracking-widest mb-4">{item.label}</p>
                 <p className="font-data-mono text-3xl text-white mb-2">{item.value}</p>
@@ -199,7 +222,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         <section className="py-24 bg-surface-container-low">
           <div className="max-w-container-max mx-auto px-margin-desktop">
             <div className="flex flex-col md:flex-row gap-24">
-              <div className="flex-1 space-y-8 reveal">
+              <div className="sr sr-left flex-1 space-y-8">
                 <h2 className="font-headline-lg text-headline-lg text-white">
                   Audience <span className="text-primary-container">Composition</span>
                 </h2>
@@ -217,7 +240,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   ))}
                 </div>
               </div>
-              <div className="flex-1 reveal glass-card p-12 rounded-2xl flex flex-col justify-center items-center text-center">
+              <div className="sr sr-right flex-1 glass-card p-12 rounded-2xl flex flex-col justify-center items-center text-center">
                 <div className="relative w-48 h-48 flex items-center justify-center mb-8">
                   <div
                     className="absolute inset-0 rounded-full border-[12px] border-primary-container"
@@ -240,17 +263,17 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         {/* ── 6. The Sales Story ── */}
         <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { icon: "history_edu", title: "The Location Story", body: data.locationStory },
-              { icon: "groups",      title: "The Audience Story", body: data.audienceStory },
-              { icon: "auto_graph",  title: "The Traffic Story",  body: data.trafficStory },
-              { icon: "handshake",   title: "Business Fit",       body: data.businessFit },
-            ].map((item) => (
+            {([
+              { icon: BookOpen,    title: "The Location Story", body: data.locationStory },
+              { icon: Users,       title: "The Audience Story", body: data.audienceStory },
+              { icon: TrendingUp,  title: "The Traffic Story",  body: data.trafficStory },
+              { icon: Handshake,   title: "Business Fit",       body: data.businessFit },
+            ] as { icon: LucideIcon; title: string; body: string }[]).map((item) => (
               <div
                 key={item.title}
-                className="reveal p-10 border border-border-glass rounded-2xl hover:border-primary-container/40 transition-colors"
+                className="sr sr-up p-10 border border-border-glass rounded-2xl hover:border-primary-container/40 transition-colors"
               >
-                <span className="material-symbols-outlined text-primary-container text-4xl mb-6 block">{item.icon}</span>
+                <item.icon size={36} className="text-primary-container mb-6 block" />
                 <h3 className="font-headline-md text-headline-md text-white mb-4">{item.title}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{item.body}</p>
               </div>
@@ -272,9 +295,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 </div>
               ))}
             </div>
-            <div className="mt-8 flex gap-4 reveal">
+            <div className="sr sr-up mt-8 flex gap-4">
               <button className="flex items-center gap-2 px-6 py-3 rounded-lg glass-card border border-border-glass text-white font-bold hover:bg-white/10 transition-all">
-                <span className="material-symbols-outlined">download</span>
+                <Download size={18} />
                 Download Media Kit (PDF)
               </button>
             </div>
@@ -292,7 +315,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               {data.pricingTiers.map((tier) => (
                 <div
                   key={tier.name}
-                  className={`reveal glass-card p-10 rounded-2xl flex flex-col items-center text-center relative overflow-hidden ${tier.highlight ? "border border-primary-container/60" : ""}`}
+                  className={`sr sr-up glass-card p-10 rounded-2xl flex flex-col items-center text-center relative overflow-hidden ${tier.highlight ? "border border-primary-container/60" : ""}`}
                 >
                   {tier.highlight && (
                     <div className="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-bold uppercase tracking-tight">
@@ -308,7 +331,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   <ul className="space-y-4 mb-10 text-on-surface-variant w-full text-left">
                     {tier.features.map((feat) => (
                       <li key={feat} className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-green-400 text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle size={16} className="text-green-400 flex-shrink-0 fill-green-400" />
                         {feat}
                       </li>
                     ))}
@@ -332,7 +355,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         {data.recentCampaigns && data.recentCampaigns.length > 0 && (
           <section className="py-20 bg-surface-container-lowest border-t border-border-glass">
             <div className="max-w-container-max mx-auto px-margin-desktop">
-              <div className="reveal mb-10">
+              <div className="sr sr-up mb-10">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-5 h-[1px] bg-primary-container" />
                   <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Real Campaigns</span>
@@ -344,7 +367,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 {data.recentCampaigns.map((c, i) => (
                   <div
                     key={i}
-                    className="reveal glass-card rounded-xl p-4 border border-border-glass hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
+                    className="sr sr-up glass-card rounded-xl p-4 border border-border-glass hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
                   >
                     <div className="flex items-start gap-3">
                       <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover:bg-primary-container transition-colors" />
@@ -368,12 +391,12 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <p className="text-on-surface-variant">ขยายขอบเขตการเข้าถึงด้วยป้ายใกล้เคียงในโครงข่าย Media Network</p>
             </div>
             <Link href="/network" className="text-primary-container font-bold flex items-center gap-2 hover:underline whitespace-nowrap text-sm uppercase tracking-widest">
-              View All <span className="material-symbols-outlined text-sm">call_made</span>
+              View All <ArrowUpRight size={16} />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {data.related.map((rel) => (
-              <div key={rel.slug} className="reveal glass-card rounded-2xl overflow-hidden group">
+              <div key={rel.slug} className="sr sr-scale glass-card rounded-2xl overflow-hidden group">
                 <div className="h-56 overflow-hidden relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -404,43 +427,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
 
       </main>
 
-      {/* ── Fixed Bottom CTA Bar ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-[60] bg-surface-container-lowest/90 backdrop-blur-xl border-t border-border-glass py-4 px-margin-mobile md:px-margin-desktop shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-        <div className="max-w-container-max mx-auto flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
-          <div className="hidden xl:flex items-center gap-4">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt={data.title}
-              className="w-12 h-12 rounded object-cover"
-              src={data.imgNight ?? data.imgDay}
-            />
-            <div>
-              <p className="font-bold text-white text-sm">{data.slug.toUpperCase().replace(/-/g, "-")}</p>
-              <p className="text-xs text-outline">Starting at {data.price} / week</p>
-            </div>
-          </div>
-          <div className="flex flex-grow justify-end items-center gap-3 overflow-x-auto pb-1 lg:pb-0 no-scrollbar">
-            <button className="flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-lg border border-border-glass text-on-surface font-bold text-sm hover:bg-white/10 transition-all">
-              <span className="material-symbols-outlined text-[18px]">download</span>
-              ดาวน์โหลด Media Kit
-            </button>
-            <a
-              href="#"
-              className="flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-lg bg-[#06C755] text-white font-bold text-sm hover:brightness-110 transition-all"
-            >
-              <span className="material-symbols-outlined text-[18px]">chat</span>
-              LINE OA
-            </a>
-            <button className="flex items-center gap-2 whitespace-nowrap px-4 py-2.5 rounded-lg border border-primary-container text-primary-container font-bold text-sm hover:bg-primary-container/10 transition-all">
-              ขอใบเสนอราคา
-            </button>
-            <button className="flex items-center gap-2 whitespace-nowrap px-6 py-2.5 rounded-lg bg-primary-container text-white font-bold text-sm hover:shadow-[0_0_20px_rgba(230,57,70,0.4)] transition-all active:scale-95">
-              <span className="material-symbols-outlined text-[18px]">bookmark</span>
-              จองป้ายนี้
-            </button>
-          </div>
-        </div>
-      </div>
+      <GlobalCTABar />
 
       {/* ── Footer ── */}
       <footer className="bg-surface-container-lowest border-t border-white/10 py-24 pb-36">

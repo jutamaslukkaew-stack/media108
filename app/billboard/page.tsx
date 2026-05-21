@@ -3,7 +3,10 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import GlobalCTABar from "../components/GlobalCTABar";
 import { billboards } from "../data/billboards";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { Map, List, SlidersHorizontal, ChevronDown, Eye, ChevronsDown } from "lucide-react";
 
 const allBillboards = Object.values(billboards);
 
@@ -35,6 +38,8 @@ export default function BillboardListingPage() {
   const [viewMode, setViewMode] = useState<"map" | "list">("list");
   const [sortBy, setSortBy] = useState("Popularity");
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useScrollReveal();
 
   /* Parallax ref */
   const mapImgRef = useRef<HTMLImageElement>(null);
@@ -123,14 +128,14 @@ export default function BillboardListingPage() {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto h-full px-16 flex flex-col items-start justify-end pb-32 pointer-events-none">
           <h1
             className="text-white max-w-3xl mb-4 drop-shadow-2xl font-display-lg"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1, animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}
           >
             Dominate the{" "}
             <span style={{ color: "#E63946" }}>EEC Corridor</span>
           </h1>
           <p
             className="font-body-lg text-on-surface-variant max-w-xl p-4 rounded-lg"
-            style={{ background: "rgba(6,17,51,0.4)", backdropFilter: "blur(4px)" }}
+            style={{ background: "rgba(6,17,51,0.4)", backdropFilter: "blur(4px)", animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both" }}
           >
             Interactive coverage map of Thailand&apos;s premier DOOH inventory. Select a pin to view location data and performance metrics.
           </p>
@@ -212,7 +217,7 @@ export default function BillboardListingPage() {
               className={`px-4 py-2 rounded-md flex items-center gap-2 transition-all font-label-md text-[14px] ${viewMode === "map" ? "text-white" : "text-on-surface-variant hover:text-white"}`}
               style={viewMode === "map" ? { background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" } : {}}
             >
-              <span className="material-symbols-outlined text-[20px]">map</span>
+              <Map size={20} />
               Map View
             </button>
             <button
@@ -220,7 +225,7 @@ export default function BillboardListingPage() {
               className={`px-4 py-2 rounded-md flex items-center gap-2 transition-all font-label-md text-[14px] ${viewMode === "list" ? "text-white" : "text-on-surface-variant hover:text-white"}`}
               style={viewMode === "list" ? { background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" } : {}}
             >
-              <span className="material-symbols-outlined text-[20px]">list</span>
+              <List size={20} />
               List View
             </button>
           </div>
@@ -230,7 +235,7 @@ export default function BillboardListingPage() {
             className="p-3.5 rounded-lg border border-white/20 transition-all active:scale-95 hover:bg-white/10 text-white"
             style={{ background: "rgba(255,255,255,0.05)" }}
           >
-            <span className="material-symbols-outlined">tune</span>
+            <SlidersHorizontal size={20} />
           </button>
         </div>
       </div>
@@ -238,7 +243,7 @@ export default function BillboardListingPage() {
       {/* ── INVENTORY GRID ── */}
       <main className="max-w-[1440px] mx-auto px-16 py-20" style={{ background: "#061133" }}>
         {/* Section header */}
-        <div className="flex justify-between items-end mb-12">
+        <div className="sr sr-up flex justify-between items-end mb-12">
           <div>
             <h2 className="text-white font-display-lg" style={{ fontSize: "32px", fontWeight: 700, letterSpacing: "-0.02em" }}>
               Interactive Media Catalog
@@ -251,20 +256,20 @@ export default function BillboardListingPage() {
             <span className="text-on-surface-variant font-label-md text-[14px]">Sort by:</span>
             <button className="flex items-center gap-2 text-white font-label-md text-[14px]">
               {sortBy}
-              <span className="material-symbols-outlined">expand_more</span>
+              <ChevronDown size={18} />
             </button>
           </div>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visible.map((bb) => {
+          {visible.map((bb, i) => {
             const info = meta[bb.slug] ?? { zone: "—", audience: "—", id: bb.slug.toUpperCase(), type: "Digital LED" };
             const badge = badgeCls[bb.status] ?? "bg-white/20 text-white";
             return (
               <div
                 key={bb.slug}
-                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-[#E63946]/50 transition-all duration-500 flex flex-col relative"
+                className={`sr sr-scale sr-d${Math.min(i % 3 + 1, 5)} group rounded-2xl overflow-hidden border border-white/10 hover:border-[#E63946]/50 transition-all duration-500 flex flex-col relative`}
                 style={{
                   background: "#141d3f",
                   boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
@@ -295,7 +300,7 @@ export default function BillboardListingPage() {
                   <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
                   {/* Reach */}
                   <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-white text-[18px]">visibility</span>
+                    <Eye size={18} className="text-white" />
                     <span className="text-white font-bold text-[12px]">{bb.carsPerDay} Daily Reach</span>
                   </div>
                 </div>
@@ -345,9 +350,7 @@ export default function BillboardListingPage() {
               style={{ background: "rgba(255,255,255,0.05)" }}
             >
               <span className="text-white font-label-md uppercase tracking-[0.2em] text-[14px]">Load More Inventory</span>
-              <span className="material-symbols-outlined text-[#E63946] group-hover:translate-y-1 transition-transform">
-                keyboard_double_arrow_down
-              </span>
+              <ChevronsDown size={20} className="text-[#E63946] group-hover:translate-y-1 transition-transform" />
             </button>
           </div>
         )}
@@ -369,28 +372,7 @@ export default function BillboardListingPage() {
         <div className="text-secondary opacity-80 text-[16px]">© 2024 Media108 DOOH. All rights reserved.</div>
       </footer>
 
-      {/* ── Mobile Bottom Nav ── */}
-      <nav
-        className="md:hidden fixed bottom-0 left-0 w-full z-[200] backdrop-blur-md border-t border-primary/20 py-4 px-5 flex justify-center items-center gap-6"
-        style={{ background: "rgba(30,40,74,0.9)", boxShadow: "0 -10px 30px rgba(230,57,70,0.1)" }}
-      >
-        <Link href="/contact#form" className="flex flex-col items-center text-on-surface-variant hover:text-on-surface px-6 py-2 transition-all active:scale-95">
-          <span className="material-symbols-outlined">request_quote</span>
-          <span className="font-label-md text-[14px]">Quotations</span>
-        </Link>
-        <Link
-          href="/contact"
-          className="flex flex-col items-center text-on-primary rounded-xl px-6 py-2 transition-all active:scale-95"
-          style={{ background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" }}
-        >
-          <span className="material-symbols-outlined">calendar_month</span>
-          <span className="font-label-md text-[14px]">Bookings</span>
-        </Link>
-        <Link href="/contact" className="flex flex-col items-center text-on-surface-variant hover:text-on-surface px-6 py-2 transition-all active:scale-95">
-          <span className="material-symbols-outlined">contact_support</span>
-          <span className="font-label-md text-[14px]">Contact</span>
-        </Link>
-      </nav>
+      <GlobalCTABar />
 
       {/* Pulse animation keyframes */}
       <style>{`

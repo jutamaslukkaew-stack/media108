@@ -1,8 +1,17 @@
 import Link from "next/link";
+import { FileText, CalendarCheck, Download, User, MessageCircle, type LucideIcon } from "lucide-react";
 
-const items = [
+const items: {
+  icon: LucideIcon;
+  labelEn: string;
+  labelTh: string;
+  href: string;
+  green: boolean;
+  color: string;
+  hover: string;
+}[] = [
   {
-    icon: "request_quote",
+    icon: FileText,
     labelEn: "Request Quotation",
     labelTh: "ขอใบเสนอราคา",
     href: "/contact#form",
@@ -11,7 +20,7 @@ const items = [
     hover: "hover:bg-primary-container/20",
   },
   {
-    icon: "event_available",
+    icon: CalendarCheck,
     labelEn: "Book This Billboard",
     labelTh: "จองป้ายนี้",
     href: "/network",
@@ -20,7 +29,7 @@ const items = [
     hover: "hover:bg-secondary-container/20",
   },
   {
-    icon: "download",
+    icon: Download,
     labelEn: "Download Media Kit",
     labelTh: "ดาวน์โหลด Media Kit",
     href: "/media-kit",
@@ -29,7 +38,7 @@ const items = [
     hover: "hover:bg-surface-variant/40",
   },
   {
-    icon: "person",
+    icon: User,
     labelEn: "Contact Sales",
     labelTh: "ติดต่อฝ่ายขาย",
     href: "/contact#form",
@@ -38,7 +47,7 @@ const items = [
     hover: "hover:bg-surface-variant/40",
   },
   {
-    icon: "chat",
+    icon: MessageCircle,
     labelEn: "LINE OA",
     labelTh: "ติดต่อผ่าน LINE",
     href: "#",
@@ -59,12 +68,7 @@ export default function GlobalCTABar() {
               href={item.href}
               className="flex-1 flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-[#06C755] hover:brightness-110 transition-all active:scale-95 shadow-lg"
             >
-              <span
-                className="material-symbols-outlined text-white text-2xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                {item.icon}
-              </span>
+              <item.icon size={22} className="text-white" />
               <div className="text-left">
                 <span className="block text-[10px] text-white/80 uppercase font-bold tracking-tighter">
                   {item.labelEn}
@@ -78,11 +82,7 @@ export default function GlobalCTABar() {
               href={item.href}
               className={`flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 ${item.hover}`}
             >
-              <span
-                className={`material-symbols-outlined ${item.color} text-2xl group-hover:scale-110 transition-transform`}
-              >
-                {item.icon}
-              </span>
+              <item.icon size={22} className={`${item.color} group-hover:scale-110 transition-transform`} />
               <div className="text-left">
                 <span
                   className={`block text-[10px] ${item.color} uppercase font-bold tracking-tighter opacity-70`}

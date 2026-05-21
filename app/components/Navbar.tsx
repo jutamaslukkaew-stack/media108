@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { Menu } from "lucide-react";
 
 type NavPage = "home" | "about" | "network" | "billboard" | "services" | "media-kit" | "contact";
 
@@ -80,7 +81,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
         {/* ── Mobile menu ── */}
         <div className="md:hidden">
-          <span className="material-symbols-outlined text-on-surface text-3xl">menu</span>
+          <Menu className="text-on-surface" size={28} />
         </div>
 
       </div>

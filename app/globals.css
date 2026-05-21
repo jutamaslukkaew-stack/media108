@@ -209,6 +209,22 @@
   }
 }
 
+/* ── Page Entry — every sub-page fades+slides up on load ── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-entry {
+  animation: page-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Staggered hero word reveal ── */
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(28px) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)   skewY(0deg); }
+}
+.hero-word { display: inline-block; animation: word-in 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+
 /* ── Lens-Pull "Sucked-In" System ── */
 
 /* Vignette closes in from edges — makes center feel like a gravity well */

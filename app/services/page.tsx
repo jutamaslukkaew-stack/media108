@@ -4,68 +4,45 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import {
+  LayoutGrid, MousePointerClick, Palette, Sparkles, Film, Plane,
+  Camera, Share2, Target, Store, Coffee, HeartPulse, Briefcase,
+  Hotel, Utensils, Map, Building2, Home, HardHat, Ticket, PartyPopper,
+  Trophy, Globe, Radio, type LucideIcon,
+} from "lucide-react";
 
 /* ── Service cards data ─────────────────────────────────── */
-const services = [
-  {
-    icon: "shelves",
-    title: "LED Billboard Advertising",
-    desc: "ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ",
-  },
-  {
-    icon: "ads_click",
-    title: "Digital Out-of-Home Campaign",
-    desc: "วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง",
-  },
-  {
-    icon: "palette",
-    title: "Ad Creative Design",
-    desc: "ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา",
-  },
-  {
-    icon: "animation",
-    title: "Motion Graphic",
-    desc: "ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น",
-  },
-  {
-    icon: "movie",
-    title: "Video Production",
-    desc: "ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ",
-  },
-  {
-    icon: "flight",
-    title: "Drone Production",
-    desc: "ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ",
-  },
-  {
-    icon: "photo_camera",
-    title: "Photography",
-    desc: "บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี",
-  },
-  {
-    icon: "share",
-    title: "Social Media Content",
-    desc: "ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร",
-  },
-  {
-    icon: "strategy",
-    title: "Campaign Strategy",
-    desc: "วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก",
-  },
+const services: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: LayoutGrid,      title: "LED Billboard Advertising",    desc: "ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ" },
+  { icon: MousePointerClick, title: "Digital Out-of-Home Campaign", desc: "วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง" },
+  { icon: Palette,         title: "Ad Creative Design",           desc: "ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา" },
+  { icon: Sparkles,        title: "Motion Graphic",               desc: "ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น" },
+  { icon: Film,            title: "Video Production",             desc: "ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ" },
+  { icon: Plane,           title: "Drone Production",             desc: "ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ" },
+  { icon: Camera,          title: "Photography",                  desc: "บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี" },
+  { icon: Share2,          title: "Social Media Content",         desc: "ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร" },
+  { icon: Target,          title: "Campaign Strategy",            desc: "วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก" },
 ];
 
 /* ── Package data ───────────────────────────────────────── */
-const packages = [
+const packages: {
+  title: string;
+  recommended: boolean;
+  labelColor: string;
+  accentBorder: string;
+  items: { icon: LucideIcon; label: string }[];
+}[] = [
   {
     title: "SME Starter",
     recommended: false,
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: "store",            label: "ร้านอาหาร" },
-      { icon: "coffee",           label: "คาเฟ่" },
-      { icon: "medical_services", label: "คลินิก" },
-      { icon: "business",         label: "ธุรกิจท้องถิ่น" },
+      { icon: Store,      label: "ร้านอาหาร" },
+      { icon: Coffee,     label: "คาเฟ่" },
+      { icon: HeartPulse, label: "คลินิก" },
+      { icon: Briefcase,  label: "ธุรกิจท้องถิ่น" },
     ],
   },
   {
@@ -74,9 +51,9 @@ const packages = [
     labelColor: "text-primary",
     accentBorder: "border-t-primary",
     items: [
-      { icon: "hotel",      label: "โรงแรม" },
-      { icon: "restaurant", label: "ร้านอาหารพัทยา" },
-      { icon: "map",        label: "แหล่งท่องเที่ยว" },
+      { icon: Hotel,   label: "โรงแรม" },
+      { icon: Utensils, label: "ร้านอาหารพัทยา" },
+      { icon: Map,     label: "แหล่งท่องเที่ยว" },
     ],
   },
   {
@@ -85,9 +62,9 @@ const packages = [
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: "apartment",    label: "คอนโด" },
-      { icon: "home",         label: "บ้านจัดสรร" },
-      { icon: "construction", label: "โครงการใหม่" },
+      { icon: Building2, label: "คอนโด" },
+      { icon: Home,      label: "บ้านจัดสรร" },
+      { icon: HardHat,   label: "โครงการใหม่" },
     ],
   },
   {
@@ -96,14 +73,15 @@ const packages = [
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: "confirmation_number", label: "Concert" },
-      { icon: "celebration",         label: "Festival" },
-      { icon: "sports_soccer",       label: "Sport Event" },
+      { icon: Ticket,      label: "Concert" },
+      { icon: PartyPopper, label: "Festival" },
+      { icon: Trophy,      label: "Sport Event" },
     ],
   },
 ];
 
 export default function ServicesPage() {
+  useScrollReveal();
   useEffect(() => {
     // 3D tilt effect on service cards
     const cards = document.querySelectorAll<HTMLElement>(".service-card");
@@ -161,17 +139,29 @@ export default function ServicesPage() {
           </div>
 
           <div className="relative z-20 max-w-4xl">
-            <span className="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">
+            <span
+              className="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
+            >
               Our Services
             </span>
-            <h1 className="font-display-lg text-display-lg mb-6 leading-tight text-white">
+            <h1
+              className="font-display-lg text-display-lg mb-6 leading-tight text-white"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
+            >
               นำเสนอบริการเป็นมากกว่า<br />&ldquo;ขายพื้นที่โฆษณา&rdquo;
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
+            <p
+              className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
+            >
               Media108 ยกระดับแบรนด์ของคุณด้วยโซลูชันสื่อดิจิทัลนอกบ้านแบบครบวงจร ตั้งแต่การวางกลยุทธ์
               การออกแบบ ไปจนถึงการผลิตเนื้อหาคุณภาพสูงระดับ Cinematic
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div
+              className="flex flex-wrap gap-4"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.44s both" }}
+            >
               <a
                 href="#packages"
                 className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all"
@@ -190,19 +180,19 @@ export default function ServicesPage() {
 
         {/* ── Services Grid ── */}
         <section id="services" className="py-24 px-margin-desktop max-w-container-max mx-auto">
-          <div className="mb-16">
+          <div className="sr sr-up mb-16">
             <h2 className="font-headline-xl text-headline-xl mb-4 text-white">บริการระดับมืออาชีพ</h2>
             <div className="h-1 w-24 bg-primary rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-            {services.map((svc) => (
+            {services.map((svc, i) => (
               <div
                 key={svc.title}
-                className="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300 hover:border-primary-container/30"
+                className={`sr sr-scale sr-d${Math.min(i % 3 + 1, 5)} service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300 hover:border-primary-container/30`}
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                  <span className="material-symbols-outlined text-primary">{svc.icon}</span>
+                  <svc.icon size={22} className="text-primary" />
                 </div>
                 <h3 className="font-headline-md text-headline-md mb-3 text-white">{svc.title}</h3>
                 <p className="font-body-md text-on-surface-variant">{svc.desc}</p>
@@ -214,7 +204,7 @@ export default function ServicesPage() {
         {/* ── Packages ── */}
         <section id="packages" className="py-24 bg-surface-container-low border-y border-white/5">
           <div className="max-w-container-max mx-auto px-margin-desktop">
-            <div className="text-center mb-16">
+            <div className="sr sr-up text-center mb-16">
               <h2 className="font-headline-xl text-headline-xl mb-4 text-white">Packages ที่ควรนำเสนอ</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
                 แพ็กเกจที่ออกแบบมาเพื่อตอบโจทย์ธุรกิจทุกขนาดและทุกอุตสาหกรรม
@@ -222,10 +212,10 @@ export default function ServicesPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter items-start">
-              {packages.map((pkg) => (
+              {packages.map((pkg, i) => (
                 <div
                   key={pkg.title}
-                  className={`glass-card p-8 rounded-xl flex flex-col h-full border-t-4 ${pkg.accentBorder} relative ${
+                  className={`sr sr-up sr-d${i + 1} glass-card p-8 rounded-xl flex flex-col h-full border-t-4 ${pkg.accentBorder} relative ${
                     pkg.recommended ? "scale-105 shadow-2xl shadow-primary/10 z-10" : ""
                   }`}
                 >
@@ -241,9 +231,7 @@ export default function ServicesPage() {
                   <ul className="space-y-4 mb-10 flex-grow">
                     {pkg.items.map((item) => (
                       <li key={item.label} className="flex items-start">
-                        <span className="material-symbols-outlined text-primary mr-3 text-[20px] shrink-0 mt-0.5">
-                          {item.icon}
-                        </span>
+                        <item.icon size={20} className="text-primary mr-3 shrink-0 mt-0.5" />
                         <span className="font-body-md text-on-surface-variant">{item.label}</span>
                       </li>
                     ))}
@@ -266,7 +254,7 @@ export default function ServicesPage() {
 
         {/* ── Strategic CTA ── */}
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto text-center">
-          <div className="max-w-3xl mx-auto">
+          <div className="sr sr-up max-w-3xl mx-auto">
             <h2 className="font-headline-xl text-headline-xl mb-6 text-white">
               ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?
             </h2>
@@ -297,12 +285,12 @@ export default function ServicesPage() {
               ยกระดับแบรนด์ผ่านสื่อดิจิทัลนอกบ้านที่มีความแม่นยำสูงและการผลิตที่เปี่ยมคุณภาพ
             </p>
             <div className="flex gap-4">
-              {["public", "podcasts"].map((icon) => (
+              {[Globe, Radio].map((Icon, idx) => (
                 <div
-                  key={icon}
-                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors"
+                  key={idx}
+                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors text-on-surface-variant"
                 >
-                  <span className="material-symbols-outlined text-[20px]">{icon}</span>
+                  <Icon size={20} />
                 </div>
               ))}
             </div>

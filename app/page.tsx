@@ -4,6 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "./components/Navbar";
 import GlobalCTABar from "./components/GlobalCTABar";
+import {
+  MapPin, Umbrella, Factory, Monitor, Film, Paintbrush, CalendarDays,
+  Building2, LineChart, Wand2, BadgeCheck, TrendingUp, Clock, Users,
+  FileDown, Download, Phone, MessageCircle, ArrowRight, ArrowUpRight,
+  Share2, Mail, type LucideIcon,
+} from "lucide-react";
 
 const featuredBillboards = [
   {
@@ -38,49 +44,10 @@ const featuredBillboards = [
   },
 ];
 
-/* ── Trusted By — clients with initial logos ── */
-const trustedClients = [
-  { initials: "LP",   name: "Love Pier Beach Cafe",       color: "#E63946", bg: "rgba(230,57,70,0.15)" },
-  { initials: "FR",   name: "เครื่องเล่น Flow Rider",      color: "#4ECDC4", bg: "rgba(78,205,196,0.15)" },
-  { initials: "บค",   name: "ตลาดบุญเครือ",                color: "#F4A261", bg: "rgba(244,162,97,0.15)" },
-  { initials: "UC",   name: "U Cafe",                      color: "#A8DADC", bg: "rgba(168,218,220,0.15)" },
-  { initials: "SCC",  name: "รับสมัครพนักงาน SCC",         color: "#2196F3", bg: "rgba(33,150,243,0.15)" },
-  { initials: "SCC",  name: "โฆษณา SCC เพื่อสังคม",        color: "#2196F3", bg: "rgba(33,150,243,0.12)" },
-  { initials: "หร",   name: "กิจกรรมแข่งหมากรุก",           color: "#9C27B0", bg: "rgba(156,39,176,0.15)" },
-  { initials: "ปก",   name: "กิจกรรมแข่งเปียโน & กีตาร์",  color: "#FF9800", bg: "rgba(255,152,0,0.15)" },
-  { initials: "DEV",  name: "รับสมัครพนักงาน Dev",          color: "#00BCD4", bg: "rgba(0,188,212,0.15)" },
-  { initials: "เกส",  name: "รีสอร์ทเกาะสีชัง",             color: "#4CAF50", bg: "rgba(76,175,80,0.15)" },
-  { initials: "เกก",  name: "ร้านกาแฟเกาะสีชัง",            color: "#8BC34A", bg: "rgba(139,195,74,0.15)" },
-  { initials: "เกพ",  name: "ไหว้พระเกาะสีชัง",              color: "#FFD700", bg: "rgba(255,215,0,0.15)" },
-  { initials: "PV",   name: "Pool-Villa.com",               color: "#03A9F4", bg: "rgba(3,169,244,0.15)" },
-  { initials: "CH",   name: "Concert Hall",                  color: "#E91E63", bg: "rgba(233,30,99,0.15)" },
-  { initials: "WH",   name: "Wedding Hall",                  color: "#F8BBD9", bg: "rgba(248,187,217,0.15)" },
-  { initials: "CO",   name: "Corporate Hall",                color: "#607D8B", bg: "rgba(96,125,139,0.15)" },
-  { initials: "CAM",  name: "Camera Cafe",                   color: "#795548", bg: "rgba(121,85,72,0.15)" },
-  { initials: "CHT",  name: "Camera Hotel",                  color: "#FF5722", bg: "rgba(255,87,34,0.15)" },
-  { initials: "P108", name: "Printing 108",                  color: "#3F51B5", bg: "rgba(63,81,181,0.15)" },
-  { initials: "DEV",  name: "รับพัฒนาโปรแกรม",               color: "#009688", bg: "rgba(0,150,136,0.15)" },
-  { initials: "APT",  name: "อพาร์ทเมนท์ 3,500฿",           color: "#FFC107", bg: "rgba(255,193,7,0.15)" },
-  { initials: "MM",   name: "โรงแรมแหม่ม",                   color: "#E91E63", bg: "rgba(233,30,99,0.12)" },
-  { initials: "PAT",  name: "Pattaya.com",                   color: "#00BCD4", bg: "rgba(0,188,212,0.12)" },
-  { initials: "C108", name: "Chonburi108.com",               color: "#E63946", bg: "rgba(230,57,70,0.12)" },
-  { initials: "AI",   name: "Ai News",                       color: "#9C27B0", bg: "rgba(156,39,176,0.12)" },
-  { initials: "3BR",  name: "Three Bed Room",                color: "#4CAF50", bg: "rgba(76,175,80,0.12)" },
-  { initials: "KLP",  name: "ข้าวมันไก่ Love Pier",           color: "#FF9800", bg: "rgba(255,152,0,0.15)" },
-  { initials: "M108", name: "Media 108",                     color: "#E63946", bg: "rgba(230,57,70,0.18)" },
-  { initials: "หก",   name: "ร้านหมูแดงกิ๊ว",                color: "#F44336", bg: "rgba(244,67,54,0.15)" },
-  { initials: "ราน",  name: "ร้านอาหารตลาดบุญเครือ",          color: "#F4A261", bg: "rgba(244,162,97,0.12)" },
-  { initials: "PC",   name: "Portal Cafe",                   color: "#607D8B", bg: "rgba(96,125,139,0.15)" },
-  { initials: "จน",   name: "รับจำนอง-ขายฝาก",               color: "#795548", bg: "rgba(121,85,72,0.15)" },
-  { initials: "นหน",  name: "นายหน้ารวมตัว",                  color: "#3F51B5", bg: "rgba(63,81,181,0.12)" },
-  { initials: "DRC",  name: "Draco",                         color: "#9C27B0", bg: "rgba(156,39,176,0.18)" },
-  { initials: "วัด",   name: "วัด & สถานปฏิบัติธรรม",          color: "#FFD700", bg: "rgba(255,215,0,0.12)" },
-];
-
-const coverageAreas = [
-  { icon: "location_on",  title: "Chonburi Hub",       desc: "จุดยุทธศาสตร์กลางเมืองและย่านธุรกิจหลัก" },
-  { icon: "beach_access", title: "Pattaya & Bang Saen", desc: "เข้าถึงกลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ" },
-  { icon: "factory",      title: "Sri Racha EEC",       desc: "ย่านเศรษฐกิจใหม่และกลุ่มพนักงานอุตสาหกรรม" },
+const coverageAreas: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: MapPin,   title: "Chonburi Hub",       desc: "จุดยุทธศาสตร์กลางเมืองและย่านธุรกิจหลัก" },
+  { icon: Umbrella, title: "Pattaya & Bang Saen", desc: "เข้าถึงกลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ" },
+  { icon: Factory,  title: "Sri Racha EEC",       desc: "ย่านเศรษฐกิจใหม่และกลุ่มพนักงานอุตสาหกรรม" },
 ];
 
 const stats = [
@@ -101,17 +68,17 @@ const audienceRatios = [
   { label: "Students & Professionals", pct: "20%", barClass: "bg-white/40",           width: "20%" },
 ];
 
-const services = [
-  { icon: "screenshot_monitor", title: "LED Billboard",    desc: "ลงโฆษณาบนป้าย LED คุณภาพสูงในทำเลสำคัญทั่วชลบุรีและพัทยา" },
-  { icon: "movie",              title: "Video Ads",         desc: "ผลิตและลงวิดีโอโฆษณาที่ปรับจูนความสว่างและสีสันให้เหมาะกับจอ LED" },
-  { icon: "brush",              title: "Motion Graphic",    desc: "ออกแบบภาพเคลื่อนไหว 2D/3D ให้โดดเด่นและดึงดูดสายตาจากท้องถนน" },
-  { icon: "event_note",         title: "Campaign Planning", desc: "วางแผนเลือกทำเล ช่วงเวลา และรูปแบบแคมเปญให้คุ้มค่า Budget ที่สุด" },
+const services: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Monitor,    title: "LED Billboard",    desc: "ลงโฆษณาบนป้าย LED คุณภาพสูงในทำเลสำคัญทั่วชลบุรีและพัทยา" },
+  { icon: Film,       title: "Video Ads",         desc: "ผลิตและลงวิดีโอโฆษณาที่ปรับจูนความสว่างและสีสันให้เหมาะกับจอ LED" },
+  { icon: Paintbrush, title: "Motion Graphic",    desc: "ออกแบบภาพเคลื่อนไหว 2D/3D ให้โดดเด่นและดึงดูดสายตาจากท้องถนน" },
+  { icon: CalendarDays, title: "Campaign Planning", desc: "วางแผนเลือกทำเล ช่วงเวลา และรูปแบบแคมเปญให้คุ้มค่า Budget ที่สุด" },
 ];
 
-const whyUs = [
-  { icon: "location_city",   title: "EEC Specialists",       desc: "เชี่ยวชาญพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมจุดยุทธศาสตร์สำคัญที่มีกำลังซื้อสูง" },
-  { icon: "query_stats",     title: "Data-Driven Decisions",  desc: "ใช้ข้อมูล Traffic และ Audience จริงในการช่วยลูกค้าเลือกทำเลที่แม่นยำที่สุด ลดการสูญเสียงบประมาณ" },
-  { icon: "design_services", title: "Full-Service Studio",    desc: "มีทีมผลิตสื่อโฆษณาครบวงจร ทั้ง Motion Graphics และ Anamorphic 3D ที่สร้าง Impact ได้จริง" },
+const whyUs: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Building2,  title: "EEC Specialists",       desc: "เชี่ยวชาญพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมจุดยุทธศาสตร์สำคัญที่มีกำลังซื้อสูง" },
+  { icon: LineChart,  title: "Data-Driven Decisions",  desc: "ใช้ข้อมูล Traffic และ Audience จริงในการช่วยลูกค้าเลือกทำเลที่แม่นยำที่สุด ลดการสูญเสียงบประมาณ" },
+  { icon: Wand2,      title: "Full-Service Studio",    desc: "มีทีมผลิตสื่อโฆษณาครบวงจร ทั้ง Motion Graphics และ Anamorphic 3D ที่สร้าง Impact ได้จริง" },
 ];
 
 const gallery = [
@@ -599,7 +566,7 @@ export default function Home() {
               style={{ transition: "transform 150ms ease, box-shadow 150ms ease" }}
             >
               Request Quotation{" "}
-              <span className="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+              <ArrowRight size={16} className="ml-2 inline" />
             </Link>
             <Link
               href="/network"
@@ -714,9 +681,9 @@ export default function Home() {
               {/* Feature chips — stagger pop-in */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: "verified", label: "Smart City Network", delay: "0.45s" },
-                  { icon: "insights", label: "Data-Driven Planning", delay: "0.55s" },
-                ].map(({ icon, label, delay }) => (
+                  { icon: BadgeCheck, label: "Smart City Network", delay: "0.45s" },
+                  { icon: TrendingUp, label: "Data-Driven Planning", delay: "0.55s" },
+                ].map(({ icon: Icon, label, delay }) => (
                   <div
                     key={label}
                     className="group flex items-center gap-4 p-4 rounded-xl border cursor-default"
@@ -736,14 +703,13 @@ export default function Home() {
                       (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
                     }}
                   >
-                    <span
-                      className="material-symbols-outlined text-primary text-2xl flex-shrink-0"
+                    <Icon
+                      size={22}
+                      className="text-primary flex-shrink-0 transition-transform duration-200"
                       style={{ transition: "transform 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
-                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "scale(1.2) rotate(-5deg)"; }}
-                      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "scale(1) rotate(0deg)"; }}
-                    >
-                      {icon}
-                    </span>
+                      onMouseEnter={e => { (e.currentTarget as SVGElement).style.transform = "scale(1.2) rotate(-5deg)"; }}
+                      onMouseLeave={e => { (e.currentTarget as SVGElement).style.transform = "scale(1) rotate(0deg)"; }}
+                    />
                     <span className="text-on-surface font-label-md text-[13px]">{label}</span>
                   </div>
                 ))}
@@ -806,7 +772,7 @@ export default function Home() {
                     style={{ background: "linear-gradient(to top, rgba(6,17,51,0.95) 0%, rgba(6,17,51,0.6) 60%, transparent 100%)" }}
                   >
                     <div className="flex items-start gap-2.5">
-                      <span className="material-symbols-outlined text-primary text-[18px] mt-0.5 flex-shrink-0">location_on</span>
+                      <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-on-surface font-label-md text-[13px] leading-tight">บริษัท พริ้นติ้ง 108 จำกัด</p>
                         <p className="text-on-surface-variant text-[11px] mt-0.5">Chonburi, Thailand · EEC Zone</p>
@@ -871,9 +837,7 @@ export default function Home() {
               className="sr sr-right text-primary font-label-md text-label-md border-b border-primary/20 pb-1 hover:text-white hover:border-white transition-all flex items-center group"
             >
               VIEW ALL LOCATIONS{" "}
-              <span className="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1" style={{ fontSize: "16px" }}>
-                arrow_outward
-              </span>
+              <ArrowUpRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -919,78 +883,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4b. Trusted By — Marquee Rows ── */}
-      <section className="bg-surface-container-lowest py-20 border-t border-border-glass">
-
-        {/* Header — contained */}
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="sr sr-up text-center mb-10">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <span className="w-8 h-[1px] bg-primary/40" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.25em] uppercase">Trusted By</span>
-              <span className="w-8 h-[1px] bg-primary/40" />
-            </div>
-            <p className="text-on-surface-variant font-body-md text-sm">แบรนด์และธุรกิจที่เลือกใช้ Media108 จริง</p>
-          </div>
-        </div>
-
-        {/* 3 marquee rows — alternating direction, full-bleed */}
-        <div className="flex flex-col gap-3">
-          {(
-            [
-              { slice: [0,  12] as [number,number], dir: "normal",  dur: "44s" },
-              { slice: [12, 24] as [number,number], dir: "reverse", dur: "38s" },
-              { slice: [24, 35] as [number,number], dir: "normal",  dur: "52s" },
-            ]
-          ).map((row, ri) => {
-            const items = trustedClients.slice(...row.slice);
-            return (
-              <div key={ri} className="relative overflow-hidden group/row" style={{ isolation: "isolate" }}>
-                {/* Edge fades — blend into background */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-                  style={{ background: "linear-gradient(to right, #020b2e 30%, transparent)" }} />
-                <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
-                  style={{ background: "linear-gradient(to left, #020b2e 30%, transparent)" }} />
-
-                {/* Scrolling track — pause whole row on hover */}
-                <div
-                  className="flex gap-3 group-hover/row:[animation-play-state:paused]"
-                  style={{
-                    width: "max-content",
-                    animation: `ticker-scroll ${row.dur} linear infinite`,
-                    animationDirection: row.dir,
-                  }}
-                >
-                  {/* Duplicate for seamless loop */}
-                  {[...items, ...items].map((client, ci) => (
-                    <div
-                      key={`${ri}-${ci}`}
-                      className="flex-shrink-0 w-[112px] flex flex-col items-center gap-2 px-3 py-4 rounded-2xl border border-border-glass bg-white/[0.02] hover:bg-white/[0.06] hover:-translate-y-1.5 hover:border-white/25 cursor-default group/card"
-                      style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
-                    >
-                      <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/card:scale-110 transition-transform duration-200"
-                        style={{ background: client.bg, border: `1px solid ${client.color}40` }}
-                      >
-                        <span
-                          className="font-black text-[12px] leading-none tracking-tight"
-                          style={{ color: client.color }}
-                        >
-                          {client.initials}
-                        </span>
-                      </div>
-                      <span className="text-on-surface-variant group-hover/card:text-on-surface text-[10px] font-medium leading-tight text-center transition-colors duration-200 line-clamp-2 w-full">
-                        {client.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
       {/* ── 5. Coverage Area Map ── */}
       <section className="bg-surface-container-low py-32 border-t border-border-glass" id="network">
         <div className="max-w-container-max mx-auto px-margin-desktop">
@@ -1016,7 +908,7 @@ export default function Home() {
                     className={`sr sr-left sr-d${i + 2} flex items-center gap-4 p-5 glass-card rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group`}
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 group-hover:scale-110">
-                      <span className="material-symbols-outlined">{area.icon}</span>
+                      <area.icon size={20} />
                     </div>
                     <div>
                       <h5 className="font-headline-md text-primary text-xl">{area.title}</h5>
@@ -1036,19 +928,19 @@ export default function Home() {
                 />
               </div>
               <div className="absolute top-1/4 left-1/3 animate-bounce">
-                <span className="material-symbols-outlined text-[#E63946] text-5xl">location_on</span>
+                <MapPin size={48} className="text-[#E63946]" />
               </div>
               <div
                 className="absolute top-1/2 right-1/4 animate-bounce"
                 style={{ animationDelay: "1s" }}
               >
-                <span className="material-symbols-outlined text-primary text-5xl">location_on</span>
+                <MapPin size={48} className="text-primary" />
               </div>
               <div
                 className="absolute bottom-1/3 left-1/2 animate-bounce"
                 style={{ animationDelay: "0.5s" }}
               >
-                <span className="material-symbols-outlined text-white text-5xl">location_on</span>
+                <MapPin size={48} className="text-white" />
               </div>
               <div className="relative z-10 p-8 glass-card rounded-2xl">
                 <h4 className="font-headline-md text-white mb-6">Interactive Network Map</h4>
@@ -1098,7 +990,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
             <div className="sr sr-left glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary">schedule</span> Peak Traffic Times
+                <Clock size={20} className="text-primary" /> Peak Traffic Times
               </h4>
               <div className="space-y-8">
                 {peakTimes.map((row, i) => (
@@ -1116,7 +1008,7 @@ export default function Home() {
             </div>
             <div className="sr sr-right glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary">groups</span> Audience Ratio
+                <Users size={20} className="text-primary" /> Audience Ratio
               </h4>
               <div className="space-y-6">
                 {audienceRatios.map((row, i) => (
@@ -1154,9 +1046,7 @@ export default function Home() {
             {services.map((svc, i) => (
               <div key={svc.title}
                 className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group cursor-default`}>
-                <span className="service-icon-hover material-symbols-outlined text-primary text-5xl mb-6 block transition-colors duration-300">
-                  {svc.icon}
-                </span>
+                <svc.icon size={44} className="service-icon-hover text-primary mb-6 block transition-colors duration-300" />
                 <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
                 <p className="text-on-surface-variant font-body-md">{svc.desc}</p>
               </div>
@@ -1196,9 +1086,7 @@ export default function Home() {
             {whyUs.map((item, i) => (
               <div key={item.title}
                 className={`sr sr-scale sr-d${i + 1} glass-card p-12 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-500 shadow-lg group cursor-default`}>
-                <span className="service-icon-hover material-symbols-outlined text-primary-container text-5xl mb-8 block transition-colors duration-300 group-hover:text-primary">
-                  {item.icon}
-                </span>
+                <item.icon size={44} className="service-icon-hover text-primary-container mb-8 block transition-colors duration-300 group-hover:text-primary" />
                 <h4 className="font-headline-md text-on-surface mb-6 group-hover:text-primary transition-colors duration-300">{item.title}</h4>
                 <p className="text-on-surface-variant font-body-md leading-relaxed">{item.desc}</p>
               </div>
@@ -1296,7 +1184,7 @@ export default function Home() {
         {/* Floating icon */}
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none"
           style={{ animation: "spin-slow 20s linear infinite" }}>
-          <span className="material-symbols-outlined text-[350px] text-white rotate-12">file_download</span>
+          <FileDown size={350} className="text-white rotate-12" />
         </div>
         {/* Shimmer strip */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/20" />
@@ -1319,7 +1207,7 @@ export default function Home() {
             <Link href="/media-kit"
               className="bg-white text-primary-container px-12 py-5 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center shadow-2xl hover:-translate-y-1 active:scale-95"
               style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              <span className="material-symbols-outlined mr-3">download</span> DOWNLOAD MEDIA KIT
+              <Download size={18} className="mr-3 inline" /> DOWNLOAD MEDIA KIT
             </Link>
             <Link href="/contact#form"
               className="bg-transparent border-2 border-white text-white px-12 py-5 rounded-lg font-label-md text-label-md font-bold hover:bg-white/10 active:scale-95 text-center hover:-translate-y-0.5"
@@ -1344,7 +1232,7 @@ export default function Home() {
               <div className="space-y-8">
                 <a href="tel:+6638123456" className="flex items-center gap-6 group">
                   <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary border border-border-glass group-hover:bg-primary group-hover:text-on-primary transition-all">
-                    <span className="material-symbols-outlined text-3xl">call</span>
+                    <Phone size={28} />
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
@@ -1355,7 +1243,7 @@ export default function Home() {
                 </a>
                 <a href="#" className="flex items-center gap-6 group">
                   <div className="w-16 h-16 rounded-full bg-[#06C755] flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all">
-                    <span className="material-symbols-outlined text-3xl">chat</span>
+                    <MessageCircle size={28} />
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
@@ -1366,7 +1254,7 @@ export default function Home() {
                 </a>
                 <div className="flex items-center gap-6">
                   <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary border border-border-glass">
-                    <span className="material-symbols-outlined text-3xl">location_on</span>
+                    <MapPin size={28} />
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
@@ -1494,15 +1382,13 @@ export default function Home() {
                 Connect
               </h6>
               <div className="flex gap-4 mb-8">
-                {["share", "alternate_email"].map((icon) => (
+                {[Share2, Mail].map((Icon, idx) => (
                   <a
-                    key={icon}
+                    key={idx}
                     href="#"
                     className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface hover:text-on-primary"
                   >
-                    <span className="material-symbols-outlined" style={{ fontSize: "20px" }}>
-                      {icon}
-                    </span>
+                    <Icon size={20} />
                   </a>
                 ))}
               </div>
@@ -1516,10 +1402,8 @@ export default function Home() {
                     placeholder="Email"
                     type="email"
                   />
-                  <button className="bg-primary-container text-on-primary-container px-3 rounded hover:opacity-90">
-                    <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
-                      arrow_forward
-                    </span>
+                  <button className="bg-primary-container text-on-primary-container px-3 rounded hover:opacity-90 flex items-center justify-center">
+                    <ArrowRight size={18} />
                   </button>
                 </div>
               </div>

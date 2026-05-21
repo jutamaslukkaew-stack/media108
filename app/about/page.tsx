@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
-import TabBar from "../components/TabBar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import {
+  Calendar, MonitorPlay, Eye, TrendingUp, Rocket, Cpu,
+  BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Globe, Mail,
+  type LucideIcon,
+} from "lucide-react";
 
 /* ── Data ─────────────────────────────────────────────── */
 const leaders = [
@@ -34,36 +38,9 @@ const leaders = [
   },
 ];
 
-const partnerLogos = [
-  { alt: "Coca-Cola", h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6PoHZMlWqUk6ANVE5qFg8RYzvmmWuLwl8qWsbOyhUTwtmowBYqd9jyz39o_jgSbnsG7SK5emWp6flzUWLSs7tyVCyiXX5lpy_Vzo1Ac2Q_ShYwZmCTWgwQYMRCmfngogr6PrtbwZXEkWlYW4bnMtacCJZlwASUSJ6twrpzC0OvImgF-STAcic-bcdgwh_uQPKKObmSOUaZWdbUaxNq_LG23d-GgkR0x0aMk85JSEFm-H2FblpaEmnOV6nD37vdVoIUaLXwH18MnI" },
-  { alt: "Google",    h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXjNs3HRtyHDSy-ez_V0csL36dOnk0GdMqQwpq_YnrSf_IoVjTiwY9zC0AZ-hGJlvbBxB3SrGwJWlvLyNbwacZ38omTIi6r1wlhDcPqw4OGnZRzZVi9ldPdc5GyB5ttfVhivfpGJxe2Vgki44wXvt6fIKKLhE4BERUkCRdkNJ9w_xdRi4HduyaQVIqWLCYotQFI14TI5bb7ycZ9VZsJSwjW_rQekrM5exgx_By9UvNgJnXyHet4K6KpXOS8rEuYRGtfUF1rq9jUJU" },
-  { alt: "Toyota",    h: "h-10", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDr6dN9ewDtsJvYLvVq4iKOztKbJcaXRaEuEPjvtmLH-lGFtSszoTlFWxhkrcgOYk9xUfOmJbOCgdMtkoSgFdwdXeuyAzOCl-aBS-8qQpzLJMirhx0-s_u__mbNXjBs1JRfnZt_TyUpAli6KWdWNrF6cY1LOjCjjELY5-l4HF7WqJ9BK3SybG3GqXgn34U9eeJe4-EsbNXyEpf083WxhOBi-MB14nwTZeUgz6c-mugorqmYVU3yuukCaNx6hvFRUibDJN2Ug04pQdg" },
-  { alt: "Amazon",    h: "h-10", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDKkOoTiNAjFiEGADVpGUd-8dhblmGNUIccbz9lx-alxOPqu-J2f8c3Z8f20pwYhl0uBs5mEHjieOaGy9qaWi8CHOWJI_Uk6U0w5hr2jNS1AngHoJPJsFS6ZfK0STohmNKWxbk424eCk__UqFcfbgtYya5yGm6sRoPo4E5EtLqmENLBgmkHhzhTHq78Y80_vqEZZHm2fC9iuD_R4JrU1DDmHTnzMPintL13b3AJBS3o6Gop2f0eXsZWz3x6d_PSDzpueiGxOut68Js" },
-  { alt: "Apple",     h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCeRdky9wVfM1kLBWeET6GJPSRqll0VdYmXxai49292vvSQagpPDuAsvvofXJW0gPS8SDuLl6JMzHzOh3osMsSG1EU8qVfK1eumvHig_YpA0NOxJ3FzzFYh0oQ6HfheEjpIstXt6Q7a7sF50fSL45xNiRibcVPpyXCr2DkuF-Y6bPazzwh4jNHplJjlC7qLj1L5Ovx7qc7ehKvoE-6Pf07ltzgTtqfFWqy7lonmC6F3Jn3nFTSUX1nc0sA6v8IaP8Z7C5h7Wmog1kk" },
-];
 
 export default function AboutPage() {
-  useEffect(() => {
-    /* Scroll-reveal for glass-card elements */
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-10");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    document.querySelectorAll(".glass-card").forEach((el) => {
-      el.classList.add("opacity-0", "translate-y-10", "transition-all", "duration-700", "ease-out");
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal();
 
   return (
     <>
@@ -88,28 +65,40 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-container-max mx-auto w-full flex flex-col lg:flex-row items-end gap-16">
           {/* Left — main text */}
           <div className="flex-1 max-w-2xl">
-            <span className="inline-block py-1 px-3 mb-6 bg-primary/10 border border-primary/20 text-primary font-label-md text-label-md rounded-full uppercase tracking-widest">
+            <span
+              className="inline-block py-1 px-3 mb-6 bg-primary/10 border border-primary/20 text-primary font-label-md text-label-md rounded-full uppercase tracking-widest"
+              style={{ animation: "hero-entry 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
+            >
               Est. 2008
             </span>
-            <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight">
+            <h1
+              className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
+            >
               Redefining the{" "}
               <span className="text-primary">Urban Horizon.</span>
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl">
+            <p
+              className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
+            >
               Media108 is Thailand&apos;s premier DOOH and billboard network provider. We bridge the gap
               between brands and their audiences through high-impact, technologically superior media
               assets located in the nation&apos;s most strategic economic corridors.
             </p>
-            <div className="flex flex-wrap gap-6">
+            <div
+              className="flex flex-wrap gap-6"
+              style={{ animation: "hero-entry 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s both" }}
+            >
               <Link
                 href="/network"
-                className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest red-glow-hover transition-all"
+                className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest red-glow-hover transition-all active:scale-95"
               >
                 Explore Network
               </Link>
               <Link
                 href="/media-kit"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
               >
                 Download Kit
               </Link>
@@ -118,18 +107,18 @@ export default function AboutPage() {
 
           {/* Right — stats panel */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
-            {[
-              { value: "16+",    label: "Years in Market",     icon: "calendar_today" },
-              { value: "250+",   label: "Active Billboards",   icon: "perm_media" },
-              { value: "450K+",  label: "Daily Impressions",   icon: "visibility" },
-              { value: "85%",    label: "EEC Market Share",    icon: "trending_up" },
-            ].map((s) => (
+            {([
+              { value: "16+",    label: "Years in Market",     icon: Calendar     },
+              { value: "250+",   label: "Active Billboards",   icon: MonitorPlay  },
+              { value: "450K+",  label: "Daily Impressions",   icon: Eye          },
+              { value: "85%",    label: "EEC Market Share",    icon: TrendingUp   },
+            ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
                 className="rounded-2xl p-6 flex flex-col gap-3"
                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
               >
-                <span className="material-symbols-outlined text-primary text-2xl">{s.icon}</span>
+                <s.icon size={22} className="text-primary" />
                 <div className="font-display-lg text-white text-3xl font-black leading-none">{s.value}</div>
                 <div className="font-label-md text-[11px] uppercase tracking-[0.15em] text-on-surface-variant/70">{s.label}</div>
               </div>
@@ -142,9 +131,9 @@ export default function AboutPage() {
       <section className="py-24 px-6 md:px-margin-desktop bg-surface-container-lowest">
         <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {/* Vision */}
-          <div className="glass-card p-12 rounded-xl flex flex-col justify-center">
+          <div className="sr sr-left sr-d1 glass-card p-12 rounded-xl flex flex-col justify-center">
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary text-4xl">visibility</span>
+              <Eye size={36} className="text-primary" />
             </div>
             <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Vision</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
@@ -154,14 +143,9 @@ export default function AboutPage() {
           </div>
 
           {/* Mission */}
-          <div className="glass-card p-12 rounded-xl flex flex-col justify-center border border-primary/20 bg-primary/5">
+          <div className="sr sr-right sr-d2 glass-card p-12 rounded-xl flex flex-col justify-center border border-primary/20 bg-primary/5">
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary flex items-center justify-center">
-              <span
-                className="material-symbols-outlined text-white text-4xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                rocket_launch
-              </span>
+              <Rocket size={36} className="text-white" />
             </div>
             <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Mission</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
@@ -234,9 +218,7 @@ export default function AboutPage() {
           {/* Strength 1 — wide */}
           <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end group overflow-hidden relative">
             <div className="absolute top-0 right-0 p-8">
-              <span className="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-8xl">
-                precision_manufacturing
-              </span>
+              <Cpu size={96} className="text-primary/30 group-hover:text-primary transition-colors" />
             </div>
             <div className="relative z-10">
               <h3 className="font-headline-md text-headline-md text-white mb-2">Proprietary Technology</h3>
@@ -249,12 +231,7 @@ export default function AboutPage() {
 
           {/* Strength 2 — narrow, red */}
           <div className="md:col-span-4 bg-primary-container rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-primary/20">
-            <span
-              className="material-symbols-outlined text-white text-5xl"
-              style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              analytics
-            </span>
+            <BarChart2 size={44} className="text-white" />
             <div>
               <h3 className="font-headline-md text-headline-md text-white mb-2">Audience Intelligence</h3>
               <p className="text-white/80">
@@ -265,7 +242,7 @@ export default function AboutPage() {
 
           {/* Strength 3 — narrow */}
           <div className="md:col-span-4 glass-card rounded-2xl p-8 flex flex-col justify-between hover:bg-white/5 transition-all">
-            <span className="material-symbols-outlined text-primary text-5xl">verified_user</span>
+            <ShieldCheck size={44} className="text-primary" />
             <div>
               <h3 className="font-headline-md text-headline-md text-white mb-2">Regulatory Mastery</h3>
               <p className="text-on-surface-variant">
@@ -300,10 +277,10 @@ export default function AboutPage() {
             </div>
             <div className="hidden md:flex gap-4 mt-6 md:mt-0">
               <button className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white">
-                <span className="material-symbols-outlined">chevron_left</span>
+                <ChevronLeft size={22} />
               </button>
               <button className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white">
-                <span className="material-symbols-outlined">chevron_right</span>
+                <ChevronRight size={22} />
               </button>
             </div>
           </div>
@@ -372,21 +349,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Partners ── */}
-      <section className="py-24 px-6 md:px-margin-desktop bg-surface-container-low border-t border-b border-border-glass">
-        <div className="max-w-container-max mx-auto text-center">
-          <p className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-12">
-            Trusted by Industry Leaders
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-50 grayscale">
-            {partnerLogos.map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.alt} alt={logo.alt} className={`${logo.h} w-auto invert`} src={logo.src} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA Block ── */}
       <section className="py-20 px-6 md:px-margin-desktop">
         <div className="max-w-container-max mx-auto bg-primary-container rounded-3xl p-12 md:p-20 relative overflow-hidden shadow-2xl shadow-primary/30">
@@ -422,7 +384,7 @@ export default function AboutPage() {
       <GlobalCTABar />
 
       {/* ── Footer ── */}
-      <footer className="w-full py-16 px-6 md:px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-border-glass pb-32 md:pb-16">
+      <footer className="w-full py-16 px-6 md:px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-border-glass">
         <div className="w-full max-w-container-max grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
             <div className="mb-8 text-2xl font-black tracking-tight">
@@ -457,12 +419,12 @@ export default function AboutPage() {
               </a>
             ))}
             <div className="flex gap-4 mt-4">
-              {["public", "alternate_email"].map((icon) => (
+              {[Globe, Mail].map((Icon, idx) => (
                 <div
-                  key={icon}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-colors"
+                  key={idx}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-colors text-on-surface-variant"
                 >
-                  <span className="material-symbols-outlined text-sm">{icon}</span>
+                  <Icon size={18} />
                 </div>
               ))}
             </div>
@@ -480,8 +442,6 @@ export default function AboutPage() {
         </div>
       </footer>
 
-      {/* ── Fixed bottom TabBar ── */}
-      <TabBar />
     </>
   );
 }
