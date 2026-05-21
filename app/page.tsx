@@ -239,30 +239,78 @@ export default function Home() {
 
         {/* ── Background Layer ── */}
         <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            ref={heroImgRef}
-            alt="Hero Background"
-            className="w-full h-full object-cover transition-transform duration-1000 scale-105"
-            src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"
-          />
-          <div className="absolute inset-0 hero-gradient" />
 
-          {/* Dot-matrix overlay — billboard pixel feel */}
-          <div className="absolute inset-0 hero-dot-matrix pointer-events-none" />
-
-          {/* Ambient glow orb — pulsing red radial */}
-          <div className="absolute inset-0 hero-glow-orb pointer-events-none" />
-
-          {/* LED scan line — sweeps top→bottom like a display refresh */}
+          {/* ── TV Power-On Wrapper ──
+               clip-path starts as a razor-thin center line and expands
+               to fill the entire screen, with brightness/saturation shift  */}
           <div
-            className="absolute left-0 right-0 h-[1px] pointer-events-none z-10"
+            className="absolute inset-0"
+            style={{
+              animation: "tv-expand 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both",
+            }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              ref={heroImgRef}
+              alt="Hero Background"
+              className="w-full h-full object-cover transition-transform duration-1000 scale-105"
+              src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"
+            />
+            <div className="absolute inset-0 hero-gradient" />
+
+            {/* Dot-matrix overlay — billboard pixel feel */}
+            <div className="absolute inset-0 hero-dot-matrix pointer-events-none" />
+
+            {/* Ambient glow orb — pulsing red radial */}
+            <div className="absolute inset-0 hero-glow-orb pointer-events-none" />
+          </div>
+
+          {/* ── TV Static Noise ── flickers fast at startup, then gone */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 4px), " +
+                "repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 6px)",
+              animation: "tv-static-flicker 2.4s ease-out 0.25s both",
+              zIndex: 5,
+            }}
+          />
+
+          {/* ── TV Black Vignette ── lifts off as screen expands */}
+          <div
+            className="absolute inset-0 bg-black pointer-events-none"
+            style={{
+              animation: "tv-black-lift 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both",
+              zIndex: 4,
+            }}
+          />
+
+          {/* ── TV Center Flash Line ── bright horizontal line at startup */}
+          <div
+            className="absolute inset-x-0 top-1/2 pointer-events-none"
+            style={{
+              height: "3px",
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(200,220,255,0.8) 15%, white 50%, rgba(200,220,255,0.8) 85%, transparent 100%)",
+              boxShadow:
+                "0 0 18px 6px rgba(255,255,255,0.7), 0 0 50px 16px rgba(180,210,255,0.35)",
+              animation: "tv-line-flash 2.0s cubic-bezier(0.16,1,0.3,1) 0.25s both",
+              transformOrigin: "center",
+              zIndex: 6,
+            }}
+          />
+
+          {/* LED scan line — sweeps top→bottom like a display refresh (starts after TV turns on) */}
+          <div
+            className="absolute left-0 right-0 h-[1px] pointer-events-none"
             style={{
               top: 0,
               background:
                 "linear-gradient(90deg, transparent 0%, rgba(230,57,70,0.15) 15%, rgba(255,255,255,0.55) 50%, rgba(230,57,70,0.15) 85%, transparent 100%)",
               boxShadow: "0 0 10px 1px rgba(230,57,70,0.4)",
-              animation: "led-scan 5s cubic-bezier(0.4,0,0.6,1) 0.8s infinite",
+              animation: "led-scan 5s cubic-bezier(0.4,0,0.6,1) 2.4s infinite",
+              zIndex: 3,
             }}
           />
         </div>

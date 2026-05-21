@@ -209,6 +209,60 @@
   }
 }
 
+/* ── TV Power-On Effect ── */
+
+/* Main expand: clip-path from razor-thin center line → full screen */
+@keyframes tv-expand {
+  0%   {
+    clip-path: inset(49.85% 0 49.85% 0);
+    filter: brightness(9) saturate(0) contrast(2.5);
+  }
+  20%  {
+    clip-path: inset(49.85% 0 49.85% 0);
+    filter: brightness(12) saturate(0) contrast(3);
+  }
+  62%  {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(2.8) saturate(0.25) contrast(1.5);
+  }
+  82%  {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(1.5) saturate(0.75) contrast(1.1);
+  }
+  100% {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(1) saturate(1) contrast(1);
+  }
+}
+
+/* Bright center flash line — appears first, then fades as image expands */
+@keyframes tv-line-flash {
+  0%   { opacity: 0;   transform: translateY(-50%) scaleX(0.1); }
+  18%  { opacity: 1;   transform: translateY(-50%) scaleX(1); }
+  42%  { opacity: 0.9; transform: translateY(-50%) scaleX(1); }
+  72%  { opacity: 0;   transform: translateY(-50%) scaleX(1); }
+  100% { opacity: 0;   transform: translateY(-50%) scaleX(1); }
+}
+
+/* Static noise flicker — quick random-opacity burst at start */
+@keyframes tv-static-flicker {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.55; }
+  10%  { opacity: 0.15; }
+  16%  { opacity: 0.45; }
+  22%  { opacity: 0.08; }
+  28%  { opacity: 0.3; }
+  36%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Black vignette that lifts off when TV turns on */
+@keyframes tv-black-lift {
+  0%,  18% { opacity: 1; }
+  65%       { opacity: 0; }
+  100%      { opacity: 0; }
+}
+
 /* ── Hero Media108 Animations ── */
 
 /* Entrance — slide up from below */
