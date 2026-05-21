@@ -38,20 +38,43 @@ const featuredBillboards = [
   },
 ];
 
-/* ── Recent Campaigns — real clients ── */
-const campaignRow1 = [
-  "Love Pier Beach Cafe", "เครื่องเล่น Flow Rider", "ตลาดบุญเครือ", "U Cafe",
-  "รับสมัครพนักงาน SCC", "โฆษณา SCC เพื่อสังคม", "กิจกรรมแข่งหมากรุก",
-  "กิจกรรมแข่งเปียโน & กีตาร์", "รับสมัครพนักงาน Dev", "รีสอร์ทเกาะสีชัง",
-  "ร้านกาแฟเกาะสีชัง", "ไหว้พระเกาะสีชัง", "Pool-Villa.com",
-  "Concert Hall", "Wedding Hall", "Corporate Hall", "Camera Cafe", "Camera Hotel",
-];
-const campaignRow2 = [
-  "Printing 108", "รับพัฒนาโปรแกรม", "อพาร์ทเมนท์ 3,500฿", "โรงแรมแหม่ม",
-  "Pattaya.com", "Chonburi108.com", "Ai News", "Three Bed Room",
-  "ข้าวมันไก่ Love Pier", "Media 108", "ร้านหมูแดงกิ๊ว", "ร้านอาหารตลาดบุญเครือ",
-  "Portal Cafe", "รับจำนอง-ขายฝาก", "นายหน้ารวมตัว", "Draco",
-  "วัด & สถานปฏิบัติธรรม",
+/* ── Trusted By — clients with initial logos ── */
+const trustedClients = [
+  { initials: "LP",   name: "Love Pier Beach Cafe",       color: "#E63946", bg: "rgba(230,57,70,0.15)" },
+  { initials: "FR",   name: "เครื่องเล่น Flow Rider",      color: "#4ECDC4", bg: "rgba(78,205,196,0.15)" },
+  { initials: "บค",   name: "ตลาดบุญเครือ",                color: "#F4A261", bg: "rgba(244,162,97,0.15)" },
+  { initials: "UC",   name: "U Cafe",                      color: "#A8DADC", bg: "rgba(168,218,220,0.15)" },
+  { initials: "SCC",  name: "รับสมัครพนักงาน SCC",         color: "#2196F3", bg: "rgba(33,150,243,0.15)" },
+  { initials: "SCC",  name: "โฆษณา SCC เพื่อสังคม",        color: "#2196F3", bg: "rgba(33,150,243,0.12)" },
+  { initials: "หร",   name: "กิจกรรมแข่งหมากรุก",           color: "#9C27B0", bg: "rgba(156,39,176,0.15)" },
+  { initials: "ปก",   name: "กิจกรรมแข่งเปียโน & กีตาร์",  color: "#FF9800", bg: "rgba(255,152,0,0.15)" },
+  { initials: "DEV",  name: "รับสมัครพนักงาน Dev",          color: "#00BCD4", bg: "rgba(0,188,212,0.15)" },
+  { initials: "เกส",  name: "รีสอร์ทเกาะสีชัง",             color: "#4CAF50", bg: "rgba(76,175,80,0.15)" },
+  { initials: "เกก",  name: "ร้านกาแฟเกาะสีชัง",            color: "#8BC34A", bg: "rgba(139,195,74,0.15)" },
+  { initials: "เกพ",  name: "ไหว้พระเกาะสีชัง",              color: "#FFD700", bg: "rgba(255,215,0,0.15)" },
+  { initials: "PV",   name: "Pool-Villa.com",               color: "#03A9F4", bg: "rgba(3,169,244,0.15)" },
+  { initials: "CH",   name: "Concert Hall",                  color: "#E91E63", bg: "rgba(233,30,99,0.15)" },
+  { initials: "WH",   name: "Wedding Hall",                  color: "#F8BBD9", bg: "rgba(248,187,217,0.15)" },
+  { initials: "CO",   name: "Corporate Hall",                color: "#607D8B", bg: "rgba(96,125,139,0.15)" },
+  { initials: "CAM",  name: "Camera Cafe",                   color: "#795548", bg: "rgba(121,85,72,0.15)" },
+  { initials: "CHT",  name: "Camera Hotel",                  color: "#FF5722", bg: "rgba(255,87,34,0.15)" },
+  { initials: "P108", name: "Printing 108",                  color: "#3F51B5", bg: "rgba(63,81,181,0.15)" },
+  { initials: "DEV",  name: "รับพัฒนาโปรแกรม",               color: "#009688", bg: "rgba(0,150,136,0.15)" },
+  { initials: "APT",  name: "อพาร์ทเมนท์ 3,500฿",           color: "#FFC107", bg: "rgba(255,193,7,0.15)" },
+  { initials: "MM",   name: "โรงแรมแหม่ม",                   color: "#E91E63", bg: "rgba(233,30,99,0.12)" },
+  { initials: "PAT",  name: "Pattaya.com",                   color: "#00BCD4", bg: "rgba(0,188,212,0.12)" },
+  { initials: "C108", name: "Chonburi108.com",               color: "#E63946", bg: "rgba(230,57,70,0.12)" },
+  { initials: "AI",   name: "Ai News",                       color: "#9C27B0", bg: "rgba(156,39,176,0.12)" },
+  { initials: "3BR",  name: "Three Bed Room",                color: "#4CAF50", bg: "rgba(76,175,80,0.12)" },
+  { initials: "KLP",  name: "ข้าวมันไก่ Love Pier",           color: "#FF9800", bg: "rgba(255,152,0,0.15)" },
+  { initials: "M108", name: "Media 108",                     color: "#E63946", bg: "rgba(230,57,70,0.18)" },
+  { initials: "หก",   name: "ร้านหมูแดงกิ๊ว",                color: "#F44336", bg: "rgba(244,67,54,0.15)" },
+  { initials: "ราน",  name: "ร้านอาหารตลาดบุญเครือ",          color: "#F4A261", bg: "rgba(244,162,97,0.12)" },
+  { initials: "PC",   name: "Portal Cafe",                   color: "#607D8B", bg: "rgba(96,125,139,0.15)" },
+  { initials: "จน",   name: "รับจำนอง-ขายฝาก",               color: "#795548", bg: "rgba(121,85,72,0.15)" },
+  { initials: "นหน",  name: "นายหน้ารวมตัว",                  color: "#3F51B5", bg: "rgba(63,81,181,0.12)" },
+  { initials: "DRC",  name: "Draco",                         color: "#9C27B0", bg: "rgba(156,39,176,0.18)" },
+  { initials: "วัด",   name: "วัด & สถานปฏิบัติธรรม",          color: "#FFD700", bg: "rgba(255,215,0,0.12)" },
 ];
 
 const coverageAreas = [
@@ -636,49 +659,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4b. Recent Campaigns Ticker ── */}
-      <section className="relative bg-surface-container-lowest py-16 border-t border-border-glass overflow-hidden">
-        <div className="max-w-container-max mx-auto px-margin-desktop mb-10 sr sr-up">
-          <div className="flex items-center gap-3">
-            <span className="w-5 h-[1px] bg-primary-container" />
-            <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Trusted By</span>
-            <span className="text-on-surface-variant font-label-md text-[11px] tracking-[0.1em]">— ลูกค้าที่เคยใช้บริการจริง</span>
-          </div>
-        </div>
+      {/* ── 4b. Trusted By — Logo Grid ── */}
+      <section className="bg-surface-container-lowest py-20 border-t border-border-glass">
+        <div className="max-w-container-max mx-auto px-margin-desktop">
 
-        {/* Row 1 — scrolls left */}
-        <div className="relative mb-4">
-          <div className="flex gap-3 w-max"
-            style={{ animation: "ticker-scroll 30s linear infinite" }}>
-            {[...campaignRow1, ...campaignRow1].map((name, i) => (
-              <span
+          {/* Header */}
+          <div className="sr sr-up text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <span className="w-8 h-[1px] bg-primary/40" />
+              <span className="text-primary font-label-md text-[11px] tracking-[0.25em] uppercase">Trusted By</span>
+              <span className="w-8 h-[1px] bg-primary/40" />
+            </div>
+            <p className="text-on-surface-variant font-body-md text-sm">แบรนด์และธุรกิจที่เลือกใช้ Media108 จริง</p>
+          </div>
+
+          {/* Logo grid */}
+          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-3 md:gap-4">
+            {trustedClients.map((client, i) => (
+              <div
                 key={i}
-                className="whitespace-nowrap px-5 py-2 rounded-full glass-card text-on-surface font-label-md text-label-md border border-border-glass hover:border-primary/40 hover:text-primary transition-all duration-200 cursor-default"
+                className={`sr sr-scale sr-d${(i % 6) + 1} flex flex-col items-center gap-2 px-2 py-4 rounded-2xl border border-border-glass bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 hover:-translate-y-1 cursor-default group`}
+                style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
               >
-                {name}
-              </span>
+                {/* Initial circle */}
+                <div
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: client.bg, border: `1px solid ${client.color}40` }}
+                >
+                  <span
+                    className="font-black text-[11px] md:text-[13px] leading-none tracking-tight"
+                    style={{ color: client.color }}
+                  >
+                    {client.initials}
+                  </span>
+                </div>
+                {/* Name */}
+                <span className="text-on-surface-variant group-hover:text-on-surface text-[10px] md:text-[11px] font-medium leading-tight text-center transition-colors duration-200 line-clamp-2">
+                  {client.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* Row 2 — scrolls right */}
-        <div className="relative">
-          <div className="flex gap-3 w-max"
-            style={{ animation: "ticker-scroll 36s linear infinite reverse" }}>
-            {[...campaignRow2, ...campaignRow2].map((name, i) => (
-              <span
-                key={i}
-                className="whitespace-nowrap px-5 py-2 rounded-full glass-card text-on-surface-variant font-label-md text-label-md border border-border-glass hover:border-primary/40 hover:text-primary transition-all duration-200 cursor-default"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-surface-container-lowest to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-surface-container-lowest to-transparent" />
       </section>
 
       {/* ── 5. Coverage Area Map ── */}
