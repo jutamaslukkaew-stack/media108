@@ -227,17 +227,38 @@ export default function Home() {
     return () => { obs.disconnect(); clearTimeout(immediate); };
   }, []);
 
+  // Zoom-breathe + smooth-lerp parallax — "sucked-in" feel
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const amount = 15;
-      const x = (e.clientX / window.innerWidth - 0.5) * amount;
-      const y = (e.clientY / window.innerHeight - 0.5) * amount;
-      if (heroImgRef.current) {
-        heroImgRef.current.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
-      }
+    let animId: number;
+    let targetX = 0, targetY = 0;
+    let curX = 0, curY = 0;
+
+    const onMouseMove = (e: MouseEvent) => {
+      targetX = (e.clientX / window.innerWidth  - 0.5) * 22;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 22;
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    const tick = () => {
+      // Smooth lerp — mouse position catches up with 6% per frame (feels weighty)
+      curX += (targetX - curX) * 0.055;
+      curY += (targetY - curY) * 0.055;
+
+      if (heroImgRef.current) {
+        const t = Date.now() / 1000;
+        // Slow zoom breathe: 1.05 → 1.16 over ~9 s cycle
+        const zoom = 1.05 + (Math.sin(t * 0.35) * 0.5 + 0.5) * 0.11;
+        heroImgRef.current.style.transform =
+          `scale(${zoom.toFixed(4)}) translate(${curX.toFixed(2)}px, ${curY.toFixed(2)}px)`;
+      }
+      animId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    animId = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(animId);
+    };
   }, []);
 
   return (
@@ -263,7 +284,8 @@ export default function Home() {
             <img
               ref={heroImgRef}
               alt="Hero Background"
-              className="w-full h-full object-cover transition-transform duration-1000 scale-105"
+              className="w-full h-full object-cover"
+              style={{ willChange: "transform" }}
               src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"
             />
             <div className="absolute inset-0 hero-gradient" />
@@ -432,6 +454,27 @@ export default function Home() {
                 }}
               />
             ))}
+
+            {/* ── Lens-Pull Vignette — edges close in like a gravity well ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 62% 62% at 50% 50%, transparent 0%, rgba(6,17,51,0.78) 100%)",
+                animation: "vignette-pulse 9s ease-in-out infinite",
+              }}
+            />
+
+            {/* ── Center Lure — glowing focal node that draws the eye inward ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 32% 32% at 50% 50%, rgba(255,210,190,0.10) 0%, transparent 70%)",
+                animation: "center-lure 9s ease-in-out infinite",
+                mixBlendMode: "screen",
+              }}
+            />
           </div>
 
           {/* ── TV Static Noise ── flickers fast at startup, then gone */}
