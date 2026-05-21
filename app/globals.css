@@ -209,6 +209,45 @@
   }
 }
 
+/* ── 3D Volumetric Light System ── */
+
+/* Volumetric ray — gentle swell, simulates light beam breathing */
+@keyframes vol-ray-breathe {
+  0%, 100% { opacity: 0.08; transform: rotate(0deg)   scaleY(1.00); }
+  50%       { opacity: 0.17; transform: rotate(0.8deg) scaleY(1.06); }
+}
+
+/* Atmospheric color orb — slow drift simulates depth of field movement */
+@keyframes atmos-drift {
+  0%   { transform: translate(  0px,   0px) scale(1.00); }
+  25%  { transform: translate(-14px, -22px) scale(1.08); }
+  50%  { transform: translate( 10px, -10px) scale(0.96); }
+  75%  { transform: translate( 16px,  14px) scale(1.04); }
+  100% { transform: translate(  0px,   0px) scale(1.00); }
+}
+
+/* Dust particle — drifts slightly right as it rises */
+@keyframes dust-rise-r {
+  0%   { transform: translate(  0px,    0px) scale(1.0); opacity: 0;   }
+  8%   {                                                  opacity: 1;   }
+  88%  {                                                  opacity: 0.5; }
+  100% { transform: translate( 18px, -175px) scale(0.4); opacity: 0;   }
+}
+
+/* Dust particle — drifts slightly left as it rises */
+@keyframes dust-rise-l {
+  0%   { transform: translate(  0px,    0px) scale(1.0); opacity: 0;   }
+  8%   {                                                  opacity: 1;   }
+  88%  {                                                  opacity: 0.5; }
+  100% { transform: translate(-14px, -175px) scale(0.4); opacity: 0;   }
+}
+
+/* Billboard edge bloom — simulates light bleeding off screen edge */
+@keyframes edge-bloom {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.65; }
+}
+
 /* ── TV Power-On Effect ── */
 
 /* Main expand: clip-path from razor-thin center line → full screen */

@@ -263,6 +263,165 @@ export default function Home() {
 
             {/* Ambient glow orb — pulsing red radial */}
             <div className="absolute inset-0 hero-glow-orb pointer-events-none" />
+
+            {/* ══════════════════════════════════════════
+                3D VOLUMETRIC LIGHT SYSTEM
+                Layer order (back → front):
+                  1. Cool depth haze     — receding background
+                  2. Warm billboard src  — LED panel light source
+                  3. Chromatic corners   — RGB depth fringe
+                  4. Volumetric rays     — god-ray cones
+                  5. Edge bloom          — LED border bleed
+                  6. Floating dust       — particles in the beam
+            ══════════════════════════════════════════ */}
+
+            {/* ── Layer 1: Cool depth haze (left) — things far away are blue ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 100% 70% at 4% 55%, rgba(8,18,72,0.55) 0%, transparent 58%)",
+              }}
+            />
+
+            {/* ── Layer 2a: Primary warm light source — billboard panel (upper right) ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 65% 85% at 88% 36%, rgba(230,57,70,0.28) 0%, rgba(200,50,70,0.10) 40%, transparent 58%)",
+                animation: "atmos-drift 9s ease-in-out infinite",
+              }}
+            />
+
+            {/* ── Layer 2b: Secondary warm fill — mid-scene spill ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 48% 55% at 60% 65%, rgba(255,85,40,0.13) 0%, transparent 62%)",
+                animation: "atmos-drift 14s ease-in-out 5s infinite",
+              }}
+            />
+
+            {/* ── Layer 2c: Cyan accent — opposite color for RGB depth ── */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse 38% 42% at 12% 78%, rgba(0,185,220,0.09) 0%, transparent 65%)",
+                animation: "atmos-drift 18s ease-in-out 8s infinite",
+              }}
+            />
+
+            {/* ── Layer 3: Chromatic corner fringe (RGB depth cue) ── */}
+            {/* Top-left: blue cast — deepest in scene */}
+            <div
+              className="absolute top-0 left-0 pointer-events-none"
+              style={{
+                width: "50%", height: "50%",
+                background:
+                  "radial-gradient(ellipse at top left, rgba(20,100,255,0.08) 0%, transparent 65%)",
+              }}
+            />
+            {/* Bottom-right: red cast — closest to light source */}
+            <div
+              className="absolute bottom-0 right-0 pointer-events-none"
+              style={{
+                width: "42%", height: "42%",
+                background:
+                  "radial-gradient(ellipse at bottom right, rgba(255,45,75,0.11) 0%, transparent 65%)",
+              }}
+            />
+
+            {/* ── Layer 4a: Volumetric Ray — primary cone from billboard ── */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                top: 0,
+                right: "7%",
+                width: "52%",
+                height: "100%",
+                background:
+                  "linear-gradient(168deg, rgba(255,95,65,0.11) 0%, rgba(230,57,70,0.07) 28%, transparent 62%)",
+                transformOrigin: "top right",
+                animation: "vol-ray-breathe 7s ease-in-out infinite",
+                mixBlendMode: "screen",
+              }}
+            />
+
+            {/* ── Layer 4b: Volumetric Ray — secondary softer cone ── */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                top: 0,
+                right: "23%",
+                width: "40%",
+                height: "88%",
+                background:
+                  "linear-gradient(155deg, rgba(255,55,88,0.06) 0%, rgba(180,38,60,0.03) 42%, transparent 72%)",
+                transformOrigin: "top center",
+                animation: "vol-ray-breathe 11s ease-in-out 3.5s infinite",
+                mixBlendMode: "screen",
+              }}
+            />
+
+            {/* ── Layer 5a: Billboard edge bloom — wide soft spread ── */}
+            <div
+              className="absolute top-0 right-0 bottom-0 pointer-events-none"
+              style={{
+                width: "100px",
+                background:
+                  "linear-gradient(270deg, rgba(230,57,70,0.20) 0%, rgba(200,50,70,0.08) 50%, transparent 100%)",
+                animation: "edge-bloom 4.5s ease-in-out infinite",
+              }}
+            />
+
+            {/* ── Layer 5b: Billboard edge bloom — sharp bright line ── */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                top: "6%",
+                right: 0,
+                bottom: "6%",
+                width: "3px",
+                background:
+                  "linear-gradient(180deg, transparent 0%, rgba(255,100,80,0.7) 22%, rgba(255,235,180,0.95) 50%, rgba(255,100,80,0.7) 78%, transparent 100%)",
+                filter: "blur(3px)",
+                animation: "edge-bloom 3s ease-in-out 0.6s infinite",
+              }}
+            />
+
+            {/* ── Layer 6: Floating dust particles in the light beam ── */}
+            {(
+              [
+                { left: "34%", bottom: "11%", size: 2.0, delay: 0.0, dur: 4.2, anim: "dust-rise-r", warm: true  },
+                { left: "61%", bottom: "17%", size: 1.5, delay: 1.3, dur: 5.1, anim: "dust-rise-l", warm: false },
+                { left: "75%", bottom: "7%",  size: 2.5, delay: 0.7, dur: 3.8, anim: "dust-rise-r", warm: true  },
+                { left: "48%", bottom: "23%", size: 1.0, delay: 2.2, dur: 6.3, anim: "dust-rise-l", warm: true  },
+                { left: "84%", bottom: "27%", size: 2.0, delay: 1.9, dur: 4.7, anim: "dust-rise-r", warm: false },
+                { left: "23%", bottom: "15%", size: 1.5, delay: 3.1, dur: 5.5, anim: "dust-rise-l", warm: false },
+                { left: "68%", bottom: "5%",  size: 1.8, delay: 0.4, dur: 4.9, anim: "dust-rise-r", warm: true  },
+              ] as const
+            ).map((p, i) => (
+              <div
+                key={`dust-${i}`}
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  left: p.left,
+                  bottom: p.bottom,
+                  width:  `${p.size}px`,
+                  height: `${p.size}px`,
+                  background: p.warm
+                    ? "rgba(255,165,100,0.95)"
+                    : "rgba(175,220,255,0.90)",
+                  boxShadow: p.warm
+                    ? `0 0 ${p.size * 5}px ${p.size * 2}px rgba(255,100,45,0.65)`
+                    : `0 0 ${p.size * 5}px ${p.size * 2}px rgba(90,180,255,0.55)`,
+                  animation: `${p.anim} ${p.dur}s ease-out ${p.delay}s infinite`,
+                }}
+              />
+            ))}
           </div>
 
           {/* ── TV Static Noise ── flickers fast at startup, then gone */}
