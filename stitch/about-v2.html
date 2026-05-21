@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About | Media108 - The Media Tech Platform for EEC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(6, 17, 51, 0) 0%, rgba(6, 17, 51, 1) 100%);
+        }
+        @keyframes subtle-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+        .animate-glow {
+            animation: subtle-glow 4s ease-in-out infinite;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "background": "#061133",
+                "on-secondary-container": "#b1b7d6",
+                "on-error": "#690005",
+                "on-tertiary-fixed": "#181c1e",
+                "secondary-fixed-dim": "#bfc5e4",
+                "error": "#ffb4ab",
+                "surface": "#061133",
+                "on-tertiary-fixed-variant": "#43474a",
+                "on-surface-variant": "#e4bebc",
+                "primary-fixed-dim": "#ffb3b1",
+                "on-secondary-fixed": "#141a32",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed": "#dce1ff",
+                "on-secondary-fixed-variant": "#3f465f",
+                "secondary": "#bfc5e4",
+                "glow-red": "rgba(230, 57, 70, 0.3)",
+                "surface-container-low": "#0f193b",
+                "secondary-container": "#424862",
+                "primary": "#ffb3b1",
+                "surface-bright": "#2e375b",
+                "tertiary": "#c3c7ca",
+                "surface-tint": "#ffb3b1",
+                "outline-variant": "#5b403f",
+                "on-tertiary-container": "#262a2d",
+                "surface-container-lowest": "#020b2e",
+                "inverse-primary": "#bb152c",
+                "on-primary-container": "#5b000e",
+                "tertiary-fixed-dim": "#c3c7ca",
+                "on-primary-fixed": "#410007",
+                "surface-container-highest": "#293356",
+                "primary-container": "#ff535b",
+                "surface-container": "#141d3f",
+                "error-container": "#93000a",
+                "primary-fixed": "#ffdad8",
+                "on-secondary": "#292f48",
+                "on-background": "#dce1ff",
+                "on-tertiary": "#2d3133",
+                "surface-glass": "rgba(255, 255, 255, 0.04)",
+                "surface-container-high": "#1e284a",
+                "surface-dim": "#061133",
+                "on-surface": "#dce1ff",
+                "border-glass": "rgba(255, 255, 255, 0.12)",
+                "tertiary-fixed": "#e0e3e6",
+                "surface-variant": "#293356",
+                "on-primary-fixed-variant": "#92001c",
+                "on-primary": "#680011",
+                "inverse-on-surface": "#252f51",
+                "inverse-surface": "#dce1ff",
+                "outline": "#ab8987",
+                "tertiary-container": "#8d9194"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-desktop": "64px",
+                "base": "8px",
+                "margin-mobile": "20px",
+                "gutter": "24px",
+                "container-max": "1440px"
+              },
+              "fontFamily": {
+                "headline-md": ["Montserrat"],
+                "body-lg": ["Inter"],
+                "label-md": ["Inter"],
+                "data-mono": ["Inter"],
+                "display-lg": ["Montserrat"],
+                "display-lg-mobile": ["Montserrat"],
+                "headline-lg": ["Montserrat"],
+                "body-md": ["Inter"],
+                "headline-xl": ["Montserrat"]
+              },
+              "fontSize": {
+                "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                "data-mono": ["16px", { "lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                "display-lg-mobile": ["40px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass shadow-2xl shadow-black/40">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center"><img alt="Media108 Logo" class="h-12 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5kRTKgCWGHDlstgxa4qgPA4pvTQd5g58zTmhPbitZkvHtUZQjpWomP_8lZ7EQpzAnAfisfAVNpMDhKsbA8YOJRaRYXMkUV-tS51r0QpWddKMdLUYKT9tS-9ps3C_Ke6fJqo2dww547aNovIj24oCo_XDD2i3SdPF6zq14p6QJZCUsyWnhTVs9v0NV4wSbSE7ja1qnsrV527XD1HNpOavGkhauor3AKMsG66rzf1e-G3G6xMUxkA1M4JyXzLWnotAUoOwRAjPEYRk"/></div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Media Network</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Services</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-dim border border-outline/20 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-primary w-48 transition-all duration-300" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg font-label-md text-label-md font-bold hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-primary-container/20">Get Quote</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[80vh] flex items-center px-margin-desktop py-20">
+<div class="absolute inset-0 z-0">
+<img alt="Futuristic boardroom" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0rXvYkPSls067w8gPVXUe8nV2ssEiBY2cm4JFehmf43SzYdls3btco7clfDnO54W13L4eif2Ws9u7sphtgAIjE7hrANFsgLDjVn9Nc57RaM5Wl7ejFREOMRjv-XriLiXvl6ym67iXYyQmRqOi3txKvTLB0E8jV16h7JZ3m3NFHSK_REaG2OmAKP8Kv_KiHLRNTDP2Ie3-cecG164t0MTn9sEaLsdzyesSCSKi-yNE-KByhMd3cZXPQrW3PPj53DrwKuVDL8uxtJ4"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="absolute inset-0 bg-background/60"></div>
+</div>
+<div class="relative z-10 max-w-4xl">
+<div class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full mb-8">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary font-label-md text-label-md uppercase tracking-widest">The Future of Media</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-8 leading-tight">Defining the Future of <span class="text-primary text-glow">Urban Media</span> in the EEC.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">Media108 is more than a billboard company. We are a Media Tech Platform designed to bridge the gap between architectural impact and data-driven intelligence.</p>
+<div class="flex gap-4">
+<button class="bg-primary hover:bg-primary/90 text-on-primary px-8 py-4 rounded-lg font-label-md text-label-md transition-all shadow-lg hover:shadow-primary/30">View Network</button>
+<button class="border border-white/20 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-label-md text-label-md transition-all">Download Credentials</button>
+</div>
+</div>
+</section>
+<!-- Company Overview -->
+<section class="px-margin-desktop py-32 bg-surface">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-8">Not Just a Media Company, but a <span class="text-primary">Tech Platform</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">Media108 acts as the digital nervous system for outdoor advertising in Eastern Thailand. We combine high-impact physical assets with a sophisticated backend that manages audiences, traffic data, and campaign performance in real-time.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">Our mission is to empower brands with surgical precision in the urban landscape, turning every billboard into a high-converting touchpoint.</p>
+<div class="flex flex-wrap gap-4">
+<div class="glass-card px-6 py-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">analytics</span>
+<span class="font-label-md">Media Tech First</span>
+</div>
+<div class="glass-card px-6 py-4 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">ads_click</span>
+<span class="font-label-md">Data-Driven Results</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl opacity-30"></div>
+<div class="relative glass-card rounded-2xl p-2 aspect-video overflow-hidden">
+<img alt="Media Platform Analytics Dashboard" class="w-full h-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC4HZN9e3q8UQ9d0RTLugTGZ_yRugwWSNzRThURkJ3caPNtD72JGcPnVTj0dsuRA98ZANpnLgCSmsrXPdtJERWQXCUXh7tepDqKnila8tg_LXCJJoI55rxhNW0AwKm-YcDaMi8hdrKdkNvRR5ZqpYWngeqRyWwivR6qVspLlXl2MYVDtCp2mZCBfsOzpza3j4BpIvDqd_VH_rTO_oc2GOAAn7fzwqddSHsDEa2F5j2C12UE0kKjoeYkY59GmVN6yKDWhaCqUK4_sk"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Chonburi (EEC Opportunity) -->
+<section class="px-margin-desktop py-32 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-20 max-w-3xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-6">Why <span class="text-primary">Chonburi?</span></h2>
+<p class="text-on-surface-variant font-body-lg">The Eastern Economic Corridor (EEC) is Thailand's new economic engine. We are strategically positioned where the capital meets the coast.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Location 1 -->
+<div class="group relative overflow-hidden rounded-2xl aspect-[4/5] glass-card">
+<img alt="Pattaya Cityscape" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGjOBOHPW6rpLq-awU5ZWJdqawW7uyrnx8tl7lZ7lgno23PdAoBKFlauEmjE8juk6V6IocOF8h_j48LMfJ9VGAWn-YAaeYzfB68Ecb1SCVSltwFCRGRTJhRF6i_xQXkB6-GLBt1otPftJncRzrnu8iEkbMA3CJKl5ArqFKMun7UyeyTQ-kXeWrcaYe3V3NsozKEpC4XzU7cLAG3gep04Yb6uq8xk-qTzifRhqduWLFVlLVw_TZW3lfmtAP5_c95KWE9HrMgoxywTw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Pattaya</h3>
+<p class="text-on-surface-variant text-sm">Global tourism hub and lifestyle destination with high-spending demographic profile.</p>
+</div>
+</div>
+<!-- Location 2 -->
+<div class="group relative overflow-hidden rounded-2xl aspect-[4/5] glass-card">
+<img alt="Bangsaen Map Overlay" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7SR-o5IgwWEl0yO3pb8tktXnU5wd1nEegBrckwy8INomOIVcSd7mPs5llvmLSHucQBZBfry7f6tIqtm4yMD2ULQ7ScxG19luXNMTI0fgMJU8kz6pUXmsukXqTeXKXHfTkecI-qjcDa4X8YkmKZ14XUJDP5hrzTxAGEs9Hf0OiV-DcMs5xV5F9yY0gzyd5y25RIbD0a9sdI_DjTW0uDYrxSyW7UeHhle6iMcmE6_IGVgjgOkBNUjnFmlHF6wxRAf3kebxtEpB-IWQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Bangsaen</h3>
+<p class="text-on-surface-variant text-sm">The heart of education and local weekend tourism, capturing the youth and family market.</p>
+</div>
+</div>
+<!-- Location 3 -->
+<div class="group relative overflow-hidden rounded-2xl aspect-[4/5] glass-card">
+<img alt="Sriracha Industry Hub" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKKwtGHcvvjUHZU1ktVLNV-EZEfBBVgWUYfA1FDg4jZLieXdhkB2paY1CnwA_Y9nDCkAgmQDmrh17PpD4uzD3qXUwLOQFt16z_7zqkCfY7913F0D26FaVhzj1wdzNSX3XUQWgTcuO0xmLNUB8B0IyZiZs4na7tvDNccnPlv9myA8ySEzncjYcRaRt23DIfneObC6O57hHn0gHqWRYyH_-VlLwqGvha8LvAi-jg7P3flCgU_31Jf_P4L0WsANg-8vu5focffOmTOGo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Sriracha</h3>
+<p class="text-on-surface-variant text-sm">Industrial powerhouse and expat residential zone, key for B2B and high-value B2C brands.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vision & Mission -->
+<section class="px-margin-desktop py-32 bg-surface-dim">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="order-2 lg:order-1">
+<div class="relative">
+<div class="absolute -inset-10 bg-primary/20 rounded-full blur-[100px] animate-glow" style="transform: translate(9.09px, 75.3345px);"></div>
+<div class="relative aspect-square glass-card rounded-2xl p-4 overflow-hidden shadow-2xl group">
+<img alt="Strategic Map Vision" class="w-full h-full object-cover rounded-xl grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7SR-o5IgwWEl0yO3pb8tktXnU5wd1nEegBrckwy8INomOIVcSd7mPs5llvmLSHucQBZBfry7f6tIqtm4yMD2ULQ7ScxG19luXNMTI0fgMJU8kz6pUXmsukXqTeXKXHfTkecI-qjcDa4X8YkmKZ14XUJDP5hrzTxAGEs9Hf0OiV-DcMs5xV5F9yY0gzyd5y25RIbD0a9sdI_DjTW0uDYrxSyW7UeHhle6iMcmE6_IGVgjgOkBNUjnFmlHF6wxRAf3kebxtEpB-IWQ"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<div class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold mb-2">VISION 2030</div>
+<div class="text-white font-headline-md text-headline-md">Smart City Integration</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="font-headline-xl text-headline-xl mb-8">Our Vision for <span class="text-primary">EEC 2026</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">To become the backbone of smart city media in the Eastern Economic Corridor. By 2026, Media108 will have deployed over 500 premium DOOH touchpoints that sync directly with urban flow data, creating a living media network.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card p-6 rounded-xl border-l-4 border-l-primary">
+<div class="font-headline-md text-headline-md text-primary mb-2">98%</div>
+<div class="font-label-md text-label-md opacity-70">EEC Hub Coverage</div>
+</div>
+<div class="glass-card p-6 rounded-xl border-l-4 border-l-primary">
+<div class="font-headline-md text-headline-md text-primary mb-2">12M+</div>
+<div class="font-label-md text-label-md opacity-70">Weekly Impression Potential</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Opportunity -->
+<section class="px-margin-desktop py-32 bg-surface-container-low">
+<div class="max-w-container-max mx-auto text-center">
+<h2 class="font-headline-xl text-headline-xl mb-20">Market <span class="text-primary">Opportunity</span></h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="p-8 glass-card rounded-2xl">
+<div class="text-4xl mb-6 text-primary font-bold">15%</div>
+<h4 class="font-headline-md mb-4">DOOH Growth</h4>
+<p class="text-on-surface-variant text-sm">Annual growth rate of Digital Out-of-Home media in Thailand's eastern region.</p>
+</div>
+<div class="p-8 glass-card rounded-2xl border-primary/30 bg-primary/5">
+<div class="text-4xl mb-6 text-primary font-bold">4.2M</div>
+<h4 class="font-headline-md mb-4">Population Reach</h4>
+<p class="text-on-surface-variant text-sm">Total resident and floating population within our active EEC coverage network.</p>
+</div>
+<div class="p-8 glass-card rounded-2xl">
+<div class="text-4xl mb-6 text-primary font-bold">8.5x</div>
+<h4 class="font-headline-md mb-4">Higher Recall</h4>
+<p class="text-on-surface-variant text-sm">Digital motion billboards achieve significantly higher brand recall than static signs.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Our Strengths -->
+<section class="px-margin-desktop py-32">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline-xl text-headline-xl mb-4">The Foundational Strengths</h2>
+<div class="w-24 h-1.5 bg-primary mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Location -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">location_on</span>
+<h3 class="font-headline-md mb-4">Strategic Location</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">We own high-impact urban chokepoints and premium commercial zones where your brand gains maximum prestige and visibility duration.</p>
+</div>
+<!-- Data -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">analytics</span>
+<h3 class="font-headline-md mb-4">Data-Driven Intelligence</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Our proprietary AI platform analyzes traffic patterns, dwell times, and demographics to ensure your message hits with surgical precision.</p>
+</div>
+<!-- Tech -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">settings_input_component</span>
+<h3 class="font-headline-md mb-4">Precision Technology</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Industrial-grade 5G connectivity and proprietary cooling systems ensure 99.9% uptime even in extreme tropical conditions.</p>
+</div>
+<!-- Team -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">groups</span>
+<h3 class="font-headline-md mb-4">Expert Local Team</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">A multidisciplinary team of media veterans and data engineers who understand the unique pulse of the Chonburi area.</p>
+</div>
+<!-- Creative -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">palette</span>
+<h3 class="font-headline-md mb-4">Creative Excellence</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">An in-house studio dedicated to DOOH-specific creative, optimizing assets for scale, lighting, and viewing angles.</p>
+</div>
+<!-- Network -->
+<div class="glass-card p-8 rounded-2xl hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">hub</span>
+<h3 class="font-headline-md mb-4">Integrated Network</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Seamlessly cross-platform campaigns combining LED networks with social media and digital touchpoints for maximum reach.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Expansion Plan -->
+<section class="px-margin-desktop py-32 bg-surface-container">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1">
+<h2 class="font-headline-xl text-headline-xl mb-6">Expanding the <span class="text-primary">Horizon</span></h2>
+<p class="text-on-surface-variant font-body-lg mb-8">We are not stopping at current landmarks. Our roadmap includes 25+ new premium billboard locations across Rayong, Chachoengsao, and expanding deeper into Chonburi industrial zones.</p>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Phase 1: Deepening Chonburi Network (Complete)</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-white font-bold">Phase 2: Regional EEC Connectivity (In Progress)</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="w-2 h-2 rounded-full bg-on-surface-variant opacity-30"></span>
+<span class="opacity-50">Phase 3: Cross-Provincial Smart Network (2025+)</span>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full glass-card p-6 rounded-3xl relative overflow-hidden">
+<img alt="Expansion Roadmap Map" class="w-full h-auto rounded-2xl opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7SR-o5IgwWEl0yO3pb8tktXnU5wd1nEegBrckwy8INomOIVcSd7mPs5llvmLSHucQBZBfry7f6tIqtm4yMD2ULQ7ScxG19luXNMTI0fgMJU8kz6pUXmsukXqTeXKXHfTkecI-qjcDa4X8YkmKZ14XUJDP5hrzTxAGEs9Hf0OiV-DcMs5xV5F9yY0gzyd5y25RIbD0a9sdI_DjTW0uDYrxSyW7UeHhle6iMcmE6_IGVgjgOkBNUjnFmlHF6wxRAf3kebxtEpB-IWQ"/>
+</div>
+</div>
+</section>
+<!-- Partners Section -->
+<section class="px-margin-desktop py-24 bg-surface">
+<div class="max-w-container-max mx-auto">
+<h3 class="font-label-md text-label-md uppercase tracking-[0.3em] text-center mb-16 opacity-50">Trusted Strategic Partners</h3>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 grayscale opacity-60 hover:grayscale-0 transition-all">
+<!-- Mock Partner Logos -->
+<div class="text-2xl font-bold italic tracking-tighter">EEC CORP</div>
+<div class="text-2xl font-bold italic tracking-tighter">PATTAYA SMART</div>
+<div class="text-2xl font-bold italic tracking-tighter">CITY TECH</div>
+<div class="text-2xl font-bold italic tracking-tighter">EAST MEDIA</div>
+<div class="text-2xl font-bold italic tracking-tighter">TECH HUB</div>
+</div>
+</div>
+</section>
+<!-- Management Team -->
+<section class="px-margin-desktop py-32 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline-xl text-headline-xl mb-4">The Architects of Media108</h2>
+<p class="text-on-surface-variant font-body-lg">A multidisciplinary team of media veterans, data engineers, and urban development specialists.</p>
+</div>
+<button class="bg-primary/10 border border-primary/30 text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-on-primary transition-all">Join Our Team</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Member 1 -->
+<div class="group">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-xl bg-surface-variant">
+<img alt="CEO Portrait" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKKwtGHcvvjUHZU1ktVLNV-EZEfBBVgWUYfA1FDg4jZLieXdhkB2paY1CnwA_Y9nDCkAgmQDmrh17PpD4uzD3qXUwLOQFt16z_7zqkCfY7913F0D26FaVhzj1wdzNSX3XUQWgTcuO0xmLNUB8B0IyZiZs4na7tvDNccnPlv9myA8ySEzncjYcRaRt23DIfneObC6O57hHn0gHqWRYyH_-VlLwqGvha8LvAi-jg7P3flCgU_31Jf_P4L0WsANg-8vu5focffOmTOGo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1">Dr. Arisara Tan</h4>
+<p class="text-primary font-label-md text-label-md uppercase tracking-wider mb-3">CEO &amp; Chief Visionary</p>
+<p class="text-on-surface-variant font-body-md text-sm line-clamp-2">20+ years in regional DOOH and smart city infrastructure development.</p>
+</div>
+<!-- Member 2 -->
+<div class="group">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-xl bg-surface-variant">
+<img alt="Data Head Portrait" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRmSRHTjde2vMr59HdXPz_j0QZe_NIxoMCuzx4lk6p4PgUJPwxWiCcfUJa-ttiwKGExMjCWg5IW7z4sVqIc2siIT_Yqt7AVcTfXr9kW18BXoMXXYaHwONmi257sCCV4nENTlRvdab8hqgW0ddELwHfHXBXnJPkucrmF0XSNxtBd4LycUZ93I3VVf_tT0i9MRuKsrHKO_YF6Wt_4iUNi7KUa0W9aV7eDGOglSeTp0JgF9lpS-fXLoR2qlP2OEqkek_USyDCbSKZ9g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1">Pakorn V.</h4>
+<p class="text-primary font-label-md text-label-md uppercase tracking-wider mb-3">Head of Data Science</p>
+<p class="text-on-surface-variant font-body-md text-sm line-clamp-2">Former lead algorithm architect for global logistics networks.</p>
+</div>
+<!-- Member 3 -->
+<div class="group">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-xl bg-surface-variant">
+<img alt="Creative Lead Portrait" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkkACZBOmP0lHyG7VHpb6-__9b2zjE4SrlCJZoic-CBd-ndSrAvsDgpFHBZ_4FlqJaqDZs9K6e8i_Ht7UYS2Hm0-AyxB5YdyLs4OvjQo4UJIbKN1ylpGb3KdniLQD2g1wT3fefX7ohelQnsshGcKUaWkYOqiD25HnA32betQTPX3b9NUCAu1OfLKsp2ID2vlGTLMslne597clQMPiJxhFSEIQ2ObLEuAimGvQTKTRCX1KUqaARQNKMFfjT7RTzYZhb4LqxD7ZmC0M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1">Sarah Jenkins</h4>
+<p class="text-primary font-label-md text-label-md uppercase tracking-wider mb-3">Chief Creative Officer</p>
+<p class="text-on-surface-variant font-body-md text-sm line-clamp-2">Award-winning creative director specializing in immersive large-scale installations.</p>
+</div>
+<!-- Member 4 -->
+<div class="group">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-xl bg-surface-variant">
+<img alt="Ops Director Portrait" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGjOBOHPW6rpLq-awU5ZWJdqawW7uyrnx8tl7lZ7lgno23PdAoBKFlauEmjE8juk6V6IocOF8h_j48LMfJ9VGAWn-YAaeYzfB68Ecb1SCVSltwFCRGRTJhRF6i_xQXkB6-GLBt1otPftJncRzrnu8iEkbMA3CJKl5ArqFKMun7UyeyTQ-kXeWrcaYe3V3NsozKEpC4XzU7cLAG3gep04Yb6uq8xk-qTzifRhqduWLFVlLVw_TZW3lfmtAP5_c95KWE9HrMgoxywTw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+</div>
+<h4 class="font-headline-md text-headline-md mb-1">Lester Cheng</h4>
+<p class="text-primary font-label-md text-label-md uppercase tracking-wider mb-3">Director of Operations</p>
+<p class="text-on-surface-variant font-body-md text-sm line-clamp-2">Specialist in large-scale hardware rollout and smart-grid integration.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop py-24 relative overflow-hidden bg-background">
+<div class="absolute top-0 left-0 w-full h-full bg-primary/5 -z-10"></div>
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h2 class="font-headline-xl text-headline-xl mb-8">Ready to dominate the <span class="text-primary">urban landscape?</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">Whether you're looking to advertise or have prime space to offer for a digital billboard, our team is ready to consult on your next move.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-lg font-headline-md text-headline-md hover:scale-105 transition-all shadow-xl shadow-primary/40">Contact Sales</button>
+<button class="border border-white/20 px-10 py-5 rounded-lg font-headline-md text-headline-md hover:bg-white/10 transition-all">Offer Your Land</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<section class="bg-surface-container-high border-y border-border-glass py-6">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-wrap justify-between items-center gap-y-6">
+<a class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">request_quote</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Request Quotation</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">ads_click</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Book This Billboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">download</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Download Media Kit</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">support_agent</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Contact Sales</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">chat</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">LINE OA</span>
+</a>
+</div>
+</div>
+</section><footer class="w-full bg-surface-container-lowest border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-6">Media108</div>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Precision in Digital Out-of-Home. Defining the smart cities of tomorrow through data and innovation.</p>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">rss_feed</span></a>
+</div>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 font-label-md text-label-md uppercase tracking-wider">Navigation</h5>
+<ul class="space-y-4">
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Privacy Policy</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Terms of Service</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Network Map</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 font-label-md text-label-md uppercase tracking-wider">Support</h5>
+<ul class="space-y-4">
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Contact Sales</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Global Offices</a></li>
+<li class=""><a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-body-md text-sm" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 font-label-md text-label-md uppercase tracking-wider">Stay Updated</h5>
+<div class="flex">
+<input class="bg-surface-dim border border-white/10 rounded-l-lg py-2 px-4 text-sm w-full focus:outline-none focus:border-primary" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-r-lg hover:bg-primary/90 transition-all"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-white/5 max-w-container-max mx-auto text-center md:text-left">
+<p class="text-on-surface-variant text-xs opacity-50">© 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.</p>
+</div>
+</footer>
+<script>
+    // Sticky header transition
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('py-2');
+            header.classList.remove('py-4');
+        } else {
+            header.classList.add('py-4');
+            header.classList.remove('py-2');
+        }
+    });
+
+    // Simple interaction for the glow elements
+    document.addEventListener('mousemove', (e) => {
+        const glows = document.querySelectorAll('.animate-glow');
+        glows.forEach(glow => {
+            const rect = glow.parentElement.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            glow.style.transform = `translate(${x * 0.015}px, ${y * 0.015}px)`;
+        });
+    });
+</script>
+</body></html>

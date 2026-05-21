@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media108 | Premium Media Network</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#5b000e",
+                    "on-tertiary-fixed-variant": "#43474a",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#181c1e",
+                    "surface-glass": "rgba(255, 255, 255, 0.04)",
+                    "surface-dim": "#061133",
+                    "surface-variant": "#293356",
+                    "primary-fixed": "#ffdad8",
+                    "secondary": "#bfc5e4",
+                    "surface-container-lowest": "#020b2e",
+                    "surface": "#061133",
+                    "secondary-fixed": "#dce1ff",
+                    "on-tertiary": "#2d3133",
+                    "on-secondary": "#292f48",
+                    "tertiary-fixed-dim": "#c3c7ca",
+                    "error": "#ffb4ab",
+                    "primary": "#ffb3b1",
+                    "on-secondary-fixed": "#141a32",
+                    "tertiary": "#c3c7ca",
+                    "outline-variant": "#5b403f",
+                    "secondary-fixed-dim": "#bfc5e4",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "glow-red": "rgba(230, 57, 70, 0.3)",
+                    "on-surface": "#dce1ff",
+                    "on-primary-fixed": "#410007",
+                    "tertiary-fixed": "#e0e3e6",
+                    "on-secondary-container": "#b1b7d6",
+                    "surface-tint": "#ffb3b1",
+                    "background": "#061133",
+                    "surface-container": "#141d3f",
+                    "on-tertiary-container": "#262a2d",
+                    "on-secondary-fixed-variant": "#3f465f",
+                    "border-glass": "rgba(255, 255, 255, 0.12)",
+                    "surface-container-highest": "#293356",
+                    "surface-container-low": "#0f193b",
+                    "surface-bright": "#2e375b",
+                    "on-primary-fixed-variant": "#92001c",
+                    "inverse-primary": "#bb152c",
+                    "on-background": "#dce1ff",
+                    "secondary-container": "#424862",
+                    "surface-container-high": "#1e284a",
+                    "on-primary": "#680011",
+                    "inverse-on-surface": "#252f51",
+                    "on-surface-variant": "#e4bebc",
+                    "tertiary-container": "#8d9194",
+                    "primary-container": "#ff535b",
+                    "primary-fixed-dim": "#ffb3b1",
+                    "outline": "#ab8987",
+                    "inverse-surface": "#dce1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px",
+                    "base": "8px",
+                    "container-max": "1440px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Montserrat"],
+                    "label-md": ["Inter"],
+                    "display-lg-mobile": ["Montserrat"],
+                    "data-mono": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Montserrat"],
+                    "headline-lg": ["Montserrat"],
+                    "headline-xl": ["Montserrat"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "data-mono": ["16px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #061133; }
+        ::-webkit-scrollbar-thumb { background: #293356; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-20 max-w-container-max left-1/2 -translate-x-1/2 bg-surface-glass backdrop-blur-md border-b border-border-glass shadow-2xl shadow-black/40">
+<div class="flex items-center gap-2">
+<span class="font-display-lg text-headline-md font-bold text-primary">Media108</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#">About Media108</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-primary border-b-2 border-primary pb-1" href="#">Media Network</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#">Billboard</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-label-md text-label-md uppercase tracking-wider text-on-surface hover:text-primary transition-colors" href="#">Media Kit</a>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 rounded-lg btn-glow transition-all active:scale-95 uppercase tracking-wider">
+            Contact Sales
+        </button>
+</nav>
+<main class="pt-20 pb-24">
+<!-- Hero Section / Network Overview -->
+<section class="relative min-h-[70vh] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-24 overflow-hidden">
+<div class="absolute inset-0 z-0 bg-surface" style="opacity: 0;"></div>
+<div class="relative z-10 max-w-4xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">
+                    DOMINATE THE <span class="text-primary-container">URBAN</span> LANDSCAPE
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
+                    Access premium digital and static billboard locations across prime City hubs, University campuses, and high-traffic Tourism districts.
+                </p>
+<!-- Network Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full mt-12">
+<div class="glass-card p-8 rounded-xl group hover:border-primary/50 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">location_city</span>
+<h3 class="font-headline-md text-headline-md mb-2">City Hubs</h3>
+<p class="text-on-surface-variant font-body-md">High-exposure intersections and business districts.</p>
+<div class="mt-4 font-data-mono text-primary">124 LOCATIONS</div>
+</div>
+<div class="glass-card p-8 rounded-xl group hover:border-primary/50 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">school</span>
+<h3 class="font-headline-md text-headline-md mb-2">University</h3>
+<p class="text-on-surface-variant font-body-md">Engage Gen-Z and Millennial demographics directly.</p>
+<div class="mt-4 font-data-mono text-primary">86 LOCATIONS</div>
+</div>
+<div class="glass-card p-8 rounded-xl group hover:border-primary/50 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">travel_explore</span>
+<h3 class="font-headline-md text-headline-md mb-2">Tourism</h3>
+<p class="text-on-surface-variant font-body-md">Iconic landmarks and major transportation hubs.</p>
+<div class="mt-4 font-data-mono text-primary">42 LOCATIONS</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Filter System -->
+<section class="bg-surface-container py-16 px-margin-mobile md:px-margin-desktop sticky top-20 z-40 border-b border-border-glass">
+<div class="max-w-container-max mx-auto">
+<div class="flex flex-col lg:flex-row gap-6 items-end">
+<div class="flex-1 w-full">
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-widest">Search Locations</label>
+<div class="relative">
+<input class="w-full bg-background border border-outline/20 rounded-lg px-12 py-4 text-on-background focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Enter city, district or billboard ID..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+</div>
+</div>
+<div class="w-full lg:w-48">
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-widest">Category</label>
+<select class="w-full bg-background border border-outline/20 rounded-lg px-4 py-4 text-on-background focus:border-primary appearance-none">
+<option>All Media</option>
+<option>Digital LED</option>
+<option>Static Large</option>
+<option>Transit</option>
+</select>
+</div>
+<div class="w-full lg:w-48">
+<label class="font-label-md text-label-md text-on-surface-variant mb-2 block uppercase tracking-widest">Availability</label>
+<select class="w-full bg-background border border-outline/20 rounded-lg px-4 py-4 text-on-background focus:border-primary appearance-none">
+<option>Immediate</option>
+<option>Next Month</option>
+<option>Q3 2024</option>
+</select>
+</div>
+<button class="w-full lg:w-auto bg-on-background text-background font-label-md text-label-md px-10 py-4 rounded-lg hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center gap-2 uppercase tracking-wider">
+<span class="material-symbols-outlined">filter_list</span> Apply Filters
+                    </button>
+</div>
+</div>
+</section>
+<!-- Billboard Listing -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-center mb-12">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-2">Available Billboards</h2>
+<p class="text-on-surface-variant">Showing 24 of 252 premium media assets.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-3 glass-card rounded-lg hover:bg-surface-variant text-primary"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-3 glass-card rounded-lg hover:bg-surface-variant"><span class="material-symbols-outlined">list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Billboard Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A massive digital LED billboard glowing brightly at a busy metropolitan intersection during twilight. The screen displays vibrant, high-contrast creative content against a deep navy sky. Sleek modern skyscrapers with illuminated windows frame the scene, reflecting the crimson and white light of the city traffic. The overall aesthetic is clean, technical, and high-end corporate." src="https://lh3.googleusercontent.com/aida/ADBb0uiE6IVUgS2q7uf8ILP8nENR1-R-kT_0tRYmQ7r8Zeka490BB2lOnuxomIjtdQeGanmDK3MHoenXXXBsIu_kT0NgX9n_X5LPhMoFFXlcfHjvJ8z0-vEMCCf4v8QFVtklqz6THP38EEC8nmw1KNyV2QLJIvDrmDVWAZTn0DAvLbvjfQDWnw9LbgAJxa576saHHIOfn36E3u90OFIF-9-eEsGcjN9qIvbGy9zPfhAcfFZhgJne5xe5D7A2n58tdgo95TLbnlmgT9HHug"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-md text-[10px] uppercase tracking-tighter">Digital LED</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-lg flex items-center gap-1 font-data-mono text-sm">
+<span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>visibility</span> 1.2M+
+                            </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-data-mono text-primary text-xs tracking-widest mb-1 block uppercase">ID: M108-CBD-01</span>
+<h3 class="font-headline-md text-headline-md">Pattaya Sukhumvit 01</h3>
+</div>
+<div class="bg-surface-variant/50 px-2 py-1 rounded text-[10px] font-label-md uppercase">City Hub</div>
+</div>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">location_on</span>
+<span class="text-sm">Main Pattaya Route</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">groups</span>
+<span class="text-sm">Audience: Professional, Gen-Z, Tourists</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<span class="text-sm">Traffic: 85k vehicles / 120k pedestrians daily</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary/30 text-primary rounded-lg hover:bg-primary hover:text-on-primary transition-all font-label-md uppercase tracking-widest">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Billboard Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A wide-angle perspective of a premium static billboard located along a major arterial highway entering a modern city. The billboard is perfectly lit by professional spotlights, showcasing sharp graphic design. The background features a sweeping curve of the road with motion-blurred car headlights, creating a dynamic sense of urban movement and high-frequency exposure. The color palette is dominated by deep blues and energetic reds." src="https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4"/>
+<div class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-md text-[10px] uppercase tracking-tighter">Static Large</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-lg flex items-center gap-1 font-data-mono text-sm">
+<span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>visibility</span> 850K+
+                            </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-data-mono text-primary text-xs tracking-widest mb-1 block uppercase">ID: M108-UNI-42</span>
+<h3 class="font-headline-md text-headline-md">Pattaya Gateway</h3>
+</div>
+<div class="bg-surface-variant/50 px-2 py-1 rounded text-[10px] font-label-md uppercase">University</div>
+</div>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">location_on</span>
+<span class="text-sm">Main Intersection</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">groups</span>
+<span class="text-sm">Audience: Students, Faculty, Tech-Early Adopters</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<span class="text-sm">Traffic: 40k vehicles / 90k pedestrians daily</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary/30 text-primary rounded-lg hover:bg-primary hover:text-on-primary transition-all font-label-md uppercase tracking-widest">
+                                View Details
+                            </button>
+</div>
+</div>
+<!-- Billboard Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden group">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A portrait-oriented digital signage display located within a high-end luxury shopping mall atrium. The screen shows a sophisticated fashion advertisement with rich colors. The surrounding environment is characterized by polished marble floors, glass railings, and elegant architectural lighting, creating an atmosphere of exclusivity and premium consumer engagement. The lighting is soft and high-key, emphasizing a refined, luxurious shopping experience." src="https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-md text-[10px] uppercase tracking-tighter">Digital LED</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-lg flex items-center gap-1 font-data-mono text-sm">
+<span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>visibility</span> 2.1M+
+                            </div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="font-data-mono text-primary text-xs tracking-widest mb-1 block uppercase">ID: M108-AIR-09</span>
+<h3 class="font-headline-md text-headline-md">EEC Tech Square</h3>
+</div>
+<div class="bg-surface-variant/50 px-2 py-1 rounded text-[10px] font-label-md uppercase">Tourism</div>
+</div>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">location_on</span>
+<span class="text-sm">Sri Racha Industrial</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">groups</span>
+<span class="text-sm">Audience: High-Net-Worth, Business Travelers</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg">speed</span>
+<span class="text-sm">Traffic: 150k daily travelers</span>
+</div>
+</div>
+<button class="w-full py-3 border border-primary/30 text-primary rounded-lg hover:bg-primary hover:text-on-primary transition-all font-label-md uppercase tracking-widest">
+                                View Details
+                            </button>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="bg-surface-variant hover:bg-primary-container hover:text-on-primary-container px-8 py-4 rounded-lg transition-all font-label-md uppercase tracking-widest border border-border-glass">
+                        Load More Inventory
+                    </button>
+</div>
+</div>
+</section>
+<!-- Global CTA Section (Pre-Footer) -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-primary-container text-on-primary-container">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+<div class="text-center md:text-left">
+<h2 class="font-headline-xl text-headline-xl mb-4 text-on-primary-container">Ready to Scale Your Presence?</h2>
+<p class="text-on-primary-container/80 font-body-lg max-w-xl">Our media consultants are ready to help you craft a network strategy that delivers maximum ROI and brand impact.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="px-10 py-5 bg-on-primary-container text-primary-fixed font-label-md text-label-md rounded-lg uppercase tracking-widest shadow-2xl transition-transform active:scale-95">
+                        Get A Quotation
+                    </button>
+<button class="px-10 py-5 border-2 border-on-primary-container/20 hover:bg-on-primary-container/10 transition-all text-on-primary-container font-label-md text-label-md rounded-lg uppercase tracking-widest">
+                        Download Media Kit
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-16 px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-border-glass pb-32">
+<div class="flex flex-col md:flex-row items-center justify-between w-full max-w-container-max gap-12">
+<div class="flex flex-col gap-4 max-w-sm">
+<span class="font-display-lg text-headline-lg text-primary">Media108</span>
+<p class="text-on-surface-variant font-body-md">Precision media placement for the modern brand. Leading the digital-out-of-home revolution across Southeast Asia.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md uppercase text-primary tracking-widest">Navigation</h4>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">Media Network</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">Billboard Info</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">Services</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md uppercase text-primary tracking-widest">Resources</h4>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">Download Media Kit</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">Request Quotation</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md hover:underline decoration-primary" href="#">LINE OA</a>
+</div>
+<div class="flex flex-col gap-4 col-span-2 sm:col-span-1">
+<h4 class="font-label-md uppercase text-primary tracking-widest">Contact</h4>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-300 font-body-md" href="#">Contact Sales</a>
+<div class="flex gap-4 mt-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">alternate_email</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">chat</span>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full max-w-container-max h-px bg-border-glass mt-8"></div>
+<div class="flex flex-col md:flex-row items-center justify-between w-full max-w-container-max gap-4">
+<p class="text-on-surface-variant/60 font-label-md text-xs uppercase tracking-widest">© 2024 Media108. All Rights Reserved.</p>
+<div class="flex gap-8">
+<a class="text-on-surface-variant/60 hover:text-primary text-xs uppercase tracking-widest transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant/60 hover:text-primary text-xs uppercase tracking-widest transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- Fixed Bottom Dashboard CTA Bar -->
+<div class="fixed bottom-0 left-0 w-full z-[100] border-t border-border-glass bg-surface-glass backdrop-blur-xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<div class="max-w-container-max mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+<!-- Item 1: Request Quotation -->
+<button class="flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 hover:bg-primary-container/20">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform">request_quote</span>
+<div class="text-left">
+<span class="block text-[10px] text-primary/70 uppercase font-bold tracking-tighter">Request Quotation</span>
+<span class="block font-label-md text-on-surface whitespace-nowrap">ขอใบเสนอราคา</span>
+</div>
+</button>
+<!-- Item 2: Book Billboard -->
+<button class="flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 hover:bg-secondary-container/20">
+<span class="material-symbols-outlined text-secondary text-2xl group-hover:scale-110 transition-transform">event_available</span>
+<div class="text-left">
+<span class="block text-[10px] text-secondary/70 uppercase font-bold tracking-tighter">Book This Billboard</span>
+<span class="block font-label-md text-on-surface whitespace-nowrap">จองป้ายนี้</span>
+</div>
+</button>
+<!-- Item 3: Download Media Kit -->
+<button class="flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 hover:bg-surface-variant/40">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl group-hover:scale-110 transition-transform">download</span>
+<div class="text-left">
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Download Media Kit</span>
+<span class="block font-label-md text-on-surface whitespace-nowrap">ดาวน์โหลด Media Kit</span>
+</div>
+</button>
+<!-- Item 4: Contact Sales -->
+<button class="flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 hover:bg-surface-variant/40">
+<span class="material-symbols-outlined text-on-surface-variant text-2xl group-hover:scale-110 transition-transform">person</span>
+<div class="text-left">
+<span class="block text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Contact Sales</span>
+<span class="block font-label-md text-on-surface whitespace-nowrap">ติดต่อฝ่ายขาย</span>
+</div>
+</button>
+<!-- Item 5: LINE OA -->
+<button class="flex-1 flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-[#06C755] hover:brightness-110 transition-all active:scale-95 shadow-lg">
+<span class="material-symbols-outlined text-white text-2xl" style="font-variation-settings: 'FILL' 1;">chat</span>
+<div class="text-left">
+<span class="block text-[10px] text-white/80 uppercase font-bold tracking-tighter">LINE OA</span>
+<span class="block font-label-md text-white whitespace-nowrap">ติดต่อผ่าน LINE</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Side Navigation Shell -->
+<div class="hidden md:flex flex-col fixed left-0 top-0 h-full z-40 bg-surface-dim border-r border-border-glass shadow-xl w-64 -translate-x-full transition-transform duration-300" id="side-nav">
+<div class="p-8 border-b border-border-glass">
+<span class="font-display-lg-mobile text-headline-md text-primary">Media108</span>
+<p class="text-on-surface-variant text-xs mt-1">Premium Media Solutions</p>
+</div>
+<div class="flex-1 py-6">
+<nav class="space-y-1">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-4 transition-all duration-200 hover:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-md">Home</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-4 transition-all duration-200 hover:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-md">About Media108</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg mx-2 px-4 py-4 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>language</span>
+<span class="font-body-md">Media Network</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-4 transition-all duration-200 hover:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">featured_video</span>
+<span class="font-body-md">Billboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-4 transition-all duration-200 hover:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span class="font-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-on-surface px-6 py-4 transition-all duration-200 hover:bg-surface-variant/50" href="#">
+<span class="material-symbols-outlined">download</span>
+<span class="font-body-md">Media Kit</span>
+</a>
+</nav>
+</div>
+<div class="p-4">
+<button class="w-full bg-primary py-3 rounded-lg text-on-primary font-label-md uppercase tracking-wider text-xs">Request Quotation</button>
+</div>
+</div>
+<script>
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'm' || e.key === 'M') {
+                const nav = document.getElementById('side-nav');
+                nav.classList.toggle('-translate-x-full');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Media Network | Media108 DOOH Ecosystem</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .primary-glow:hover {
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+    }
+    body {
+      background-color: #061133;
+      color: #dce1ff;
+    }
+    .data-gradient {
+      background: linear-gradient(180deg, rgba(230, 57, 70, 0.1) 0%, rgba(230, 57, 70, 0) 100%);
+    }
+    .network-grid-bg {
+      background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-low": "#0f193b",
+                  "on-surface-variant": "#e4bebc",
+                  "on-secondary-fixed-variant": "#3f465f",
+                  "inverse-primary": "#bb152c",
+                  "on-tertiary-container": "#262a2d",
+                  "on-primary": "#680011",
+                  "outline-variant": "#5b403f",
+                  "surface-variant": "#293356",
+                  "inverse-surface": "#dce1ff",
+                  "glow-red": "rgba(230, 57, 70, 0.3)",
+                  "secondary-fixed-dim": "#bfc5e4",
+                  "on-secondary": "#292f48",
+                  "on-primary-fixed": "#410007",
+                  "on-background": "#dce1ff",
+                  "primary-fixed": "#ffdad8",
+                  "primary": "#ffb3b1",
+                  "on-tertiary-fixed": "#181c1e",
+                  "on-tertiary-fixed-variant": "#43474a",
+                  "on-surface": "#dce1ff",
+                  "on-error": "#690005",
+                  "surface-dim": "#061133",
+                  "tertiary-fixed": "#e0e3e6",
+                  "tertiary-container": "#8d9194",
+                  "surface-container": "#141d3f",
+                  "on-error-container": "#ffdad6",
+                  "surface-tint": "#ffb3b1",
+                  "surface-bright": "#2e375b",
+                  "secondary": "#bfc5e4",
+                  "primary-container": "#ff535b",
+                  "on-tertiary": "#2d3133",
+                  "surface-glass": "rgba(255, 255, 255, 0.04)",
+                  "surface-container-lowest": "#020b2e",
+                  "on-secondary-fixed": "#141a32",
+                  "on-primary-fixed-variant": "#92001c",
+                  "border-glass": "rgba(255, 255, 255, 0.12)",
+                  "outline": "#ab8987",
+                  "background": "#061133",
+                  "surface-container-high": "#1e284a",
+                  "surface": "#061133",
+                  "secondary-fixed": "#dce1ff",
+                  "primary-fixed-dim": "#ffb3b1",
+                  "error": "#ffb4ab",
+                  "surface-container-highest": "#293356",
+                  "tertiary": "#c3c7ca",
+                  "error-container": "#93000a",
+                  "secondary-container": "#424862",
+                  "inverse-on-surface": "#252f51",
+                  "on-primary-container": "#5b000e",
+                  "tertiary-fixed-dim": "#c3c7ca",
+                  "on-secondary-container": "#b1b7d6"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "container-max": "1440px",
+                  "base": "8px",
+                  "gutter": "24px",
+                  "margin-desktop": "64px",
+                  "margin-mobile": "20px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Montserrat"],
+                  "body-md": ["Inter"],
+                  "label-md": ["Inter"],
+                  "display-lg": ["Montserrat"],
+                  "body-lg": ["Inter"],
+                  "headline-xl": ["Montserrat"],
+                  "display-lg-mobile": ["Montserrat"],
+                  "headline-lg": ["Montserrat"],
+                  "data-mono": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                  "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "data-mono": ["16px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center">
+<img alt="Media108" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfU5LWp0nx2GgcBZqhwJJmN2cFcp83nXISqCiDkOJf7GPGpXPOeewZQ-1nJy6Ie8FccX9laq8Q5iUy66jer1wVuzuLEwZ9Cr_7rw9fHaEYmvlIsImu9kQ3VFwDjvUtc8SAdRKaTTt9tbT-voEcpkwoHWJVxa20lNpDAjGP0pNGf0wjbznVXRTpqspg1efAfT16j17VnTGBhXrEsAWS4J6JLIJxLDavQExxKLw-gIpwNjUbW8JSWcxAuJ8R_Te1zoT6-Ha8vOGc3T8">
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Home</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">About</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Media Network</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md" href="#">Services</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">search</button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-md text-label-md hover:scale-105 active:scale-95 transition-all primary-glow">Get Quote</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20">
+<!-- Hero / Overview Section -->
+<section class="px-margin-desktop max-w-container-max mx-auto mt-8 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-label-md text-label-md uppercase tracking-wider mb-6 inline-block">The DOOH Ecosystem</span>
+<h1 class="font-display-lg text-display-lg text-white mb-6">Our Media Network</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+          Media108 offers more than just single placements. We provide a complete, interconnected digital media ecosystem strategically mapped across Chonburi's most influential corridors to ensure your campaign achieves systematic dominance.
+        </p>
+<div class="flex items-center gap-8 mt-10">
+<div>
+<div class="text-white font-headline-lg">25+</div>
+<div class="text-on-surface-variant text-label-md uppercase">Prime Locations</div>
+</div>
+<div class="w-px h-12 bg-white/10"></div>
+<div>
+<div class="text-white font-headline-lg">1.2M</div>
+<div class="text-on-surface-variant text-label-md uppercase">Daily Reach</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+<img alt="Pattaya Network View" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE">
+</div>
+<div class="absolute -bottom-6 -right-6 glass-card p-6 rounded-xl hidden md:block transition-all duration-700 opacity-100 translate-y-0">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary/20 rounded-lg">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<div class="text-white font-bold">100% Digital</div>
+<div class="text-on-surface-variant text-xs">Real-time dynamic content ready</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Network Segments Bento Grid -->
+<section class="px-margin-desktop max-w-container-max mx-auto network-grid-bg py-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- City Network Card -->
+<div class="glass-card p-8 rounded-2xl flex flex-col hover:border-primary/50 transition-all group duration-700 opacity-100 translate-y-0">
+<div class="mb-8">
+<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">location_city</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-4">City Network</h3>
+<p class="text-on-surface-variant font-body-md">Strategic high-visibility points within Chonburi City. We target main intersections and traffic congestion points where dwell time is at its peak.</p>
+</div>
+<ul class="space-y-3 mt-auto border-t border-white/5 pt-6">
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Sukhumvit Main Arteries
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Chonburi Central Intersections
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Business District Hubs
+          </li>
+</ul>
+</div>
+<!-- University Network Card -->
+<div class="glass-card p-8 rounded-2xl flex flex-col hover:border-primary/50 transition-all group duration-700 opacity-100 translate-y-0">
+<div class="mb-8">
+<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-4">University Network</h3>
+<p class="text-on-surface-variant font-body-md">Precision targeting for Gen-Z and student demographics. Our screens are positioned directly at main gates and high-traffic student lifestyle zones.</p>
+</div>
+<ul class="space-y-3 mt-auto border-t border-white/5 pt-6">
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Burapha University Perimeter
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Kasetsart Sriracha Gateway
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Student Housing Corridors
+          </li>
+</ul>
+</div>
+<!-- Tourism Network Card -->
+<div class="glass-card p-8 rounded-2xl flex flex-col hover:border-primary/50 transition-all group duration-700 opacity-100 translate-y-0">
+<div class="mb-8">
+<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">map</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-4">Tourism Network</h3>
+<p class="text-on-surface-variant font-body-md">Dominating Pattaya and Bang Saen. Capture high-spending domestic and international tourists through premium beachfront and luxury retail placements.</p>
+</div>
+<ul class="space-y-3 mt-auto border-t border-white/5 pt-6">
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Pattaya Beach Road Entrances
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Bang Saen Tourism Circuit
+          </li>
+<li class="flex items-center gap-3 text-on-surface-variant text-sm">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Luxury Resort Entryways
+          </li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Future Expansion Section -->
+<section class="mt-24 py-24 bg-surface-container-low border-y border-white/5">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-8">Future Expansion</h2>
+<p class="text-on-surface-variant font-body-lg mb-10">
+            Our network is living and breathing. We are currently finalizing 5 new high-impact locations for Q4 2024, expanding our reach into the burgeoning EEC industrial zones and premium residential developments.
+          </p>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 glass-card rounded-lg transition-all duration-700 opacity-100 translate-y-0">
+<span class="material-symbols-outlined text-primary">add_location</span>
+<span class="text-white font-medium">Coming Soon: Sriracha Economic Zone (Large Format LED)</span>
+</div>
+<div class="flex items-center gap-4 p-4 glass-card rounded-lg transition-all duration-700 opacity-100 translate-y-0">
+<span class="material-symbols-outlined text-primary">add_location</span>
+<span class="text-white font-medium">Coming Soon: Jomtien Beach Luxury Corridor</span>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-10 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="relative rounded-2xl overflow-hidden border border-white/20 aspect-square lg:aspect-auto h-[400px]">
+<!-- Map Placeholder / Abstract Visual -->
+<div class="w-full h-full bg-slate-900 flex items-center justify-center overflow-hidden">
+<svg class="w-full h-full opacity-20" viewBox="0 0 100 100">
+<path d="M10,10 Q50,5 90,10 T90,90 T10,90 Z" fill="none" stroke="white" stroke-width="0.1"></path>
+<circle class="animate-pulse" cx="30" cy="40" fill="#ff535b" r="1"></circle>
+<circle class="animate-pulse" cx="60" cy="20" fill="#ff535b" r="1" style="animation-delay: 0.5s"></circle>
+<circle class="animate-pulse" cx="70" cy="80" fill="#ff535b" r="1" style="animation-delay: 1s"></circle>
+<circle class="animate-ping" cx="20" cy="70" fill="#ff535b" r="1.5"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-10">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">radar</span>
+<h4 class="font-headline-md text-white mb-2">Smart Growth</h4>
+<p class="text-on-surface-variant text-sm">Deploying AI-driven site selection for maximum eye-level engagement.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop max-w-container-max mx-auto mt-24 text-center">
+<div class="glass-card p-16 rounded-3xl relative overflow-hidden transition-all duration-700 opacity-100 translate-y-0">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none"></div>
+<h2 class="font-headline-xl text-headline-xl text-white mb-6">Build Your Network Campaign</h2>
+<p class="text-on-surface-variant font-body-lg max-w-2xl mx-auto mb-10">
+        Combine multiple locations to create a seamless brand journey across the province. Get a customized multi-site proposal today.
+      </p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-headline-md primary-glow transition-all hover:scale-105">
+          Request Network Rate Card
+        </button>
+<button class="border border-white/20 hover:bg-white/10 px-10 py-4 rounded-lg font-headline-md transition-all">
+          View Interactive Map
+        </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Navigation Shell -->
+<footer class="bg-surface-container-lowest border-t border-white/5 w-full mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<img alt="Media108" class="h-10 mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfU5LWp0nx2GgcBZqhwJJmN2cFcp83nXISqCiDkOJf7GPGpXPOeewZQ-1nJy6Ie8FccX9laq8Q5iUy66jer1wVuzuLEwZ9Cr_7rw9fHaEYmvlIsImu9kQ3VFwDjvUtc8SAdRKaTTt9tbT-voEcpkwoHWJVxa20lNpDAjGP0pNGf0wjbznVXRTpqspg1efAfT16j17VnTGBhXrEsAWS4J6JLIJxLDavQExxKLw-gIpwNjUbW8JSWcxAuJ8R_Te1zoT6-Ha8vOGc3T8">
+<p class="text-on-surface-variant font-body-md text-body-md opacity-70">© 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Network</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Network Map</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Global Offices</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Legal</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Connect</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Contact Sales</a>
+<div class="flex gap-4 mt-2">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">share</span>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction: Scroll reveal for glass cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+      observer.observe(card);
+    });
+</script>
+
+
+</body></html>

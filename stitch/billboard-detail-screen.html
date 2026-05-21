@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pattaya Sukhumvit 01 | MEDIA108</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#020b2e",
+                        "on-secondary": "#292f48",
+                        "tertiary-fixed-dim": "#c3c7ca",
+                        "surface-container-low": "#0f193b",
+                        "outline-variant": "#5b403f",
+                        "surface-variant": "#293356",
+                        "secondary-container": "#424862",
+                        "surface-tint": "#ffb3b1",
+                        "inverse-on-surface": "#252f51",
+                        "secondary": "#bfc5e4",
+                        "tertiary-container": "#8d9194",
+                        "secondary-fixed": "#dce1ff",
+                        "secondary-fixed-dim": "#bfc5e4",
+                        "on-primary-fixed-variant": "#92001c",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "on-primary-fixed": "#410007",
+                        "glow-red": "rgba(230, 57, 70, 0.3)",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#bb152c",
+                        "on-primary": "#680011",
+                        "on-error": "#690005",
+                        "on-surface": "#dce1ff",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-tertiary-container": "#262a2d",
+                        "on-tertiary-fixed": "#181c1e",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#1e284a",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "primary-fixed": "#ffdad8",
+                        "inverse-surface": "#dce1ff",
+                        "surface-bright": "#2e375b",
+                        "on-background": "#dce1ff",
+                        "outline": "#ab8987",
+                        "on-primary-container": "#5b000e",
+                        "primary": "#ffb3b1",
+                        "on-tertiary": "#2d3133",
+                        "surface-glass": "rgba(255, 255, 255, 0.04)",
+                        "on-secondary-fixed-variant": "#3f465f",
+                        "surface-container-highest": "#293356",
+                        "primary-container": "#ff535b",
+                        "on-surface-variant": "#e4bebc",
+                        "surface-container": "#141d3f",
+                        "error": "#ffb4ab",
+                        "surface-dim": "#061133",
+                        "border-glass": "rgba(255, 255, 255, 0.12)",
+                        "background": "#061133",
+                        "surface": "#061133",
+                        "on-secondary-container": "#b1b7d6",
+                        "on-secondary-fixed": "#141a32",
+                        "tertiary": "#c3c7ca",
+                        "accent-red": "#E63946"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "data-mono": ["16px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .btn-primary {
+            background-color: #E63946;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+            transform: translateY(-1px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #061133;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e284a;
+            border-radius: 10px;
+        }
+        .kinetic-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(230, 57, 70, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(187, 21, 44, 0.05) 0%, transparent 40%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md kinetic-bg selection:bg-accent-red selection:text-white">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface-glass backdrop-blur-xl border-b border-border-glass h-32 flex flex-col justify-center shadow-md">
+<div class="flex justify-center mb-4">
+<img alt="MEDIA108 Logo" class="h-10 md:h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDc6wSOfF_PJwkuzNEC9dt14rIS0-mY9QB8X5jG4af6rrEyp2QaRU7W53KZsaYov5wGF3YIzYpyjTBdtofkSYEjm8gDN5gvg39oE3FJj9zv3b39cxG-HdABGI7qYMR1iKMWgjZ8b7C7buydGaC5zjxiccPikyRgMj-q6u4nzfKGZ5NzX3B1xCI8mmMruTs6dk3GwnGtev8Q-yvsiVgyAzkGHYUHoTCP-2yxIkrdtGZcgVDTJ_4hbIimDA6IDBlgD50sU4j5tXc0bME"/>
+</div>
+<nav class="flex justify-center items-center px-margin-desktop w-full max-w-container-max mx-auto space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">About Media108</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Media Network</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Billboard Information</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Our Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Media Kit &amp; Pricing</a>
+</nav>
+</header>
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative w-full h-[85vh] flex items-end pb-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Hero Banner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+<div class="inline-block bg-accent-red text-white font-label-md text-label-md px-4 py-1 rounded-full mb-6 tracking-widest uppercase">Pattaya Prime</div>
+<h1 class="font-headline-xl text-headline-xl mb-4 text-white">Pattaya Sukhumvit 01</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl leading-relaxed">เชิงกลยุทธ์การสื่อสารที่ทรงพลังที่สุดบนถนนสุขุมวิทพัทยา มอบอิมแพ็คระดับพรีเมียมให้แบรนด์ของคุณโดดเด่นท่ามกลางเมืองที่ไม่เคยหลับใหล</p>
+</div>
+<div class="md:col-span-4 flex flex-col justify-end">
+<div class="glass-card p-8 rounded-xl">
+<span class="font-label-md text-label-md text-on-surface-variant block mb-2">อัตราค่าโฆษณา</span>
+<div class="flex items-baseline gap-2 mb-6">
+<span class="font-headline-lg text-headline-lg text-white">฿45,000</span>
+<span class="text-on-surface-variant">/เดือน</span>
+</div>
+<button class="w-full btn-primary text-white py-4 rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-2 group">
+<span>จองป้ายนี้</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Preview -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Visual Preview</h2>
+<p class="text-on-surface-variant">สัมผัสประสบการณ์ภาพจริงผ่านมุมมองที่หลากหลาย</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="rounded-xl overflow-hidden aspect-video relative group">
+<img alt="Day View" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"/>
+<div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-white font-label-md text-label-md uppercase">Day View</div>
+</div>
+<div class="rounded-xl overflow-hidden aspect-video relative group">
+<img alt="Night View" class="w-full h-full object-cover brightness-75 transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"/>
+<div class="absolute bottom-4 left-4 bg-black/60 backdrop-blur px-3 py-1 rounded text-white font-label-md text-label-md uppercase">Night View</div>
+</div>
+<div class="rounded-xl overflow-hidden aspect-video relative group bg-surface-container flex items-center justify-center border border-border-glass cursor-pointer">
+<div class="text-center">
+<div class="w-16 h-16 rounded-full bg-accent-red/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-accent-red text-3xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Video / Drone Preview</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sales Copy & Narrative (Bento Style) -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<div class="md:col-span-8 glass-card p-10 rounded-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">location_on</span> Location Story
+                                </h3>
+<p class="text-on-surface-variant leading-relaxed font-body-lg">ใจกลางยุทธศาสตร์การท่องเที่ยวและธุรกิจของพัทยา ติดถนนเส้นหลักสุขุมวิท จุดเชื่อมต่อสำคัญระหว่างพัทยาเหนือและกลางที่ทุกคนต้องผ่าน</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">groups</span> Audience Story
+                                </h3>
+<p class="text-on-surface-variant leading-relaxed font-body-lg">เข้าถึงกลุ่มนักท่องเที่ยวระดับ Premium ชาวต่างชาติ และนักธุรกิจที่พักอาศัยในโซนเศรษฐกิจหลัก มอบโอกาสทางการตลาดที่กว้างขวาง</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">trending_up</span> Traffic Story
+                                </h3>
+<p class="text-on-surface-variant leading-relaxed font-body-lg">ปริมาณรถหนาแน่นตลอด 24 ชม. ด้วยอัตราการมองเห็นสูงสุด (Highest Impressions) เหมาะสำหรับการสร้าง Brand Awareness ระยะยาว</p>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary flex items-center gap-3">
+<span class="material-symbols-outlined">check_circle</span> Business Fit
+                                </h3>
+<p class="text-on-surface-variant leading-relaxed font-body-lg">เหมาะสำหรับโครงการอสังหาริมทรัพย์ระดับ High-end, โชว์รูมยานยนต์, สินค้าอุปโภคบริโภคพรีเมียม และแบรนด์หรูที่ต้องการภาพลักษณ์</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 space-y-6">
+<div class="glass-card p-8 rounded-xl border-l-4 border-l-accent-red">
+<h4 class="font-headline-md text-headline-md mb-4">Billboard Specs</h4>
+<ul class="space-y-4">
+<li class="flex justify-between items-center pb-2 border-b border-border-glass">
+<span class="text-on-surface-variant font-label-md">Screen Size</span>
+<span class="font-data-mono text-white">24m x 12m</span>
+</li>
+<li class="flex justify-between items-center pb-2 border-b border-border-glass">
+<span class="text-on-surface-variant font-label-md">Resolution</span>
+<span class="font-data-mono text-white">3840 x 1920 px</span>
+</li>
+<li class="flex justify-between items-center pb-2 border-b border-border-glass">
+<span class="text-on-surface-variant font-label-md">Pixel Pitch</span>
+<span class="font-data-mono text-white">P10 RGB LED</span>
+</li>
+<li class="flex justify-between items-center pb-2 border-b border-border-glass">
+<span class="text-on-surface-variant font-label-md">Brightness</span>
+<span class="font-data-mono text-white">8,500 Nits</span>
+</li>
+<li class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-md">Audio Support</span>
+<span class="font-data-mono text-white">Not Available</span>
+</li>
+</ul>
+</div>
+<button class="w-full bg-surface-variant hover:bg-surface-bright text-white py-6 rounded-xl font-headline-md flex items-center justify-center gap-3 transition-colors border border-border-glass">
+<span class="material-symbols-outlined">download</span>
+<span>Media Kit (PDF)</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Analytics Dashboard -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-12 flex items-center gap-4">
+<span class="material-symbols-outlined text-accent-red">analytics</span> Real-time Performance Data
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Traffic -->
+<div class="glass-card p-8 rounded-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-8 uppercase tracking-widest">Traffic Analytics</h3>
+<div class="space-y-8">
+<div>
+<span class="font-data-mono text-4xl text-white">840,000</span>
+<p class="text-on-surface-variant text-label-md">Cars / Day</p>
+</div>
+<div>
+<span class="font-data-mono text-3xl text-white">360,000</span>
+<p class="text-on-surface-variant text-label-md">Motorcycles / Day</p>
+</div>
+<div class="bg-primary/10 p-4 rounded-lg">
+<p class="text-primary font-label-md mb-1">Peak Hours</p>
+<span class="font-data-mono text-white">07:00 - 09:30 AM</span>
+</div>
+</div>
+</div>
+<!-- Visibility -->
+<div class="glass-card p-8 rounded-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-8 uppercase tracking-widest">Visibility Analytics</h3>
+<div class="space-y-8">
+<div class="relative h-2 w-full bg-surface-container rounded-full overflow-hidden mb-4">
+<div class="absolute inset-0 bg-accent-red w-[85%]"></div>
+</div>
+<div>
+<span class="font-data-mono text-4xl text-white">850m</span>
+<p class="text-on-surface-variant text-label-md">Viewing Distance</p>
+</div>
+<div class="flex gap-8">
+<div>
+<span class="font-data-mono text-2xl text-white">40km/h</span>
+<p class="text-on-surface-variant text-label-md">Avg Speed</p>
+</div>
+<div>
+<span class="font-data-mono text-2xl text-white">12s</span>
+<p class="text-on-surface-variant text-label-md">Viewing Duration</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Audience -->
+<div class="glass-card p-8 rounded-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-8 uppercase tracking-widest">Audience Insights</h3>
+<div class="mb-6">
+<span class="font-data-mono text-4xl text-white">25 - 45</span>
+<p class="text-on-surface-variant text-label-md">Primary Demographics (Years)</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="flex-1 h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-white h-full w-[45%]"></div>
+</div>
+<span class="font-data-mono text-sm w-12">45%</span>
+<span class="text-xs uppercase text-on-surface-variant min-w-[60px]">Local</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1 h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-accent-red h-full w-[35%]"></div>
+</div>
+<span class="font-data-mono text-sm w-12">35%</span>
+<span class="text-xs uppercase text-on-surface-variant min-w-[60px]">Tourist</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1 h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary-fixed-dim h-full w-[20%]"></div>
+</div>
+<span class="font-data-mono text-sm w-12">20%</span>
+<span class="text-xs uppercase text-on-surface-variant min-w-[60px]">Student</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Map & Nearby -->
+<section class="py-24 bg-surface-container-low">
+<div class="px-margin-desktop max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8">
+<div class="rounded-2xl overflow-hidden h-[500px] shadow-2xl border border-border-glass">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="A detailed dark-themed digital map of Pattaya city, Thailand. The map uses a sophisticated navy and charcoal color palette with bright neon red pinpoint indicators highlighting the specific location of a billboard on Sukhumvit road. Key landmarks like Terminal 21 are softly illuminated, and the overall aesthetic is high-tech and precise, matching a premium corporate dashboard style." data-location="Pattaya" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g"/>
+</div>
+</div>
+<div class="md:col-span-4">
+<h2 class="font-headline-lg text-headline-lg mb-8">Nearby Landmarks</h2>
+<div class="space-y-4">
+<div class="glass-card p-6 rounded-xl flex items-center gap-4 hover:border-accent-red transition-colors cursor-default">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-white text-lg">Terminal 21 Pattaya</h4>
+<p class="text-on-surface-variant font-label-md">2.4 km from location</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex items-center gap-4 hover:border-accent-red transition-colors cursor-default">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">apartment</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-white text-lg">Central Pattaya</h4>
+<p class="text-on-surface-variant font-label-md">3.1 km from location</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-xl flex items-center gap-4 hover:border-accent-red transition-colors cursor-default">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">hotel</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-white text-lg">Grande Centre Point</h4>
+<p class="text-on-surface-variant font-label-md">2.5 km from location</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Billboards -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-2">Related Locations</h2>
+<p class="text-on-surface-variant">ขยายขอบเขตการเข้าถึงด้วยป้ายใกล้เคียงในโครงข่าย Media Network</p>
+</div>
+<a class="text-primary font-label-md flex items-center gap-2 hover:underline" href="#">VIEW ALL LOCATIONS <span class="material-symbols-outlined text-sm">call_made</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Related 1 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-definition photograph of a digital LED billboard in a busy Pattaya intersection at twilight. The screen displays a luxury watch advertisement with vibrant colors reflected on the wet urban asphalt. Light trails from cars create a dynamic sense of motion, captured in a cinematic, dark-mode professional photography style with deep blues and vivid reds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrJbSyJH1tw6taoXRIVV3t7M97xpGB_26IoGB7-YspN575yM-U-VSZ57bRB2ut_cLJKrC5uOpW3veixJ9oGkWMLVe4BCP09DsKGXpIWkfhi0C0p8LoFT6iXfIP_Yg6kiAW7Gu0q2eCLn0htcQf2BGWu5cjWgi3RJ86975CNYqIhuN9np9eBzYQEVzXenohBGbrYWCybj27Xm_PSStBhQW2oQT20_TfTrvdrgpRfaV7kwCk1PadKnHsQBZfQ2HewLxawH0kBj2CqIQ"/>
+<div class="absolute top-4 right-4 bg-surface-container-highest/80 backdrop-blur px-3 py-1 rounded text-white font-label-md text-xs uppercase">Available</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md mb-2">Pattaya Gateway</h3>
+<p class="text-on-surface-variant mb-6 font-body-md">Main Intersection, Chonburi</p>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white py-3 rounded-lg border border-white/10 transition-colors font-label-md">ดูรายละเอียดป้ายนี้</button>
+</div>
+</div>
+<!-- Related 2 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A large-scale outdoor digital screen mounted on a modern industrial building in the Sri Racha area. The environment is clean and professional, showcasing a clean energy forum advertisement on the screen. The sky is a deep twilight blue, providing a high-contrast background that makes the screen glow intensely. The lighting is crisp and the composition is symmetrical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0"/>
+<div class="absolute top-4 right-4 bg-accent-red/80 backdrop-blur px-3 py-1 rounded text-white font-label-md text-xs uppercase">High Demand</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md mb-2">EEC Tech Square</h3>
+<p class="text-on-surface-variant mb-6 font-body-md">Sri Racha Industrial, Chonburi</p>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white py-3 rounded-lg border border-white/10 transition-colors font-label-md">ดูรายละเอียดป้ายนี้</button>
+</div>
+</div>
+<!-- Related 3 -->
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A vertical digital billboard standing prominently in front of a glass-walled skyscraper during the evening. The billboard displays a high-contrast fashion advertisement. The urban setting is sleek and modern, with the building's architecture reflecting the city lights. The overall mood is sophisticated, dark-mode, and futuristic, emphasizing the premium quality of the media placement." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA"/>
+<div class="absolute top-4 right-4 bg-surface-container-highest/80 backdrop-blur px-3 py-1 rounded text-white font-label-md text-xs uppercase">Available</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md mb-2">Jomtien Coastal</h3>
+<p class="text-on-surface-variant mb-6 font-body-md">Beachfront Drive, Pattaya</p>
+<button class="w-full bg-white/5 hover:bg-white/10 text-white py-3 rounded-lg border border-white/10 transition-colors font-label-md">ดูรายละเอียดป้ายนี้</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-border-glass py-24">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1">
+<div class="text-headline-lg font-headline-lg font-black text-on-surface mb-6">MEDIA108</div>
+<p class="text-on-surface-variant font-body-md leading-relaxed">Precision DOOH Media Solutions for high-level advertisers and agency partners.</p>
+</div>
+<div>
+<h4 class="text-white font-headline-md text-lg mb-6">Quick Links</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Contact Support</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md" href="#">Global Network</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-headline-md text-lg mb-6">Contact</h4>
+<p class="text-on-surface-variant font-body-md mb-4">info@media108.com</p>
+<p class="text-on-surface-variant font-body-md">+66 2 123 4567</p>
+</div>
+<div>
+<h4 class="text-white font-headline-md text-lg mb-6">Social</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-border-glass flex items-center justify-center text-on-surface-variant hover:bg-accent-red hover:text-white transition-all" href="#">FB</a>
+<a class="w-10 h-10 rounded-full border border-border-glass flex items-center justify-center text-on-surface-variant hover:bg-accent-red hover:text-white transition-all" href="#">IG</a>
+<a class="w-10 h-10 rounded-full border border-border-glass flex items-center justify-center text-on-surface-variant hover:bg-accent-red hover:text-white transition-all" href="#">LN</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-24 pt-8 border-t border-border-glass/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-on-surface-variant font-label-md text-xs">© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.</p>
+<div class="flex gap-8">
+<span class="text-on-surface-variant font-label-md text-xs">GLOBAL PARTNER PROGRAM</span>
+<span class="text-on-surface-variant font-label-md text-xs">ISO 27001 CERTIFIED</span>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal interaction for analytics cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(card);
+        });
+
+        // Simple sticky header parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section img');
+            if(heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+        });
+    </script>
+</body></html>

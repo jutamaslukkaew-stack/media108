@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>บริการและเครือข่ายสื่อของเรา | Media108</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdad8",
+                        "on-error-container": "#ffdad6",
+                        "on-background": "#dce1ff",
+                        "on-surface": "#dce1ff",
+                        "inverse-surface": "#dce1ff",
+                        "surface-container": "#141d3f",
+                        "on-surface-variant": "#e4bebc",
+                        "surface-container-high": "#1e284a",
+                        "on-primary-fixed": "#410007",
+                        "surface-container-lowest": "#020b2e",
+                        "surface-bright": "#2e375b",
+                        "border-glass": "rgba(255, 255, 255, 0.12)",
+                        "on-secondary-fixed": "#141a32",
+                        "inverse-primary": "#bb152c",
+                        "surface-tint": "#ffb3b1",
+                        "surface-variant": "#293356",
+                        "surface-dim": "#061133",
+                        "primary-container": "#ff535b",
+                        "tertiary-fixed-dim": "#c3c7ca",
+                        "secondary-fixed-dim": "#bfc5e4",
+                        "surface-glass": "rgba(255, 255, 255, 0.04)",
+                        "tertiary-container": "#8d9194",
+                        "secondary-fixed": "#dce1ff",
+                        "on-secondary-container": "#b1b7d6",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-primary-container": "#5b000e",
+                        "on-tertiary-container": "#262a2d",
+                        "inverse-on-surface": "#252f51",
+                        "secondary": "#bfc5e4",
+                        "outline": "#ab8987",
+                        "tertiary": "#c3c7ca",
+                        "on-error": "#690005",
+                        "surface-container-low": "#0f193b",
+                        "tertiary-fixed": "#e0e3e6",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "on-secondary-fixed-variant": "#3f465f",
+                        "on-primary": "#680011",
+                        "background": "#061133",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "secondary-container": "#424862",
+                        "glow-red": "rgba(230, 57, 70, 0.3)",
+                        "surface": "#061133",
+                        "primary": "#ffb3b1",
+                        "surface-container-highest": "#293356",
+                        "on-secondary": "#292f48",
+                        "on-tertiary": "#2d3133",
+                        "outline-variant": "#5b403f",
+                        "on-primary-fixed-variant": "#92001c",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "base": "8px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #061133; color: #dce1ff; overflow-x: hidden; }
+        .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .btn-primary-glow { background-color: #E63946; color: white; transition: all 0.3s ease; box-shadow: 0 0 0px rgba(230, 57, 70, 0); }
+        .btn-primary-glow:hover { box-shadow: 0 0 20px rgba(230, 57, 70, 0.5); transform: translateY(-1px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .service-hover-img { transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1); }
+        .service-card:hover .service-hover-img { transform: scale(1.05); }
+        .filter-select { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #dce1ff; border-radius: 0.5rem; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.2s; }
+        .filter-select:hover { background-color: rgba(255, 255, 255, 0.1); }
+        .filter-select:focus { outline: none; border-color: #ffb3b1; }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center">
+<img alt="Media108" class="h-10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhX7p4P2w__wYti5wwH02cNMRunQVE4XmaerPAq0yRWKksYEHTO71XzqQGU9vP7Xj1fGDu8a8Ra00EhV5jid-IxXSr5S3VHcLqF9WgfF79MoLJdWGXuUnfHXPdo5SwP6JcyaNrAN_5wstsLuFbBEgIdnexupxBVeOXLeybR5LRVe9SmGSdGzeF_Xcp1N8nDgB4AdAIvvPySq7GwBy0JJuQNMmwsoroglbxaYboDpKUoWXMKg7dENK3HFncN-xF8XCjHXCYRG8RSgI"/>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">หน้าหลัก</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">เกี่ยวกับเรา</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">เครือข่ายสื่อ</a>
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">บริการและเครือข่าย</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-2.5 rounded-lg active:scale-95 transition-transform font-bold uppercase">ขอใบเสนอราคา</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="Futuristic production studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxPMO48JJWcqQJz0me9oV6FxNAayF4EIcbAh7TapQiE4d0j-lUPRqLrls0eEtTBrVdQ7o-q0kcRWxUiy1kCg1c6wyxDjoiZUXXyLYHtbwloDPrcgJ-1Tzn6of2UsCDcg9zvjqsudQMdMArn207g7cRDsvydPdCY9vpK4qGzp6VOkFZdbs6LvbBaTrBCI3ZkaN1qDgVfhU7DWbYoHGTjtnC9t5GzTFDZ3JBG62Y3E4rmQIOq6_rZYXVU88T7deuK3jTrtIpN8tQWY"/>
+</div>
+<div class="relative z-20 max-w-4xl">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Smart City Media Network</span>
+<h1 class="font-display-lg text-[48px] md:text-display-lg mb-6 leading-tight">เชื่อมต่อธุรกิจของคุณ<br/>เข้ากับชาวชลบุรีและ EEC</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
+                เราคือ Media Tech Platform ที่รวมเครือข่ายป้าย LED ประสิทธิภาพสูง พร้อมข้อมูล Traffic และพฤติกรรมผู้ชม เพื่อสร้างผลลัพธ์ทางการตลาดที่วัดผลได้จริง
+            </p>
+<div class="flex flex-wrap gap-4">
+<button class="btn-primary-glow px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold">เลือกทำเลป้าย</button>
+<button class="px-8 py-4 rounded-lg font-label-md text-label-md border border-white/20 hover:bg-white/10 transition-all uppercase tracking-wider">ดูบริการโปรดักชั่น</button>
+</div>
+</div>
+</section>
+<!-- Production Pillars -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4 text-primary">Production Pillars</h2>
+<p class="text-on-surface-variant mb-4">บริการผลิตสื่อสร้างสรรค์ ครบจบในที่เดียว</p>
+<div class="h-1 w-24 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- LED Advertising (Big) -->
+<div class="md:col-span-8 service-card relative group rounded-xl overflow-hidden glass-card h-[500px]">
+<img class="service-hover-img absolute inset-0 w-full h-full object-cover opacity-60" data-alt="LED billboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKbCEJAXaEaLcdZm0DrP2vHyk6xlSlz5FjIPzFw8-AzkA4rzW8dwIbiN0irQjW3kvaSlDsc8j3kUCtYL46GdQXTkBpKxpmVd80-R9FbBhDy0GCij17uwzk_qAyJJMvvRmc5z_9Yn7QFyiZViFaW9a0gYW9K2BCzwtwtoUjDHluOGk0tBXCvOgnw9i5W-l1gDjCKh6nbuZGFvuTbT6SzuEp_hbE6jq1ZTnU172RaAVQoXmSjpEDOqogrwh2j99RJVXbGJ8XmEZArf0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-10">
+<span class="font-label-md text-label-md bg-primary-container/20 text-primary-container px-3 py-1 rounded-full mb-4 inline-block">High Impact</span>
+<h3 class="font-headline-lg text-headline-lg mb-2">LED Advertising</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">3D Anamorphic content และประสบการณ์สื่อดิจิทัลบนพื้นที่ยุทธศาสตร์</p>
+</div>
+</div>
+<!-- Motion Graphics -->
+<div class="md:col-span-4 service-card relative group rounded-xl overflow-hidden glass-card h-[500px]">
+<img class="service-hover-img absolute inset-0 w-full h-full object-cover opacity-50" data-alt="Motion Graphics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Wp6Di2BOLyABbh0jr3aYTSitHC5Ab8HSaxEptjNsqjP4Hp4p_h131UlXn0Tgpo5ZLF0UPB_2JDWsaeeziGGIGj0yIMGSp7M2La5i-sDqTgTrbmCr2Vva8IitaKJ4XdQJ0F4QmVdKfdbPbStZncBj13culX_fXFpLAI63hMVgiXxYEBR9Qc434mPvn4Vc94XwWZHy_8SBL4n8RqdkkJiaBIp1Pn62y1NIt4qQXtVqXFpN6Pf8aifYUXHX5Ikyl8sckWRk9lM6Ulg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Motion Graphics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">งานอนิเมชั่นความละเอียดสูง ปรับแต่งให้เหมาะสมกับสัดส่วนจอทุกรูปแบบ</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Billboard Network Listing Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-4 text-primary">เครือข่ายป้ายโฆษณา (Our Network)</h2>
+<p class="text-on-surface-variant max-w-2xl">ค้นหาทำเลป้าย LED ที่ใช่สำหรับแบรนด์ของคุณ เปรียบเทียบข้อมูล Traffic และกลุ่มเป้าหมายได้ทันที</p>
+</div>
+<div class="flex bg-surface-container p-1 rounded-lg">
+<button class="px-6 py-2 rounded-md bg-primary-container text-on-primary-container font-bold text-sm transition-all">List View</button>
+<button class="px-6 py-2 rounded-md text-on-surface-variant font-bold text-sm hover:text-on-surface transition-all">Map View</button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="glass-card p-6 rounded-xl mb-12 flex flex-wrap gap-4 items-center">
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-bold text-on-surface-variant uppercase mb-2 ml-1">พื้นที่ (Area)</label>
+<select class="filter-select w-full">
+<option>ทั้งหมด (All Locations)</option>
+<option>พัทยา (Pattaya)</option>
+<option>บางแสน (Bangsaen)</option>
+<option>ศรีราชา (Sriracha)</option>
+<option>ชลบุรี (Chonburi)</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-bold text-on-surface-variant uppercase mb-2 ml-1">กลุ่มเป้าหมาย (Target Audience)</label>
+<select class="filter-select w-full">
+<option>ทุกกลุ่มเป้าหมาย</option>
+<option>นักท่องเที่ยว (Tourists)</option>
+<option>นักศึกษา (Students)</option>
+<option>วัยทำงาน (Workers)</option>
+</select>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block text-xs font-bold text-on-surface-variant uppercase mb-2 ml-1">ประเภทสื่อ (Media Type)</label>
+<select class="filter-select w-full">
+<option>ทุกประเภท</option>
+<option>ป้ายหลัก (Large Billboard)</option>
+<option>เครือข่ายมหาวิทยาลัย (University)</option>
+</select>
+</div>
+<div class="pt-6">
+<button class="bg-primary hover:bg-primary/90 text-on-primary px-8 py-2.5 rounded-lg font-bold transition-all flex items-center">
+<span class="material-symbols-outlined mr-2">search</span> ค้นหา
+                    </button>
+</div>
+</div>
+<!-- Billboard Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all">
+<div class="relative h-64 overflow-hidden">
+<img alt="Pattaya Central LED" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary text-[12px] font-bold px-3 py-1 rounded-full">ID: PT-CENTRAL-01</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-[12px] px-3 py-1 rounded-md">Traffic: 1.2M+ / Day</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-on-surface">Pattaya Central LED</h3>
+<span class="text-primary text-[14px] font-bold">พัทยากลาง</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">groups</span>
+<span>กลุ่มเป้าหมาย: นักท่องเที่ยวและนักเดินทาง</span>
+</div>
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">location_on</span>
+<span>ทางแยกหลักพัทยากลาง เข้าสู่หาด</span>
+</div>
+</div>
+<div class="border-t border-white/10 pt-4 mt-auto">
+<div class="flex justify-between items-center mb-6">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">ราคาเริ่มต้น</p>
+<p class="text-xl font-bold text-primary">ขอใบเสนอราคา</p>
+</div>
+<button class="text-primary hover:underline font-bold text-sm uppercase">ดูรายละเอียด</button>
+</div>
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg font-bold transition-all">จองป้ายนี้</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all">
+<div class="relative h-64 overflow-hidden">
+<img alt="Bangsaen University Gate" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary text-[12px] font-bold px-3 py-1 rounded-full">ID: BS-UNI-05</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-[12px] px-3 py-1 rounded-md">Traffic: 450K+ / Day</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-on-surface">Bangsaen University Gate</h3>
+<span class="text-primary text-[14px] font-bold">บางแสน</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">school</span>
+<span>กลุ่มเป้าหมาย: นักศึกษาและวัยรุ่น</span>
+</div>
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">location_on</span>
+<span>หน้ามหาวิทยาลัยบูรพา</span>
+</div>
+</div>
+<div class="border-t border-white/10 pt-4 mt-auto">
+<div class="flex justify-between items-center mb-6">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">ราคาเริ่มต้น</p>
+<p class="text-xl font-bold text-primary">฿25,000</p>
+</div>
+<button class="text-primary hover:underline font-bold text-sm uppercase">ดูรายละเอียด</button>
+</div>
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg font-bold transition-all">จองป้ายนี้</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all">
+<div class="relative h-64 overflow-hidden">
+<img alt="Sukhumvit Sri Racha Hub" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary text-[12px] font-bold px-3 py-1 rounded-full">ID: SR-MAIN-02</div>
+<div class="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-[12px] px-3 py-1 rounded-md">Traffic: 850K+ / Day</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-on-surface">Sukhumvit Sri Racha Hub</h3>
+<span class="text-primary text-[14px] font-bold">ศรีราชา</span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">engineering</span>
+<span>กลุ่มเป้าหมาย: วัยทำงานและนักธุรกิจ</span>
+</div>
+<div class="flex items-center text-on-surface-variant text-sm">
+<span class="material-symbols-outlined text-[18px] mr-2 text-primary">location_on</span>
+<span>ถนนสุขุมวิท แยกโรงเรียนดาราสมุทร</span>
+</div>
+</div>
+<div class="border-t border-white/10 pt-4 mt-auto">
+<div class="flex justify-between items-center mb-6">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">ราคาเริ่มต้น</p>
+<p class="text-xl font-bold text-primary">฿45,000</p>
+</div>
+<button class="text-primary hover:underline font-bold text-sm uppercase">ดูรายละเอียด</button>
+</div>
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/20 rounded-lg font-bold transition-all">จองป้ายนี้</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<button class="px-12 py-4 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-on-primary transition-all uppercase tracking-widest">โหลดป้ายเพิ่มเติม (Load More)</button>
+</div>
+</div>
+</section>
+<!-- Strategic Consulting -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-8">Strategic Consulting</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8">
+                    การตลาดที่ดีไม่ได้จบเพียงแค่ความสวยงาม แต่คือการสื่อสารที่ถูกที่ ถูกเวลา และถูกกลุ่มเป้าหมาย ทีมที่ปรึกษาของเราพร้อมวิเคราะห์ Traffic และพฤติกรรมลูกค้าเพื่อให้เม็ดเงินโฆษณาของคุณคุ้มค่าที่สุด
+                </p>
+<div class="space-y-6">
+<div class="flex items-center space-x-6 p-6 glass-card rounded-lg">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] mb-1">Data-Driven Planning</h4>
+<p class="text-body-md text-on-surface-variant text-sm">วางแผนโฆษณาตามจุดที่มีความหนาแน่นของกลุ่มเป้าหมายจริง</p>
+</div>
+</div>
+<div class="flex items-center space-x-6 p-6 glass-card rounded-lg">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] mb-1">Creative Psychology</h4>
+<p class="text-body-md text-on-surface-variant text-sm">ใช้หลักจิตวิทยาในการเลือกสีและจังหวะของ Motion เพื่อดึงดูดสายตาคนในเวลาอันสั้น</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square glass-card rounded-2xl p-8 flex flex-col justify-center items-center text-center overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<path class="text-primary stroke-2" d="M0 100 L20 0 L40 80 L60 20 L80 90 L100 10" fill="transparent" stroke="currentColor"></path>
+</svg>
+</div>
+<h3 class="font-display-lg text-headline-xl text-primary mb-4">+42%</h3>
+<p class="font-headline-md text-headline-md mb-2">Recall Lift</p>
+<p class="font-body-md text-on-surface-variant max-w-xs">ค่าเฉลี่ยความจดจำแบรนด์ที่เพิ่มขึ้นเมื่อใช้การวางแผนสื่อร่วมกับ Media108</p>
+<button class="mt-10 btn-primary-glow px-8 py-3 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold">ปรึกษาผู้เชี่ยวชาญ</button>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary px-margin-desktop text-center">
+<h2 class="font-headline-xl text-headline-xl text-on-primary mb-8">พร้อมสร้างตัวตนบนโลก DOOH แล้วหรือยัง?</h2>
+<button class="bg-on-primary text-primary px-12 py-5 rounded-lg font-headline-md text-headline-md hover:bg-on-primary/90 transition-all active:scale-95 uppercase">เริ่มต้นแคมเปญของคุณ</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<img alt="Media108" class="h-10 mb-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhX7p4P2w__wYti5wwH02cNMRunQVE4XmaerPAq0yRWKksYEHTO71XzqQGU9vP7Xj1fGDu8a8Ra00EhV5jid-IxXSr5S3VHcLqF9WgfF79MoLJdWGXuUnfHXPdo5SwP6JcyaNrAN_5wstsLuFbBEgIdnexupxBVeOXLeybR5LRVe9SmGSdGzeF_Xcp1N8nDgB4AdAIvvPySq7GwBy0JJuQNMmwsoroglbxaYboDpKUoWXMKg7dENK3HFncN-xF8XCjHXCYRG8RSgI"/>
+<p class="text-on-surface-variant font-body-md text-sm mb-6 leading-relaxed">
+                ยกระดับแบรนด์ของคุณด้วยสื่อโฆษณานอกบ้านที่มีความแม่นยำสูงและงานโปรดักชั่นระดับพรีเมียม
+            </p>
+<div class="flex space-x-4">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">podcasts</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">เครือข่ายสื่อ</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">แผนที่เครือข่าย</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">ป้ายในเมือง</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">ป้ายมหาวิทยาลัย</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">บริษัท</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">ร่วมงานกับเรา</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">นโยบายความเป็นส่วนตัว</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">ข้อกำหนดการใช้งาน</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">ติดต่อเรา</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">ติดต่อฝ่ายขาย</a></li>
+<li class="text-on-surface-variant text-sm">สำนักงานใหญ่: ชลบุรี, ประเทศไทย</li>
+<li class="text-on-surface-variant text-sm">+66 (0) 108 108 108</li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">
+        © 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.
+    </div>
+</footer>
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('py-2');
+            nav.classList.remove('py-4');
+        } else {
+            nav.classList.add('py-4');
+            nav.classList.remove('py-2');
+        }
+    });
+
+    document.querySelectorAll('.service-card, .glass-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (!card.classList.contains('service-card')) return;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 60;
+            const rotateY = (centerX - x) / 60;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            card.style.transition = 'transform 0.5s ease';
+        });
+        
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'none';
+        });
+    });
+</script>
+</body></html>

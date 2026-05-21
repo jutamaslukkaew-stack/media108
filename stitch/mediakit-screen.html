@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Media Kit &amp; Pricing | MEDIA108</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#2d3133",
+                        "on-secondary": "#292f48",
+                        "on-background": "#dce1ff",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container": "#141d3f",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#dce1ff",
+                        "on-primary": "#680011",
+                        "inverse-on-surface": "#252f51",
+                        "on-primary-fixed-variant": "#92001c",
+                        "tertiary-container": "#8d9194",
+                        "outline": "#ab8987",
+                        "surface-dim": "#061133",
+                        "surface-container-high": "#1e284a",
+                        "surface-glass": "rgba(255, 255, 255, 0.04)",
+                        "surface-variant": "#293356",
+                        "tertiary-fixed": "#e0e3e6",
+                        "border-glass": "rgba(255, 255, 255, 0.12)",
+                        "on-surface": "#dce1ff",
+                        "secondary-fixed-dim": "#bfc5e4",
+                        "on-tertiary-fixed": "#181c1e",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "on-surface-variant": "#e4bebc",
+                        "surface": "#061133",
+                        "error": "#ffb4ab",
+                        "background": "#061133",
+                        "on-secondary-container": "#b1b7d6",
+                        "outline-variant": "#5b403f",
+                        "tertiary": "#c3c7ca",
+                        "surface-tint": "#ffb3b1",
+                        "surface-bright": "#2e375b",
+                        "primary": "#ffb3b1",
+                        "surface-container-highest": "#293356",
+                        "primary-container": "#ff535b",
+                        "on-primary-fixed": "#410007",
+                        "tertiary-fixed-dim": "#c3c7ca",
+                        "on-primary-container": "#5b000e",
+                        "surface-container-lowest": "#020b2e",
+                        "inverse-primary": "#bb152c",
+                        "on-tertiary-container": "#262a2d",
+                        "secondary": "#bfc5e4",
+                        "on-secondary-fixed-variant": "#3f465f",
+                        "secondary-fixed": "#dce1ff",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#141a32",
+                        "surface-container-low": "#0f193b",
+                        "secondary-container": "#424862",
+                        "glow-red": "rgba(230, 57, 70, 0.3)"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "base": "8px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "data-mono": ["16px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary-glow:hover {
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.5);
+            transform: scale(1.02);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(255, 179, 177, 0.3);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020b2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #293356;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff535b;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Header -->
+<header class="bg-surface-glass backdrop-blur-xl border-b border-border-glass sticky top-0 z-50 shadow-md">
+<div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-20">
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface">MEDIA108</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">About Media108</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Media Network</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Billboard Information</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Our Services</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Media Kit &amp; Pricing</a>
+</nav>
+<button class="md:hidden">
+<span class="material-symbols-outlined text-on-surface">menu</span>
+</button>
+</div>
+</header>
+<main class="w-full max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="relative h-[614px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-surface-dim/80 via-surface-dim/60 to-surface-dim z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A cinematic night-time view of a bustling urban intersection in Bangkok, featuring massive glowing digital billboards that illuminate the surrounding modern architecture. The scene captures the high-speed energy of a global metropolis with streaks of car lights and a sophisticated atmosphere of a premium media tech landscape. The lighting is dominated by deep navy blue shadows and vibrant red highlights, creating a sleek corporate noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWdZxCR3MAYjouPnKyslvRn1ZEtz8TM1TSedjqJ0I4VEdv5Nirw2SmtTsKlW8O0p0KmKQBfbjhVD9wE112Cl3a4pshbBRaZiIGLGuheLrniEaDBcm181_IoZ49CptVFAqPG2Re2m7_8FuKvWh30MqMEa2Ro9l3CVeTNSJGMeE-Ntdgfhb4ldvR0Dz0hqeT4KZ5bkgqyhyc4u9kyU7K_4XTkjcr14A06IRPssW16p785Raok8InzZ9qJueDz3lvGQipMv0gIDNDaSk"/>
+</div>
+<div class="relative z-20 space-y-4">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tighter uppercase leading-none">
+                    Media Kit <span class="text-primary">&amp;</span> Pricing
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto opacity-80">
+                    ยกระดับแบรนด์ของคุณด้วยนวัตกรรมสื่อโฆษณา Precision DOOH Solutions ที่เข้าถึงกลุ่มเป้าหมายอย่างแม่นยำที่สุด
+                </p>
+</div>
+</section>
+<!-- Download Media Kit Section -->
+<section class="py-24 px-margin-desktop">
+<div class="glass-card rounded-xl p-12 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 group-hover:bg-primary/10 transition-colors duration-500"></div>
+<div class="flex-1 space-y-6 relative z-10">
+<h2 class="font-headline-lg text-headline-lg">ดาวน์โหลด Media Kit</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        รับข้อมูลฉบับเต็มประกอบด้วย Company Profile และรายละเอียดทางเทคนิคของ Billboard ทุกตำแหน่งในเครือข่าย Media108 พร้อมกรณีศึกษาความสำเร็จ
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<a class="inline-flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-lg font-label-md text-label-md btn-primary-glow transition-all duration-300" href="#">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                            DOWNLOAD PDF MEDIA KIT
+                        </a>
+</div>
+</div>
+<div class="w-full md:w-80 flex flex-col items-center justify-center p-8 glass-card border-dashed border-2 border-primary/30 rounded-xl group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-6xl text-primary mb-4" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+<span class="font-data-mono text-data-mono text-on-surface mb-2">Version 2024.1.0</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Size: 12.4 MB</span>
+</div>
+</div>
+</section>
+<!-- Billboard Pricing & Packages -->
+<section class="py-24 px-margin-desktop bg-surface-container-lowest/30">
+<div class="mb-16 text-center">
+<h2 class="font-headline-xl text-headline-xl mb-4">Billboard Pricing &amp; Packages</h2>
+<p class="text-on-surface-variant font-body-md">เลือกแพ็กเกจที่เหมาะสมกับธุรกิจและแคมเปญของคุณ</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- SME Starter -->
+<div class="glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 border-b-secondary/20">
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">storefront</span>
+<h3 class="font-headline-md text-headline-md mb-2">SME Starter</h3>
+<p class="text-on-surface-variant text-sm">สำหรับร้านอาหาร คาเฟ่ และคลินิกท้องถิ่น</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Local Targeting
+                        </li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Flexible Scheduling
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Request Price</button>
+</div>
+<!-- Tourism Campaign -->
+<div class="glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 border-b-primary/50">
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">travel_explore</span>
+<h3 class="font-headline-md text-headline-md mb-2">Tourism Campaign</h3>
+<p class="text-on-surface-variant text-sm">โรงแรม ร้านอาหารพัทยา และสถานที่ท่องเที่ยว</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Prime Tourist Hotspots
+                        </li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Multi-language Support
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md btn-primary-glow transition-all">Request Price</button>
+</div>
+<!-- Real Estate Launch -->
+<div class="glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 border-b-secondary/20">
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">apartment</span>
+<h3 class="font-headline-md text-headline-md mb-2">Real Estate</h3>
+<p class="text-on-surface-variant text-sm">โครงการคอนโดมิเนียม และบ้านจัดสรร</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            High-Net-Worth Routes
+                        </li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Day/Night Dominance
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Request Price</button>
+</div>
+<!-- Event Promotion -->
+<div class="glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 border-b-secondary/20">
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">confirmation_number</span>
+<h3 class="font-headline-md text-headline-md mb-2">Event Promo</h3>
+<p class="text-on-surface-variant text-sm">คอนเสิร์ต เฟสติวัล และการแข่งกีฬา</p>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            High Frequency Bursts
+                        </li>
+<li class="flex items-start gap-3 text-sm">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                            Countdown Dynamic Content
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all">Request Price</button>
+</div>
+</div>
+</section>
+<!-- Technical Specifications (Bento Grid) -->
+<section class="py-24 px-margin-desktop">
+<div class="mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-2">Technical Specifications</h2>
+<div class="w-24 h-1 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Main Tech Card -->
+<div class="md:col-span-2 lg:col-span-2 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">Display Standard</p>
+<h4 class="font-headline-lg text-headline-lg mb-8">Ultra-High Definition LED Network</h4>
+</div>
+<div class="flex items-end justify-between relative z-10">
+<div>
+<span class="text-5xl font-data-mono text-on-surface block mb-1">8,500</span>
+<span class="font-label-md text-label-md text-on-surface-variant">MAX NIT BRIGHTNESS</span>
+</div>
+<span class="material-symbols-outlined text-8xl text-white/5 absolute -right-4 -bottom-4">wb_sunny</span>
+</div>
+</div>
+<!-- Resolution Card -->
+<div class="glass-card rounded-xl p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-primary">aspect_ratio</span>
+<div>
+<span class="font-data-mono text-headline-md block mb-1">3840 x 1920 px</span>
+<span class="font-label-md text-label-md text-on-surface-variant">NATIVE RESOLUTION</span>
+</div>
+</div>
+<!-- Sizes Card -->
+<div class="glass-card rounded-xl p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-primary">square_foot</span>
+<div>
+<span class="font-data-mono text-headline-md block mb-1">24m x 12m</span>
+<span class="font-label-md text-label-md text-on-surface-variant">AVERAGE SCREEN SIZE</span>
+</div>
+</div>
+<!-- Pixel Pitch -->
+<div class="glass-card rounded-xl p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-primary">blur_on</span>
+<div>
+<span class="font-data-mono text-headline-md block mb-1">P10 RGB LED</span>
+<span class="font-label-md text-label-md text-on-surface-variant">PIXEL PITCH</span>
+</div>
+</div>
+<!-- Formats -->
+<div class="md:col-span-2 lg:col-span-1 glass-card rounded-xl p-8 flex flex-col justify-between group">
+<span class="material-symbols-outlined text-primary">video_library</span>
+<div>
+<div class="flex flex-wrap gap-2 mb-2">
+<span class="bg-surface-container-highest px-2 py-1 rounded font-data-mono text-xs">MP4</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded font-data-mono text-xs">JPG</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded font-data-mono text-xs">PNG</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded font-data-mono text-xs">MOV</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">SUPPORTED FORMATS</span>
+</div>
+</div>
+<!-- Frame Rate -->
+<div class="md:col-span-1 lg:col-span-2 glass-card rounded-xl p-8 flex items-center gap-8 group">
+<div class="w-24 h-24 rounded-full border-4 border-primary/20 border-t-primary animate-spin-slow flex items-center justify-center">
+<span class="font-data-mono text-2xl">60</span>
+</div>
+<div>
+<span class="font-headline-md text-headline-md block">FPS Performance</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Smooth motion playback for cinematic visuals.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Coverage Reports Section -->
+<section class="py-24 px-margin-desktop bg-surface-container-low overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="space-y-8">
+<h2 class="font-headline-xl text-headline-xl">Coverage &amp; Insight Reports</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                        เราไม่ได้ให้แค่พื้นที่โฆษณา แต่เราให้ "ข้อมูล" เพื่อการตัดสินใจที่ดีที่สุด รายงานความครอบคลุมของเราประกอบด้วยข้อมูลเชิงลึกที่แม่นยำเพื่อวัดผลสำเร็จของแคมเปญ
+                    </p>
+<div class="space-y-6">
+<div class="flex items-center gap-6 glass-card p-6 rounded-xl hover:bg-surface-container-high transition-all">
+<div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-lg">Reach &amp; Frequency</h4>
+<p class="text-on-surface-variant text-sm">วิเคราะห์จำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง</p>
+</div>
+</div>
+<div class="flex items-center gap-6 glass-card p-6 rounded-xl hover:bg-surface-container-high transition-all">
+<div class="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-lg">Traffic Heatmaps</h4>
+<p class="text-on-surface-variant text-sm">แผนภาพแสดงความหนาแน่นของกลุ่มเป้าหมายในแต่ละช่วงเวลา</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<!-- Data visualization mock -->
+<div class="glass-card rounded-2xl p-4 shadow-2xl relative z-10 overflow-hidden">
+<img class="w-full h-[400px] object-cover rounded-xl" data-alt="A sophisticated data visualization dashboard showing traffic analytics and coverage maps in a dark mode UI. The dashboard features high-tech neon red and white line charts, heatmaps over a city map, and various numerical data points representing reach and engagement metrics. The style is futuristic and professional, using glassmorphism effects and clean Montserrat typography to present complex data clearly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Y827Y1pbpharSjUhKSBIrpaQ8esbD-8zFovi3OTqEIkm4gQZZ3b7NMFf5LVT1IFGW3B5ys-qKId73gEq5XSSQUQHsLpIDb2G-_iR6kDchXVXg7P5bbhr9Qz3NmRiSboSLSVxESc9_vzJrrnXb1phWnYfJypzGzJ6qgk1z2WYKdCT5j2-OwTr3WB9yyepTV7rtPNH0cAGBz3YRXZVdNP6m2t3llCWBNr-4tm3M5PZH0uLNnZ0sOZQ7MsG5m72r2Zt1qesWF-gfMg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+<div class="absolute bottom-10 left-10 right-10">
+<div class="flex justify-between items-end">
+<div class="bg-primary px-4 py-2 rounded text-on-primary font-data-mono text-sm">LIVE REPORTING</div>
+</div>
+</div>
+</div>
+<!-- Background decor -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-border-glass mt-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 w-full max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="text-headline-lg font-headline-lg font-black text-on-surface">MEDIA108</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision DOOH Media Solutions for the Modern Era.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Navigation</h5>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Support</h5>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Support</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Global Network</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Follow Us</h5>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary">public</span>
+</div>
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-border-glass text-center">
+<p class="font-label-md text-label-md text-on-surface-variant opacity-60">© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for technical cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

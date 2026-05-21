@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>บริการของเรา | Media108</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#181c1e",
+                        "secondary-fixed-dim": "#bfc5e4",
+                        "surface": "#061133",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "on-surface-variant": "#e4bebc",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "background": "#061133",
+                        "on-secondary-container": "#b1b7d6",
+                        "primary": "#ffb3b1",
+                        "tertiary": "#c3c7ca",
+                        "surface-tint": "#ffb3b1",
+                        "outline-variant": "#5b403f",
+                        "surface-bright": "#2e375b",
+                        "on-primary-container": "#5b000e",
+                        "tertiary-fixed-dim": "#c3c7ca",
+                        "on-tertiary-container": "#262a2d",
+                        "surface-container-lowest": "#020b2e",
+                        "inverse-primary": "#bb152c",
+                        "surface-container-highest": "#293356",
+                        "primary-container": "#ff535b",
+                        "on-primary-fixed": "#410007",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#141a32",
+                        "on-secondary-fixed-variant": "#3f465f",
+                        "secondary": "#bfc5e4",
+                        "secondary-fixed": "#dce1ff",
+                        "glow-red": "rgba(230, 57, 70, 0.3)",
+                        "surface-container-low": "#0f193b",
+                        "secondary-container": "#424862",
+                        "on-secondary": "#292f48",
+                        "on-background": "#dce1ff",
+                        "on-tertiary": "#2d3133",
+                        "surface-container": "#141d3f",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#ffdad8",
+                        "on-primary-fixed-variant": "#92001c",
+                        "on-primary": "#680011",
+                        "inverse-on-surface": "#252f51",
+                        "inverse-surface": "#dce1ff",
+                        "outline": "#ab8987",
+                        "tertiary-container": "#8d9194",
+                        "surface-glass": "rgba(255, 255, 255, 0.04)",
+                        "surface-container-high": "#1e284a",
+                        "surface-dim": "#061133",
+                        "border-glass": "rgba(255, 255, 255, 0.12)",
+                        "on-surface": "#dce1ff",
+                        "tertiary-fixed": "#e0e3e6",
+                        "surface-variant": "#293356"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "container-max": "1440px",
+                        "base": "8px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "data-mono": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "data-mono": ["16px", {"lineHeight": "1.0", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #061133; color: #dce1ff; overflow-x: hidden; }
+        .glass-card { background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .btn-primary-glow { background-color: #E63946; color: white; transition: all 0.3s ease; box-shadow: 0 0 0px rgba(230, 57, 70, 0); }
+        .btn-primary-glow:hover { box-shadow: 0 0 20px rgba(230, 57, 70, 0.5); transform: translateY(-1px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .service-hover-img { transition: transform 0.7s cubic-bezier(0.33, 1, 0.68, 1); }
+        .service-card:hover .service-hover-img { transform: scale(1.05); }
+        .service-card:hover { border-color: rgba(230, 57, 70, 0.3); }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-md border-b border-border-glass shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="hidden md:flex items-center space-x-8 w-1/3">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">About</a>
+</div>
+<div class="flex justify-center w-1/3">
+<div class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter">Media108</div>
+</div>
+<div class="flex items-center justify-end space-x-8 w-1/3">
+<a class="hidden md:block font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" href="#">Media Network</a>
+<a class="hidden md:block font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Services</a>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-2.5 rounded-lg active:scale-95 transition-transform font-bold">Get Quote</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10"></div>
+<img class="w-full h-full object-cover grayscale opacity-40" data-alt="Futuristic media production studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxPMO48JJWcqQJz0me9oV6FxNAayF4EIcbAh7TapQiE4d0j-lUPRqLrls0eEtTBrVdQ7o-q0kcRWxUiy1kCg1c6wyxDjoiZUXXyLYHtbwloDPrcgJ-1Tzn6of2UsCDcg9zvjqsudQMdMArn207g7cRDsvydPdCY9vpK4qGzp6VOkFZdbs6LvbBaTrBCI3ZkaN1qDgVfhU7DWbYoHGTjtnC9t5GzTFDZ3JBG62Y3E4rmQIOq6_rZYXVU88T7deuK3jTrtIpN8tQWY"/>
+</div>
+<div class="relative z-20 max-w-4xl">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Our Services</span>
+<h1 class="font-display-lg text-display-lg mb-6 leading-tight">นำเสนอบริการเป็นมากกว่า<br/>"ขายพื้นที่โฆษณา"</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10">
+                Media108 ยกระดับแบรนด์ของคุณด้วยโซลูชันสื่อดิจิทัลนอกบ้านแบบครบวงจร ตั้งแต่การวางกลยุทธ์ การออกแบบ ไปจนถึงการผลิตเนื้อหาคุณภาพสูงระดับ Cinematic
+            </p>
+<div class="flex flex-wrap gap-4">
+<a class="btn-primary-glow px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold" href="#packages">ดูแพ็กเกจแนะนำ</a>
+<a class="px-8 py-4 rounded-lg font-label-md text-label-md border border-white/20 hover:bg-white/10 transition-all uppercase tracking-wider" href="#services">บริการทั้งหมด</a>
+</div>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto" id="services">
+<div class="mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4">บริการระดับมืออาชีพ</h2>
+<div class="h-1 w-24 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- 1. LED Billboard Advertising -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">shelves</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">LED Billboard Advertising</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ</p>
+</div>
+<!-- 2. Digital Out-of-Home Campaign -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">ads_click</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Digital Out-of-Home Campaign</h3>
+<p class="font-body-md text-on-surface-variant mb-6">วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง</p>
+</div>
+<!-- 3. Ad Creative Design -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">palette</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Ad Creative Design</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา</p>
+</div>
+<!-- 4. Motion Graphic -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">animation</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Motion Graphic</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น</p>
+</div>
+<!-- 5. Video Production -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">movie</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Video Production</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ</p>
+</div>
+<!-- 6. Drone Production -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">flight</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Drone Production</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ</p>
+</div>
+<!-- 7. Photography -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">photo_camera</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Photography</h3>
+<p class="font-body-md text-on-surface-variant mb-6">บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี</p>
+</div>
+<!-- 8. Social Media Content -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">share</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Social Media Content</h3>
+<p class="font-body-md text-on-surface-variant mb-6">ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร</p>
+</div>
+<!-- 9. Campaign Strategy -->
+<div class="service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">strategy</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-white">Campaign Strategy</h3>
+<p class="font-body-md text-on-surface-variant mb-6">วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก</p>
+</div>
+</div>
+</section>
+<!-- Packages Section -->
+<section class="py-24 bg-surface-container-low border-y border-white/5" id="packages">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4">Packages ที่ควรนำเสนอ</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">แพ็กเกจที่ออกแบบมาเพื่อตอบโจทย์ธุรกิจทุกขนาดและทุกอุตสาหกรรม</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- SME Starter -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full border-t-4 border-t-secondary/30">
+<h3 class="font-headline-md text-headline-md mb-4 text-white">SME Starter</h3>
+<p class="text-primary-fixed-dim font-bold mb-6">เหมาะสำหรับ:</p>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">store</span>
+<span class="text-body-md text-on-surface-variant">ร้านอาหาร</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">coffee</span>
+<span class="text-body-md text-on-surface-variant">คาเฟ่</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">medical_services</span>
+<span class="text-body-md text-on-surface-variant">คลินิก</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">business</span>
+<span class="text-body-md text-on-surface-variant">ธุรกิจท้องถิ่น</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider">เลือกแพ็กเกจนี้</button>
+</div>
+<!-- Tourism Campaign -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full border-t-4 border-t-primary scale-105 shadow-2xl shadow-primary/10 relative z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary font-label-md text-label-md px-4 py-1 rounded-full">RECOMMENDED</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-white">Tourism Campaign</h3>
+<p class="text-primary font-bold mb-6">เหมาะสำหรับ:</p>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">hotel</span>
+<span class="text-body-md text-on-surface-variant">โรงแรม</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">restaurant</span>
+<span class="text-body-md text-on-surface-variant">ร้านอาหารพัทยา</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">map</span>
+<span class="text-body-md text-on-surface-variant">แหล่งท่องเที่ยว</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg btn-primary-glow font-label-md text-label-md uppercase tracking-wider font-bold">สอบถามข้อมูล</button>
+</div>
+<!-- Real Estate Launch -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full border-t-4 border-t-secondary/30">
+<h3 class="font-headline-md text-headline-md mb-4 text-white">Real Estate Launch</h3>
+<p class="text-primary-fixed-dim font-bold mb-6">เหมาะสำหรับ:</p>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">apartment</span>
+<span class="text-body-md text-on-surface-variant">คอนโด</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">home</span>
+<span class="text-body-md text-on-surface-variant">บ้านจัดสรร</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">construction</span>
+<span class="text-body-md text-on-surface-variant">โครงการใหม่</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider">เลือกแพ็กเกจนี้</button>
+</div>
+<!-- Event Promotion -->
+<div class="glass-card p-8 rounded-xl flex flex-col h-full border-t-4 border-t-secondary/30">
+<h3 class="font-headline-md text-headline-md mb-4 text-white">Event Promotion</h3>
+<p class="text-primary-fixed-dim font-bold mb-6">เหมาะสำหรับ:</p>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">confirmation_number</span>
+<span class="text-body-md text-on-surface-variant">Concert</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">celebration</span>
+<span class="text-body-md text-on-surface-variant">Festival</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-primary mr-3 text-[20px]">sports_soccer</span>
+<span class="text-body-md text-on-surface-variant">Sport Event</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider">เลือกแพ็กเกจนี้</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Strategic CTA -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-xl text-headline-xl mb-6">ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                เราไม่ได้แค่ขายพื้นที่ แต่เราช่วยคุณวางแผนเพื่อให้ทุกวินาทีบนหน้าจอมีความหมายและคุ้มค่ากับการลงทุนมากที่สุด
+            </p>
+<button class="btn-primary-glow px-12 py-5 rounded-lg font-headline-md text-headline-md hover:bg-on-primary/90 transition-all active:scale-95">เริ่มต้นโครงการของคุณ</button>
+</div>
+</section>
+</main>
+<footer class="bg-surface-container-lowest border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md font-bold text-on-surface mb-6">Media108</div>
+<p class="text-on-surface-variant font-body-md text-sm mb-6 leading-relaxed">
+                ยกระดับแบรนด์ผ่านสื่อดิจิทัลนอกบ้านที่มีความแม่นยำสูงและการผลิตที่เปี่ยมคุณภาพ
+            </p>
+<div class="flex space-x-4">
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<div class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[20px]">podcasts</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Network</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Network Map</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Global Offices</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Case Studies</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-widest">Contact</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">Contact Sales</a></li>
+<li class="text-on-surface-variant text-sm">Global HQ: London, UK</li>
+<li class="text-on-surface-variant text-sm">+44 (0) 20 108 108</li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">
+        © 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.
+    </div>
+</footer>
+<script>
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('py-2');
+            nav.classList.remove('py-4');
+        } else {
+            nav.classList.add('py-4');
+            nav.classList.remove('py-2');
+        }
+    });
+
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 50;
+            const rotateY = (centerX - x) / 50;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+            card.style.transition = 'transform 0.5s ease';
+        });
+        
+        card.addEventListener('mouseenter', () => {
+            card.style.transition = 'none';
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,486 @@
+export interface NearbyLandmark {
+  icon: string;
+  name: string;
+  distance: string;
+}
+
+export interface RelatedBillboard {
+  slug: string;
+  title: string;
+  subtitle: string;
+  status: "Available" | "High Demand" | "Sold Out";
+  img: string;
+}
+
+export interface PricingTier {
+  label: string;
+  name: string;
+  price: string;
+  unit: string;
+  features: string[];
+  highlight?: boolean;
+  ctaLabel: string;
+}
+
+export interface BillboardData {
+  slug: string;
+  tag: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  price: string;
+  status: "Available" | "High Demand" | "Sold Out";
+
+  // Visual preview
+  imgHero?: string;
+  imgDay: string;
+  imgNight: string;
+  imgDrone?: string;
+
+  // Strategic section description
+  strategicDescription?: string;
+
+  // Specs
+  specs: { label: string; value: string }[];
+
+  // Stories
+  locationStory: string;
+  audienceStory: string;
+  trafficStory: string;
+  businessFit: string;
+
+  // Analytics — Traffic
+  carsPerDay: string;
+  motorcyclesPerDay: string;
+  peakHours: string;
+
+  // Analytics — Visibility
+  visibilityBar: number; // 0-100
+  viewingDistance: string;
+  avgSpeed: string;
+  viewingDuration: string;
+
+  // Analytics — Audience
+  ageRange: string;
+  audienceBreakdown: { label: string; pct: number; color: string }[];
+
+  // Map
+  mapImg: string;
+  nearby: NearbyLandmark[];
+
+  // Pricing tiers (optional — overrides single price display)
+  pricingTiers?: PricingTier[];
+
+  // Recent campaigns that have run on this billboard
+  recentCampaigns?: { name: string; category: string }[];
+
+  // Related
+  related: RelatedBillboard[];
+}
+
+export const billboards: Record<string, BillboardData> = {
+  "pattaya-sukhumvit-01": {
+    slug: "pattaya-sukhumvit-01",
+    tag: "Flagship Location",
+    title: "Pattaya Sukhumvit 01",
+    subtitle: "Sukhumvit Road, Pattaya",
+    description:
+      "The ultimate digital gateway to Thailand's Eastern Economic Corridor. Dominating the main artery connecting Bangkok to the heart of Pattaya.",
+    price: "฿45,000",
+    status: "Available",
+
+    imgHero:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBTwa7gDfWYJytqmTFjH6sP_jbSOE4tV2yKitlH-2-CEIU8MxH1Ki8_oBjNsn2OXlA5Y0qxfo1KdvN0MANbQXr9ewBbeChxbZoJ6zTXjqa4jNnL4ZA6WvzWroUk1uZva_9Dj1wk25_ff3u7NaXanxdk34KUan-JKK3maACuGQoDmruQ3T4md2yDiuZ0y7cXYnF5e7oe7LtLTec9uhd88dwj8Cyr70ON5kjfiZ7EPKifOZ-tKJ4h994HkXPs-Xy91HKUC_mQGWDxcXM",
+    imgDay:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDTlRT330mJrQT89A_oN4vHKGWmNQPrA_WN9nKLbyL32o5DQMkImM9Z98oYzDXU7g4B2irDZAUeDG50EKhemAh_lJo3xSGNrH3NgGUjnQHHwmTWLpUw715-qcNjBPn1z4KpLyqqBpyXF0u_Cwmr34rbNg6MMSuLU2zhLsmPw-_ERRcxZz-G4LZrqD6tTq046HZrBwNn5OBWDQCII-M8eVqD6qcaAQiBLMcU3ft3zOVJSRsVjCa91HiXfVubvCfOJdytvbVjCVNSaYY",
+    imgNight:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAO_47r1OHJ4IcyY5WcQIs0U83p4GctxpwbcVdzDb_LJvVHLxo9DjW93d9xg9P5I485B5Lmxcc1Zbo0-8n46SMeGdOUpD-g8ZOPwhnfafrtvjv9phc1wTxnKEOVGlBaTPdS5o7-jIl3uyrKWNmrGJcnXiZ8F0uznZHiayyPmeNUPxLEEBtYc230BMsPg",
+    imgDrone:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCIhXSeh6jDS0sYDbwh1y2wfmdaDEDByNgNsRktWsCxUT_ep6DcEVumgPDh6cJekizSPK_ZZ8UNh0WC_W8KMmiwPZlgS5miocxjCZ9u9tgPcR--X5Qy8sRtCtdghXSrS_LqsjZJS-HgluOvshm1h3liLw1-ACnJRx1KDQIXBYaA18R_PFQHIicTTsfaweyBdWidyv-f0Wg-TtW0p5rs11K0Jw1AYrN6Rx-9LKW6hYYS7uqmachW3cjSornZkiVXq8sr99pB00_lZyA",
+
+    specs: [
+      { label: "Dimensions", value: "20m × 12m" },
+      { label: "Resolution", value: "3840 × 2160 (4K)" },
+      { label: "Pixel Pitch", value: "P6.0 SMD" },
+      { label: "Media Format", value: "MP4 / H.264" },
+      { label: "Loop Length", value: "15 Seconds" },
+      { label: "Total Spots", value: "10 Shared" },
+      { label: "Operating Hours", value: "06:00 – 24:00" },
+      { label: "Smart Sync", value: "Weather-Triggered" },
+    ],
+
+    strategicDescription:
+      "Located at the \"North Corner\" of Sukhumvit Road, this asset intercepts 100% of traffic entering Pattaya from Bangkok and Chonburi. It is the first and last thing commuters see.",
+
+    locationStory:
+      "This isn't just a screen; it's a waypoint. Strategically placed at the convergence of industrial growth and luxury tourism, Sukhumvit 01 marks the entry to Thailand's most vibrant coastal city.",
+    audienceStory:
+      "Reach the deciders. From luxury condo owners in Wongamat to corporate executives traveling from Laem Chabang port, your brand speaks to those who drive the economy.",
+    trafficStory:
+      "Congestion is your friend. With average speeds dropping significantly at this intersection during peak hours, your creative has the luxury of time to leave a lasting impression.",
+    businessFit:
+      "Ideal for luxury automotive, real estate developers, premium beverages, and financial services looking to establish a dominant presence in the Eastern corridor.",
+
+    carsPerDay: "142,000+",
+    motorcyclesPerDay: "48,000+",
+    peakHours: "16:00 – 19:00",
+
+    visibilityBar: 82,
+    viewingDistance: "400m+",
+    avgSpeed: "12 km/h",
+    viewingDuration: "48s",
+
+    ageRange: "28 – 55",
+    audienceBreakdown: [
+      { label: "Locals", pct: 45, color: "bg-white" },
+      { label: "Tourist", pct: 35, color: "bg-primary-container" },
+      { label: "Commuter", pct: 20, color: "bg-primary" },
+    ],
+
+    mapImg:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBapfgbuOtC_CstCSfO3_BpYi6slDrNiIwuAEPfNlbccumJQq_lWhYcjmQKbwHJFvtfM6jwuKsQgxNbyhsMUDkLyNOQjoGF3MIrROU4hVEW1xY9gild_mfnsYQH8VZuicn2_iYZlpSSTAGRiTTHI1pmNA9xqOrt5VqwVYRlP2IgEKz_VkokJT67Xxeau9q1enlPW2hBBEt2KkMVPgZowWIuNal6CR9VaqXmvbdf9oPThI9uElvLHPK501KSuqhS3EtSqo3u_N-jH3k",
+    nearby: [
+      { icon: "shopping_cart", name: "Terminal 21 Pattaya", distance: "800m" },
+      { icon: "school", name: "Maryvit School", distance: "1.2 km" },
+      { icon: "local_hospital", name: "Bangkok Hospital Pattaya", distance: "2.1 km" },
+      { icon: "apartment", name: "Wongamat Residential Hub", distance: "3.5 km" },
+    ],
+
+    pricingTiers: [
+      {
+        label: "Short Term",
+        name: "Launch Pad",
+        price: "฿45,000",
+        unit: "/week",
+        features: ["15s Spotlight", "180 spots/day", "Standard Reporting"],
+        ctaLabel: "Choose Plan",
+      },
+      {
+        label: "Monthly Dominance",
+        name: "Market Leader",
+        price: "฿160,000",
+        unit: "/mo",
+        features: ["15s Spotlight", "240 spots/day", "Pro Traffic Analytics", "Dynamic Creative Feed"],
+        highlight: true,
+        ctaLabel: "Activate Now",
+      },
+      {
+        label: "Custom Enterprise",
+        name: "Total Takeover",
+        price: "POA",
+        unit: "",
+        features: ["Exclusive 1:1 rotation", "Full-screen takeover", "Real-time sensor triggers"],
+        ctaLabel: "Contact Sales",
+      },
+    ],
+
+    recentCampaigns: [
+      { name: "Love Pier Beach Cafe",      category: "ร้านอาหาร & คาเฟ่" },
+      { name: "ข้าวมันไก่ Love Pier",       category: "ร้านอาหาร" },
+      { name: "Camera Cafe",               category: "คาเฟ่" },
+      { name: "Camera Hotel",              category: "โรงแรม" },
+      { name: "Portal Cafe",               category: "คาเฟ่" },
+      { name: "Pool-Villa.com",            category: "พักผ่อน & รีสอร์ท" },
+      { name: "Pattaya.com",               category: "ท่องเที่ยว" },
+      { name: "Concert Hall",              category: "กิจกรรม & บันเทิง" },
+      { name: "Wedding Hall",              category: "สถานที่จัดงาน" },
+      { name: "โรงแรมแหม่ม",               category: "โรงแรม" },
+      { name: "Three Bed Room",            category: "อสังหาริมทรัพย์" },
+    ],
+
+    related: [
+      {
+        slug: "pattaya-gateway",
+        title: "Pattaya Gateway",
+        subtitle: "Main Intersection · 18m × 9m",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+      },
+      {
+        slug: "eec-tech-square",
+        title: "EEC Tech Square",
+        subtitle: "Sri Racha Industrial · 20m × 10m",
+        status: "High Demand",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+      },
+      {
+        slug: "jomtien-coastal",
+        title: "Jomtien Coastal",
+        subtitle: "Beachfront Drive · 16m × 8m",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+      },
+    ],
+  },
+
+  "pattaya-gateway": {
+    slug: "pattaya-gateway",
+    tag: "Pattaya Central",
+    title: "Pattaya Gateway",
+    subtitle: "Main Intersection",
+    description:
+      "ป้าย LED ขนาดใหญ่บนเส้นทางหลักพัทยา ทราฟฟิกสูงตลอด 24 ชั่วโมง เชื่อมต่อทุกย่านสำคัญของพัทยาในจุดเดียว",
+    price: "ขอใบเสนอราคา",
+    status: "Available",
+
+    imgDay:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+    imgNight:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBrJbSyJH1tw6taoXRIVV3t7M97xpGB_26IoGB7-YspN575yM-U-VSZ57bRB2ut_cLJKrC5uOpW3veixJ9oGkWMLVe4BCP09DsKGXpIWkfhi0C0p8LoFT6iXfIP_Yg6kiAW7Gu0q2eCLn0htcQf2BGWu5cjWgi3RJ86975CNYqIhuN9np9eBzYQEVzXenohBGbrYWCybj27Xm_PSStBhQW2oQT20_TfTrvdrgpRfaV7kwCk1PadKnHsQBZfQ2HewLxawH0kBj2CqIQ",
+
+    specs: [
+      { label: "Screen Size", value: "18m x 9m" },
+      { label: "Resolution", value: "2880 x 1440 px" },
+      { label: "Pixel Pitch", value: "P8 RGB LED" },
+      { label: "Brightness", value: "7,000 Nits" },
+      { label: "Audio Support", value: "Not Available" },
+    ],
+
+    locationStory: "แยกสำคัญกลางเมืองพัทยา เชื่อมต่อถนนสุขุมวิทและถนนพัทยากลาง ผู้ขับขี่ทุกคนต้องผ่านจุดนี้",
+    audienceStory: "กลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ รวมถึงชาวพัทยาที่ใช้ชีวิตประจำวัน",
+    trafficStory: "จุดที่มีรถหนาแน่นสูงสุดในพัทยา รถติดสัญญาณไฟช่วยเพิ่ม Dwell Time การมองเห็น",
+    businessFit: "เหมาะกับแบรนด์ FMCG โรงแรม ร้านอาหาร และธุรกิจบันเทิงในย่านพัทยา",
+
+    carsPerDay: "1,200,000",
+    motorcyclesPerDay: "420,000",
+    peakHours: "17:00 – 21:00 PM",
+
+    visibilityBar: 90,
+    viewingDistance: "700m",
+    avgSpeed: "30 km/h",
+    viewingDuration: "15s",
+
+    ageRange: "20 – 50",
+    audienceBreakdown: [
+      { label: "Tourist", pct: 50, color: "bg-primary-container" },
+      { label: "Local", pct: 35, color: "bg-white" },
+      { label: "Transit", pct: 15, color: "bg-primary" },
+    ],
+
+    mapImg:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+    nearby: [
+      { icon: "local_mall", name: "Mike Shopping Mall", distance: "0.8 km from location" },
+      { icon: "beach_access", name: "Pattaya Beach", distance: "1.2 km from location" },
+      { icon: "hotel", name: "Hilton Pattaya", distance: "1.5 km from location" },
+    ],
+
+    recentCampaigns: [
+      { name: "ตลาดบุญเครือ",                    category: "ตลาด & ชุมชน" },
+      { name: "ร้านอาหารอร่อยๆในตลาดบุญเครือ",   category: "ร้านอาหาร" },
+      { name: "U Cafe",                          category: "คาเฟ่" },
+      { name: "ร้านหมูแดงกิ๊ว",                  category: "ร้านอาหาร" },
+      { name: "Draco",                           category: "บันเทิง & ไลฟ์สไตล์" },
+      { name: "กิจกรรมแข่งหมากรุก",               category: "กิจกรรม" },
+      { name: "กิจกรรมแข่งเปียโน & กีตาร์",       category: "กิจกรรม & ดนตรี" },
+      { name: "Corporate Hall",                  category: "สถานที่จัดงาน" },
+      { name: "รับจำนอง-ขายฝาก",                 category: "การเงิน & อสังหา" },
+      { name: "โฆษณาให้นายหน้ารวมตัว",            category: "อสังหาริมทรัพย์" },
+    ],
+
+    related: [
+      {
+        slug: "pattaya-sukhumvit-01",
+        title: "Pattaya Sukhumvit 01",
+        subtitle: "Main Pattaya Route",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+      },
+      {
+        slug: "eec-tech-square",
+        title: "EEC Tech Square",
+        subtitle: "Sri Racha Industrial, Chonburi",
+        status: "High Demand",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+      },
+      {
+        slug: "jomtien-coastal",
+        title: "Jomtien Coastal",
+        subtitle: "Beachfront Drive, Pattaya",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+      },
+    ],
+  },
+
+  "eec-tech-square": {
+    slug: "eec-tech-square",
+    tag: "Sri Racha Industrial",
+    title: "EEC Tech Square",
+    subtitle: "Sri Racha Industrial Zone",
+    description:
+      "เข้าถึงกลุ่มมืออาชีพและพนักงานในนิคมอุตสาหกรรมศรีราชา หัวใจของ Eastern Economic Corridor ที่กำลังเติบโตอย่างรวดเร็ว",
+    price: "฿55,000",
+    status: "High Demand",
+
+    imgDay:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+    imgNight:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+
+    specs: [
+      { label: "Screen Size", value: "20m x 10m" },
+      { label: "Resolution", value: "3200 x 1600 px" },
+      { label: "Pixel Pitch", value: "P10 RGB LED" },
+      { label: "Brightness", value: "9,000 Nits" },
+      { label: "Audio Support", value: "Available" },
+    ],
+
+    locationStory: "ติดถนนสุขุมวิทในนิคมอุตสาหกรรมศรีราชา จุดยุทธศาสตร์ที่ขาเข้า-ออกของ EEC มีผู้สัญจรผ่านตลอดทั้งวัน",
+    audienceStory: "วิศวกร นักธุรกิจ และพนักงานระดับสูงในโรงงานและบริษัทข้ามชาติ กลุ่มที่มีอำนาจซื้อสูง",
+    trafficStory: "ชั่วโมงเร่งด่วนช่วงเช้าและเย็น กลุ่มพนักงานออฟฟิศและโรงงานใช้เส้นทางนี้ทุกวัน",
+    businessFit: "เหมาะกับยานยนต์ EV, สินค้าอุตสาหกรรม, อุปกรณ์ IT, และแบรนด์ระดับพรีเมียมที่ต้องการกลุ่ม B2B",
+
+    carsPerDay: "850,000",
+    motorcyclesPerDay: "280,000",
+    peakHours: "06:30 – 08:30 AM",
+
+    visibilityBar: 92,
+    viewingDistance: "1,000m",
+    avgSpeed: "50 km/h",
+    viewingDuration: "10s",
+
+    ageRange: "25 – 50",
+    audienceBreakdown: [
+      { label: "Worker", pct: 55, color: "bg-white" },
+      { label: "Business", pct: 30, color: "bg-primary-container" },
+      { label: "Transit", pct: 15, color: "bg-primary" },
+    ],
+
+    mapImg:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+    nearby: [
+      { icon: "factory", name: "Amata City Rayong", distance: "5.2 km from location" },
+      { icon: "local_hospital", name: "Bangkok Hospital Sriracha", distance: "3.0 km from location" },
+      { icon: "directions_boat", name: "Sriracha Ferry Port", distance: "4.1 km from location" },
+    ],
+
+    recentCampaigns: [
+      { name: "รับสมัครพนักงาน SCC",   category: "HR & Corporate" },
+      { name: "โฆษณา SCC เพื่อสังคม",  category: "CSR & องค์กร" },
+      { name: "Printing 108",          category: "สิ่งพิมพ์ & บริการ" },
+      { name: "รับสมัครพนักงาน Dev",   category: "IT & เทคโนโลยี" },
+      { name: "รับพัฒนาโปรแกรม",       category: "IT & Software" },
+      { name: "Chonburi108.com",       category: "สื่อออนไลน์" },
+      { name: "Ai News",               category: "สื่อ & ข่าวสาร" },
+      { name: "Media 108",             category: "สื่อ & โฆษณา" },
+      { name: "อพาร์ทเมนท์ 3,500฿",    category: "อสังหาริมทรัพย์" },
+    ],
+
+    related: [
+      {
+        slug: "pattaya-sukhumvit-01",
+        title: "Pattaya Sukhumvit 01",
+        subtitle: "Main Pattaya Route",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+      },
+      {
+        slug: "pattaya-gateway",
+        title: "Pattaya Gateway",
+        subtitle: "Main Intersection, Chonburi",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+      },
+      {
+        slug: "jomtien-coastal",
+        title: "Jomtien Coastal",
+        subtitle: "Beachfront Drive, Pattaya",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+      },
+    ],
+  },
+
+  "jomtien-coastal": {
+    slug: "jomtien-coastal",
+    tag: "Beachfront Premium",
+    title: "Jomtien Coastal",
+    subtitle: "Beachfront Drive, Pattaya",
+    description:
+      "พื้นที่สื่อพรีเมียมริมหาดจอมเทียน สัมผัสบรรยากาศรีสอร์ทในทำเลที่มีนักท่องเที่ยวระดับบนและครอบครัวหนาแน่น",
+    price: "฿38,000",
+    status: "Available",
+
+    imgDay:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+    imgNight:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+
+    specs: [
+      { label: "Screen Size", value: "16m x 8m" },
+      { label: "Resolution", value: "2560 x 1280 px" },
+      { label: "Pixel Pitch", value: "P8 RGB LED" },
+      { label: "Brightness", value: "7,500 Nits" },
+      { label: "Audio Support", value: "Not Available" },
+    ],
+
+    locationStory: "ริมถนนจอมเทียน-นาจอมเทียน ทำเลหน้าโรงแรมระดับ 4-5 ดาว มีนักท่องเที่ยวเดินชายหาดตลอดวัน",
+    audienceStory: "นักท่องเที่ยวครอบครัวชาวไทยและต่างชาติ กลุ่มที่มีกำลังซื้อสูงและพักในย่านรีสอร์ทหรู",
+    trafficStory: "ช่วงเย็นและวันหยุดมีผู้คนหนาแน่นสูงสุด เหมาะกับแคมเปญ Lifestyle และ Hospitality",
+    businessFit: "เหมาะกับธุรกิจท่องเที่ยว สปา รีสอร์ท ร้านอาหาร และสินค้าแฟชั่น",
+
+    carsPerDay: "320,000",
+    motorcyclesPerDay: "180,000",
+    peakHours: "16:00 – 20:00 PM",
+
+    visibilityBar: 78,
+    viewingDistance: "600m",
+    avgSpeed: "35 km/h",
+    viewingDuration: "14s",
+
+    ageRange: "28 – 55",
+    audienceBreakdown: [
+      { label: "Tourist", pct: 60, color: "bg-primary-container" },
+      { label: "Local", pct: 25, color: "bg-white" },
+      { label: "Expat", pct: 15, color: "bg-primary" },
+    ],
+
+    mapImg:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+    nearby: [
+      { icon: "beach_access", name: "Jomtien Beach", distance: "0.2 km from location" },
+      { icon: "hotel", name: "Jomtien Palm Beach Hotel", distance: "0.5 km from location" },
+      { icon: "local_dining", name: "Jomtien Night Market", distance: "1.0 km from location" },
+    ],
+
+    recentCampaigns: [
+      { name: "เครื่องเล่น Flow Rider",   category: "สวนน้ำ & กีฬา" },
+      { name: "รีสอร์ทเกาะสีชัง",          category: "ท่องเที่ยว & รีสอร์ท" },
+      { name: "ร้านกาแฟเกาะสีชัง",         category: "คาเฟ่" },
+      { name: "ไหว้พระเกาะสีชัง",           category: "ท่องเที่ยว & ศาสนา" },
+      { name: "วัด & สถานปฏิบัติธรรม",      category: "ศาสนา & สุขภาพจิต" },
+    ],
+
+    related: [
+      {
+        slug: "pattaya-sukhumvit-01",
+        title: "Pattaya Sukhumvit 01",
+        subtitle: "Main Pattaya Route",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+      },
+      {
+        slug: "pattaya-gateway",
+        title: "Pattaya Gateway",
+        subtitle: "Main Intersection, Chonburi",
+        status: "Available",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+      },
+      {
+        slug: "eec-tech-square",
+        title: "EEC Tech Square",
+        subtitle: "Sri Racha Industrial, Chonburi",
+        status: "High Demand",
+        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+      },
+    ],
+  },
+};
+
+// Helper: map services page IDs to billboard slugs
+export const serviceIdToSlug: Record<string, string> = {
+  "PT-CENTRAL-01": "pattaya-sukhumvit-01",
+  "BS-UNI-05": "pattaya-gateway",
+  "SR-MAIN-02": "eec-tech-square",
+};
