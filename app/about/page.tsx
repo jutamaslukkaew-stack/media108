@@ -21,7 +21,7 @@ const leaders = [
   {
     name: "Anan Wongsuwan",
     title: "Head of Tech & Innovation",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face",
+    img: "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=800&h=1000&fit=crop&crop=face",
   },
 ];
 
@@ -305,10 +305,33 @@ export default function AboutPage() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt={leader.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    style={{
+                      filter: "grayscale(1) brightness(0.72) contrast(1.25)",
+                      transition: "filter 700ms ease, transform 700ms ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.filter =
+                        "grayscale(0) brightness(0.85) contrast(1.1)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.filter =
+                        "grayscale(1) brightness(0.72) contrast(1.25)";
+                    }}
                     src={leader.img}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                  {/* Dark vignette — normalizes bright backgrounds */}
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse at center, transparent 30%, rgba(6,17,51,0.55) 100%), " +
+                        "linear-gradient(to top, rgba(6,17,51,0.95) 0%, rgba(6,17,51,0.2) 50%, rgba(6,17,51,0.4) 100%)",
+                    }}
+                  />
+                  {/* Subtle primary color tint on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: "linear-gradient(135deg, rgba(230,57,70,0.12) 0%, transparent 60%)" }}
+                  />
                 </div>
                 <h3 className="font-headline-md text-headline-md text-white mb-1">{leader.name}</h3>
                 <p className="font-label-md text-label-md text-primary uppercase tracking-wider">

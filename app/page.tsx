@@ -919,12 +919,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 4b. Trusted By — Logo Grid ── */}
-      <section className="bg-surface-container-lowest py-20 border-t border-border-glass">
-        <div className="max-w-container-max mx-auto px-margin-desktop">
+      {/* ── 4b. Trusted By — Marquee Rows ── */}
+      <section className="bg-surface-container-lowest py-20 border-t border-border-glass overflow-hidden">
 
-          {/* Header */}
-          <div className="sr sr-up text-center mb-12">
+        {/* Header — contained */}
+        <div className="max-w-container-max mx-auto px-margin-desktop">
+          <div className="sr sr-up text-center mb-10">
             <div className="flex items-center justify-center gap-3 mb-3">
               <span className="w-8 h-[1px] bg-primary/40" />
               <span className="text-primary font-label-md text-[11px] tracking-[0.25em] uppercase">Trusted By</span>
@@ -932,34 +932,62 @@ export default function Home() {
             </div>
             <p className="text-on-surface-variant font-body-md text-sm">แบรนด์และธุรกิจที่เลือกใช้ Media108 จริง</p>
           </div>
+        </div>
 
-          {/* Logo grid */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 gap-3 md:gap-4">
-            {trustedClients.map((client, i) => (
-              <div
-                key={i}
-                className={`sr sr-scale sr-d${(i % 6) + 1} flex flex-col items-center gap-2 px-2 py-4 rounded-2xl border border-border-glass bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 hover:-translate-y-1 cursor-default group`}
-                style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
-              >
-                {/* Initial circle */}
+        {/* 3 marquee rows — alternating direction, full-bleed */}
+        <div className="flex flex-col gap-3">
+          {(
+            [
+              { slice: [0,  12] as [number,number], dir: "normal",  dur: "44s" },
+              { slice: [12, 24] as [number,number], dir: "reverse", dur: "38s" },
+              { slice: [24, 35] as [number,number], dir: "normal",  dur: "52s" },
+            ]
+          ).map((row, ri) => {
+            const items = trustedClients.slice(...row.slice);
+            return (
+              <div key={ri} className="relative overflow-hidden group/row">
+                {/* Edge fades — blend into background */}
+                <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
+                  style={{ background: "linear-gradient(to right, #020b2e 30%, transparent)" }} />
+                <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
+                  style={{ background: "linear-gradient(to left, #020b2e 30%, transparent)" }} />
+
+                {/* Scrolling track — pause whole row on hover */}
                 <div
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: client.bg, border: `1px solid ${client.color}40` }}
+                  className="flex gap-3 group-hover/row:[animation-play-state:paused]"
+                  style={{
+                    width: "max-content",
+                    animation: `ticker-scroll ${row.dur} linear infinite`,
+                    animationDirection: row.dir,
+                  }}
                 >
-                  <span
-                    className="font-black text-[11px] md:text-[13px] leading-none tracking-tight"
-                    style={{ color: client.color }}
-                  >
-                    {client.initials}
-                  </span>
+                  {/* Duplicate for seamless loop */}
+                  {[...items, ...items].map((client, ci) => (
+                    <div
+                      key={`${ri}-${ci}`}
+                      className="flex-shrink-0 w-[112px] flex flex-col items-center gap-2 px-3 py-4 rounded-2xl border border-border-glass bg-white/[0.02] hover:bg-white/[0.06] hover:-translate-y-1.5 hover:border-white/25 cursor-default group/card"
+                      style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
+                    >
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover/card:scale-110 transition-transform duration-200"
+                        style={{ background: client.bg, border: `1px solid ${client.color}40` }}
+                      >
+                        <span
+                          className="font-black text-[12px] leading-none tracking-tight"
+                          style={{ color: client.color }}
+                        >
+                          {client.initials}
+                        </span>
+                      </div>
+                      <span className="text-on-surface-variant group-hover/card:text-on-surface text-[10px] font-medium leading-tight text-center transition-colors duration-200 line-clamp-2 w-full">
+                        {client.name}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-                {/* Name */}
-                <span className="text-on-surface-variant group-hover:text-on-surface text-[10px] md:text-[11px] font-medium leading-tight text-center transition-colors duration-200 line-clamp-2">
-                  {client.name}
-                </span>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
