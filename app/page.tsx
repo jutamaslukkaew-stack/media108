@@ -201,20 +201,30 @@ export default function Home() {
 
   // Global scroll-reveal observer — watches .sr and .expand-bar elements
   useEffect(() => {
-    const els = document.querySelectorAll(".sr, .expand-bar");
+    const reveal = (el: Element) => {
+      el.classList.add("visible");
+      obs.unobserve(el);
+    };
+
     const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) reveal(e.target); }),
+      // ↓ looser: trigger as soon as 2% of element enters viewport, no bottom margin cut
+      { threshold: 0.02, rootMargin: "0px 0px 60px 0px" }
     );
+
+    const els = document.querySelectorAll<Element>(".sr, .expand-bar");
     els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
+
+    // Immediate pass — reveal anything already in the viewport on mount
+    const immediate = setTimeout(() => {
+      document.querySelectorAll<Element>(".sr:not(.visible), .expand-bar:not(.visible)")
+        .forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) reveal(el);
+        });
+    }, 80);
+
+    return () => { obs.disconnect(); clearTimeout(immediate); };
   }, []);
 
   useEffect(() => {
