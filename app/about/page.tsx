@@ -21,7 +21,7 @@ const leaders = [
   {
     name: "Anan Wongsuwan",
     title: "Head of Tech & Innovation",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDcT6VYCIeFy46CYly6mBjuJCBKVEr2JtxGKZymohjnlzGVCx7EsyygkmIgWcHwcRWZYyQubVXGDTj4mHuczIRlMCbqqv3P_1kEjKCzdrE-TSrWAPlAkTBa1Ek8zOBlNb-hDqn6SwYDYxwr_JinFNfdyrfV2ZgCfFoUYllr7UnIU004zsne4p-NHWzVrU3V7g7dZKI5HH1BTZT3XWupPvBNJUUAMj0nSmdZ-847PcYc60uiWAoNKJEZ9rZ7wSPpsIUG_GwlLWB84U",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face",
   },
 ];
 
