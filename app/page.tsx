@@ -920,7 +920,7 @@ export default function Home() {
       </section>
 
       {/* ── 4b. Trusted By — Marquee Rows ── */}
-      <section className="bg-surface-container-lowest py-20 border-t border-border-glass overflow-hidden">
+      <section className="bg-surface-container-lowest py-20 border-t border-border-glass">
 
         {/* Header — contained */}
         <div className="max-w-container-max mx-auto px-margin-desktop">
@@ -945,7 +945,7 @@ export default function Home() {
           ).map((row, ri) => {
             const items = trustedClients.slice(...row.slice);
             return (
-              <div key={ri} className="relative overflow-hidden group/row">
+              <div key={ri} className="relative overflow-hidden group/row" style={{ isolation: "isolate" }}>
                 {/* Edge fades — blend into background */}
                 <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
                   style={{ background: "linear-gradient(to right, #020b2e 30%, transparent)" }} />
