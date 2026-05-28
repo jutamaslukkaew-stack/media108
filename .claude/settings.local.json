@@ -18,7 +18,15 @@
       "Skill(anthropic-skills:ui-animation:*)",
       "Bash(git commit -m 'fix: replace broken Anan Wongsuwan portrait URL with stable Unsplash image *)",
       "Bash(git commit -m 'fix: move overflow-hidden from section to marquee rows *)",
-      "Bash(sed -i 's/className=\"reveal /className=\"sr sr-up /g; s/className=\"reveal glass-card/className=\"sr sr-up glass-card/g; s/className={`reveal /className={`sr sr-up /g; s/className=\"space-y-8 reveal\"/className=\"sr sr-up space-y-8\"/g; s/className=\"flex-1 space-y-8 reveal\"/className=\"sr sr-up flex-1 space-y-8\"/g; s/className=\"flex-1 reveal glass-card/className=\"sr sr-right glass-card/g; s/className=\"reveal space-y-4\"/className=\"sr sr-up space-y-4\"/g; s/className=\"reveal mb-10\"/className=\"sr sr-up mb-10\"/g' /Users/pannaphat/media108/app/billboard/\\\\[slug\\\\]/page.tsx)"
+      "Bash(sed -i 's/className=\"reveal /className=\"sr sr-up /g; s/className=\"reveal glass-card/className=\"sr sr-up glass-card/g; s/className={`reveal /className={`sr sr-up /g; s/className=\"space-y-8 reveal\"/className=\"sr sr-up space-y-8\"/g; s/className=\"flex-1 space-y-8 reveal\"/className=\"sr sr-up flex-1 space-y-8\"/g; s/className=\"flex-1 reveal glass-card/className=\"sr sr-right glass-card/g; s/className=\"reveal space-y-4\"/className=\"sr sr-up space-y-4\"/g; s/className=\"reveal mb-10\"/className=\"sr sr-up mb-10\"/g' /Users/pannaphat/media108/app/billboard/\\\\[slug\\\\]/page.tsx)",
+      "Bash(git commit -m 'fix: update About and Network page footers to match Home style *)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(env)",
+      "Read(//Users/pannaphat/.config/gh/**)",
+      "Read(//Users/pannaphat/.gh/**)",
+      "Bash(git remote *)",
+      "Bash(git credential *)",
+      "Bash(npm run *)"
     ]
   }
 }
