@@ -1254,7 +1254,7 @@ export default function Home() {
                 )}
               </p>
               <div className="space-y-8">
-                <a href="tel:+6638123456" className="flex items-center gap-6 group">
+                <a href="tel:+66625636199" className="flex items-center gap-6 group">
                   <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary border border-border-glass group-hover:bg-primary group-hover:text-on-primary transition-all">
                     <Phone size={28} />
                   </div>
@@ -1262,10 +1262,21 @@ export default function Home() {
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
                       {t("Phone Number", "เบอร์โทรศัพท์")}
                     </p>
-                    <p className="text-xl text-on-surface font-headline-md">+66 (0) 38 123 456</p>
+                    <p className="text-xl text-on-surface font-headline-md">062-563-6199</p>
                   </div>
                 </a>
-                <a href="#" className="flex items-center gap-6 group">
+                <a href="mailto:media.108.company@gmail.com" className="flex items-center gap-6 group">
+                  <div className="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center text-primary border border-border-glass group-hover:bg-primary group-hover:text-on-primary transition-all">
+                    <Mail size={28} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
+                      {t("Email", "อีเมล")}
+                    </p>
+                    <p className="text-xl text-on-surface font-headline-md">media.108.company@gmail.com</p>
+                  </div>
+                </a>
+                <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group">
                   <div className="w-16 h-16 rounded-full bg-[#06C755] flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-all">
                     <MessageCircle size={28} />
                   </div>
@@ -1273,7 +1284,7 @@ export default function Home() {
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
                       {t("Line Official", "LINE Official")}
                     </p>
-                    <p className="text-xl text-on-surface font-headline-md">@media108</p>
+                    <p className="text-xl text-on-surface font-headline-md">@Media108</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-6">

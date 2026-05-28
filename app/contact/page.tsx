@@ -7,7 +7,7 @@ import GlobalCTABar from "../components/GlobalCTABar";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useLanguage } from "../context/LanguageContext";
 import {
-  PhoneCall, Headphones, Briefcase, Globe, Mail,
+  PhoneCall, Briefcase, Globe, Mail,
   MessageCircle, PlusCircle, MapPin, ChevronDown, ArrowRight, CheckCircle,
   type LucideIcon,
 } from "lucide-react";
@@ -248,8 +248,9 @@ export default function ContactPage() {
             {/* Quick links grid */}
             <div className="sr sr-right sr-d2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {([
-                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                       bodyTh: "062-563-6199",                    span: false },
-                { icon: Headphones, titleEn: "Support", titleTh: "ซัพพอร์ต", bodyEn: "Report an Issue",                    bodyTh: "แจ้งปัญหา",                       span: false },
+                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                              bodyTh: "062-563-6199",                              span: false },
+                { icon: Mail,       titleEn: "Email",   titleTh: "อีเมล",    bodyEn: "media.108.company@gmail.com",               bodyTh: "media.108.company@gmail.com",               span: false },
+                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงาน",  bodyEn: "Join our world-class media team",           bodyTh: "ร่วมทีมสื่อระดับโลกของเรา",               span: true, arrow: true },
                 { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงาน",  bodyEn: "Join our world-class media team",    bodyTh: "ร่วมทีมสื่อระดับโลกของเรา",     span: true, arrow: true },
               ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean }[]).map((item) => (
                 <div

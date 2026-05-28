@@ -455,8 +455,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
-            <p className="text-on-surface-variant text-sm">info@media108.com</p>
-            <p className="text-on-surface-variant text-sm">+66 (0) 108 108 108</p>
+            <a href="mailto:media.108.company@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors text-sm">media.108.company@gmail.com</a>
+            <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Social", "โซเชียล")}</h4>

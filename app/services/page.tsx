@@ -136,7 +136,7 @@ export default function ServicesPage() {
             <img
               alt="Futuristic media production studio"
               className="w-full h-full object-cover grayscale opacity-40"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlxPMO48JJWcqQJz0me9oV6FxNAayF4EIcbAh7TapQiE4d0j-lUPRqLrls0eEtTBrVdQ7o-q0kcRWxUiy1kCg1c6wyxDjoiZUXXyLYHtbwloDPrcgJ-1Tzn6of2UsCDcg9zvjqsudQMdMArn207g7cRDsvydPdCY9vpK4qGzp6VOkFZdbs6LvbBaTrBCI3ZkaN1qDgVfhU7DWbYoHGTjtnC9t5GzTFDZ3JBG62Y3E4rmQIOq6_rZYXVU88T7deuK3jTrtIpN8tQWY"
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
             />
           </div>
 
@@ -344,7 +344,7 @@ export default function ServicesPage() {
               {t("Contact Sales", "ติดต่อฝ่ายขาย")}
             </a>
             <p className="text-on-surface-variant text-sm">{t("HQ: Chonburi, Thailand", "สำนักงานใหญ่: ชลบุรี, ประเทศไทย")}</p>
-            <p className="text-on-surface-variant text-sm">+66 (0) 108 108 108</p>
+            <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
           </div>
         </div>
         <div className="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">
