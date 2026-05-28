@@ -1284,7 +1284,7 @@ export default function Home() {
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
                       {t("Line Official", "LINE Official")}
                     </p>
-                    <p className="text-xl text-on-surface font-headline-md">@Media108</p>
+                    <p className="text-xl text-on-surface font-headline-md">@media108</p>
                   </div>
                 </a>
                 <div className="flex items-center gap-6">
