@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 type NavPage = "home" | "about" | "network" | "billboard" | "services" | "media-kit" | "contact";
@@ -13,6 +13,7 @@ interface NavbarProps {
 
 export default function Navbar({ activePage = "home" }: NavbarProps) {
   const { lang, setLang, t } = useLanguage();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks: { label: string; href: string; page: NavPage }[] = [
     { label: t("Home", "หน้าหลัก"),              href: "/",          page: "home"      },
@@ -98,7 +99,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           </Link>
         </div>
 
-        {/* ── Mobile: lang toggle + menu ── */}
+        {/* ── Mobile: lang toggle + hamburger ── */}
         <div className="md:hidden flex items-center gap-3">
           <div className="flex items-center rounded-lg border border-white/15 overflow-hidden text-[10px] font-label-md font-bold">
             <button
@@ -114,10 +115,48 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
               EN
             </button>
           </div>
-          <Menu className="text-on-surface" size={28} />
+          <button
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="text-on-surface p-1"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
 
       </div>
+
+      {/* ── Mobile Dropdown Menu ── */}
+      {mobileOpen && (
+        <div className="md:hidden border-t border-border-glass bg-surface/98 backdrop-blur-xl">
+          <div className="flex flex-col px-5 py-4 gap-1">
+            {navLinks.map((link) => {
+              const isActive = activePage === link.page;
+              return (
+                <Link
+                  key={link.page}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`py-3 px-3 rounded-lg text-sm font-medium transition-all ${
+                    isActive
+                      ? "text-primary bg-primary/10"
+                      : "text-on-surface-variant hover:text-on-surface hover:bg-white/5"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/contact#form"
+              onClick={() => setMobileOpen(false)}
+              className="mt-3 text-center bg-primary-container text-on-primary-container px-6 py-3 rounded-lg font-medium text-sm uppercase tracking-wider hover:brightness-110 transition-all"
+            >
+              {t("Contact Sales", "ติดต่อฝ่ายขาย")}
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
