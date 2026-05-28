@@ -76,7 +76,7 @@ export default function NetworkPage() {
             <img
               alt="Network Grid"
               className="w-full h-full object-cover grayscale"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_qt0JVrXbpsyslOzzlD0LEq5QEnvoejiTtXL3LwbxaPqfKuQ1RIhTWxVPcT1xLUk3vrPb4eZADXxsmji9b5FGecdnLIX_-RS-vKB1CmzVbVF3yyNjJJBKAA3RrrsJQKr6KfQFhvSlAfT1OYgvAap6BbEzOxuoJLSSFwZhlWway5ohKy0kpKcCcf7xWdjf-ZWpZjleKtiDolTDF5slxI71wDIFE9vzHV7XEK70cdmoACL0FD5bsyzgqSY8ClqNwQ-RaMVb0Nohdc8"
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
             />
           </div>
           <div className="relative z-10 max-w-5xl mx-auto">
@@ -255,7 +255,7 @@ export default function NetworkPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="EEC Corridor Billboard"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXAcIyvYWhQFauG5XmUm0KlTMXygvTaej8_7fDuXKDRBkaJ0B5zieW88DjVCssqd_GLb6VQJ_u0wzochpGis_fXuwaL_yJ0EFMuW29-54R2BSXCXdYiqjjzkk8P4KAtIxOZXcQ0SE_YSMx9lFPay9J5ogYNd2ivKrN4iIll6HkUu5mz1jq3Qa3woKSpO_sDRxLMjX1BHpC0YI73uQ5uzRR6E7bisvCWbnxj6tl_5fzTpQC4QIU7d_l9bloaHSNgHDGNvl8x2D1Cow"
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
                   className="w-full h-full object-cover"
                 />
                 {/* Dark + red gradient overlay */}
@@ -377,14 +377,24 @@ export default function NetworkPage() {
               </ul>
             </div>
             <div>
-              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Connect", "ติดตาม")}</h6>
-              <div className="flex gap-4">
-                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
-                  <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
-                    <Icon size={20} />
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Connect", "ติดต่อ")}</h6>
+              <ul className="space-y-4">
+                <li>
+                  <a href="mailto:media.108.company@gmail.com" className="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm">
+                    <Mail size={16} className="shrink-0" /> media.108.company@gmail.com
                   </a>
-                ))}
-              </div>
+                </li>
+                <li>
+                  <a href="tel:+66625636199" className="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm">
+                    <Globe size={16} className="shrink-0" /> 062-563-6199
+                  </a>
+                </li>
+                <li>
+                  <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm">
+                    <Globe size={16} className="shrink-0" /> LINE: @media108
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">

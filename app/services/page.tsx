@@ -340,11 +340,10 @@ export default function ServicesPage() {
 
           <div className="flex flex-col gap-4">
             <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
-            <a className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
-              {t("Contact Sales", "ติดต่อฝ่ายขาย")}
-            </a>
-            <p className="text-on-surface-variant text-sm">{t("HQ: Chonburi, Thailand", "สำนักงานใหญ่: ชลบุรี, ประเทศไทย")}</p>
+            <a href="mailto:media.108.company@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">media.108.company@gmail.com</a>
             <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
+            <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-primary transition-colors text-sm">LINE: @media108</a>
+            <p className="text-on-surface-variant text-sm">{t("HQ: Chonburi, Thailand", "สำนักงานใหญ่: ชลบุรี, ประเทศไทย")}</p>
           </div>
         </div>
         <div className="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">

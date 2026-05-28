@@ -74,7 +74,7 @@ export default function BillboardListingPage() {
             ref={mapImgRef}
             alt="EEC Corridor Map"
             className="w-full h-full object-cover opacity-40"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDV_Edj6QEFnBCevxw_1OFS0qBrFcLn8vZkv7oVff9InJ1Hw9gne6EzQ2n98zbMZNUKyX6ov7o5j9W3WbzMAzIBxirB6I1yPFEpVA7LdF7KgLbuGyiW0KPx8DCizDQbRk2tIMl1LyiKG3iNoFb_LcAcR2Ppgv9CEMHbZ6W6WJevbBI0bcjlU12TrgmUE30x9DLLPx_B0ELLPI91Zg1wc7_UP0AMxFF44XtkpcxY-Kafv8CH231RTGyuXf-C5duoO64nS0YUJ8cwRKQ"
+            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
           />
         </div>
 

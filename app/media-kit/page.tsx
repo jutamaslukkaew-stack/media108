@@ -110,7 +110,7 @@ export default function MediaKitPage() {
             <img
               alt="Urban billboard night view"
               className="w-full h-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWdZxCR3MAYjouPnKyslvRn1ZEtz8TM1TSedjqJ0I4VEdv5Nirw2SmtTsKlW8O0p0KmKQBfbjhVD9wE112Cl3a4pshbBRaZiIGLGuheLrniEaDBcm181_IoZ49CptVFAqPG2Re2m7_8FuKvWh30MqMEa2Ro9l3CVeTNSJGMeE-Ntdgfhb4ldvR0Dz0hqeT4KZ5bkgqyhyc4u9kyU7K_4XTkjcr14A06IRPssW16p785Raok8InzZ9qJueDz3lvGQipMv0gIDNDaSk"
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80"
             />
           </div>
           <div className="relative z-20 space-y-4">
@@ -345,7 +345,7 @@ export default function MediaKitPage() {
                 <img
                   alt="Analytics dashboard mockup"
                   className="w-full h-[400px] object-cover rounded-xl"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3Y827Y1pbpharSjUhKSBIrpaQ8esbD-8zFovi3OTqEIkm4gQZZ3b7NMFf5LVT1IFGW3B5ys-qKId73gEq5XSSQUQHsLpIDb2G-_iR6kDchXVXg7P5bbhr9Qz3NmRiSboSLSVxESc9_vzJrrnXb1phWnYfJypzGzJ6qgk1z2WYKdCT5j2-OwTr3WB9yyepTV7rtPNH0cAGBz3YRXZVdNP6m2t3llCWBNr-4tm3M5PZH0uLNnZ0sOZQ7MsG5m72r2Zt1qesWF-gfMg"
+                  src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-2xl" />
                 <div className="absolute bottom-10 left-10 right-10">
@@ -420,17 +420,23 @@ export default function MediaKitPage() {
               <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
                 {t("Connect", "ติดต่อ")}
               </h5>
-              <div className="flex gap-3">
-                {([Globe, Map] as LucideIcon[]).map((Icon, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer"
-                  >
-                    <Icon size={20} className="text-primary" />
+              <ul className="space-y-3">
+                <li>
+                  <a href="mailto:media.108.company@gmail.com" className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    <Mail size={14} className="shrink-0" /> media.108.company@gmail.com
                   </a>
-                ))}
-              </div>
+                </li>
+                <li>
+                  <a href="tel:+66625636199" className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    <Globe size={14} className="shrink-0" /> 062-563-6199
+                  </a>
+                </li>
+                <li>
+                  <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    <Globe size={14} className="shrink-0" /> LINE: @media108
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
