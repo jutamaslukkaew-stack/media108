@@ -1,8 +1,18 @@
 import Link from "next/link";
+import { FileText, CalendarCheck, Download, User, MessageCircle, type LucideIcon } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
-const items = [
+const items: {
+  icon: LucideIcon;
+  labelEn: string;
+  labelTh: string;
+  href: string;
+  green: boolean;
+  color: string;
+  hover: string;
+}[] = [
   {
-    icon: "request_quote",
+    icon: FileText,
     labelEn: "Request Quotation",
     labelTh: "ขอใบเสนอราคา",
     href: "/contact#form",
@@ -11,7 +21,7 @@ const items = [
     hover: "hover:bg-primary-container/20",
   },
   {
-    icon: "event_available",
+    icon: CalendarCheck,
     labelEn: "Book This Billboard",
     labelTh: "จองป้ายนี้",
     href: "/network",
@@ -20,7 +30,7 @@ const items = [
     hover: "hover:bg-secondary-container/20",
   },
   {
-    icon: "download",
+    icon: Download,
     labelEn: "Download Media Kit",
     labelTh: "ดาวน์โหลด Media Kit",
     href: "/media-kit",
@@ -29,7 +39,7 @@ const items = [
     hover: "hover:bg-surface-variant/40",
   },
   {
-    icon: "person",
+    icon: User,
     labelEn: "Contact Sales",
     labelTh: "ติดต่อฝ่ายขาย",
     href: "/contact#form",
@@ -38,10 +48,10 @@ const items = [
     hover: "hover:bg-surface-variant/40",
   },
   {
-    icon: "chat",
+    icon: MessageCircle,
     labelEn: "LINE OA",
     labelTh: "ติดต่อผ่าน LINE",
-    href: "#",
+    href: "https://lin.ee/NXKWYdJ",
     green: true,
     color: "text-white",
     hover: "",
@@ -49,9 +59,42 @@ const items = [
 ];
 
 export default function GlobalCTABar() {
+  const { t } = useLanguage();
+  const nonGreen = items.filter((i) => !i.green);
+  const green = items.find((i) => i.green)!;
+
   return (
     <div className="fixed bottom-0 left-0 w-full z-[100] border-t border-border-glass bg-surface-glass backdrop-blur-xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-      <div className="max-w-container-max mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+
+      {/* ── Mobile layout — single row tab bar ── */}
+      <div className="md:hidden flex items-stretch divide-x divide-white/5 pb-safe">
+        {items.map((item) =>
+          item.green ? (
+            <Link
+              key={item.labelEn}
+              href={item.href}
+              className="flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1 bg-[#06C755] active:brightness-90 transition-all"
+            >
+              <item.icon size={18} className="text-white" />
+              <span className="text-[9px] font-bold text-white leading-none text-center">LINE OA</span>
+            </Link>
+          ) : (
+            <Link
+              key={item.labelEn}
+              href={item.href}
+              className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 px-1 active:bg-white/5 transition-all`}
+            >
+              <item.icon size={18} className={item.color} />
+              <span className={`text-[9px] font-medium ${item.color} leading-none text-center line-clamp-1 opacity-80`}>
+                {t(item.labelEn, item.labelTh)}
+              </span>
+            </Link>
+          )
+        )}
+      </div>
+
+      {/* ── Desktop layout (unchanged) ── */}
+      <div className="hidden md:flex max-w-container-max mx-auto px-6 py-4 items-center justify-between gap-4">
         {items.map((item) =>
           item.green ? (
             <Link
@@ -59,17 +102,12 @@ export default function GlobalCTABar() {
               href={item.href}
               className="flex-1 flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-[#06C755] hover:brightness-110 transition-all active:scale-95 shadow-lg"
             >
-              <span
-                className="material-symbols-outlined text-white text-2xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                {item.icon}
-              </span>
+              <item.icon size={22} className="text-white" />
               <div className="text-left">
                 <span className="block text-[10px] text-white/80 uppercase font-bold tracking-tighter">
                   {item.labelEn}
                 </span>
-                <span className="block font-label-md text-white whitespace-nowrap">{item.labelTh}</span>
+                <span className="block font-label-md text-white whitespace-nowrap">{t(item.labelEn, item.labelTh)}</span>
               </div>
             </Link>
           ) : (
@@ -78,23 +116,18 @@ export default function GlobalCTABar() {
               href={item.href}
               className={`flex-1 flex items-center justify-center gap-3 px-4 py-3 rounded-lg group transition-all duration-200 ${item.hover}`}
             >
-              <span
-                className={`material-symbols-outlined ${item.color} text-2xl group-hover:scale-110 transition-transform`}
-              >
-                {item.icon}
-              </span>
+              <item.icon size={22} className={`${item.color} group-hover:scale-110 transition-transform`} />
               <div className="text-left">
-                <span
-                  className={`block text-[10px] ${item.color} uppercase font-bold tracking-tighter opacity-70`}
-                >
+                <span className={`block text-[10px] ${item.color} uppercase font-bold tracking-tighter opacity-70`}>
                   {item.labelEn}
                 </span>
-                <span className="block font-label-md text-on-surface whitespace-nowrap">{item.labelTh}</span>
+                <span className="block font-label-md text-on-surface whitespace-nowrap">{t(item.labelEn, item.labelTh)}</span>
               </div>
             </Link>
           )
         )}
       </div>
+
     </div>
   );
 }

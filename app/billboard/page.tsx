@@ -3,15 +3,19 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import GlobalCTABar from "../components/GlobalCTABar";
 import { billboards } from "../data/billboards";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
+import { Map, List, SlidersHorizontal, ChevronDown, Eye, ChevronsDown } from "lucide-react";
 
 const allBillboards = Object.values(billboards);
 
 /* ── Per-slug metadata to match Stitch card layout ── */
-const meta: Record<string, { zone: string; audience: string; id: string; type: string }> = {
-  "pattaya-sukhumvit-01": { zone: "Main Pattaya Route", audience: "HNW Travelers", id: "PY-SKV-01", type: "Large Format LED" },
-  "pattaya-gateway":      { zone: "Central Intersection", audience: "Tourists & Locals", id: "PY-GW-04", type: "Landmark LED" },
-  "jomtien-coastal":      { zone: "Coastal Strip", audience: "Tourists & Expats", id: "JT-CST-03", type: "Digital Static" },
+const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string; audienceTh: string; id: string; typeEn: string; typeTh: string }> = {
+  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",    zoneTh: "เส้นทางหลักพัทยา",    audienceEn: "HNW Travelers",      audienceTh: "นักเดินทางกำลังซื้อสูง", id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "pattaya-gateway":      { zoneEn: "Central Intersection",  zoneTh: "สี่แยกกลาง",           audienceEn: "Tourists & Locals",  audienceTh: "นักท่องเที่ยวและคนท้องถิ่น", id: "PY-GW-04", typeEn: "Landmark LED", typeTh: "LED แลนด์มาร์ค" },
+  "jomtien-coastal":      { zoneEn: "Coastal Strip",         zoneTh: "ย่านชายฝั่ง",           audienceEn: "Tourists & Expats",  audienceTh: "นักท่องเที่ยวและชาวต่างชาติ", id: "JT-CST-03", typeEn: "Digital Static", typeTh: "ดิจิทัลสแตติก" },
 };
 
 /* ── Map pin positions (% within the map image) ── */
@@ -29,12 +33,15 @@ const badgeCls: Record<string, string> = {
 };
 
 export default function BillboardListingPage() {
+  const { t } = useLanguage();
   const [areaFilter, setAreaFilter] = useState("All Regions");
   const [audienceFilter, setAudienceFilter] = useState("Universal");
   const [mediaFilter, setMediaFilter] = useState("All Formats");
   const [viewMode, setViewMode] = useState<"map" | "list">("list");
   const [sortBy, setSortBy] = useState("Popularity");
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useScrollReveal();
 
   /* Parallax ref */
   const mapImgRef = useRef<HTMLImageElement>(null);
@@ -85,33 +92,22 @@ export default function BillboardListingPage() {
               {/* Pulse dot */}
               <div
                 className="w-5 h-5 bg-[#E63946] rounded-full border-2 border-white/20"
-                style={{
-                  animation: "pulse-pin 2s infinite",
-                  boxShadow: "0 0 20px rgba(230,57,70,0.3)",
-                }}
+                style={{ animation: "pulse-pin 2s infinite", boxShadow: "0 0 20px rgba(230,57,70,0.3)" }}
               />
               {/* Tooltip popup */}
               <div className="hidden group-hover:block absolute bottom-full left-1/2 -translate-x-1/2 mb-4 z-50 pointer-events-none">
                 <div
                   className="p-3 rounded-xl shadow-2xl w-64"
-                  style={{
-                    backdropFilter: "blur(12px)",
-                    background: "rgba(30,40,74,0.95)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                  }}
+                  style={{ backdropFilter: "blur(12px)", background: "rgba(30,40,74,0.95)", border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={bb.imgDay}
-                    alt={bb.title}
-                    className="w-full h-24 object-cover rounded-lg mb-2"
-                  />
+                  <img src={bb.imgDay} alt={bb.title} className="w-full h-24 object-cover rounded-lg mb-2" />
                   <h4 className="text-white font-bold text-sm font-display-lg">{bb.title}</h4>
                   <p className="text-on-surface-variant text-[10px] mb-2">
-                    ID: {info?.id} | {bb.carsPerDay} Reach
+                    ID: {info?.id} | {bb.carsPerDay} {t("Reach", "การเข้าถึง")}
                   </p>
                   <div className="w-full py-2 bg-[#E63946] text-white text-[10px] font-bold uppercase rounded-lg text-center">
-                    View Details
+                    {t("View Details", "ดูรายละเอียด")}
                   </div>
                 </div>
               </div>
@@ -123,16 +119,19 @@ export default function BillboardListingPage() {
         <div className="relative z-10 w-full max-w-[1440px] mx-auto h-full px-16 flex flex-col items-start justify-end pb-32 pointer-events-none">
           <h1
             className="text-white max-w-3xl mb-4 drop-shadow-2xl font-display-lg"
-            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1, animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}
           >
-            Dominate the{" "}
-            <span style={{ color: "#E63946" }}>EEC Corridor</span>
+            {t("Dominate the", "ครองพื้นที่")}{" "}
+            <span style={{ color: "#E63946" }}>{t("EEC Corridor", "EEC Corridor")}</span>
           </h1>
           <p
             className="font-body-lg text-on-surface-variant max-w-xl p-4 rounded-lg"
-            style={{ background: "rgba(6,17,51,0.4)", backdropFilter: "blur(4px)" }}
+            style={{ background: "rgba(6,17,51,0.4)", backdropFilter: "blur(4px)", animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.35s both" }}
           >
-            Interactive coverage map of Thailand&apos;s premier DOOH inventory. Select a pin to view location data and performance metrics.
+            {t(
+              "Interactive coverage map of Thailand's premier DOOH inventory. Select a pin to view location data and performance metrics.",
+              "แผนที่ครอบคลุมแบบอินเทอร์แอคทีฟของสินค้าคงคลัง DOOH ชั้นนำของไทย เลือกพินเพื่อดูข้อมูลตำแหน่งและตัวชี้วัดประสิทธิภาพ"
+            )}
           </p>
         </div>
       </section>
@@ -141,27 +140,21 @@ export default function BillboardListingPage() {
       <div className="max-w-[1440px] mx-auto px-16 relative z-50 -mt-28">
         <div
           className="p-6 rounded-2xl flex flex-wrap lg:flex-nowrap items-end gap-6"
-          style={{
-            backdropFilter: "blur(12px)",
-            background: "rgba(30,40,74,0.95)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            boxShadow: "0 24px 48px rgba(0,0,0,0.4)",
-          }}
+          style={{ backdropFilter: "blur(12px)", background: "rgba(30,40,74,0.95)", border: "1px solid rgba(255,255,255,0.2)", boxShadow: "0 24px 48px rgba(0,0,0,0.4)" }}
         >
           {/* Filter Dropdowns */}
           <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Area */}
             <div className="flex flex-col gap-2">
               <label className="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest px-1">
-                Area
+                {t("Area", "พื้นที่")}
               </label>
               <select
                 className="bg-[#050b24] border border-white/10 rounded-lg py-3 px-4 text-white outline-none cursor-pointer"
-                style={{ focusBorderColor: "#E63946" } as React.CSSProperties}
                 value={areaFilter}
                 onChange={(e) => setAreaFilter(e.target.value)}
               >
-                <option>All Regions</option>
+                <option>{t("All Regions", "ทุกภูมิภาค")}</option>
                 <option>Pattaya</option>
                 <option>Bang Saen</option>
                 <option>Sri Racha</option>
@@ -171,33 +164,33 @@ export default function BillboardListingPage() {
             {/* Audience */}
             <div className="flex flex-col gap-2">
               <label className="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest px-1">
-                Target Audience
+                {t("Target Audience", "กลุ่มเป้าหมาย")}
               </label>
               <select
                 className="bg-[#050b24] border border-white/10 rounded-lg py-3 px-4 text-white outline-none cursor-pointer"
                 value={audienceFilter}
                 onChange={(e) => setAudienceFilter(e.target.value)}
               >
-                <option>Universal</option>
-                <option>Tourists</option>
-                <option>Students</option>
-                <option>Professionals</option>
+                <option>{t("Universal", "ทั่วไป")}</option>
+                <option>{t("Tourists", "นักท่องเที่ยว")}</option>
+                <option>{t("Students", "นักศึกษา")}</option>
+                <option>{t("Professionals", "มืออาชีพ")}</option>
               </select>
             </div>
             {/* Media Type */}
             <div className="flex flex-col gap-2">
               <label className="font-label-md text-[11px] text-on-surface-variant uppercase tracking-widest px-1">
-                Media Type
+                {t("Media Type", "ประเภทสื่อ")}
               </label>
               <select
                 className="bg-[#050b24] border border-white/10 rounded-lg py-3 px-4 text-white outline-none cursor-pointer"
                 value={mediaFilter}
                 onChange={(e) => setMediaFilter(e.target.value)}
               >
-                <option>All Formats</option>
-                <option>Large Format LED</option>
-                <option>Digital Pylons</option>
-                <option>University Network</option>
+                <option>{t("All Formats", "ทุกรูปแบบ")}</option>
+                <option>{t("Large Format LED", "LED ขนาดใหญ่")}</option>
+                <option>{t("Digital Pylons", "Digital Pylons")}</option>
+                <option>{t("University Network", "เครือข่ายมหาวิทยาลัย")}</option>
               </select>
             </div>
           </div>
@@ -212,16 +205,16 @@ export default function BillboardListingPage() {
               className={`px-4 py-2 rounded-md flex items-center gap-2 transition-all font-label-md text-[14px] ${viewMode === "map" ? "text-white" : "text-on-surface-variant hover:text-white"}`}
               style={viewMode === "map" ? { background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" } : {}}
             >
-              <span className="material-symbols-outlined text-[20px]">map</span>
-              Map View
+              <Map size={20} />
+              {t("Map View", "มุมมองแผนที่")}
             </button>
             <button
               onClick={() => setViewMode("list")}
               className={`px-4 py-2 rounded-md flex items-center gap-2 transition-all font-label-md text-[14px] ${viewMode === "list" ? "text-white" : "text-on-surface-variant hover:text-white"}`}
               style={viewMode === "list" ? { background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" } : {}}
             >
-              <span className="material-symbols-outlined text-[20px]">list</span>
-              List View
+              <List size={20} />
+              {t("List View", "มุมมองรายการ")}
             </button>
           </div>
 
@@ -230,7 +223,7 @@ export default function BillboardListingPage() {
             className="p-3.5 rounded-lg border border-white/20 transition-all active:scale-95 hover:bg-white/10 text-white"
             style={{ background: "rgba(255,255,255,0.05)" }}
           >
-            <span className="material-symbols-outlined">tune</span>
+            <SlidersHorizontal size={20} />
           </button>
         </div>
       </div>
@@ -238,45 +231,45 @@ export default function BillboardListingPage() {
       {/* ── INVENTORY GRID ── */}
       <main className="max-w-[1440px] mx-auto px-16 py-20" style={{ background: "#061133" }}>
         {/* Section header */}
-        <div className="flex justify-between items-end mb-12">
+        <div className="sr sr-up flex justify-between items-end mb-12">
           <div>
             <h2 className="text-white font-display-lg" style={{ fontSize: "32px", fontWeight: 700, letterSpacing: "-0.02em" }}>
-              Interactive Media Catalog
+              {t("Interactive Media Catalog", "แคตตาล็อกสื่ออินเทอร์แอคทีฟ")}
             </h2>
             <p className="text-on-surface-variant mt-2 font-body-md">
-              Click map pins for live previews or browse our complete collection below.
+              {t(
+                "Click map pins for live previews or browse our complete collection below.",
+                "คลิกพินบนแผนที่เพื่อดูตัวอย่างสด หรือเลือกดูคอลเลกชันทั้งหมดด้านล่าง"
+              )}
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-on-surface-variant font-label-md text-[14px]">Sort by:</span>
+            <span className="text-on-surface-variant font-label-md text-[14px]">{t("Sort by:", "เรียงตาม:")}</span>
             <button className="flex items-center gap-2 text-white font-label-md text-[14px]">
-              {sortBy}
-              <span className="material-symbols-outlined">expand_more</span>
+              {t(sortBy, sortBy === "Popularity" ? "ความนิยม" : sortBy)}
+              <ChevronDown size={18} />
             </button>
           </div>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {visible.map((bb) => {
-            const info = meta[bb.slug] ?? { zone: "—", audience: "—", id: bb.slug.toUpperCase(), type: "Digital LED" };
+          {visible.map((bb, i) => {
+            const info = meta[bb.slug] ?? { zoneEn: "—", zoneTh: "—", audienceEn: "—", audienceTh: "—", id: bb.slug.toUpperCase(), typeEn: "Digital LED", typeTh: "ดิจิทัล LED" };
             const badge = badgeCls[bb.status] ?? "bg-white/20 text-white";
             return (
               <div
                 key={bb.slug}
-                className="group rounded-2xl overflow-hidden border border-white/10 hover:border-[#E63946]/50 transition-all duration-500 flex flex-col relative"
-                style={{
-                  background: "#141d3f",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
-                }}
+                className={`sr sr-scale sr-d${Math.min(i % 3 + 1, 5)} group rounded-2xl overflow-hidden border border-white/10 hover:border-[#E63946]/50 transition-all duration-500 flex flex-col relative`}
+                style={{ background: "#141d3f", boxShadow: "0 8px 32px rgba(0,0,0,0.3)" }}
               >
-                {/* Clickable overlay — opens detail in new tab (covers image + body, but not Book Now) */}
+                {/* Clickable overlay */}
                 <a
                   href={`/billboard/${bb.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute inset-0 z-10"
-                  aria-label={`View ${bb.title} details`}
+                  aria-label={`${t("View", "ดู")} ${bb.title} ${t("details", "รายละเอียด")}`}
                 />
 
                 {/* Image */}
@@ -287,16 +280,17 @@ export default function BillboardListingPage() {
                     src={bb.imgDay}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Status badge */}
                   <div className={`absolute top-4 right-4 ${badge} font-label-md text-[10px] px-3 py-1 rounded-full uppercase tracking-tight`}>
-                    {bb.status}
+                    {bb.status === "Available" ? t("Available", "ว่าง") :
+                     bb.status === "High Demand" ? t("High Demand", "ต้องการสูง") :
+                     t("Sold Out", "จองเต็ม")}
                   </div>
-                  {/* Gradient */}
                   <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
-                  {/* Reach */}
                   <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                    <span className="material-symbols-outlined text-white text-[18px]">visibility</span>
-                    <span className="text-white font-bold text-[12px]">{bb.carsPerDay} Daily Reach</span>
+                    <Eye size={18} className="text-white" />
+                    <span className="text-white font-bold text-[12px]">
+                      {bb.carsPerDay} {t("Daily Reach", "การเข้าถึงต่อวัน")}
+                    </span>
                   </div>
                 </div>
 
@@ -307,27 +301,29 @@ export default function BillboardListingPage() {
                       {bb.title}
                     </h3>
                     <p className="text-on-surface-variant font-label-md text-[12px] uppercase">
-                      ID: {info.id} | {info.type}
+                      ID: {info.id} | {t(info.typeEn, info.typeTh)}
                     </p>
                   </div>
 
                   {/* Specs row */}
                   <div className="space-y-2 py-4 border-y border-white/5">
                     <div className="flex items-center justify-between">
-                      <span className="text-on-surface-variant font-body-md text-[14px]">Zone</span>
-                      <span className="text-white font-label-md text-[14px]">{info.zone}</span>
+                      <span className="text-on-surface-variant font-body-md text-[14px]">{t("Zone", "โซน")}</span>
+                      <span className="text-white font-label-md text-[14px]">{t(info.zoneEn, info.zoneTh)}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-on-surface-variant font-body-md text-[14px]">Primary Audience</span>
-                      <span className="text-white font-label-md text-[14px]">{info.audience}</span>
+                      <span className="text-on-surface-variant font-body-md text-[14px]">{t("Primary Audience", "กลุ่มผู้ชมหลัก")}</span>
+                      <span className="text-white font-label-md text-[14px]">{t(info.audienceEn, info.audienceTh)}</span>
                     </div>
                   </div>
 
                   {/* Price */}
                   <div className="mt-auto pt-4 border-t border-white/5">
-                    <p className="text-on-surface-variant font-label-md text-[10px] uppercase mb-1">Starting From</p>
+                    <p className="text-on-surface-variant font-label-md text-[10px] uppercase mb-1">
+                      {t("Starting From", "เริ่มต้นที่")}
+                    </p>
                     <p className="text-white font-bold text-xl tracking-tight font-display-lg">
-                      {bb.price !== "ขอใบเสนอราคา" ? `${bb.price}/Mo` : "POA"}
+                      {bb.price !== "ขอใบเสนอราคา" ? `${bb.price}/Mo` : t("POA", "สอบถามราคา")}
                     </p>
                   </div>
                 </div>
@@ -344,10 +340,10 @@ export default function BillboardListingPage() {
               className="group flex items-center gap-4 border border-white/10 rounded-full px-12 py-5 transition-all hover:bg-white/10"
               style={{ background: "rgba(255,255,255,0.05)" }}
             >
-              <span className="text-white font-label-md uppercase tracking-[0.2em] text-[14px]">Load More Inventory</span>
-              <span className="material-symbols-outlined text-[#E63946] group-hover:translate-y-1 transition-transform">
-                keyboard_double_arrow_down
+              <span className="text-white font-label-md uppercase tracking-[0.2em] text-[14px]">
+                {t("Load More Inventory", "โหลดเพิ่มเติม")}
               </span>
+              <ChevronsDown size={20} className="text-[#E63946] group-hover:translate-y-1 transition-transform" />
             </button>
           </div>
         )}
@@ -360,37 +356,23 @@ export default function BillboardListingPage() {
       >
         <div className="font-display-lg font-bold text-on-surface mb-4 text-2xl">Media108</div>
         <div className="flex flex-wrap justify-center gap-8 mb-8">
-          {[["Privacy Policy", "#"], ["Terms of Service", "#"], ["Sustainability", "#"], ["Careers", "#"]].map(([l, h]) => (
-            <Link key={l} href={h} className="text-on-surface-variant hover:text-primary transition-colors text-[16px]">
-              {l}
+          {([
+            { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว", href: "#" },
+            { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน",      href: "#" },
+            { en: "Sustainability",   th: "ความยั่งยืน",            href: "#" },
+            { en: "Careers",          th: "ร่วมงานกับเรา",           href: "#" },
+          ] as { en: string; th: string; href: string }[]).map((l) => (
+            <Link key={l.en} href={l.href} className="text-on-surface-variant hover:text-primary transition-colors text-[16px]">
+              {t(l.en, l.th)}
             </Link>
           ))}
         </div>
-        <div className="text-secondary opacity-80 text-[16px]">© 2024 Media108 DOOH. All rights reserved.</div>
+        <div className="text-secondary opacity-80 text-[16px]">
+          © 2024 Media108 DOOH. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}
+        </div>
       </footer>
 
-      {/* ── Mobile Bottom Nav ── */}
-      <nav
-        className="md:hidden fixed bottom-0 left-0 w-full z-[200] backdrop-blur-md border-t border-primary/20 py-4 px-5 flex justify-center items-center gap-6"
-        style={{ background: "rgba(30,40,74,0.9)", boxShadow: "0 -10px 30px rgba(230,57,70,0.1)" }}
-      >
-        <Link href="/contact#form" className="flex flex-col items-center text-on-surface-variant hover:text-on-surface px-6 py-2 transition-all active:scale-95">
-          <span className="material-symbols-outlined">request_quote</span>
-          <span className="font-label-md text-[14px]">Quotations</span>
-        </Link>
-        <Link
-          href="/contact"
-          className="flex flex-col items-center text-on-primary rounded-xl px-6 py-2 transition-all active:scale-95"
-          style={{ background: "#E63946", boxShadow: "0 0 20px rgba(230,57,70,0.3)" }}
-        >
-          <span className="material-symbols-outlined">calendar_month</span>
-          <span className="font-label-md text-[14px]">Bookings</span>
-        </Link>
-        <Link href="/contact" className="flex flex-col items-center text-on-surface-variant hover:text-on-surface px-6 py-2 transition-all active:scale-95">
-          <span className="material-symbols-outlined">contact_support</span>
-          <span className="font-label-md text-[14px]">Contact</span>
-        </Link>
-      </nav>
+      <GlobalCTABar />
 
       {/* Pulse animation keyframes */}
       <style>{`

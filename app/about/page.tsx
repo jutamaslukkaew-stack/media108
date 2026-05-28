@@ -1,60 +1,48 @@
 "use client";
 
-import { useEffect } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
-import TabBar from "../components/TabBar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
+import {
+  Calendar, MonitorPlay, Eye, TrendingUp, Rocket, Cpu,
+  BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Globe, Mail,
+  type LucideIcon,
+} from "lucide-react";
 
 /* ── Data ─────────────────────────────────────────────── */
 const leaders = [
   {
-    name: "Somchai Rattanakosin",
-    title: "Chief Executive Officer",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCSiwhtCiRFBbZdwsbw5XyhCWQ1etXM1uU8VZ9lbz_o9HZuRSH6OvXZsLmtehj-1vz7K9B82TUKy-S5kqfmei7x3qQzMxgMRQv0xb2YppbAumbijBm4LUt84VnKC2r5_15lpZ3l20JdiM_PnXQjjGJUDiostjR3ekcfr5s-njbRPcZWFRrcvIWfyzENDDzMV41tFSwej9I05NGZ5r6BWX_W8BC8C9kc9yZlXlVDcp-VzA5vsKl9Xj4M3Y4oXhotBLvsWi5Rp_0AGjc",
+    name: "Dr. Arisara Tan",
+    title: "CEO & Chief Visionary",
+    bio: "20+ years in regional DOOH and smart city infrastructure development.",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
   {
-    name: "Patreeya Suksiri",
-    title: "Director of Media Operations",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKBt0LpuVDJBejTzwP2txil_F1_d7are4iY_clKz3Hjl4RtUBahYhGqsXY6b6DyeNq7yVHBlRjyvSBotZfsumoSSorZoavKIvuVhjebvKjmUf0H9MiZnNK4fUNl52KU4Zhj_-xmafbfmX5rVXyh9hViUeIAKpC_nMNcKzcQ1McHLNjitjtVedl_hJ2bVb5EmNpwTToWuTX6ZlUmXRXe_Wz0nJzFvHgajH4O3W49YibC3MHFUrpB679l2k1OYaVq3Nwgh8mwU27o6w",
+    name: "Pakorn V.",
+    title: "Head of Data Science",
+    bio: "Former lead algorithm architect for global logistics networks.",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
   {
-    name: "Anan Wongsuwan",
-    title: "Head of Tech & Innovation",
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDcT6VYCIeFy46CYly6mBjuJCBKVEr2JtxGKZymohjnlzGVCx7EsyygkmIgWcHwcRWZYyQubVXGDTj4mHuczIRlMCbqqv3P_1kEjKCzdrE-TSrWAPlAkTBa1Ek8zOBlNb-hDqn6SwYDYxwr_JinFNfdyrfV2ZgCfFoUYllr7UnIU004zsne4p-NHWzVrU3V7g7dZKI5HH1BTZT3XWupPvBNJUUAMj0nSmdZ-847PcYc60uiWAoNKJEZ9rZ7wSPpsIUG_GwlLWB84U",
+    name: "Sarah Jenkins",
+    title: "Chief Creative Officer",
+    bio: "Award-winning creative director specializing in immersive large-scale digital campaigns.",
+    img: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=800&h=1000&fit=crop&crop=face&facepad=3",
+  },
+  {
+    name: "Lester Cheng",
+    title: "Director of Operations",
+    bio: "Specialist in large-scale hardware rollout and smart-grid integration.",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&crop=face&facepad=3",
   },
 ];
 
-const partnerLogos = [
-  { alt: "Coca-Cola", h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuD6PoHZMlWqUk6ANVE5qFg8RYzvmmWuLwl8qWsbOyhUTwtmowBYqd9jyz39o_jgSbnsG7SK5emWp6flzUWLSs7tyVCyiXX5lpy_Vzo1Ac2Q_ShYwZmCTWgwQYMRCmfngogr6PrtbwZXEkWlYW4bnMtacCJZlwASUSJ6twrpzC0OvImgF-STAcic-bcdgwh_uQPKKObmSOUaZWdbUaxNq_LG23d-GgkR0x0aMk85JSEFm-H2FblpaEmnOV6nD37vdVoIUaLXwH18MnI" },
-  { alt: "Google",    h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXjNs3HRtyHDSy-ez_V0csL36dOnk0GdMqQwpq_YnrSf_IoVjTiwY9zC0AZ-hGJlvbBxB3SrGwJWlvLyNbwacZ38omTIi6r1wlhDcPqw4OGnZRzZVi9ldPdc5GyB5ttfVhivfpGJxe2Vgki44wXvt6fIKKLhE4BERUkCRdkNJ9w_xdRi4HduyaQVIqWLCYotQFI14TI5bb7ycZ9VZsJSwjW_rQekrM5exgx_By9UvNgJnXyHet4K6KpXOS8rEuYRGtfUF1rq9jUJU" },
-  { alt: "Toyota",    h: "h-10", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDr6dN9ewDtsJvYLvVq4iKOztKbJcaXRaEuEPjvtmLH-lGFtSszoTlFWxhkrcgOYk9xUfOmJbOCgdMtkoSgFdwdXeuyAzOCl-aBS-8qQpzLJMirhx0-s_u__mbNXjBs1JRfnZt_TyUpAli6KWdWNrF6cY1LOjCjjELY5-l4HF7WqJ9BK3SybG3GqXgn34U9eeJe4-EsbNXyEpf083WxhOBi-MB14nwTZeUgz6c-mugorqmYVU3yuukCaNx6hvFRUibDJN2Ug04pQdg" },
-  { alt: "Amazon",    h: "h-10", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDKkOoTiNAjFiEGADVpGUd-8dhblmGNUIccbz9lx-alxOPqu-J2f8c3Z8f20pwYhl0uBs5mEHjieOaGy9qaWi8CHOWJI_Uk6U0w5hr2jNS1AngHoJPJsFS6ZfK0STohmNKWxbk424eCk__UqFcfbgtYya5yGm6sRoPo4E5EtLqmENLBgmkHhzhTHq78Y80_vqEZZHm2fC9iuD_R4JrU1DDmHTnzMPintL13b3AJBS3o6Gop2f0eXsZWz3x6d_PSDzpueiGxOut68Js" },
-  { alt: "Apple",     h: "h-12", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCeRdky9wVfM1kLBWeET6GJPSRqll0VdYmXxai49292vvSQagpPDuAsvvofXJW0gPS8SDuLl6JMzHzOh3osMsSG1EU8qVfK1eumvHig_YpA0NOxJ3FzzFYh0oQ6HfheEjpIstXt6Q7a7sF50fSL45xNiRibcVPpyXCr2DkuF-Y6bPazzwh4jNHplJjlC7qLj1L5Ovx7qc7ehKvoE-6Pf07ltzgTtqfFWqy7lonmC6F3Jn3nFTSUX1nc0sA6v8IaP8Z7C5h7Wmog1kk" },
-];
 
 export default function AboutPage() {
-  useEffect(() => {
-    /* Scroll-reveal for glass-card elements */
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0");
-            entry.target.classList.remove("opacity-0", "translate-y-10");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-
-    document.querySelectorAll(".glass-card").forEach((el) => {
-      el.classList.add("opacity-0", "translate-y-10", "transition-all", "duration-700", "ease-out");
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <>
@@ -79,48 +67,61 @@ export default function AboutPage() {
         <div className="relative z-10 max-w-container-max mx-auto w-full flex flex-col lg:flex-row items-end gap-16">
           {/* Left — main text */}
           <div className="flex-1 max-w-2xl">
-            <span className="inline-block py-1 px-3 mb-6 bg-primary/10 border border-primary/20 text-primary font-label-md text-label-md rounded-full uppercase tracking-widest">
+            <span
+              className="inline-block py-1 px-3 mb-6 bg-primary/10 border border-primary/20 text-primary font-label-md text-label-md rounded-full uppercase tracking-widest"
+              style={{ animation: "hero-entry 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
+            >
               Est. 2008
             </span>
-            <h1 className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight">
-              Redefining the{" "}
-              <span className="text-primary">Urban Horizon.</span>
+            <h1
+              className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
+            >
+              {t("Redefining the", "ยกระดับ")}{" "}
+              <span className="text-primary">{t("Urban Horizon.", "เส้นขอบฟ้าเมือง")}</span>
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl">
-              Media108 is Thailand&apos;s premier DOOH and billboard network provider. We bridge the gap
-              between brands and their audiences through high-impact, technologically superior media
-              assets located in the nation&apos;s most strategic economic corridors.
+            <p
+              className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
+            >
+              {t(
+                "Media108 is Thailand's premier DOOH and billboard network provider. We bridge the gap between brands and their audiences through high-impact, technologically superior media assets located in the nation's most strategic economic corridors.",
+                "Media108 คือผู้ให้บริการเครือข่ายป้ายบิลบอร์ดและ DOOH ชั้นนำของไทย เราเชื่อมต่อแบรนด์กับกลุ่มเป้าหมายผ่านสื่อที่ทรงพลังและเหนือกว่าด้วยเทคโนโลยี ณ จุดยุทธศาสตร์สำคัญที่สุดของประเทศ"
+              )}
             </p>
-            <div className="flex flex-wrap gap-6">
+            <div
+              className="flex flex-wrap gap-6"
+              style={{ animation: "hero-entry 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s both" }}
+            >
               <Link
                 href="/network"
-                className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest red-glow-hover transition-all"
+                className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest red-glow-hover transition-all active:scale-95"
               >
-                Explore Network
+                {t("Explore Network", "สำรวจเครือข่าย")}
               </Link>
               <Link
                 href="/media-kit"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
               >
-                Download Kit
+                {t("Download Kit", "ดาวน์โหลดสื่อ")}
               </Link>
             </div>
           </div>
 
           {/* Right — stats panel */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
-            {[
-              { value: "16+",    label: "Years in Market",     icon: "calendar_today" },
-              { value: "250+",   label: "Active Billboards",   icon: "perm_media" },
-              { value: "450K+",  label: "Daily Impressions",   icon: "visibility" },
-              { value: "85%",    label: "EEC Market Share",    icon: "trending_up" },
-            ].map((s) => (
+            {([
+              { value: "16+",    label: t("Years in Market", "ปีในตลาด"),         icon: Calendar     },
+              { value: "250+",   label: t("Active Billboards", "ป้ายที่ใช้งานอยู่"), icon: MonitorPlay  },
+              { value: "450K+",  label: t("Daily Impressions", "ผู้ชมต่อวัน"),      icon: Eye          },
+              { value: "85%",    label: t("EEC Market Share", "ส่วนแบ่งตลาด EEC"), icon: TrendingUp   },
+            ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
                 className="rounded-2xl p-6 flex flex-col gap-3"
                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
               >
-                <span className="material-symbols-outlined text-primary text-2xl">{s.icon}</span>
+                <s.icon size={22} className="text-primary" />
                 <div className="font-display-lg text-white text-3xl font-black leading-none">{s.value}</div>
                 <div className="font-label-md text-[11px] uppercase tracking-[0.15em] text-on-surface-variant/70">{s.label}</div>
               </div>
@@ -133,32 +134,30 @@ export default function AboutPage() {
       <section className="py-24 px-6 md:px-margin-desktop bg-surface-container-lowest">
         <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {/* Vision */}
-          <div className="glass-card p-12 rounded-xl flex flex-col justify-center">
+          <div className="sr sr-left sr-d1 glass-card p-12 rounded-xl flex flex-col justify-center">
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-              <span className="material-symbols-outlined text-primary text-4xl">visibility</span>
+              <Eye size={36} className="text-primary" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Vision</h2>
+            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Our Vision", "วิสัยทัศน์ของเรา")}</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              To be the undisputed leader in media technology across Southeast Asia, transforming every
-              urban surface into a canvas for meaningful brand storytelling through data-driven innovation.
+              {t(
+                "To be the undisputed leader in media technology across Southeast Asia, transforming every urban surface into a canvas for meaningful brand storytelling through data-driven innovation.",
+                "เป็นผู้นำด้านเทคโนโลยีสื่อที่ไม่มีใครโต้แย้งได้ทั่วเอเชียตะวันออกเฉียงใต้ แปลงทุกพื้นผิวเมืองให้กลายเป็นผืนผ้าใบเพื่อการเล่าเรื่องแบรนด์ที่มีความหมายผ่านนวัตกรรมขับเคลื่อนด้วยข้อมูล"
+              )}
             </p>
           </div>
 
           {/* Mission */}
-          <div className="glass-card p-12 rounded-xl flex flex-col justify-center border border-primary/20 bg-primary/5">
+          <div className="sr sr-right sr-d2 glass-card p-12 rounded-xl flex flex-col justify-center border border-primary/20 bg-primary/5">
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary flex items-center justify-center">
-              <span
-                className="material-symbols-outlined text-white text-4xl"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                rocket_launch
-              </span>
+              <Rocket size={36} className="text-white" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Mission</h2>
+            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Our Mission", "พันธกิจของเรา")}</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              Empowering advertisers with unmatched visibility and precision. We commit to maintaining the
-              highest standards of hardware integrity and audience analytics to ensure every campaign
-              achieves maximum ROI.
+              {t(
+                "Empowering advertisers with unmatched visibility and precision. We commit to maintaining the highest standards of hardware integrity and audience analytics to ensure every campaign achieves maximum ROI.",
+                "มอบพลังให้ผู้โฆษณาด้วยการมองเห็นและความแม่นยำที่ไม่มีใครเทียบ เรามุ่งมั่นรักษามาตรฐานสูงสุดด้านความสมบูรณ์ของฮาร์ดแวร์และการวิเคราะห์ผู้ชม เพื่อให้ทุกแคมเปญบรรลุ ROI สูงสุด"
+              )}
             </p>
           </div>
         </div>
@@ -179,8 +178,8 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
                 <div className="absolute bottom-8 left-8">
-                  <p className="font-data-mono text-data-mono text-primary mb-2">Location Strategy</p>
-                  <h3 className="font-headline-lg text-headline-lg text-white">Chonburi: The Gateway</h3>
+                  <p className="font-data-mono text-data-mono text-primary mb-2">{t("Location Strategy", "กลยุทธ์ทำเล")}</p>
+                  <h3 className="font-headline-lg text-headline-lg text-white">{t("Chonburi: The Gateway", "ชลบุรี: ประตูสู่อนาคต")}</h3>
                 </div>
               </div>
             </div>
@@ -188,23 +187,23 @@ export default function AboutPage() {
             {/* Text */}
             <div className="w-full md:w-1/2 order-1 md:order-2">
               <h2 className="font-headline-xl text-headline-xl text-white mb-8">
-                Dominating the{" "}
-                <span className="text-primary">EEC Corridor.</span>
+                {t("Dominating the", "ครองความเป็นเจ้าใน")}{" "}
+                <span className="text-primary">{t("EEC Corridor.", "EEC Corridor")}</span>
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
-                We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the
-                beating heart of Thailand&apos;s future economy. By concentrating our highest-fidelity digital
-                assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic
-                of industrial leaders, international tourists, and growing middle-class residents.
+                {t(
+                  "We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the beating heart of Thailand's future economy. By concentrating our highest-fidelity digital assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic of industrial leaders, international tourists, and growing middle-class residents.",
+                  "เราตระหนักตั้งแต่เนิ่นๆ ว่าชลบุรีและเขตพัฒนาพิเศษภาคตะวันออก (EEC) คือหัวใจของเศรษฐกิจไทยในอนาคต ด้วยการกระจุกตัวสินทรัพย์ดิจิทัลคุณภาพสูงสุดในโซนนี้ เราให้ผู้โฆษณาเข้าถึงกลุ่มประชากรที่มีรายได้สูง ทั้งผู้นำอุตสาหกรรม นักท่องเที่ยวต่างชาติ และชนชั้นกลางที่กำลังเติบโต"
+                )}
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">450K+</h4>
-                  <p className="font-body-md text-on-surface-variant">Daily Traffic Impressions</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Daily Traffic Impressions", "ผู้ชมต่อวัน")}</p>
                 </div>
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">85%</h4>
-                  <p className="font-body-md text-on-surface-variant">Market Share in EEC Region</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Market Share in EEC Region", "ส่วนแบ่งตลาดในภูมิภาค EEC")}</p>
                 </div>
               </div>
             </div>
@@ -215,7 +214,7 @@ export default function AboutPage() {
       {/* ── Core Strengths Bento ── */}
       <section className="py-32 px-6 md:px-margin-desktop bg-surface-dim">
         <div className="max-w-container-max mx-auto text-center mb-20">
-          <h2 className="font-headline-xl text-headline-xl text-white mb-4">Core Strengths</h2>
+          <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Core Strengths", "จุดแข็งหลัก")}</h2>
           <div className="w-24 h-1 bg-primary mx-auto" />
         </div>
         <div
@@ -225,42 +224,43 @@ export default function AboutPage() {
           {/* Strength 1 — wide */}
           <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end group overflow-hidden relative">
             <div className="absolute top-0 right-0 p-8">
-              <span className="material-symbols-outlined text-primary/30 group-hover:text-primary transition-colors text-8xl">
-                precision_manufacturing
-              </span>
+              <Cpu size={96} className="text-primary/30 group-hover:text-primary transition-colors" />
             </div>
             <div className="relative z-10">
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Proprietary Technology</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Proprietary Technology", "เทคโนโลยีที่พัฒนาเอง")}</h3>
               <p className="text-on-surface-variant max-w-md">
-                Our LED boards feature custom hardware built for the tropical climate, ensuring 99.9%
-                uptime and true-to-life color reproduction even in direct sunlight.
+                {t(
+                  "Our LED boards feature custom hardware built for the tropical climate, ensuring 99.9% uptime and true-to-life color reproduction even in direct sunlight.",
+                  "ป้าย LED ของเราใช้ฮาร์ดแวร์ที่ออกแบบมาเพื่อสภาพอากาศแบบร้อนชื้น รับประกันความพร้อมใช้งาน 99.9% และสีสันที่สมจริงแม้ในแสงแดดจัด"
+                )}
               </p>
             </div>
           </div>
 
           {/* Strength 2 — narrow, red */}
           <div className="md:col-span-4 bg-primary-container rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-primary/20">
-            <span
-              className="material-symbols-outlined text-white text-5xl"
-              style={{ fontVariationSettings: "'FILL' 1" }}
-            >
-              analytics
-            </span>
+            <BarChart2 size={44} className="text-white" />
             <div>
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Audience Intelligence</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Audience Intelligence", "ข้อมูลเชิงลึกผู้ชม")}</h3>
               <p className="text-white/80">
-                Every billboard is equipped with anonymous video analytics to provide precise demographic data.
+                {t(
+                  "Every billboard is equipped with anonymous video analytics to provide precise demographic data.",
+                  "ป้ายทุกจุดติดตั้งระบบวิเคราะห์วิดีโอแบบนิรนามเพื่อให้ข้อมูลประชากรที่แม่นยำ"
+                )}
               </p>
             </div>
           </div>
 
           {/* Strength 3 — narrow */}
           <div className="md:col-span-4 glass-card rounded-2xl p-8 flex flex-col justify-between hover:bg-white/5 transition-all">
-            <span className="material-symbols-outlined text-primary text-5xl">verified_user</span>
+            <ShieldCheck size={44} className="text-primary" />
             <div>
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Regulatory Mastery</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Regulatory Mastery", "ความเชี่ยวชาญด้านกฎระเบียบ")}</h3>
               <p className="text-on-surface-variant">
-                100% legal compliance and structural certification for every site in our portfolio.
+                {t(
+                  "100% legal compliance and structural certification for every site in our portfolio.",
+                  "ปฏิบัติตามกฎหมาย 100% และได้รับการรับรองโครงสร้างทุกจุดในพอร์ตโฟลิโอ"
+                )}
               </p>
             </div>
           </div>
@@ -269,10 +269,12 @@ export default function AboutPage() {
           <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_#ffb3b1,_transparent)]" />
             <div className="relative z-10">
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Hyper-Local Domination</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Hyper-Local Domination", "ครองพื้นที่ระดับท้องถิ่น")}</h3>
               <p className="text-on-surface-variant">
-                Strategic placement at the busiest intersections and main arterial roads of Eastern
-                Thailand, capturing attention where it matters most.
+                {t(
+                  "Strategic placement at the busiest intersections and main arterial roads of Eastern Thailand, capturing attention where it matters most.",
+                  "การวางป้ายเชิงกลยุทธ์บริเวณสี่แยกหนาแน่นและถนนสายหลักในภาคตะวันออก ดึงดูดความสนใจในจุดที่สำคัญที่สุด"
+                )}
               </p>
             </div>
           </div>
@@ -284,52 +286,83 @@ export default function AboutPage() {
         <div className="max-w-container-max mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div className="max-w-2xl">
-              <h2 className="font-headline-xl text-headline-xl text-white mb-4">Leadership</h2>
+              <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Leadership", "ทีมผู้บริหาร")}</h2>
               <p className="text-on-surface-variant font-body-lg">
-                The visionaries steering Media108 toward the future of digital advertising in Thailand.
+                {t(
+                  "The visionaries steering Media108 toward the future of digital advertising in Thailand.",
+                  "ผู้มีวิสัยทัศน์ที่นำพา Media108 มุ่งสู่อนาคตของการโฆษณาดิจิทัลในประเทศไทย"
+                )}
               </p>
             </div>
             <div className="hidden md:flex gap-4 mt-6 md:mt-0">
               <button className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white">
-                <span className="material-symbols-outlined">chevron_left</span>
+                <ChevronLeft size={22} />
               </button>
               <button className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white">
-                <span className="material-symbols-outlined">chevron_right</span>
+                <ChevronRight size={22} />
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-gutter">
             {leaders.map((leader) => (
               <div key={leader.name} className="group">
-                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-6 relative">
+                {/* Portrait */}
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-5 relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt={leader.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full object-cover object-top"
+                    style={{
+                      filter: "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)",
+                      transition: "filter 800ms ease, transform 800ms cubic-bezier(0.16,1,0.3,1)",
+                    }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.filter =
+                        "grayscale(0.2) brightness(0.82) contrast(1.15) saturate(1.2)";
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLImageElement).style.filter =
+                        "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)";
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
+                    }}
                     src={leader.img}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+
+                  {/* Deep cinematic vignette — corners & edges */}
+                  <div className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 80% 85% at 50% 40%, transparent 45%, rgba(3,8,30,0.75) 100%)",
+                    }}
+                  />
+                  {/* Bottom gradient — text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+                    style={{
+                      background: "linear-gradient(to top, rgba(6,17,51,0.98) 0%, transparent 100%)",
+                    }}
+                  />
+                  {/* Hover: red brand tint */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                    style={{ background: "linear-gradient(160deg, rgba(230,57,70,0.18) 0%, transparent 55%)" }}
+                  />
+
+                  {/* Name overlay inside card (bottom) */}
+                  <div className="absolute bottom-0 inset-x-0 p-4">
+                    <p className="font-label-md text-[10px] text-primary uppercase tracking-[0.2em] mb-1">
+                      {leader.title}
+                    </p>
+                    <h3 className="font-headline-md text-[18px] text-white leading-tight">
+                      {leader.name}
+                    </h3>
+                  </div>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white mb-1">{leader.name}</h3>
-                <p className="font-label-md text-label-md text-primary uppercase tracking-wider">
-                  {leader.title}
+
+                {/* Bio below card */}
+                <p className="text-on-surface-variant text-sm leading-relaxed">
+                  {leader.bio}
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Partners ── */}
-      <section className="py-24 px-6 md:px-margin-desktop bg-surface-container-low border-t border-b border-border-glass">
-        <div className="max-w-container-max mx-auto text-center">
-          <p className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-12">
-            Trusted by Industry Leaders
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-50 grayscale">
-            {partnerLogos.map((logo) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={logo.alt} alt={logo.alt} className={`${logo.h} w-auto invert`} src={logo.src} />
             ))}
           </div>
         </div>
@@ -342,11 +375,13 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left">
               <h2 className="font-headline-xl text-headline-xl text-white mb-6">
-                Ready to amplify your presence in Chonburi?
+                {t("Ready to amplify your presence in Chonburi?", "พร้อมขยายการรับรู้แบรนด์ในชลบุรีแล้วหรือยัง?")}
               </h2>
               <p className="font-body-lg text-white/80">
-                Connect with our sales team today to receive a custom media strategy and billboard
-                availability map.
+                {t(
+                  "Connect with our sales team today to receive a custom media strategy and billboard availability map.",
+                  "ติดต่อทีมขายของเราวันนี้เพื่อรับแผนกลยุทธ์สื่อที่ออกแบบมาเฉพาะคุณและแผนที่ตำแหน่งป้ายที่ว่าง"
+                )}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
@@ -354,13 +389,13 @@ export default function AboutPage() {
                 href="/contact#form"
                 className="bg-white text-on-primary-container px-10 py-5 rounded-xl font-label-md text-label-md uppercase tracking-widest font-bold hover:scale-105 transition-transform shadow-xl text-center"
               >
-                Contact Sales
+                {t("Contact Sales", "ติดต่อฝ่ายขาย")}
               </Link>
               <Link
                 href="/network"
                 className="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all text-center"
               >
-                Media Network
+                {t("Media Network", "เครือข่ายสื่อ")}
               </Link>
             </div>
           </div>
@@ -370,66 +405,77 @@ export default function AboutPage() {
       <GlobalCTABar />
 
       {/* ── Footer ── */}
-      <footer className="w-full py-16 px-6 md:px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-border-glass pb-32 md:pb-16">
-        <div className="w-full max-w-container-max grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-1">
-            <div className="mb-8 text-2xl font-black tracking-tight">
-              <span className="text-primary">Media</span>
-              <span className="text-white">108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            <div className="md:col-span-1">
+              <div className="mb-6 text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span>
+                <span className="text-white">108</span>
+              </div>
+              <p className="text-on-surface-variant font-body-md leading-relaxed">
+                {t(
+                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
+                  "นำแนวโน้มปฏิวัติสื่อดิจิทัลกลางแจ้งในเขตพัฒนาพิเศษภาคตะวันออก โซลูชันสื่อที่แม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                )}
+              </p>
             </div>
-            <p className="text-on-surface-variant font-body-md max-w-xs">
-              Elevating the landscape of Out-of-Home advertising through precision and technology.
-            </p>
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Platform</h4>
-            {["Media Network", "Billboard Info", "Services"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Resources</h4>
-            {["Download Media Kit", "Request Quotation", "Book This Billboard"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Connect</h4>
-            {["Contact Sales", "LINE OA"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-            <div className="flex gap-4 mt-4">
-              {["public", "alternate_email"].map((icon) => (
-                <div
-                  key={icon}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-colors"
-                >
-                  <span className="material-symbols-outlined text-sm">{icon}</span>
-                </div>
-              ))}
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Navigation", "เมนู")}</h6>
+              <ul className="space-y-4">
+                {([
+                  [t("Home", "หน้าแรก"), "/"],
+                  [t("About", "เกี่ยวกับเรา"), "/about"],
+                  [t("Media Network", "เครือข่ายสื่อ"), "/network"],
+                  [t("Our Services", "บริการของเรา"), "/services"],
+                  [t("Contact Us", "ติดต่อเรา"), "/contact"],
+                ] as [string, string][]).map(([label, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Media Focus", "โฟกัสสื่อ")}</h6>
+              <ul className="space-y-4">
+                {[
+                  t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),
+                  t("Chonburi Strategic", "ชลบุรีเชิงกลยุทธ์"),
+                  t("Bang Saen Network", "เครือข่ายบางแสน"),
+                  t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),
+                ].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Connect", "ติดตาม")}</h6>
+              <div className="flex gap-4">
+                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
+                  <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
+                    <Icon size={20} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-full max-w-container-max pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-body-md text-sm gap-4">
-          <p>© 2024 Media108. All Rights Reserved.</p>
-          <div className="flex gap-8">
-            {["Privacy Policy", "Terms of Service"].map((l) => (
-              <a key={l} className="hover:text-white transition-colors" href="#">
-                {l}
-              </a>
-            ))}
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-on-surface-variant font-label-md text-sm">
+              {t("© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.", "© 2024 MEDIA108. สงวนลิขสิทธิ์ โซลูชันสื่อ DOOH ที่แม่นยำ")}
+            </div>
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                {t("Status:", "สถานะ:")} <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> {t("Optimal", "ปกติ")}
+              </span>
+            </div>
           </div>
         </div>
       </footer>
 
-      {/* ── Fixed bottom TabBar ── */}
-      <TabBar />
     </>
   );
 }

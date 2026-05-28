@@ -1,86 +1,100 @@
 "use client";
 
-import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
+import {
+  Store, Globe, Building2, Ticket, Maximize2, Ruler, Aperture,
+  BarChart2, Map, FileText, CloudDownload, Video, CheckCircle,
+  type LucideIcon,
+} from "lucide-react";
 
 /* ── Pricing packages ─────────────────────────────────── */
-const pricingPackages = [
+const pricingPackages: {
+  icon: LucideIcon;
+  title: string;
+  subtitleEn: string;
+  subtitleTh: string;
+  featuresEn: string[];
+  featuresTh: string[];
+  featured: boolean;
+}[] = [
   {
-    icon: "storefront",
+    icon: Store,
     title: "SME Starter",
-    subtitle: "สำหรับร้านอาหาร คาเฟ่ และคลินิกท้องถิ่น",
-    features: ["Local Targeting", "Flexible Scheduling"],
+    subtitleEn: "For restaurants, cafes, and local clinics",
+    subtitleTh: "สำหรับร้านอาหาร คาเฟ่ และคลินิกท้องถิ่น",
+    featuresEn: ["Local Targeting", "Flexible Scheduling"],
+    featuresTh: ["เจาะกลุ่มในพื้นที่", "ยืดหยุ่นด้านตารางเวลา"],
     featured: false,
   },
   {
-    icon: "travel_explore",
+    icon: Globe,
     title: "Tourism Campaign",
-    subtitle: "โรงแรม ร้านอาหารพัทยา และสถานที่ท่องเที่ยว",
-    features: ["Prime Tourist Hotspots", "Multi-language Support"],
+    subtitleEn: "Hotels, Pattaya restaurants, and tourist attractions",
+    subtitleTh: "โรงแรม ร้านอาหารพัทยา และสถานที่ท่องเที่ยว",
+    featuresEn: ["Prime Tourist Hotspots", "Multi-language Support"],
+    featuresTh: ["จุดท่องเที่ยวชั้นนำ", "รองรับหลายภาษา"],
     featured: true,
   },
   {
-    icon: "apartment",
+    icon: Building2,
     title: "Real Estate",
-    subtitle: "โครงการคอนโดมิเนียม และบ้านจัดสรร",
-    features: ["High-Net-Worth Routes", "Day/Night Dominance"],
+    subtitleEn: "Condominium and housing estate projects",
+    subtitleTh: "โครงการคอนโดมิเนียม และบ้านจัดสรร",
+    featuresEn: ["High-Net-Worth Routes", "Day/Night Dominance"],
+    featuresTh: ["เส้นทางกลุ่มมีกำลังซื้อสูง", "โดดเด่นทั้งกลางวันและกลางคืน"],
     featured: false,
   },
   {
-    icon: "confirmation_number",
+    icon: Ticket,
     title: "Event Promo",
-    subtitle: "คอนเสิร์ต เฟสติวัล และการแข่งกีฬา",
-    features: ["High Frequency Bursts", "Countdown Dynamic Content"],
+    subtitleEn: "Concerts, festivals, and sporting events",
+    subtitleTh: "คอนเสิร์ต เฟสติวัล และการแข่งกีฬา",
+    featuresEn: ["High Frequency Bursts", "Countdown Dynamic Content"],
+    featuresTh: ["ความถี่สูง", "เนื้อหาแบบนับถอยหลัง"],
     featured: false,
   },
 ];
 
 /* ── Tech spec bento cells ───────────────────────────── */
-const smallSpecs = [
-  { icon: "aspect_ratio",  value: "3840 x 1920 px", label: "NATIVE RESOLUTION" },
-  { icon: "square_foot",   value: "24m x 12m",      label: "AVERAGE SCREEN SIZE" },
-  { icon: "blur_on",       value: "P10 RGB LED",     label: "PIXEL PITCH" },
+const smallSpecs: { icon: LucideIcon; value: string; labelEn: string; labelTh: string }[] = [
+  { icon: Maximize2, value: "3840 x 1920 px", labelEn: "NATIVE RESOLUTION",   labelTh: "ความละเอียดดั้งเดิม" },
+  { icon: Ruler,     value: "24m x 12m",      labelEn: "AVERAGE SCREEN SIZE", labelTh: "ขนาดหน้าจอเฉลี่ย" },
+  { icon: Aperture,  value: "P10 RGB LED",     labelEn: "PIXEL PITCH",         labelTh: "พิกเซลพิทช์" },
 ];
 
 /* ── Coverage report features ─────────────────────────── */
-const coverageFeatures = [
+const coverageFeatures: {
+  icon: LucideIcon;
+  iconBg: string;
+  iconColor: string;
+  title: string;
+  descEn: string;
+  descTh: string;
+}[] = [
   {
-    icon: "analytics",
+    icon: BarChart2,
     iconBg: "bg-primary/20",
     iconColor: "text-primary",
     title: "Reach & Frequency",
-    desc: "วิเคราะห์จำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง",
+    descEn: "Analyze actual ad viewers and access frequency for precise campaign measurement.",
+    descTh: "วิเคราะห์จำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง",
   },
   {
-    icon: "map",
+    icon: Map,
     iconBg: "bg-secondary/20",
     iconColor: "text-secondary",
     title: "Traffic Heatmaps",
-    desc: "แผนภาพแสดงความหนาแน่นของกลุ่มเป้าหมายในแต่ละช่วงเวลา",
+    descEn: "Heat maps showing target audience density at different times of day.",
+    descTh: "แผนภาพแสดงความหนาแน่นของกลุ่มเป้าหมายในแต่ละช่วงเวลา",
   },
 ];
 
 export default function MediaKitPage() {
-  useEffect(() => {
-    // Scroll reveal
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("opacity-100", "translate-y-0");
-            e.target.classList.remove("opacity-0", "translate-y-8");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => {
-      el.classList.add("transition-all", "duration-700", "opacity-0", "translate-y-8");
-      observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+  const { lang, t } = useLanguage();
+  useScrollReveal();
 
   return (
     <>
@@ -100,141 +114,162 @@ export default function MediaKitPage() {
             />
           </div>
           <div className="relative z-20 space-y-4">
-            <h1 className="font-display-lg text-display-lg text-white tracking-tighter uppercase leading-none">
-              Media Kit <span className="text-primary">&amp;</span> Pricing
+            <h1
+              className="font-display-lg text-display-lg text-white tracking-tighter uppercase leading-none"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
+            >
+              {t("Media Kit", "มีเดีย คิต")} <span className="text-primary">&amp;</span>{" "}
+              {t("Pricing", "ราคา")}
             </h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto opacity-80">
-              ยกระดับแบรนด์ของคุณด้วยนวัตกรรมสื่อโฆษณา Precision DOOH Solutions ที่เข้าถึงกลุ่มเป้าหมายอย่างแม่นยำที่สุด
+            <p
+              className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto opacity-80"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
+            >
+              {t(
+                "Elevate your brand with Precision DOOH Solutions that reach your target audience with maximum accuracy.",
+                "ยกระดับแบรนด์ของคุณด้วยนวัตกรรมสื่อโฆษณา Precision DOOH Solutions ที่เข้าถึงกลุ่มเป้าหมายอย่างแม่นยำที่สุด"
+              )}
             </p>
           </div>
         </section>
 
         {/* ── Download Media Kit ── */}
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto">
-          <div className="reveal glass-card rounded-xl p-12 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden group">
-            {/* Background accent */}
+          <div className="sr sr-up glass-card rounded-xl p-12 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 translate-x-1/2 group-hover:bg-primary/10 transition-colors duration-500 pointer-events-none" />
 
-            {/* Left: text */}
             <div className="flex-1 space-y-6 relative z-10">
-              <h2 className="font-headline-lg text-headline-lg text-white">ดาวน์โหลด Media Kit</h2>
+              <h2 className="font-headline-lg text-headline-lg text-white">
+                {t("Download Media Kit", "ดาวน์โหลด Media Kit")}
+              </h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                รับข้อมูลฉบับเต็มประกอบด้วย Company Profile และรายละเอียดทางเทคนิคของ Billboard ทุกตำแหน่งในเครือข่าย
-                Media108 พร้อมกรณีศึกษาความสำเร็จ
+                {t(
+                  "Get the complete kit including Company Profile and technical details of every billboard location in the Media108 network, along with campaign success case studies.",
+                  "รับข้อมูลฉบับเต็มประกอบด้วย Company Profile และรายละเอียดทางเทคนิคของ Billboard ทุกตำแหน่งในเครือข่าย Media108 พร้อมกรณีศึกษาความสำเร็จ"
+                )}
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <button className="inline-flex items-center gap-3 bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02] transition-all duration-300">
-                  <span className="material-symbols-outlined">picture_as_pdf</span>
-                  DOWNLOAD PDF MEDIA KIT
+                  <FileText size={20} />
+                  {t("DOWNLOAD PDF MEDIA KIT", "ดาวน์โหลด PDF MEDIA KIT")}
                 </button>
               </div>
             </div>
 
-            {/* Right: file info */}
             <div className="w-full md:w-80 flex flex-col items-center justify-center p-8 glass-card border-2 border-dashed border-primary/30 group-hover:border-primary transition-colors rounded-xl">
-              <span
-                className="material-symbols-outlined text-6xl text-primary mb-4"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                cloud_download
-              </span>
+              <CloudDownload size={56} className="text-primary mb-4" />
               <span className="font-data-mono text-data-mono text-white mb-2">Version 2024.1.0</span>
-              <span className="font-label-md text-label-md text-on-surface-variant">Size: 12.4 MB</span>
+              <span className="font-label-md text-label-md text-on-surface-variant">
+                {t("Size: 12.4 MB", "ขนาด: 12.4 MB")}
+              </span>
             </div>
           </div>
         </section>
 
         {/* ── Billboard Pricing & Packages ── */}
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto bg-surface-container-lowest/30">
-          <div className="mb-16 text-center">
-            <h2 className="font-headline-xl text-headline-xl mb-4 text-white">Billboard Pricing &amp; Packages</h2>
-            <p className="text-on-surface-variant font-body-md">เลือกแพ็กเกจที่เหมาะสมกับธุรกิจและแคมเปญของคุณ</p>
+          <div className="sr sr-up mb-16 text-center">
+            <h2 className="font-headline-xl text-headline-xl mb-4 text-white">
+              {t("Billboard Pricing & Packages", "ราคา & แพ็กเกจป้ายโฆษณา")}
+            </h2>
+            <p className="text-on-surface-variant font-body-md">
+              {t(
+                "Choose the package that best fits your business and campaign.",
+                "เลือกแพ็กเกจที่เหมาะสมกับธุรกิจและแคมเปญของคุณ"
+              )}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-            {pricingPackages.map((pkg) => (
-              <div
-                key={pkg.title}
-                className={`reveal glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 ${
-                  pkg.featured ? "border-b-primary/50" : "border-b-secondary/20"
-                }`}
-              >
-                <div className="mb-8">
-                  <span className="material-symbols-outlined text-primary text-4xl mb-4 block">{pkg.icon}</span>
-                  <h3 className="font-headline-md text-headline-md mb-2 text-white">{pkg.title}</h3>
-                  <p className="text-on-surface-variant text-sm">{pkg.subtitle}</p>
-                </div>
-
-                <ul className="space-y-4 mb-10 flex-grow">
-                  {pkg.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-3 text-sm text-on-surface">
-                      <span className="material-symbols-outlined text-primary text-sm leading-5">check_circle</span>
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-
-                <button
-                  className={`w-full py-3 rounded-lg font-label-md text-label-md transition-all ${
-                    pkg.featured
-                      ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02]"
-                      : "bg-surface-container-highest text-on-surface hover:bg-primary hover:text-on-primary"
+            {pricingPackages.map((pkg, i) => {
+              const features = lang === "en" ? pkg.featuresEn : pkg.featuresTh;
+              return (
+                <div
+                  key={pkg.title}
+                  className={`sr sr-up sr-d${i + 1} glass-card rounded-xl p-8 flex flex-col h-full hover:border-primary/50 transition-colors border-b-4 ${
+                    pkg.featured ? "border-b-primary/50" : "border-b-secondary/20"
                   }`}
                 >
-                  Request Price
-                </button>
-              </div>
-            ))}
+                  <div className="mb-8">
+                    <pkg.icon size={36} className="text-primary mb-4 block" />
+                    <h3 className="font-headline-md text-headline-md mb-2 text-white">{pkg.title}</h3>
+                    <p className="text-on-surface-variant text-sm">{t(pkg.subtitleEn, pkg.subtitleTh)}</p>
+                  </div>
+
+                  <ul className="space-y-4 mb-10 flex-grow">
+                    {features.map((feat) => (
+                      <li key={feat} className="flex items-start gap-3 text-sm text-on-surface">
+                        <CheckCircle size={16} className="text-primary leading-5 flex-shrink-0" />
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    className={`w-full py-3 rounded-lg font-label-md text-label-md transition-all ${
+                      pkg.featured
+                        ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02]"
+                        : "bg-surface-container-highest text-on-surface hover:bg-primary hover:text-on-primary"
+                    }`}
+                  >
+                    {t("Request Price", "สอบถามราคา")}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </section>
 
         {/* ── Technical Specifications Bento ── */}
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto">
-          <div className="mb-16">
-            <h2 className="font-headline-xl text-headline-xl mb-2 text-white">Technical Specifications</h2>
+          <div className="sr sr-up mb-16">
+            <h2 className="font-headline-xl text-headline-xl mb-2 text-white">
+              {t("Technical Specifications", "ข้อมูลจำเพาะทางเทคนิค")}
+            </h2>
             <div className="w-24 h-1 bg-primary rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {/* Main hero card — 8,500 Nits */}
-            <div className="reveal md:col-span-2 lg:col-span-2 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group min-h-[200px]">
+            {/* Main hero card */}
+            <div className="sr sr-up sr-d1 md:col-span-2 lg:col-span-2 glass-card rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group min-h-[200px]">
               <div className="relative z-10">
                 <p className="font-label-md text-label-md text-primary mb-4 uppercase tracking-widest">
-                  Display Standard
+                  {t("Display Standard", "มาตรฐานจอแสดงผล")}
                 </p>
                 <h4 className="font-headline-lg text-headline-lg text-white mb-8">
-                  Ultra-High Definition LED Network
+                  {t("Ultra-High Definition LED Network", "เครือข่าย LED ความคมชัดสูงสุด")}
                 </h4>
               </div>
               <div className="flex items-end justify-between relative z-10">
                 <div>
                   <span className="text-5xl font-data-mono text-white block mb-1">8,500</span>
-                  <span className="font-label-md text-label-md text-on-surface-variant">MAX NIT BRIGHTNESS</span>
+                  <span className="font-label-md text-label-md text-on-surface-variant">
+                    {t("MAX NIT BRIGHTNESS", "ความสว่างสูงสุด (NIT)")}
+                  </span>
                 </div>
               </div>
-              {/* Decorative icon */}
-              <span className="material-symbols-outlined text-[120px] text-white/5 absolute -right-4 -bottom-4 select-none">
-                wb_sunny
-              </span>
+              <Aperture size={120} className="text-white/5 absolute -right-4 -bottom-4 select-none" />
             </div>
 
             {/* Small spec cards */}
-            {smallSpecs.map((spec) => (
+            {smallSpecs.map((spec, i) => (
               <div
-                key={spec.label}
-                className="reveal glass-card rounded-xl p-8 flex flex-col justify-between group"
+                key={spec.labelEn}
+                className={`sr sr-up sr-d${i + 2} glass-card rounded-xl p-8 flex flex-col justify-between group`}
               >
-                <span className="material-symbols-outlined text-primary">{spec.icon}</span>
+                <spec.icon size={22} className="text-primary" />
                 <div>
                   <span className="font-data-mono text-headline-md block mb-1 text-white">{spec.value}</span>
-                  <span className="font-label-md text-label-md text-on-surface-variant">{spec.label}</span>
+                  <span className="font-label-md text-label-md text-on-surface-variant">
+                    {t(spec.labelEn, spec.labelTh)}
+                  </span>
                 </div>
               </div>
             ))}
 
             {/* Supported Formats */}
-            <div className="reveal md:col-span-2 lg:col-span-1 glass-card rounded-xl p-8 flex flex-col justify-between group">
-              <span className="material-symbols-outlined text-primary">video_library</span>
+            <div className="sr sr-up sr-d4 md:col-span-2 lg:col-span-1 glass-card rounded-xl p-8 flex flex-col justify-between group">
+              <Video size={22} className="text-primary" />
               <div>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {["MP4", "JPG", "PNG", "MOV"].map((fmt) => (
@@ -246,19 +281,26 @@ export default function MediaKitPage() {
                     </span>
                   ))}
                 </div>
-                <span className="font-label-md text-label-md text-on-surface-variant">SUPPORTED FORMATS</span>
+                <span className="font-label-md text-label-md text-on-surface-variant">
+                  {t("SUPPORTED FORMATS", "ฟอร์แมตที่รองรับ")}
+                </span>
               </div>
             </div>
 
-            {/* 60 FPS — spinning circle */}
-            <div className="reveal md:col-span-1 lg:col-span-2 glass-card rounded-xl p-8 flex items-center gap-8 group">
+            {/* 60 FPS */}
+            <div className="sr sr-up sr-d5 md:col-span-1 lg:col-span-2 glass-card rounded-xl p-8 flex items-center gap-8 group">
               <div className="w-24 h-24 rounded-full border-4 border-primary/20 border-t-primary animate-spin-slow flex items-center justify-center shrink-0">
                 <span className="font-data-mono text-2xl text-white">60</span>
               </div>
               <div>
-                <span className="font-headline-md text-headline-md block text-white">FPS Performance</span>
+                <span className="font-headline-md text-headline-md block text-white">
+                  {t("FPS Performance", "ประสิทธิภาพ FPS")}
+                </span>
                 <span className="font-label-md text-label-md text-on-surface-variant">
-                  Smooth motion playback for cinematic visuals.
+                  {t(
+                    "Smooth motion playback for cinematic visuals.",
+                    "เล่นวิดีโอราบรื่นสำหรับภาพระดับโรงภาพยนตร์"
+                  )}
                 </span>
               </div>
             </div>
@@ -268,25 +310,28 @@ export default function MediaKitPage() {
         {/* ── Coverage & Insight Reports ── */}
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto bg-surface-container-low overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            {/* Left: text */}
             <div className="space-y-8">
-              <h2 className="font-headline-xl text-headline-xl text-white">Coverage &amp; Insight Reports</h2>
+              <h2 className="font-headline-xl text-headline-xl text-white">
+                {t("Coverage & Insight Reports", "รายงานการครอบคลุมและ Insights")}
+              </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant">
-                เราไม่ได้ให้แค่พื้นที่โฆษณา แต่เราให้ &ldquo;ข้อมูล&rdquo; เพื่อการตัดสินใจที่ดีที่สุด
-                รายงานความครอบคลุมของเราประกอบด้วยข้อมูลเชิงลึกที่แม่นยำเพื่อวัดผลสำเร็จของแคมเปญ
+                {t(
+                  'We don\'t just provide ad space — we provide "data" for the best decision-making. Our coverage reports include precise insights to measure campaign success.',
+                  'เราไม่ได้ให้แค่พื้นที่โฆษณา แต่เราให้ "ข้อมูล" เพื่อการตัดสินใจที่ดีที่สุด รายงานความครอบคลุมของเราประกอบด้วยข้อมูลเชิงลึกที่แม่นยำเพื่อวัดผลสำเร็จของแคมเปญ'
+                )}
               </p>
               <div className="space-y-6">
                 {coverageFeatures.map((feat) => (
                   <div
                     key={feat.title}
-                    className="reveal flex items-center gap-6 glass-card p-6 rounded-xl hover:bg-surface-container-high transition-all"
+                    className="sr sr-left glass-card p-6 rounded-xl flex items-center gap-6 hover:bg-surface-container-high transition-all"
                   >
                     <div className={`w-12 h-12 rounded-lg ${feat.iconBg} flex items-center justify-center ${feat.iconColor} shrink-0`}>
-                      <span className="material-symbols-outlined">{feat.icon}</span>
+                      <feat.icon size={22} />
                     </div>
                     <div>
                       <h4 className="font-headline-md text-[18px] text-white mb-1">{feat.title}</h4>
-                      <p className="text-on-surface-variant text-sm">{feat.desc}</p>
+                      <p className="text-on-surface-variant text-sm">{t(feat.descEn, feat.descTh)}</p>
                     </div>
                   </div>
                 ))}
@@ -294,7 +339,7 @@ export default function MediaKitPage() {
             </div>
 
             {/* Right: dashboard mockup */}
-            <div className="reveal relative">
+            <div className="sr sr-right relative">
               <div className="glass-card rounded-2xl p-4 shadow-2xl relative z-10 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -306,12 +351,11 @@ export default function MediaKitPage() {
                 <div className="absolute bottom-10 left-10 right-10">
                   <div className="flex justify-between items-end">
                     <div className="bg-primary-container px-4 py-2 rounded text-white font-data-mono text-sm">
-                      LIVE REPORTING
+                      {t("LIVE REPORTING", "รายงานแบบสด")}
                     </div>
                   </div>
                 </div>
               </div>
-              {/* Glow decor */}
               <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
               <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
             </div>
@@ -323,58 +367,86 @@ export default function MediaKitPage() {
       <GlobalCTABar />
 
       {/* ── Footer ── */}
-      <footer className="bg-surface-container-lowest border-t border-white/10 mt-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 w-full max-w-container-max mx-auto">
-          <div className="space-y-6">
-            <div className="text-2xl font-black tracking-tight">
-              <span className="text-primary">Media</span><span className="text-white">108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            <div className="space-y-4">
+              <div className="text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span><span className="text-white">108</span>
+              </div>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                {t("Precision DOOH Media Solutions for the Modern Era.", "โซลูชันสื่อ DOOH แม่นยำสำหรับยุคใหม่")}
+              </p>
             </div>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              Precision DOOH Media Solutions for the Modern Era.
+
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Navigation", "นำทาง")}
+              </h5>
+              <nav className="flex flex-col gap-2">
+                {([
+                  { en: "Home",         th: "หน้าหลัก",     href: "/" },
+                  { en: "About",        th: "เกี่ยวกับเรา",  href: "/about" },
+                  { en: "Media Network",th: "เครือข่ายสื่อ", href: "/network" },
+                  { en: "Our Services", th: "บริการของเรา",  href: "/services" },
+                  { en: "Contact Us",   th: "ติดต่อเรา",     href: "/contact" },
+                ] as { en: string; th: string; href: string }[]).map((l) => (
+                  <a key={l.en} href={l.href} className="text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    {t(l.en, l.th)}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Media Focus", "จุดเน้นสื่อ")}
+              </h5>
+              <nav className="flex flex-col gap-2">
+                {([
+                  { en: "Pattaya Digital Hub", th: "พัทยา ดิจิทัล ฮับ" },
+                  { en: "Chonburi Strategic",  th: "ชลบุรี สตราทีจิค" },
+                  { en: "Bang Saen Network",   th: "เครือข่ายบางแสน" },
+                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม" },
+                ] as { en: string; th: string }[]).map((l) => (
+                  <a key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
+                    {t(l.en, l.th)}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Connect", "ติดต่อ")}
+              </h5>
+              <div className="flex gap-3">
+                {([Globe, Map] as LucideIcon[]).map((Icon, idx) => (
+                  <a
+                    key={idx}
+                    href="#"
+                    className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer"
+                  >
+                    <Icon size={20} className="text-primary" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="font-label-md text-label-md text-on-surface-variant opacity-60 text-sm">
+              © 2024 MEDIA108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} Precision DOOH Media Solutions.
             </p>
-          </div>
-
-          <div className="space-y-4">
-            <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">Navigation</h5>
-            <nav className="flex flex-col gap-2">
-              {["Privacy Policy", "Terms of Service"].map((l) => (
-                <a key={l} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
-                  {l}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div className="space-y-4">
-            <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">Support</h5>
-            <nav className="flex flex-col gap-2">
-              {["Contact Support", "Global Network"].map((l) => (
-                <a key={l} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
-                  {l}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div className="space-y-4">
-            <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">Follow Us</h5>
-            <div className="flex gap-4">
-              {["public", "mail"].map((icon) => (
-                <div
-                  key={icon}
-                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-primary">{icon}</span>
-                </div>
-              ))}
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                {t("Status", "สถานะ")}:{" "}
+                <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />{" "}
+                {t("Optimal", "ปกติ")}
+              </span>
             </div>
           </div>
-        </div>
-
-        <div className="px-margin-desktop py-8 border-t border-white/5 text-center">
-          <p className="font-label-md text-label-md text-on-surface-variant opacity-60">
-            © 2024 Media108. All rights reserved. Precision DOOH Media Solutions.
-          </p>
         </div>
       </footer>
     </>

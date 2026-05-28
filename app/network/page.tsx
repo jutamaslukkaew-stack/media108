@@ -2,45 +2,66 @@
 
 import Link from "next/link";
 import Navbar from "../components/Navbar";
+import GlobalCTABar from "../components/GlobalCTABar";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
+import {
+  MapPin, Network, Eye, BadgeCheck, Building2, GraduationCap, Globe,
+  MonitorPlay, FileText, ArrowRight, Mail, type LucideIcon,
+} from "lucide-react";
 
-const stats = [
-  { value: "252", label: "Active Locations", icon: "location_on" },
-  { value: "3", label: "Network Segments", icon: "hub" },
-  { value: "450K+", label: "Daily Reach", icon: "visibility" },
-  { value: "99.9%", label: "Uptime SLA", icon: "verified" },
+const statsBase: { value: string; labelEn: string; labelTh: string; icon: LucideIcon }[] = [
+  { value: "252",   labelEn: "Active Locations", labelTh: "จำนวนจุดที่ใช้งาน", icon: MapPin     },
+  { value: "3",     labelEn: "Network Segments", labelTh: "กลุ่มเครือข่าย",    icon: Network    },
+  { value: "450K+", labelEn: "Daily Reach",      labelTh: "ผู้ชมต่อวัน",        icon: Eye        },
+  { value: "99.9%", labelEn: "Uptime SLA",       labelTh: "ความพร้อมใช้งาน",   icon: BadgeCheck },
 ];
 
-const networks = [
+const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count: string; subEn: string; subTh: string; descEn: string; descTh: string; tagEn: string; tagTh: string; color: string }[] = [
   {
-    icon: "location_city",
-    title: "City Network",
+    icon: Building2,
+    titleEn: "City Network",
+    titleTh: "เครือข่ายเมือง",
     count: "124",
-    sub: "Verified Locations",
-    desc: "Urban intersections and primary arterial roads in Chonburi. Continuous brand exposure for modern commuters.",
-    tag: "Core",
+    subEn: "Verified Locations",
+    subTh: "จุดที่ยืนยันแล้ว",
+    descEn: "Urban intersections and primary arterial roads in Chonburi. Continuous brand exposure for modern commuters.",
+    descTh: "สี่แยกและถนนสายหลักในชลบุรี สร้างการรับรู้แบรนด์อย่างต่อเนื่องสำหรับผู้สัญจรยุคใหม่",
+    tagEn: "Core",
+    tagTh: "หลัก",
     color: "#E63946",
   },
   {
-    icon: "school",
-    title: "University Network",
+    icon: GraduationCap,
+    titleEn: "University Network",
+    titleTh: "เครือข่ายมหาวิทยาลัย",
     count: "86",
-    sub: "Digital-First Nodes",
-    desc: "Targeting Gen-Z and Millennials near educational hubs and student districts. Precision digital clusters.",
-    tag: "Growth",
+    subEn: "Digital-First Nodes",
+    subTh: "จุดดิจิทัลเฉพาะ",
+    descEn: "Targeting Gen-Z and Millennials near educational hubs and student districts. Precision digital clusters.",
+    descTh: "เจาะกลุ่ม Gen-Z และ Millennials บริเวณแหล่งการศึกษาและย่านนักศึกษา คลัสเตอร์ดิจิทัลแม่นยำ",
+    tagEn: "Growth",
+    tagTh: "เติบโต",
     color: "#ffb3b1",
   },
   {
-    icon: "travel_explore",
-    title: "Tourism Network",
+    icon: Globe,
+    titleEn: "Tourism Network",
+    titleTh: "เครือข่ายการท่องเที่ยว",
     count: "42",
-    sub: "Premium Placements",
-    desc: "Coastal prestige and entertainment districts. Luxury reach across Pattaya and Bang Saen beachfronts.",
-    tag: "Premium",
+    subEn: "Premium Placements",
+    subTh: "ตำแหน่งพรีเมียม",
+    descEn: "Coastal prestige and entertainment districts. Luxury reach across Pattaya and Bang Saen beachfronts.",
+    descTh: "ย่านชายฝั่งอันทรงเกียรติและย่านบันเทิง การเข้าถึงกลุ่มหรูหราทั่วพัทยาและบางแสน",
+    tagEn: "Premium",
+    tagTh: "พรีเมียม",
     color: "#bfc5e4",
   },
 ];
 
 export default function NetworkPage() {
+  useScrollReveal();
+  const { t } = useLanguage();
   return (
     <>
       <Navbar activePage="network" />
@@ -59,25 +80,37 @@ export default function NetworkPage() {
             />
           </div>
           <div className="relative z-10 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-3 mb-8 opacity-80">
+            <div
+              className="inline-flex items-center gap-3 mb-8 opacity-80"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
+            >
               <div className="w-12 h-px bg-primary/40" />
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary-fixed-dim font-medium font-label-md">Global Standards</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] text-primary-fixed-dim font-medium font-label-md">{t("Global Standards", "มาตรฐานระดับโลก")}</span>
               <div className="w-12 h-px bg-primary/40" />
             </div>
             <h1
               className="font-display-lg mb-10 uppercase leading-[1.1] text-white"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 200, letterSpacing: "0.2em" }}
+              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 200, letterSpacing: "0.2em", animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
             >
-              Systematic{" "}
-              <span className="font-black text-primary-container">Media</span>
+              {t("Systematic", "เชิงระบบ")}{" "}
+              <span className="font-black text-primary-container">{t("Media", "สื่อ")}</span>
               <br className="hidden md:block" />
-              {" "}Network Strategy
+              {" "}{t("Network Strategy", "กลยุทธ์เครือข่าย")}
             </h1>
-            <p className="font-body-lg text-on-surface/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light">
-              Engineering high-frequency visibility through curated media ecosystems. We don&apos;t just place ads; we design visual dominance.
+            <p
+              className="font-body-lg text-on-surface/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light"
+              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
+            >
+              {t(
+                "Engineering high-frequency visibility through curated media ecosystems. We don't just place ads; we design visual dominance.",
+                "สร้างการมองเห็นความถี่สูงผ่านระบบนิเวศสื่อที่คัดสรรอย่างพิถีพิถัน เราไม่ได้แค่วางโฆษณา แต่ออกแบบการครองพื้นที่ทางสายตา"
+              )}
             </p>
-            <div className="flex flex-wrap justify-center gap-8 mb-16">
-              {["Campaign-Driven", "High Frequency", "Targeted Reach"].map((label) => (
+            <div
+              className="flex flex-wrap justify-center gap-8 mb-16"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.44s both" }}
+            >
+              {[t("Campaign-Driven", "ขับเคลื่อนด้วยแคมเปญ"), t("High Frequency", "ความถี่สูง"), t("Targeted Reach", "เข้าถึงเป้าหมาย")].map((label) => (
                 <div key={label} className="flex items-center gap-2 group cursor-default">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
                   <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-on-surface/50 group-hover:text-on-surface transition-colors font-label-md">
@@ -87,19 +120,22 @@ export default function NetworkPage() {
               ))}
             </div>
             {/* CTA buttons */}
-            <div className="flex flex-wrap justify-center gap-4">
+            <div
+              className="flex flex-wrap justify-center gap-4"
+              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.54s both" }}
+            >
               <Link
                 href="/billboard"
                 className="px-8 py-4 rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] text-white hover:brightness-110 transition-all font-label-md"
                 style={{ background: "#E63946", boxShadow: "0 0 24px rgba(230,57,70,0.35)" }}
               >
-                Browse Inventory
+                {t("Browse Inventory", "ดูรายการป้าย")}
               </Link>
               <Link
                 href="/contact#form"
                 className="px-8 py-4 rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] text-white border border-white/20 hover:bg-white/10 transition-all font-label-md"
               >
-                Request Proposal
+                {t("Request Proposal", "ขอใบเสนอราคา")}
               </Link>
             </div>
           </div>
@@ -111,18 +147,18 @@ export default function NetworkPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl"
                 style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
               >
-                {stats.map((s, i) => (
+                {statsBase.map((s, i) => (
                   <div
-                    key={s.label}
+                    key={s.labelEn}
                     className="flex flex-col items-center justify-center gap-2 py-8 px-6 text-center"
                     style={{
                       backdropFilter: "blur(16px)",
                       background: i % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.05)",
                     }}
                   >
-                    <span className="material-symbols-outlined text-primary/60 text-xl">{s.icon}</span>
+                    <s.icon size={20} className="text-primary/60" />
                     <span className="text-white font-black font-display-lg text-2xl md:text-3xl leading-none">{s.value}</span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-on-surface/40 font-label-md">{s.label}</span>
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-on-surface/40 font-label-md">{t(s.labelEn, s.labelTh)}</span>
                   </div>
                 ))}
               </div>
@@ -133,24 +169,27 @@ export default function NetworkPage() {
         {/* ── Network Segments ── */}
         <section className="py-32 px-margin-mobile md:px-margin-desktop bg-surface">
           <div className="max-w-container-max mx-auto">
-            <div className="text-center mb-20">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-semibold mb-4 block font-label-md">Coverage</span>
+            <div className="sr sr-up text-center mb-20">
+              <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-semibold mb-4 block font-label-md">{t("Coverage", "ความครอบคลุม")}</span>
               <h2
                 className="font-display-lg uppercase text-white mb-6"
                 style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 300, letterSpacing: "0.1em" }}
               >
-                Three Strategic <span className="font-black text-primary-container">Networks</span>
+                {t("Three Strategic", "สาม")}{" "}<span className="font-black text-primary-container">{t("Networks", "เครือข่ายเชิงกลยุทธ์")}</span>
               </h2>
               <p className="text-on-surface-variant/60 font-light max-w-xl mx-auto">
-                Orchestrated inventory designed to meet specific demographic objectives across the EEC corridor.
+                {t(
+                  "Orchestrated inventory designed to meet specific demographic objectives across the EEC corridor.",
+                  "คลังสื่อที่ได้รับการจัดสรรเพื่อตอบเป้าหมายประชากรเฉพาะทั่ว EEC corridor"
+                )}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {networks.map((net) => (
+              {networksBase.map((net, i) => (
                 <div
-                  key={net.title}
-                  className="group relative rounded-2xl p-10 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-1"
+                  key={net.titleEn}
+                  className={`sr sr-scale sr-d${i + 1} group relative rounded-2xl p-10 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-1`}
                   style={{
                     background: "rgba(255,255,255,0.03)",
                     border: "1px solid rgba(255,255,255,0.08)",
@@ -162,7 +201,7 @@ export default function NetworkPage() {
                     className="absolute top-6 right-6 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 rounded-full font-label-md"
                     style={{ background: `${net.color}18`, color: net.color, border: `1px solid ${net.color}30` }}
                   >
-                    {net.tag}
+                    {t(net.tagEn, net.tagTh)}
                   </span>
 
                   {/* Icon */}
@@ -170,18 +209,16 @@ export default function NetworkPage() {
                     className="w-14 h-14 rounded-xl flex items-center justify-center"
                     style={{ background: `${net.color}15`, border: `1px solid ${net.color}25` }}
                   >
-                    <span className="material-symbols-outlined text-2xl" style={{ color: net.color }}>
-                      {net.icon}
-                    </span>
+                    <net.icon size={24} style={{ color: net.color }} />
                   </div>
 
                   {/* Text */}
                   <div className="flex-1">
                     <h3 className="font-display-lg text-white text-lg font-bold uppercase tracking-wide mb-3">
-                      {net.title}
+                      {t(net.titleEn, net.titleTh)}
                     </h3>
                     <p className="text-on-surface-variant/60 text-sm font-light leading-relaxed">
-                      {net.desc}
+                      {t(net.descEn, net.descTh)}
                     </p>
                   </div>
 
@@ -189,15 +226,15 @@ export default function NetworkPage() {
                   <div className="pt-6 border-t border-white/5 flex items-end justify-between">
                     <div>
                       <div className="text-3xl font-black text-white font-display-lg leading-none mb-1">{net.count}</div>
-                      <div className="text-[10px] uppercase tracking-[0.2em] font-label-md" style={{ color: net.color }}>{net.sub}</div>
+                      <div className="text-[10px] uppercase tracking-[0.2em] font-label-md" style={{ color: net.color }}>{t(net.subEn, net.subTh)}</div>
                     </div>
                     <Link
                       href="/billboard"
                       className="flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] font-bold font-label-md transition-colors"
                       style={{ color: `${net.color}99` }}
                     >
-                      Explore
-                      <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+                      {t("Explore", "สำรวจ")}
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -233,27 +270,30 @@ export default function NetworkPage() {
               {/* Content */}
               <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-12 p-12 md:p-20 h-full" style={{ minHeight: "480px" }}>
                 {/* Left text */}
-                <div className="flex-1">
+                <div className="sr sr-left flex-1">
                   <div className="inline-flex items-center gap-3 mb-8">
                     <div className="w-8 h-px bg-primary/60" />
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-primary/80 font-semibold font-label-md">Ready to Dominate</span>
+                    <span className="text-[10px] uppercase tracking-[0.4em] text-primary/80 font-semibold font-label-md">{t("Ready to Dominate", "พร้อมครองตลาด")}</span>
                   </div>
                   <h3
                     className="font-display-lg text-white uppercase leading-tight mb-6"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, letterSpacing: "0.05em" }}
                   >
-                    Own the EEC<br />
-                    <span style={{ color: "#E63946" }}>Corridor</span> Today.
+                    {t("Own the EEC", "ครอง EEC")}<br />
+                    <span style={{ color: "#E63946" }}>{t("Corridor", "Corridor")}</span> {t("Today.", "วันนี้")}
                   </h3>
                   <p className="text-white/60 font-light leading-relaxed max-w-md mb-10">
-                    Secure your brand&apos;s visibility at Thailand&apos;s highest-traffic DOOH locations. First-mover advantage in the fastest-growing economic zone in Southeast Asia.
+                    {t(
+                      "Secure your brand's visibility at Thailand's highest-traffic DOOH locations. First-mover advantage in the fastest-growing economic zone in Southeast Asia.",
+                      "รักษาการมองเห็นแบรนด์ของคุณในจุด DOOH ที่มีปริมาณการจราจรสูงที่สุดในไทย ได้เปรียบผู้บุกเบิกในเขตเศรษฐกิจที่เติบโตเร็วที่สุดในเอเชียตะวันออกเฉียงใต้"
+                    )}
                   </p>
                   {/* Mini stats row */}
                   <div className="flex flex-wrap gap-8">
                     {[
-                      { v: "252+", l: "Locations" },
-                      { v: "450K", l: "Daily Reach" },
-                      { v: "16 Yrs", l: "Experience" },
+                      { v: "252+", l: t("Locations", "จำนวนจุด") },
+                      { v: "450K", l: t("Daily Reach", "ผู้ชมต่อวัน") },
+                      { v: "16 Yrs", l: t("Experience", "ประสบการณ์") },
                     ].map((s) => (
                       <div key={s.l}>
                         <div className="text-white font-black text-xl font-display-lg leading-none">{s.v}</div>
@@ -264,22 +304,22 @@ export default function NetworkPage() {
                 </div>
 
                 {/* Right buttons */}
-                <div className="flex-shrink-0 flex flex-col gap-4 w-full lg:w-auto">
+                <div className="sr sr-right flex-shrink-0 flex flex-col gap-4 w-full lg:w-auto">
                   <Link
                     href="/billboard"
                     className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-[#bb152c] rounded-xl font-label-md text-[12px] uppercase tracking-[0.15em] font-black hover:scale-105 transition-all text-center"
                     style={{ boxShadow: "0 8px 32px rgba(255,255,255,0.15)" }}
                   >
-                    <span className="material-symbols-outlined text-lg">perm_media</span>
-                    View Inventory
+                    <MonitorPlay size={18} />
+                    {t("View Inventory", "ดูรายการป้าย")}
                   </Link>
                   <Link
                     href="/contact#form"
                     className="flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-label-md text-[12px] uppercase tracking-[0.15em] font-bold text-white transition-all text-center"
                     style={{ border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.07)", backdropFilter: "blur(8px)" }}
                   >
-                    <span className="material-symbols-outlined text-lg">description</span>
-                    Request Proposal
+                    <FileText size={18} />
+                    {t("Request Proposal", "ขอใบเสนอราคา")}
                   </Link>
                 </div>
               </div>
@@ -290,94 +330,78 @@ export default function NetworkPage() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="w-full pt-24 pb-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5">
-        <div className="max-w-container-max mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-20">
-            <div className="flex flex-col gap-8 max-w-sm">
-              <span className="font-display-lg text-headline-lg text-white font-black">MEDIA108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            <div className="md:col-span-1">
+              <div className="mb-6 text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span>
+                <span className="text-white">108</span>
+              </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
-                Premium media architecture for the modern brand. Elevating the digital-out-of-home standard across Southeast Asia&apos;s most vital economic corridors.
+                {t(
+                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
+                  "นำแนวโน้มปฏิวัติสื่อดิจิทัลกลางแจ้งในเขตพัฒนาพิเศษภาคตะวันออก โซลูชันสื่อที่แม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                )}
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-20">
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Navigation</h4>
-                <nav className="flex flex-col gap-4">
-                  {[["Home", "/"], ["About", "/about"], ["Media Network", "/network"]].map(([l, h]) => (
-                    <Link key={l} href={h} className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">{l}</Link>
-                  ))}
-                </nav>
-              </div>
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Resources</h4>
-                <nav className="flex flex-col gap-4">
-                  {[["Media Kit", "/media-kit"], ["Quotations", "/contact#form"], ["LINE OA", "#"]].map(([l, h]) => (
-                    <Link key={l} href={h} className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">{l}</Link>
-                  ))}
-                </nav>
-              </div>
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Contact</h4>
-                <nav className="flex flex-col gap-4">
-                  <Link href="/contact" className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">Sales Inquiries</Link>
-                  <div className="flex gap-6 mt-4">
-                    {["public", "alternate_email"].map((icon) => (
-                      <span key={icon} className="material-symbols-outlined text-[1.25rem] text-on-surface-variant/40 hover:text-primary cursor-pointer transition-colors">{icon}</span>
-                    ))}
-                  </div>
-                </nav>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Navigation", "เมนู")}</h6>
+              <ul className="space-y-4">
+                {([
+                  [t("Home", "หน้าแรก"), "/"],
+                  [t("About", "เกี่ยวกับเรา"), "/about"],
+                  [t("Media Network", "เครือข่ายสื่อ"), "/network"],
+                  [t("Our Services", "บริการของเรา"), "/services"],
+                  [t("Contact Us", "ติดต่อเรา"), "/contact"],
+                ] as [string, string][]).map(([label, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Media Focus", "โฟกัสสื่อ")}</h6>
+              <ul className="space-y-4">
+                {[
+                  t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),
+                  t("Chonburi Strategic", "ชลบุรีเชิงกลยุทธ์"),
+                  t("Bang Saen Network", "เครือข่ายบางแสน"),
+                  t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),
+                ].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Connect", "ติดตาม")}</h6>
+              <div className="flex gap-4">
+                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
+                  <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
+                    <Icon size={20} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-          <div className="w-full h-px bg-white/5 my-12" />
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <p className="text-on-surface-variant/60 text-[11px] uppercase tracking-[0.15em] font-medium font-label-md">
-              © 2024 Media108. All Rights Reserved.
-            </p>
-            <div className="flex gap-12">
-              {[["Privacy", "#"], ["Terms", "#"]].map(([l, h]) => (
-                <Link key={l} href={h} className="text-on-surface-variant/60 hover:text-primary text-[11px] uppercase tracking-[0.15em] font-medium transition-colors font-label-md">{l}</Link>
-              ))}
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-on-surface-variant font-label-md text-sm">
+              {t("© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.", "© 2024 MEDIA108. สงวนลิขสิทธิ์ โซลูชันสื่อ DOOH ที่แม่นยำ")}
+            </div>
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                {t("Status:", "สถานะ:")} <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> {t("Optimal", "ปกติ")}
+              </span>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* ── Fixed Bottom CTA Bar ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-2xl border-t border-white/5 py-4 px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-container-max mx-auto flex items-center justify-between gap-6 overflow-x-auto no-scrollbar">
-          <p className="hidden xl:block font-label-md text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 whitespace-nowrap">
-            Ready to dominate?
-          </p>
-          <div className="flex items-center gap-4 mx-auto xl:mx-0">
-            <Link
-              href="/contact#form"
-              className="px-5 py-2.5 bg-primary-container text-white text-[9px] font-bold rounded uppercase tracking-[0.15em] hover:brightness-110 transition-all shadow-lg shadow-primary-container/20 font-label-md whitespace-nowrap"
-            >
-              Request Quotation
-            </Link>
-            <Link
-              href="/media-kit"
-              className="px-5 py-2.5 border border-white/10 hover:bg-white/5 text-white/70 text-[9px] font-bold rounded uppercase tracking-[0.15em] transition-all font-label-md whitespace-nowrap"
-            >
-              Download Kit
-            </Link>
-            <Link
-              href="/contact"
-              className="px-5 py-2.5 border border-white/10 hover:bg-white/5 text-white/70 text-[9px] font-bold rounded uppercase tracking-[0.15em] transition-all font-label-md whitespace-nowrap"
-            >
-              Contact Sales
-            </Link>
-            <a
-              href="#"
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#00b900] text-white text-[9px] font-bold rounded uppercase tracking-[0.15em] hover:brightness-110 transition-all font-label-md whitespace-nowrap"
-            >
-              <span className="material-symbols-outlined text-base">chat</span>
-              LINE OA
-            </a>
-          </div>
-        </div>
-      </div>
+      <GlobalCTABar />
     </>
   );
 }

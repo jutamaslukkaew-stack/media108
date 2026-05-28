@@ -209,6 +209,129 @@
   }
 }
 
+/* ── Page Entry — every sub-page fades+slides up on load ── */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-entry {
+  animation: page-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Staggered hero word reveal ── */
+@keyframes word-in {
+  from { opacity: 0; transform: translateY(28px) skewY(2deg); }
+  to   { opacity: 1; transform: translateY(0)   skewY(0deg); }
+}
+.hero-word { display: inline-block; animation: word-in 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Lens-Pull "Sucked-In" System ── */
+
+/* Vignette closes in from edges — makes center feel like a gravity well */
+@keyframes vignette-pulse {
+  0%, 100% { opacity: 0.42; transform: scale(1.00); }
+  50%       { opacity: 0.72; transform: scale(1.06); }
+}
+
+/* Center lure — bright focal node breathes outward, pulls the eye */
+@keyframes center-lure {
+  0%, 100% { opacity: 0.00; transform: scale(0.80); }
+  50%       { opacity: 0.20; transform: scale(1.20); }
+}
+
+/* ── 3D Volumetric Light System ── */
+
+/* Volumetric ray — gentle swell, simulates light beam breathing */
+@keyframes vol-ray-breathe {
+  0%, 100% { opacity: 0.08; transform: rotate(0deg)   scaleY(1.00); }
+  50%       { opacity: 0.17; transform: rotate(0.8deg) scaleY(1.06); }
+}
+
+/* Atmospheric color orb — slow drift simulates depth of field movement */
+@keyframes atmos-drift {
+  0%   { transform: translate(  0px,   0px) scale(1.00); }
+  25%  { transform: translate(-14px, -22px) scale(1.08); }
+  50%  { transform: translate( 10px, -10px) scale(0.96); }
+  75%  { transform: translate( 16px,  14px) scale(1.04); }
+  100% { transform: translate(  0px,   0px) scale(1.00); }
+}
+
+/* Dust particle — drifts slightly right as it rises */
+@keyframes dust-rise-r {
+  0%   { transform: translate(  0px,    0px) scale(1.0); opacity: 0;   }
+  8%   {                                                  opacity: 1;   }
+  88%  {                                                  opacity: 0.5; }
+  100% { transform: translate( 18px, -175px) scale(0.4); opacity: 0;   }
+}
+
+/* Dust particle — drifts slightly left as it rises */
+@keyframes dust-rise-l {
+  0%   { transform: translate(  0px,    0px) scale(1.0); opacity: 0;   }
+  8%   {                                                  opacity: 1;   }
+  88%  {                                                  opacity: 0.5; }
+  100% { transform: translate(-14px, -175px) scale(0.4); opacity: 0;   }
+}
+
+/* Billboard edge bloom — simulates light bleeding off screen edge */
+@keyframes edge-bloom {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.65; }
+}
+
+/* ── TV Power-On Effect ── */
+
+/* Main expand: clip-path from razor-thin center line → full screen */
+@keyframes tv-expand {
+  0%   {
+    clip-path: inset(49.85% 0 49.85% 0);
+    filter: brightness(9) saturate(0) contrast(2.5);
+  }
+  20%  {
+    clip-path: inset(49.85% 0 49.85% 0);
+    filter: brightness(12) saturate(0) contrast(3);
+  }
+  62%  {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(2.8) saturate(0.25) contrast(1.5);
+  }
+  82%  {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(1.5) saturate(0.75) contrast(1.1);
+  }
+  100% {
+    clip-path: inset(0% 0 0% 0);
+    filter: brightness(1) saturate(1) contrast(1);
+  }
+}
+
+/* Bright center flash line — appears first, then fades as image expands */
+@keyframes tv-line-flash {
+  0%   { opacity: 0;   transform: translateY(-50%) scaleX(0.1); }
+  18%  { opacity: 1;   transform: translateY(-50%) scaleX(1); }
+  42%  { opacity: 0.9; transform: translateY(-50%) scaleX(1); }
+  72%  { opacity: 0;   transform: translateY(-50%) scaleX(1); }
+  100% { opacity: 0;   transform: translateY(-50%) scaleX(1); }
+}
+
+/* Static noise flicker — quick random-opacity burst at start */
+@keyframes tv-static-flicker {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.55; }
+  10%  { opacity: 0.15; }
+  16%  { opacity: 0.45; }
+  22%  { opacity: 0.08; }
+  28%  { opacity: 0.3; }
+  36%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Black vignette that lifts off when TV turns on */
+@keyframes tv-black-lift {
+  0%,  18% { opacity: 1; }
+  65%       { opacity: 0; }
+  100%      { opacity: 0; }
+}
+
 /* ── Hero Media108 Animations ── */
 
 /* Entrance — slide up from below */

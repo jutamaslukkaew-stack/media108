@@ -1,32 +1,33 @@
 import Link from "next/link";
+import { FileText, MousePointerClick, Download, HelpCircle, MessageCircle, type LucideIcon } from "lucide-react";
 
-const tabs = [
+const tabs: { icon: LucideIcon; label: string; href: string; cls: string }[] = [
   {
-    icon: "request_quote",
+    icon: FileText,
     label: "ขอใบเสนอราคา",
     href: "/contact#form",
     cls: "bg-surface-bright hover:bg-primary",
   },
   {
-    icon: "ads_click",
+    icon: MousePointerClick,
     label: "จองป้ายนี้",
     href: "/network",
     cls: "bg-surface-bright hover:bg-primary",
   },
   {
-    icon: "download",
+    icon: Download,
     label: "ดาวน์โหลด Media Kit",
     href: "/media-kit",
     cls: "bg-surface-bright hover:bg-primary",
   },
   {
-    icon: "contact_support",
+    icon: HelpCircle,
     label: "ติดต่อฝ่ายขาย",
     href: "/contact#form",
     cls: "bg-primary-container shadow-lg shadow-primary/20 hover:scale-105",
   },
   {
-    icon: "chat",
+    icon: MessageCircle,
     label: "LINE OA",
     href: "#",
     cls: "bg-[#06C755] hover:brightness-110",
@@ -43,7 +44,7 @@ export default function TabBar() {
             href={tab.href}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-white font-label-md text-xs md:text-sm uppercase tracking-wider transition-all duration-300 ${tab.cls}`}
           >
-            <span className="material-symbols-outlined text-lg">{tab.icon}</span>
+            <tab.icon size={18} />
             <span>{tab.label}</span>
           </Link>
         ))}
