@@ -90,13 +90,13 @@ export const billboards: Record<string, BillboardData> = {
     status: "Available",
 
     imgHero:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBTwa7gDfWYJytqmTFjH6sP_jbSOE4tV2yKitlH-2-CEIU8MxH1Ki8_oBjNsn2OXlA5Y0qxfo1KdvN0MANbQXr9ewBbeChxbZoJ6zTXjqa4jNnL4ZA6WvzWroUk1uZva_9Dj1wk25_ff3u7NaXanxdk34KUan-JKK3maACuGQoDmruQ3T4md2yDiuZ0y7cXYnF5e7oe7LtLTec9uhd88dwj8Cyr70ON5kjfiZ7EPKifOZ-tKJ4h994HkXPs-Xy91HKUC_mQGWDxcXM",
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80",
     imgDay:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDTlRT330mJrQT89A_oN4vHKGWmNQPrA_WN9nKLbyL32o5DQMkImM9Z98oYzDXU7g4B2irDZAUeDG50EKhemAh_lJo3xSGNrH3NgGUjnQHHwmTWLpUw715-qcNjBPn1z4KpLyqqBpyXF0u_Cwmr34rbNg6MMSuLU2zhLsmPw-_ERRcxZz-G4LZrqD6tTq046HZrBwNn5OBWDQCII-M8eVqD6qcaAQiBLMcU3ft3zOVJSRsVjCa91HiXfVubvCfOJdytvbVjCVNSaYY",
+      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80",
     imgNight:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAO_47r1OHJ4IcyY5WcQIs0U83p4GctxpwbcVdzDb_LJvVHLxo9DjW93d9xg9P5I485B5Lmxcc1Zbo0-8n46SMeGdOUpD-g8ZOPwhnfafrtvjv9phc1wTxnKEOVGlBaTPdS5o7-jIl3uyrKWNmrGJcnXiZ8F0uznZHiayyPmeNUPxLEEBtYc230BMsPg",
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80",
     imgDrone:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCIhXSeh6jDS0sYDbwh1y2wfmdaDEDByNgNsRktWsCxUT_ep6DcEVumgPDh6cJekizSPK_ZZ8UNh0WC_W8KMmiwPZlgS5miocxjCZ9u9tgPcR--X5Qy8sRtCtdghXSrS_LqsjZJS-HgluOvshm1h3liLw1-ACnJRx1KDQIXBYaA18R_PFQHIicTTsfaweyBdWidyv-f0Wg-TtW0p5rs11K0Jw1AYrN6Rx-9LKW6hYYS7uqmachW3cjSornZkiVXq8sr99pB00_lZyA",
+      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
 
     specs: [
       { label: "Dimensions", value: "20m × 12m" },
@@ -138,7 +138,7 @@ export const billboards: Record<string, BillboardData> = {
     ],
 
     mapImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBapfgbuOtC_CstCSfO3_BpYi6slDrNiIwuAEPfNlbccumJQq_lWhYcjmQKbwHJFvtfM6jwuKsQgxNbyhsMUDkLyNOQjoGF3MIrROU4hVEW1xY9gild_mfnsYQH8VZuicn2_iYZlpSSTAGRiTTHI1pmNA9xqOrt5VqwVYRlP2IgEKz_VkokJT67Xxeau9q1enlPW2hBBEt2KkMVPgZowWIuNal6CR9VaqXmvbdf9oPThI9uElvLHPK501KSuqhS3EtSqo3u_N-jH3k",
+      "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     nearby: [
       { icon: "shopping_cart", name: "Terminal 21 Pattaya", distance: "800m" },
       { icon: "school", name: "Maryvit School", distance: "1.2 km" },
@@ -194,21 +194,21 @@ export const billboards: Record<string, BillboardData> = {
         title: "Pattaya Gateway",
         subtitle: "Main Intersection · 18m × 9m",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+        img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
       },
       {
         slug: "eec-tech-square",
         title: "EEC Tech Square",
         subtitle: "Sri Racha Industrial · 20m × 10m",
         status: "High Demand",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+        img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&q=80",
       },
       {
         slug: "jomtien-coastal",
         title: "Jomtien Coastal",
         subtitle: "Beachfront Drive · 16m × 8m",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+        img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
       },
     ],
   },
@@ -224,9 +224,9 @@ export const billboards: Record<string, BillboardData> = {
     status: "Available",
 
     imgDay:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
     imgNight:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBrJbSyJH1tw6taoXRIVV3t7M97xpGB_26IoGB7-YspN575yM-U-VSZ57bRB2ut_cLJKrC5uOpW3veixJ9oGkWMLVe4BCP09DsKGXpIWkfhi0C0p8LoFT6iXfIP_Yg6kiAW7Gu0q2eCLn0htcQf2BGWu5cjWgi3RJ86975CNYqIhuN9np9eBzYQEVzXenohBGbrYWCybj27Xm_PSStBhQW2oQT20_TfTrvdrgpRfaV7kwCk1PadKnHsQBZfQ2HewLxawH0kBj2CqIQ",
+      "https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?w=1200&q=80",
 
     specs: [
       { label: "Screen Size", value: "18m x 9m" },
@@ -258,7 +258,7 @@ export const billboards: Record<string, BillboardData> = {
     ],
 
     mapImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+      "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [
       { icon: "local_mall", name: "Mike Shopping Mall", distance: "0.8 km from location" },
       { icon: "beach_access", name: "Pattaya Beach", distance: "1.2 km from location" },
@@ -284,21 +284,21 @@ export const billboards: Record<string, BillboardData> = {
         title: "Pattaya Sukhumvit 01",
         subtitle: "Main Pattaya Route",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+        img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
       },
       {
         slug: "eec-tech-square",
         title: "EEC Tech Square",
         subtitle: "Sri Racha Industrial, Chonburi",
         status: "High Demand",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+        img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&q=80",
       },
       {
         slug: "jomtien-coastal",
         title: "Jomtien Coastal",
         subtitle: "Beachfront Drive, Pattaya",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+        img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
       },
     ],
   },
@@ -314,9 +314,9 @@ export const billboards: Record<string, BillboardData> = {
     status: "High Demand",
 
     imgDay:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+      "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&q=80",
     imgNight:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+      "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&q=80",
 
     specs: [
       { label: "Screen Size", value: "20m x 10m" },
@@ -348,7 +348,7 @@ export const billboards: Record<string, BillboardData> = {
     ],
 
     mapImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+      "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [
       { icon: "factory", name: "Amata City Rayong", distance: "5.2 km from location" },
       { icon: "local_hospital", name: "Bangkok Hospital Sriracha", distance: "3.0 km from location" },
@@ -373,21 +373,21 @@ export const billboards: Record<string, BillboardData> = {
         title: "Pattaya Sukhumvit 01",
         subtitle: "Main Pattaya Route",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+        img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
       },
       {
         slug: "pattaya-gateway",
         title: "Pattaya Gateway",
         subtitle: "Main Intersection, Chonburi",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+        img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
       },
       {
         slug: "jomtien-coastal",
         title: "Jomtien Coastal",
         subtitle: "Beachfront Drive, Pattaya",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+        img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
       },
     ],
   },
@@ -403,9 +403,9 @@ export const billboards: Record<string, BillboardData> = {
     status: "Available",
 
     imgDay:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
     imgNight:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB0e5U1hjvZqVHqrezcDHyuyFCEnjMSo7bUa6r-rgQGRxm1v4H1cUS5rBRxk0apM6pEBuO7lfUsbtm-U-zmruZ2uojRkoa8SPyRMcqwJfwJx16ywIepudT99L4VlbtnzKcmkhOrVh15MpAxDEUI9_YXvYfiHyDVV5cc1SEW6wggXHNOYhq6dYFFZOWmu67yZYbuBwLoZ7VyZEDmUmaRXTCbOYARlpxQKcOJCOR8zA_9ehEuu0jqOvJ1KPl1wL1EYNEOFnpaRpoLyTA",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&q=80",
 
     specs: [
       { label: "Screen Size", value: "16m x 8m" },
@@ -437,7 +437,7 @@ export const billboards: Record<string, BillboardData> = {
     ],
 
     mapImg:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDy8CUev-Oc5In6v_3xICFt5vTvDQxog4oUoTPnIl_ijVCkjD97TkuHJOhUnpIz_7VRCmLAbuZQE3yEQ8Tg0AdAAmaci6zmimC-vz7M4o7rPEWRtESaJfGBRF0P1ONMxNGv9WWFXdyl1gTzW7QWNd2QgNe0VM1tJJxV2U0upQjnJ8AM6E3DEw83ZLZIiShyewLZqCPkns6e3J8tMt-jDZifOQSzotETs9KYCHTBM6_1qUumxtatchCQHD5mv3kocSPbDVQHLoeIv2g",
+      "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [
       { icon: "beach_access", name: "Jomtien Beach", distance: "0.2 km from location" },
       { icon: "hotel", name: "Jomtien Palm Beach Hotel", distance: "0.5 km from location" },
@@ -458,21 +458,21 @@ export const billboards: Record<string, BillboardData> = {
         title: "Pattaya Sukhumvit 01",
         subtitle: "Main Pattaya Route",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+        img: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
       },
       {
         slug: "pattaya-gateway",
         title: "Pattaya Gateway",
         subtitle: "Main Intersection, Chonburi",
         status: "Available",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAneYEVa61TSymNjfyCd1VdOG3RxQLeFwx5g2B0X2DtJgko-oafvojjnsBgwawVA7jRAmppg9YFnWHQTmrLiJnZfWV0TFncrodKkHbBQhYTnL-5zCEUr1SZY-hA67cJdxGOez39CW9zpSS8ZQ8RUeTTfhx2r977tgxeYpK2ZqLyIp-xVKtkCeSPnH7FmcPZVr6F0OaI9JizBBf4xYpXeG6gtZodtABdlzotyXreuSGtkYUsHqPTkKESjASnhFWdHfVxiV2yODzafqE",
+        img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
       },
       {
         slug: "eec-tech-square",
         title: "EEC Tech Square",
         subtitle: "Sri Racha Industrial, Chonburi",
         status: "High Demand",
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDjSZFXFqiFfypHRFzhJFzWRScOrfQaEQw_cwoS79v1NjLB1mcHbsQnuGj4QUdjsc7UaarlVoEznBm_Ha5L31amPNNrp7EtfoS8waNpA38KOE0faC-NV4ErSbNkS57PX_ty5Gy7xVOEyRIHg73KlowagDbPHD_HvKs_iY-RX_VLmbeAW9U418-TZfykX5nGQUP3n3P9is599PyLwmnGsP53pmgNdeVKZHt5nOnOE-B1PzRRc3uC_MoUhx0a97OsHIYqJv5-CBsiGi0",
+        img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=1200&q=80",
       },
     ],
   },

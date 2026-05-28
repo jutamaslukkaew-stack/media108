@@ -15,7 +15,7 @@ import {
 const featuredBillboards = [
   {
     href: "/billboard/m108-cbd-01",
-    img: "https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4",
+    img: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80",
     alt: "Pattaya Sukhumvit 01",
     name: "Pattaya Sukhumvit 01",
     locationEn: "Main Pattaya Route",
@@ -27,7 +27,7 @@ const featuredBillboards = [
   },
   {
     href: "/billboard/m108-uni-42",
-    img: "https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE",
+    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
     alt: "Pattaya Gateway",
     name: "Pattaya Gateway",
     locationEn: "Pattaya Central Intersection",
@@ -39,7 +39,7 @@ const featuredBillboards = [
   },
   {
     href: "/billboard/m108-air-09",
-    img: "https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4",
+    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
     alt: "EEC Tech Square",
     name: "EEC Tech Square",
     locationEn: "Sri Racha – Industrial Estate",
@@ -90,20 +90,20 @@ const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }
 
 const gallery = [
   {
-    src: "https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo",
+    src: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
     alt: "Daylight Shot",
     title: "Daylight Clarity",
     sub: "Sukhumvit Main Road",
   },
   {
-    src: "https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE",
+    src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
     alt: "Night Shot",
     title: "Vibrant Night Life",
     sub: "Pattaya Central Hub",
     border: true,
   },
   {
-    src: "https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4",
+    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
     alt: "Drone Shot",
     title: "Drone Overview",
     sub: "EEC Coverage Area",
@@ -261,7 +261,7 @@ export default function Home() {
               alt="Hero Background"
               className="w-full h-full object-cover"
               style={{ willChange: "transform" }}
-              src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"
+              src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80"
             />
             <div className="absolute inset-0 hero-gradient" />
 
@@ -936,7 +936,7 @@ export default function Home() {
                 <img
                   alt="Map Data Overlay"
                   className="w-full h-full object-cover grayscale brightness-50"
-                  src="https://lh3.googleusercontent.com/aida/ADBb0uh5MB61uc5uscXh2-ZwaRaBn8IpziZrSaZoxGaTlyohKy6xcgUDrvnlQrxSdhllqJhhujs0ZHuGyDSXMtLwR64wpXl1EqJcGHa0w5SCjGmKpVYG9XiEpqO3GuL0aL76sbdqlmdWmRowqIZOk1jnGrt058D5pq8H6vyMbbwfXSu1cSM7KsTt-oAH9KUK0-oepqJC6AuieogepbJRcAjk1DpPVLf7eAiBvxASS12TNyApzWYv-0TYKB305uo"
+                  src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80"
                 />
               </div>
               <div className="absolute top-1/4 left-1/3 animate-bounce">
@@ -1350,7 +1350,7 @@ export default function Home() {
               <img
                 alt="Media108 Logo"
                 className="h-10 w-auto mb-8"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzxAPAB9nOqrDOCuORJYTnRRWHgB_iOJG0f39OvN_Ma74f63ydil3zG2UkdpwdL_gCwGITmTUc2uG9iinRcyf83Sa4PEHrRizUBZ8zsgXbduZc0wpHL54kxAYoheQdcTxwqcuTyPF9ln3u5xwWj1OqEzpvNnDGgI8qvuNoXs1bbPozJ8gnDxd5Nh6Is7-g30t9PeOG9t_u1kB3qJe909_B_xV9qOwuCevQsDCcXJsZUzhe5egc4FA2FzWs8P9bRvw5qEorIHD2js"
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80"
               />
               <p className="text-on-surface-variant font-body-md pr-12 leading-relaxed">
                 {t(
