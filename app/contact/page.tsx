@@ -5,29 +5,15 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
 import {
-  PhoneCall, Headphones, Briefcase, CreditCard, Megaphone, CloudDownload,
+  PhoneCall, Headphones, Briefcase, Globe, Mail,
   MessageCircle, PlusCircle, MapPin, ChevronDown, ArrowRight, CheckCircle,
   type LucideIcon,
 } from "lucide-react";
 
-/* ── Quick contact cards ─────────────────────────────── */
-const quickLinks: { icon: LucideIcon; title: string; body: string; span: boolean; arrow?: boolean }[] = [
-  { icon: PhoneCall,  title: "Phone",   body: "062-563-6199",                   span: false },
-  { icon: Headphones, title: "Support", body: "Report an Issue",               span: false },
-  { icon: Briefcase,  title: "Careers", body: "Join our world-class media team", span: true, arrow: true },
-];
-
-/* ── Desktop CTA bar items ───────────────────────────── */
-const ctaItems: { icon: LucideIcon; label: string; href: string; green: boolean }[] = [
-  { icon: CreditCard,    label: "Request Quotation",  href: "#form",      green: false },
-  { icon: Megaphone,     label: "Book This Billboard", href: "/network",   green: false },
-  { icon: CloudDownload, label: "Media Kit",           href: "/media-kit", green: false },
-  { icon: Headphones,    label: "Contact Sales",       href: "#form",      green: false },
-  { icon: MessageCircle, label: "LINE OA",             href: "#",          green: true  },
-];
-
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [form, setForm] = useState({
     name: "", company: "", phone: "", email: "", service: "", message: "",
   });
@@ -47,7 +33,7 @@ export default function ContactPage() {
     setSubmitted(true);
   }
 
-  /* ── shared input class ── */
+  /* ── shared input/label class helpers ── */
   const inputClass = (field: string) =>
     `w-full bg-surface-container-low border rounded-lg p-4 outline-none transition-all text-on-surface placeholder:text-on-surface-variant/50 ${
       focusedField === field
@@ -70,15 +56,17 @@ export default function ContactPage() {
             className="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white"
             style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
           >
-            Contact Our{" "}
-            <span className="text-primary italic">Media Specialists</span>
+            {t("Contact Our", "ติดต่อ")}{" "}
+            <span className="text-primary italic">{t("Media Specialists", "ทีมผู้เชี่ยวชาญสื่อ")}</span>
           </h1>
           <p
             className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto"
             style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
           >
-            Bridge the gap between your brand and millions of urban eyes. Our experts are ready to curate your
-            global media footprint.
+            {t(
+              "Bridge the gap between your brand and millions of urban eyes. Our experts are ready to curate your global media footprint.",
+              "เชื่อมต่อแบรนด์ของคุณกับสายตานับล้านในเมือง ผู้เชี่ยวชาญของเราพร้อมออกแบบแผนสื่อที่ตรงเป้าหมาย"
+            )}
           </p>
         </div>
       </section>
@@ -91,21 +79,28 @@ export default function ContactPage() {
           <div className="sr sr-left lg:col-span-7 glass-card p-8 md:p-12 rounded-xl">
             <div className="flex items-center gap-4 mb-8">
               <span className="w-12 h-[2px] bg-primary shrink-0" />
-              <h2 className="font-headline-md text-headline-md text-white">Request a Quotation</h2>
+              <h2 className="font-headline-md text-headline-md text-white">
+                {t("Request a Quotation", "ขอใบเสนอราคา")}
+              </h2>
             </div>
 
             {submitted ? (
               <div className="flex flex-col items-center justify-center py-20 text-center gap-4">
                 <CheckCircle size={56} className="text-primary fill-current" />
-                <h3 className="font-headline-md text-headline-md text-white">ส่งข้อมูลเรียบร้อยแล้ว!</h3>
+                <h3 className="font-headline-md text-headline-md text-white">
+                  {t("Submitted Successfully!", "ส่งข้อมูลเรียบร้อยแล้ว!")}
+                </h3>
                 <p className="text-on-surface-variant font-body-md max-w-sm">
-                  ทีมงานของเราจะติดต่อกลับภายใน 1 วันทำการ ขอบคุณที่ไว้วางใจ Media108
+                  {t(
+                    "Our team will contact you within 1 business day. Thank you for trusting Media108.",
+                    "ทีมงานของเราจะติดต่อกลับภายใน 1 วันทำการ ขอบคุณที่ไว้วางใจ Media108"
+                  )}
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
                   className="mt-4 border border-white/20 hover:bg-white/10 px-8 py-3 rounded-lg font-label-md text-label-md text-white transition-all"
                 >
-                  ส่งอีกครั้ง
+                  {t("Submit Again", "ส่งอีกครั้ง")}
                 </button>
               </div>
             ) : (
@@ -113,10 +108,10 @@ export default function ContactPage() {
                 {/* Row 1: Name + Company */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className={labelClass("name")}>Full Name</label>
+                    <label className={labelClass("name")}>{t("Full Name", "ชื่อ-นามสกุล")}</label>
                     <input
                       name="name" type="text" value={form.name} onChange={handleChange}
-                      placeholder="John Doe"
+                      placeholder={t("John Doe", "ชื่อ นามสกุล")}
                       className={inputClass("name")}
                       onFocus={() => setFocusedField("name")}
                       onBlur={() => setFocusedField(null)}
@@ -124,10 +119,10 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className={labelClass("company")}>Company</label>
+                    <label className={labelClass("company")}>{t("Company", "บริษัท")}</label>
                     <input
                       name="company" type="text" value={form.company} onChange={handleChange}
-                      placeholder="Your Company Ltd."
+                      placeholder={t("Your Company Ltd.", "บริษัท ของคุณ จำกัด")}
                       className={inputClass("company")}
                       onFocus={() => setFocusedField("company")}
                       onBlur={() => setFocusedField(null)}
@@ -138,7 +133,7 @@ export default function ContactPage() {
                 {/* Row 2: Phone + Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className={labelClass("phone")}>Phone Number</label>
+                    <label className={labelClass("phone")}>{t("Phone Number", "เบอร์โทรศัพท์")}</label>
                     <input
                       name="phone" type="tel" value={form.phone} onChange={handleChange}
                       placeholder="+66 00 000 0000"
@@ -148,7 +143,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className={labelClass("email")}>Email Address</label>
+                    <label className={labelClass("email")}>{t("Email Address", "อีเมล")}</label>
                     <input
                       name="email" type="email" value={form.email} onChange={handleChange}
                       placeholder="contact@company.com"
@@ -162,7 +157,7 @@ export default function ContactPage() {
 
                 {/* Service select */}
                 <div className="space-y-2">
-                  <label className={labelClass("service")}>Interest / Service Type</label>
+                  <label className={labelClass("service")}>{t("Interest / Service Type", "ประเภทบริการที่สนใจ")}</label>
                   <div className="relative">
                     <select
                       name="service" value={form.service} onChange={handleChange}
@@ -170,11 +165,11 @@ export default function ContactPage() {
                       onFocus={() => setFocusedField("service")}
                       onBlur={() => setFocusedField(null)}
                     >
-                      <option value="">Select a billboard location or service</option>
-                      <option>Premium DOOH – Bangkok CBD</option>
-                      <option>Regional Network – Chonburi</option>
-                      <option>Data Analytics &amp; Insights</option>
-                      <option>Full Media Strategy</option>
+                      <option value="">{t("Select a billboard location or service", "เลือกตำแหน่งป้ายหรือบริการ")}</option>
+                      <option>{t("Premium DOOH – Bangkok CBD", "พรีเมียม DOOH – กรุงเทพ CBD")}</option>
+                      <option>{t("Regional Network – Chonburi", "เครือข่ายภูมิภาค – ชลบุรี")}</option>
+                      <option>{t("Data Analytics & Insights", "วิเคราะห์ข้อมูลและ Insights")}</option>
+                      <option>{t("Full Media Strategy", "วางกลยุทธ์สื่อครบวงจร")}</option>
                     </select>
                     <ChevronDown size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" />
                   </div>
@@ -182,10 +177,10 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div className="space-y-2">
-                  <label className={labelClass("message")}>Additional Requirements</label>
+                  <label className={labelClass("message")}>{t("Additional Requirements", "ความต้องการเพิ่มเติม")}</label>
                   <textarea
                     name="message" value={form.message} onChange={handleChange}
-                    placeholder="How can our specialists assist you?"
+                    placeholder={t("How can our specialists assist you?", "ผู้เชี่ยวชาญของเราจะช่วยคุณได้อย่างไร?")}
                     rows={4}
                     className={`${inputClass("message")} resize-none`}
                     onFocus={() => setFocusedField("message")}
@@ -200,11 +195,17 @@ export default function ContactPage() {
                     className="mt-1 w-5 h-5 bg-surface-container-low border-white/10 rounded accent-primary cursor-pointer shrink-0"
                   />
                   <label htmlFor="pdpa" className="font-body-md text-body-md text-on-surface-variant cursor-pointer">
-                    I consent to the collection and processing of my personal data according to the{" "}
+                    {t(
+                      "I consent to the collection and processing of my personal data according to the ",
+                      "ฉันยินยอมให้เก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลของฉันตาม "
+                    )}
                     <a className="text-primary underline hover:text-primary/80" href="#">
-                      PDPA Policy
-                    </a>{" "}
-                    for the purpose of this inquiry.
+                      {t("PDPA Policy", "นโยบาย PDPA")}
+                    </a>
+                    {t(
+                      " for the purpose of this inquiry.",
+                      " เพื่อวัตถุประสงค์ในการสอบถามนี้"
+                    )}
                   </label>
                 </div>
 
@@ -213,7 +214,7 @@ export default function ContactPage() {
                   disabled={!pdpa}
                   className="w-full bg-primary-container text-white font-headline-md text-headline-md py-5 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
                 >
-                  Submit Proposal Request
+                  {t("Submit Proposal Request", "ส่งใบขอเสนอราคา")}
                 </button>
               </form>
             )}
@@ -228,7 +229,9 @@ export default function ContactPage() {
                 <MessageCircle size={36} className="text-[#06C755]" />
                 <div>
                   <h3 className="font-headline-md text-headline-md text-white">LINE Official Account</h3>
-                  <p className="font-body-md text-on-surface-variant">Instant response from our team</p>
+                  <p className="font-body-md text-on-surface-variant">
+                    {t("Instant response from our team", "รับการตอบกลับทันทีจากทีมงาน")}
+                  </p>
                 </div>
               </div>
               <a
@@ -238,15 +241,19 @@ export default function ContactPage() {
                 className="w-full bg-[#06C755] hover:bg-[#05b14c] text-white py-4 rounded-lg font-bold flex items-center justify-center gap-3 transition-colors font-headline-md text-headline-md"
               >
                 <PlusCircle size={20} />
-                Add LINE OA
+                {t("Add LINE OA", "เพิ่ม LINE OA")}
               </a>
             </div>
 
             {/* Quick links grid */}
             <div className="sr sr-right sr-d2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {quickLinks.map((item) => (
+              {([
+                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                       bodyTh: "062-563-6199",                    span: false },
+                { icon: Headphones, titleEn: "Support", titleTh: "ซัพพอร์ต", bodyEn: "Report an Issue",                    bodyTh: "แจ้งปัญหา",                       span: false },
+                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงาน",  bodyEn: "Join our world-class media team",    bodyTh: "ร่วมทีมสื่อระดับโลกของเรา",     span: true, arrow: true },
+              ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean }[]).map((item) => (
                 <div
-                  key={item.title}
+                  key={item.titleEn}
                   className={`glass-card p-6 rounded-xl hover:bg-white/5 transition-colors group cursor-pointer ${
                     item.span ? "col-span-1 sm:col-span-2" : ""
                   }`}
@@ -254,8 +261,8 @@ export default function ContactPage() {
                   <div className={`flex ${item.span ? "justify-between items-center" : "flex-col"}`}>
                     <div>
                       <item.icon size={22} className="text-primary mb-4 block group-hover:scale-110 transition-transform" />
-                      <h4 className="font-headline-md text-headline-md text-white mb-1">{item.title}</h4>
-                      <p className="font-body-md text-on-surface-variant">{item.body}</p>
+                      <h4 className="font-headline-md text-headline-md text-white mb-1">{t(item.titleEn, item.titleTh)}</h4>
+                      <p className="font-body-md text-on-surface-variant">{t(item.bodyEn, item.bodyTh)}</p>
                     </div>
                     {item.arrow && (
                       <ArrowRight size={20} className="text-on-surface-variant group-hover:translate-x-2 transition-transform" />
@@ -272,13 +279,15 @@ export default function ContactPage() {
                   <MapPin size={20} className="text-on-primary" />
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-headline-md text-white">Headquarters</h3>
-                  <p className="font-body-md text-on-surface-variant">Chonburi, Thailand</p>
+                  <h3 className="font-headline-md text-headline-md text-white">{t("Headquarters", "สำนักงานใหญ่")}</h3>
+                  <p className="font-body-md text-on-surface-variant">{t("Chonburi, Thailand", "ชลบุรี, ประเทศไทย")}</p>
                 </div>
               </div>
               <div className="bg-surface-container-low p-4 rounded-lg border border-white/5">
                 <p className="font-label-md text-label-md text-white mb-1">Media108 Digital Hub</p>
-                <p className="font-body-md text-on-surface-variant text-sm">Industrial Estate Road, 20130</p>
+                <p className="font-body-md text-on-surface-variant text-sm">
+                  {t("Industrial Estate Road, 20130", "ถนนนิคมอุตสาหกรรม 20130")}
+                </p>
               </div>
             </div>
 
@@ -286,50 +295,95 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* ── Desktop CTA bar ── */}
-      <section className="hidden md:block py-16 bg-surface-container-low border-y border-white/5">
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="flex flex-wrap justify-center items-center gap-12">
-            {ctaItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`flex items-center gap-3 font-headline-md text-headline-md transition-colors ${
-                  item.green
-                    ? "text-[#06C755] hover:opacity-80"
-                    : "text-on-surface hover:text-primary"
-                }`}
-              >
-                <item.icon size={20} className={item.green ? "text-[#06C755]" : "text-primary"} />
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <GlobalCTABar />
 
       {/* ── Footer ── */}
-      <footer className="bg-surface-container-lowest border-t border-white/5 py-12">
-        <div className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-4">
-            <div className="text-2xl font-black tracking-tight">
-              <span className="text-primary">Media</span><span className="text-white">108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            {/* Brand */}
+            <div className="md:col-span-1 space-y-4">
+              <div className="text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span><span className="text-white">108</span>
+              </div>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                {t(
+                  "Precision DOOH Media Solutions for the Modern Era.",
+                  "โซลูชันสื่อ DOOH แม่นยำสำหรับยุคใหม่"
+                )}
+              </p>
             </div>
-            <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
-              Authority in Global Media. Transforming urban spaces into immersive digital landscapes.
-            </p>
+
+            {/* Navigation */}
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Navigation", "นำทาง")}
+              </h5>
+              <nav className="flex flex-col gap-2">
+                {([
+                  { en: "Home",         th: "หน้าหลัก",     href: "/" },
+                  { en: "About",        th: "เกี่ยวกับเรา",  href: "/about" },
+                  { en: "Media Network",th: "เครือข่ายสื่อ", href: "/network" },
+                  { en: "Our Services", th: "บริการของเรา",  href: "/services" },
+                  { en: "Contact Us",   th: "ติดต่อเรา",     href: "/contact" },
+                ] as { en: string; th: string; href: string }[]).map((l) => (
+                  <Link key={l.en} href={l.href} className="text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    {t(l.en, l.th)}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            {/* Media Focus */}
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Media Focus", "จุดเน้นสื่อ")}
+              </h5>
+              <nav className="flex flex-col gap-2">
+                {([
+                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ" },
+                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม" },
+                ] as { en: string; th: string }[]).map((l) => (
+                  <a key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
+                    {t(l.en, l.th)}
+                  </a>
+                ))}
+              </nav>
+            </div>
+
+            {/* Connect */}
+            <div className="space-y-4">
+              <h5 className="font-label-md text-label-md text-primary uppercase tracking-widest">
+                {t("Connect", "ติดต่อ")}
+              </h5>
+              <div className="flex gap-3">
+                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
+                  <a
+                    key={idx}
+                    href="#"
+                    className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors"
+                  >
+                    <Icon size={20} className="text-primary" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy", "Media Kit"].map((l) => (
-              <a key={l} className="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">
-                {l}
-              </a>
-            ))}
-          </div>
-          <div className="font-body-md text-body-md text-on-surface-variant text-sm">
-            © 2024 Media108. Authority in Global Media.
+
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-on-surface-variant font-label-md text-sm">
+              © 2024 MEDIA108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} Precision DOOH Media Solutions.
+            </div>
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                {t("Status", "สถานะ")}:{" "}
+                <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />{" "}
+                {t("Optimal", "ปกติ")}
+              </span>
+            </div>
           </div>
         </div>
       </footer>

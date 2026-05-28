@@ -8,6 +8,7 @@ import GlobalCTABar from "../../components/GlobalCTABar";
 import { billboards } from "../../data/billboards";
 import type { BillboardData } from "../../data/billboards";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useLanguage } from "../../context/LanguageContext";
 import {
   ArrowRight, Download, Play, MapPin, BookOpen, Users, TrendingUp,
   Handshake, CheckCircle, ArrowUpRight, ShoppingCart, GraduationCap,
@@ -42,6 +43,7 @@ export default function BillboardDetailPage({ params }: PageProps) {
 
 /* ─────────────────────────────────────────────────────── */
 function BillboardDetail({ data }: { data: BillboardData }) {
+  const { t } = useLanguage();
   useScrollReveal();
 
   useEffect(() => {
@@ -102,12 +104,12 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.48s both" }}
               >
                 <button className="bg-primary-container hover:brightness-110 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(230,57,70,0.3)]">
-                  Request Immediate Quote
+                  {t("Request Immediate Quote", "ขอใบเสนอราคาทันที")}
                   <ArrowRight size={18} />
                 </button>
                 <button className="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all">
                   <Download size={18} />
-                  Download Media Kit
+                  {t("Download Media Kit", "ดาวน์โหลด Media Kit")}
                 </button>
               </div>
             </div>
@@ -118,8 +120,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="font-headline-lg text-headline-lg text-white mb-2">Visual Performance</h2>
-              <p className="text-outline">Engineered for 24/7 visibility in any atmospheric condition.</p>
+              <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Visual Performance", "ประสิทธิภาพภาพ")}</h2>
+              <p className="text-outline">{t("Engineered for 24/7 visibility in any atmospheric condition.", "ออกแบบมาเพื่อการมองเห็นตลอด 24 ชั่วโมงในทุกสภาพอากาศ")}</p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -128,14 +130,14 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt="Day View" className="w-full h-full object-cover" src={data.imgDay} />
               </div>
-              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">Day Visibility (10,000 Nits)</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">{t("Day Visibility (10,000 Nits)", "ความชัดกลางวัน (10,000 Nits)")}</p>
             </div>
             <div className="sr sr-up space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden glass-card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img alt="Night View" className="w-full h-full object-cover brightness-75" src={data.imgNight} />
               </div>
-              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">Night Impact (Dynamic Contrast)</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">{t("Night Impact (Dynamic Contrast)", "ผลกระทบกลางคืน (คอนทราสต์ไดนามิก)")}</p>
             </div>
             <div className="sr sr-up space-y-4">
               <div className="aspect-video rounded-2xl overflow-hidden glass-card relative group cursor-pointer">
@@ -147,7 +149,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   </div>
                 </div>
               </div>
-              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">Drone Fly-through Preview</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">{t("Drone Fly-through Preview", "ตัวอย่างภาพโดรน")}</p>
             </div>
           </div>
         </section>
@@ -157,7 +159,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="sr sr-left space-y-8">
               <h2 className="font-headline-lg text-headline-lg text-white">
-                Strategic <span className="text-primary-container">Dominance</span>
+                {t("Strategic", "ยุทธศาสตร์")} <span className="text-primary-container">{t("Dominance", "การครองพื้นที่")}</span>
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
                 {data.strategicDescription ?? data.locationStory}
@@ -198,21 +200,21 @@ function BillboardDetail({ data }: { data: BillboardData }) {
 
         {/* ── 4. Performance Data ── */}
         <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
-          <h2 className="font-headline-lg text-headline-lg text-white mb-12">Performance Data</h2>
+          <h2 className="font-headline-lg text-headline-lg text-white mb-12">{t("Performance Data", "ข้อมูลประสิทธิภาพ")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { label: "Daily Reach", value: data.carsPerDay, sub: "Estimated Daily Impressions", accent: true },
-              { label: "Avg. Speed", value: data.avgSpeed, sub: "Ensuring Long Exposure", accent: false },
-              { label: "View Duration", value: data.viewingDuration, sub: "Continuous Line-of-sight", accent: false },
-              { label: "Peak Window", value: data.peakHours.split("–")[0].trim(), sub: "Rush Hour Saturation", accent: false },
+              { labelEn: "Daily Reach",    labelTh: "การเข้าถึงต่อวัน",    value: data.carsPerDay,                         subEn: "Estimated Daily Impressions", subTh: "จำนวนการแสดงผลที่ประมาณการ", accent: true },
+              { labelEn: "Avg. Speed",     labelTh: "ความเร็วเฉลี่ย",       value: data.avgSpeed,                           subEn: "Ensuring Long Exposure",      subTh: "ให้การรับชมยาวนาน",           accent: false },
+              { labelEn: "View Duration",  labelTh: "ระยะเวลาการรับชม",     value: data.viewingDuration,                    subEn: "Continuous Line-of-sight",    subTh: "เส้นสายตาต่อเนื่อง",          accent: false },
+              { labelEn: "Peak Window",    labelTh: "ช่วงเวลาพีค",          value: data.peakHours.split("–")[0].trim(),     subEn: "Rush Hour Saturation",        subTh: "ความหนาแน่นชั่วโมงเร่งด่วน",  accent: false },
             ].map((item) => (
               <div
-                key={item.label}
+                key={item.labelEn}
                 className={`sr sr-up glass-card p-8 rounded-2xl ${item.accent ? "border-l-4 border-l-primary-container" : ""}`}
               >
-                <p className="text-outline text-xs uppercase tracking-widest mb-4">{item.label}</p>
+                <p className="text-outline text-xs uppercase tracking-widest mb-4">{t(item.labelEn, item.labelTh)}</p>
                 <p className="font-data-mono text-3xl text-white mb-2">{item.value}</p>
-                <p className="text-sm text-on-surface-variant">{item.sub}</p>
+                <p className="text-sm text-on-surface-variant">{t(item.subEn, item.subTh)}</p>
               </div>
             ))}
           </div>
@@ -224,7 +226,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             <div className="flex flex-col md:flex-row gap-24">
               <div className="sr sr-left flex-1 space-y-8">
                 <h2 className="font-headline-lg text-headline-lg text-white">
-                  Audience <span className="text-primary-container">Composition</span>
+                  {t("Audience", "ผู้ชม")} <span className="text-primary-container">{t("Composition", "องค์ประกอบ")}</span>
                 </h2>
                 <div className="space-y-6">
                   {data.audienceBreakdown.map((item) => (
@@ -251,9 +253,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   <div className="absolute inset-0 rounded-full border-[12px] border-white/10" />
                   <span className="font-data-mono text-3xl text-white relative z-10">{data.visibilityBar}%</span>
                 </div>
-                <h3 className="font-headline-md text-headline-md text-white mb-2">High Impact Score</h3>
+                <h3 className="font-headline-md text-headline-md text-white mb-2">{t("High Impact Score", "คะแนนผลกระทบสูง")}</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Proprietary score based on visibility, dwell time, and demographic value.
+                  {t("Proprietary score based on visibility, dwell time, and demographic value.", "คะแนนเฉพาะที่อ้างอิงจากการมองเห็น เวลาที่อยู่ในพื้นที่ และมูลค่าทางประชากรศาสตร์")}
                 </p>
               </div>
             </div>
@@ -264,17 +266,17 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {([
-              { icon: BookOpen,    title: "The Location Story", body: data.locationStory },
-              { icon: Users,       title: "The Audience Story", body: data.audienceStory },
-              { icon: TrendingUp,  title: "The Traffic Story",  body: data.trafficStory },
-              { icon: Handshake,   title: "Business Fit",       body: data.businessFit },
-            ] as { icon: LucideIcon; title: string; body: string }[]).map((item) => (
+              { icon: BookOpen,    titleEn: "The Location Story", titleTh: "เรื่องราวของทำเล",      body: data.locationStory },
+              { icon: Users,       titleEn: "The Audience Story", titleTh: "เรื่องราวของผู้ชม",     body: data.audienceStory },
+              { icon: TrendingUp,  titleEn: "The Traffic Story",  titleTh: "เรื่องราวของ Traffic",  body: data.trafficStory },
+              { icon: Handshake,   titleEn: "Business Fit",       titleTh: "เหมาะกับธุรกิจ",       body: data.businessFit },
+            ] as { icon: LucideIcon; titleEn: string; titleTh: string; body: string }[]).map((item) => (
               <div
-                key={item.title}
+                key={item.titleEn}
                 className="sr sr-up p-10 border border-border-glass rounded-2xl hover:border-primary-container/40 transition-colors"
               >
                 <item.icon size={36} className="text-primary-container mb-6 block" />
-                <h3 className="font-headline-md text-headline-md text-white mb-4">{item.title}</h3>
+                <h3 className="font-headline-md text-headline-md text-white mb-4">{t(item.titleEn, item.titleTh)}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{item.body}</p>
               </div>
             ))}
@@ -284,7 +286,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         {/* ── 7. Technical Specifications ── */}
         <section className="py-24 bg-surface-container-highest">
           <div className="max-w-container-max mx-auto px-margin-desktop">
-            <h2 className="font-headline-lg text-headline-lg text-white mb-12">Technical Specifications</h2>
+            <h2 className="font-headline-lg text-headline-lg text-white mb-12">{t("Technical Specifications", "ข้อมูลจำเพาะทางเทคนิค")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border-glass border border-border-glass rounded-2xl overflow-hidden">
               {data.specs.map((spec) => (
                 <div key={spec.label} className="bg-surface p-8">
@@ -298,7 +300,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             <div className="sr sr-up mt-8 flex gap-4">
               <button className="flex items-center gap-2 px-6 py-3 rounded-lg glass-card border border-border-glass text-white font-bold hover:bg-white/10 transition-all">
                 <Download size={18} />
-                Download Media Kit (PDF)
+                {t("Download Media Kit (PDF)", "ดาวน์โหลด Media Kit (PDF)")}
               </button>
             </div>
           </div>
@@ -308,8 +310,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         {data.pricingTiers && (
           <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
             <div className="text-center mb-16">
-              <h2 className="font-headline-lg text-headline-lg text-white mb-4">Investment Tiers</h2>
-              <p className="text-on-surface-variant">Flexible options tailored for campaign scale and duration.</p>
+              <h2 className="font-headline-lg text-headline-lg text-white mb-4">{t("Investment Tiers", "ระดับการลงทุน")}</h2>
+              <p className="text-on-surface-variant">{t("Flexible options tailored for campaign scale and duration.", "ตัวเลือกยืดหยุ่นที่ปรับตามขนาดและระยะเวลาแคมเปญ")}</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {data.pricingTiers.map((tier) => (
@@ -319,7 +321,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 >
                   {tier.highlight && (
                     <div className="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-bold uppercase tracking-tight">
-                      Most Popular
+                      {t("Most Popular", "ยอดนิยม")}
                     </div>
                   )}
                   <p className="text-xs uppercase tracking-widest mb-6 text-outline">{tier.label}</p>
@@ -360,8 +362,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   <span className="w-5 h-[1px] bg-primary-container" />
                   <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Real Campaigns</span>
                 </div>
-                <h2 className="font-headline-lg text-headline-lg text-white mb-2">ตัวอย่างแคมเปญบนป้ายนี้</h2>
-                <p className="text-on-surface-variant text-sm">แบรนด์และธุรกิจที่เคยลงโฆษณาจริงบนป้ายนี้</p>
+                <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Sample Campaigns on This Billboard", "ตัวอย่างแคมเปญบนป้ายนี้")}</h2>
+                <p className="text-on-surface-variant text-sm">{t("Brands and businesses that have advertised on this billboard", "แบรนด์และธุรกิจที่เคยลงโฆษณาจริงบนป้ายนี้")}</p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {data.recentCampaigns.map((c, i) => (
@@ -387,11 +389,11 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="font-headline-lg text-headline-lg text-white mb-2">Related Locations</h2>
-              <p className="text-on-surface-variant">ขยายขอบเขตการเข้าถึงด้วยป้ายใกล้เคียงในโครงข่าย Media Network</p>
+              <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Related Locations", "ทำเลใกล้เคียง")}</h2>
+              <p className="text-on-surface-variant">{t("Expand your reach with nearby billboards in the Media Network", "ขยายขอบเขตการเข้าถึงด้วยป้ายใกล้เคียงในโครงข่าย Media Network")}</p>
             </div>
             <Link href="/network" className="text-primary-container font-bold flex items-center gap-2 hover:underline whitespace-nowrap text-sm uppercase tracking-widest">
-              View All <ArrowUpRight size={16} />
+              {t("View All", "ดูทั้งหมด")} <ArrowUpRight size={16} />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -417,7 +419,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                     href={`/billboard/${rel.slug}`}
                     className="block w-full text-center bg-white/5 hover:bg-white/10 text-white py-3 rounded-lg border border-white/10 transition-colors font-bold text-sm"
                   >
-                    ดูรายละเอียดป้ายนี้
+                    {t("View Billboard Details", "ดูรายละเอียดป้ายนี้")}
                   </Link>
                 </div>
               </div>
@@ -437,22 +439,27 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <span className="text-primary-container">Media</span><span className="text-white">108</span>
             </div>
             <p className="text-on-surface-variant leading-relaxed">
-              Precision DOOH Media Solutions for high-level advertisers and agency partners.
+              {t("Precision DOOH Media Solutions for high-level advertisers and agency partners.", "โซลูชันสื่อ DOOH แม่นยำสำหรับผู้ลงโฆษณาระดับสูงและพันธมิตรเอเจนซี่")}
             </p>
           </div>
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">Quick Links</h4>
-            {["Privacy Policy", "Terms of Service", "Contact Support", "Global Network"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary-container transition-colors text-sm" href="#">{l}</a>
+            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Quick Links", "ลิงก์ด่วน")}</h4>
+            {([
+              { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว" },
+              { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน" },
+              { en: "Contact Support",  th: "ติดต่อฝ่ายสนับสนุน" },
+              { en: "Global Network",   th: "เครือข่ายทั่วโลก" },
+            ] as { en: string; th: string }[]).map((l) => (
+              <a key={l.en} className="text-on-surface-variant hover:text-primary-container transition-colors text-sm" href="#">{t(l.en, l.th)}</a>
             ))}
           </div>
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">Contact</h4>
+            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
             <p className="text-on-surface-variant text-sm">info@media108.com</p>
             <p className="text-on-surface-variant text-sm">+66 (0) 108 108 108</p>
           </div>
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">Social</h4>
+            <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Social", "โซเชียล")}</h4>
             <div className="flex gap-4">
               {["FB", "IG", "LN"].map((s) => (
                 <a key={s} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">{s}</a>
@@ -461,7 +468,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
         </div>
         <div className="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-on-surface-variant text-xs">© 2024 Media108. All rights reserved.</p>
+          <p className="text-on-surface-variant text-xs">© 2024 Media108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}</p>
           <div className="flex gap-8">
             <span className="text-on-surface-variant text-xs">GLOBAL PARTNER PROGRAM</span>
             <span className="text-on-surface-variant text-xs">ISO 27001 CERTIFIED</span>

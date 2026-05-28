@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./context/LanguageContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ export default function RootLayout({
       className={`dark ${montserrat.variable} ${inter.variable}`}
     >
       <body className="bg-background text-on-background antialiased">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Navbar from "./components/Navbar";
 import GlobalCTABar from "./components/GlobalCTABar";
+import { useLanguage } from "./context/LanguageContext";
 import {
   MapPin, Umbrella, Factory, Monitor, Film, Paintbrush, CalendarDays,
   Building2, LineChart, Wand2, BadgeCheck, TrendingUp, Clock, Users,
@@ -17,37 +18,43 @@ const featuredBillboards = [
     img: "https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4",
     alt: "Pattaya Sukhumvit 01",
     name: "Pattaya Sukhumvit 01",
-    location: "เส้นทางหลักพัทยา",
+    locationEn: "Main Pattaya Route",
+    locationTh: "เส้นทางหลักพัทยา",
     badge: "Available",
     badgeClass: "bg-primary/10 text-primary",
-    desc: "ลูกค้าอย่าง Love Pier Beach Cafe, Camera Hotel และ Pool-Villa.com เลือกป้ายนี้เพื่อเข้าถึงนักท่องเที่ยวขาเข้าพัทยาตลอด 24 ชม.",
+    descEn: "Clients like Love Pier Beach Cafe, Camera Hotel and Pool-Villa.com chose this billboard to reach Pattaya inbound tourists around the clock.",
+    descTh: "ลูกค้าอย่าง Love Pier Beach Cafe, Camera Hotel และ Pool-Villa.com เลือกป้ายนี้เพื่อเข้าถึงนักท่องเที่ยวขาเข้าพัทยาตลอด 24 ชม.",
   },
   {
     href: "/billboard/m108-uni-42",
     img: "https://lh3.googleusercontent.com/aida/ADBb0uhFWwvThcMEI0OTDgPROsXUAO8-XrH4HNZNulN_QNQsaXXPr5qVRuhPVttKD0J8jA4l_3CWmw6w_yoeHsw9OjJmNki4b7TnQbxHlr9DbRjnPkZD3eyffI2k8xqN89sV_PGGovO92gvbgBD-einyVORlR1R7yZHBhfiOgOYz1vVo5ZqGgTDont9GP9W8dFFBSC-19frrVEDYUUJ3KB8b2PdWU7WcG_DLNXZGW-9hQqBKhz1XUET_lzctKdE",
     alt: "Pattaya Gateway",
     name: "Pattaya Gateway",
-    location: "สี่แยกพัทยากลาง",
+    locationEn: "Pattaya Central Intersection",
+    locationTh: "สี่แยกพัทยากลาง",
     badge: "Available",
     badgeClass: "bg-primary/10 text-primary",
-    desc: "แคมเปญ Concert Hall, Wedding Hall, Corporate Hall และ Draco ต่างเลือกจุดนี้เพื่อประกาศกิจกรรมสู่กลุ่มคนเมืองและครอบครัว",
+    descEn: "Concert Hall, Wedding Hall, Corporate Hall and Draco campaigns all chose this spot to announce events to urban residents and families.",
+    descTh: "แคมเปญ Concert Hall, Wedding Hall, Corporate Hall และ Draco ต่างเลือกจุดนี้เพื่อประกาศกิจกรรมสู่กลุ่มคนเมืองและครอบครัว",
   },
   {
     href: "/billboard/m108-air-09",
     img: "https://lh3.googleusercontent.com/aida/ADBb0uiRggagh43z7tF_b4GZSla0gM2WVOSYRBw_4VzR4zG24G6WN_uepsl4bNBLG4Dj5qd8f18qX-awS_UjTRJ_0je-cAF7Dh8f4LXWtvYoVKGKNk9nhGHtOnN2gRnZQLzeUGSheeywVeXTiXVupHpuQCubssjTlYWgMSD0vy9bLQUOqSHUUi3oYPH_DAnmArcxI6g2sJGJmgrXHaFGJO_15K9jHNujqO8CGPnum6LtYnkU3kvh0aWzsXnRpd4",
     alt: "EEC Tech Square",
     name: "EEC Tech Square",
-    location: "ศรีราชา–นิคมอุตสาหกรรม",
+    locationEn: "Sri Racha – Industrial Estate",
+    locationTh: "ศรีราชา–นิคมอุตสาหกรรม",
     badge: "High Demand",
     badgeClass: "bg-[#E63946]/20 text-[#E63946]",
-    desc: "SCC, รับสมัครพนักงาน Dev และ Printing 108 เลือกพื้นที่นี้เจาะกลุ่มพนักงานและผู้บริหารในย่าน EEC โดยตรง",
+    descEn: "SCC, Dev recruitment and Printing 108 chose this location to precisely target employees and executives in the EEC zone.",
+    descTh: "SCC, รับสมัครพนักงาน Dev และ Printing 108 เลือกพื้นที่นี้เจาะกลุ่มพนักงานและผู้บริหารในย่าน EEC โดยตรง",
   },
 ];
 
-const coverageAreas: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: MapPin,   title: "Chonburi Hub",       desc: "จุดยุทธศาสตร์กลางเมืองและย่านธุรกิจหลัก" },
-  { icon: Umbrella, title: "Pattaya & Bang Saen", desc: "เข้าถึงกลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ" },
-  { icon: Factory,  title: "Sri Racha EEC",       desc: "ย่านเศรษฐกิจใหม่และกลุ่มพนักงานอุตสาหกรรม" },
+const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
+  { icon: MapPin,   title: "Chonburi Hub",       descEn: "Key strategic locations in the city center and main business districts", descTh: "จุดยุทธศาสตร์กลางเมืองและย่านธุรกิจหลัก" },
+  { icon: Umbrella, title: "Pattaya & Bang Saen", descEn: "Reach both Thai and international tourists",                           descTh: "เข้าถึงกลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ" },
+  { icon: Factory,  title: "Sri Racha EEC",       descEn: "New economic zone and industrial worker demographic",                   descTh: "ย่านเศรษฐกิจใหม่และกลุ่มพนักงานอุตสาหกรรม" },
 ];
 
 const stats = [
@@ -68,17 +75,17 @@ const audienceRatios = [
   { label: "Students & Professionals", pct: "20%", barClass: "bg-white/40",           width: "20%" },
 ];
 
-const services: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Monitor,    title: "LED Billboard",    desc: "ลงโฆษณาบนป้าย LED คุณภาพสูงในทำเลสำคัญทั่วชลบุรีและพัทยา" },
-  { icon: Film,       title: "Video Ads",         desc: "ผลิตและลงวิดีโอโฆษณาที่ปรับจูนความสว่างและสีสันให้เหมาะกับจอ LED" },
-  { icon: Paintbrush, title: "Motion Graphic",    desc: "ออกแบบภาพเคลื่อนไหว 2D/3D ให้โดดเด่นและดึงดูดสายตาจากท้องถนน" },
-  { icon: CalendarDays, title: "Campaign Planning", desc: "วางแผนเลือกทำเล ช่วงเวลา และรูปแบบแคมเปญให้คุ้มค่า Budget ที่สุด" },
+const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
+  { icon: Monitor,      title: "LED Billboard",    descEn: "Advertise on premium LED billboards in key locations across Chonburi and Pattaya.",                          descTh: "ลงโฆษณาบนป้าย LED คุณภาพสูงในทำเลสำคัญทั่วชลบุรีและพัทยา" },
+  { icon: Film,         title: "Video Ads",         descEn: "Produce and publish video ads with brightness and color tuned for LED displays.",                           descTh: "ผลิตและลงวิดีโอโฆษณาที่ปรับจูนความสว่างและสีสันให้เหมาะกับจอ LED" },
+  { icon: Paintbrush,   title: "Motion Graphic",    descEn: "Design 2D/3D motion graphics that stand out and capture attention from the street.",                       descTh: "ออกแบบภาพเคลื่อนไหว 2D/3D ให้โดดเด่นและดึงดูดสายตาจากท้องถนน" },
+  { icon: CalendarDays, title: "Campaign Planning", descEn: "Plan locations, timing, and campaign formats to maximize value for your budget.",                           descTh: "วางแผนเลือกทำเล ช่วงเวลา และรูปแบบแคมเปญให้คุ้มค่า Budget ที่สุด" },
 ];
 
-const whyUs: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Building2,  title: "EEC Specialists",       desc: "เชี่ยวชาญพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมจุดยุทธศาสตร์สำคัญที่มีกำลังซื้อสูง" },
-  { icon: LineChart,  title: "Data-Driven Decisions",  desc: "ใช้ข้อมูล Traffic และ Audience จริงในการช่วยลูกค้าเลือกทำเลที่แม่นยำที่สุด ลดการสูญเสียงบประมาณ" },
-  { icon: Wand2,      title: "Full-Service Studio",    desc: "มีทีมผลิตสื่อโฆษณาครบวงจร ทั้ง Motion Graphics และ Anamorphic 3D ที่สร้าง Impact ได้จริง" },
+const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
+  { icon: Building2, title: "EEC Specialists",      descEn: "Deep expertise in Chonburi and the Eastern region, covering key strategic locations with high purchasing power.",                         descTh: "เชี่ยวชาญพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมจุดยุทธศาสตร์สำคัญที่มีกำลังซื้อสูง" },
+  { icon: LineChart, title: "Data-Driven Decisions", descEn: "Using real Traffic and Audience data to help clients choose the most precise locations and reduce budget waste.",                         descTh: "ใช้ข้อมูล Traffic และ Audience จริงในการช่วยลูกค้าเลือกทำเลที่แม่นยำที่สุด ลดการสูญเสียงบประมาณ" },
+  { icon: Wand2,     title: "Full-Service Studio",   descEn: "A full-cycle creative production team for both Motion Graphics and Anamorphic 3D that delivers real-world impact.",                    descTh: "มีทีมผลิตสื่อโฆษณาครบวงจร ทั้ง Motion Graphics และ Anamorphic 3D ที่สร้าง Impact ได้จริง" },
 ];
 
 const gallery = [
@@ -104,10 +111,10 @@ const gallery = [
 ];
 
 const steps = [
-  { step: "01", title: "เลือกทำเล",     desc: "เลือกป้ายหรือพื้นที่ที่เหมาะกับกลุ่มเป้าหมายของคุณจาก Network ทั่ว EEC" },
-  { step: "02", title: "ขอราคา",        desc: "ส่งรายละเอียดเพื่อรับ Package และ Slot เวลาที่เหมาะสมกับ Budget" },
-  { step: "03", title: "ส่งไฟล์โฆษณา", desc: "อัปโหลด Creative File ให้ทีมตรวจสอบความสมบูรณ์และมาตรฐานสี" },
-  { step: "04", title: "เริ่มแคมเปญ",  desc: "โฆษณาขึ้นป้ายตามเวลาที่จอง พร้อมรับรายงานสรุปผลแคมเปญ" },
+  { step: "01", titleEn: "Choose Location",  titleTh: "เลือกทำเล",     descEn: "Select the billboard or area that fits your target audience from the EEC-wide network.",                      descTh: "เลือกป้ายหรือพื้นที่ที่เหมาะกับกลุ่มเป้าหมายของคุณจาก Network ทั่ว EEC" },
+  { step: "02", titleEn: "Request a Quote",  titleTh: "ขอราคา",        descEn: "Submit details to receive the best package and time slot suited to your budget.",                             descTh: "ส่งรายละเอียดเพื่อรับ Package และ Slot เวลาที่เหมาะสมกับ Budget" },
+  { step: "03", titleEn: "Submit Ad Files",  titleTh: "ส่งไฟล์โฆษณา", descEn: "Upload your creative file for our team to verify quality and color standards.",                              descTh: "อัปโหลด Creative File ให้ทีมตรวจสอบความสมบูรณ์และมาตรฐานสี" },
+  { step: "04", titleEn: "Launch Campaign",  titleTh: "เริ่มแคมเปญ",  descEn: "Your ad goes live on the billboard at the scheduled time, with a full campaign summary report provided.",   descTh: "โฆษณาขึ้นป้ายตามเวลาที่จอง พร้อมรับรายงานสรุปผลแคมเปญ" },
 ];
 
 /* ── CountUp Component ── */
@@ -145,6 +152,7 @@ const tickerLocations = [
 ];
 
 export default function Home() {
+  const { t } = useLanguage();
   const heroImgRef = useRef<HTMLImageElement>(null);
   const [heroReady, setHeroReady] = useState(false);
   const introRef = useRef<HTMLDivElement>(null);
@@ -520,7 +528,7 @@ export default function Home() {
                 style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
               />
               <span className="text-primary font-label-md text-label-md tracking-widest uppercase">
-                Eastern Economic Corridor Pioneer
+                {t("Eastern Economic Corridor Pioneer", "ผู้บุกเบิก Eastern Economic Corridor")}
               </span>
             </div>
           </div>
@@ -534,8 +542,8 @@ export default function Home() {
                 : "none",
             }}
           >
-            Premium Digital Advertising in{" "}
-            <span className="text-primary-container">Chonburi&apos;s Prime Locations</span>
+            {t("Premium Digital Advertising in", "โฆษณาดิจิทัลพรีเมียมใน")}{" "}
+            <span className="text-primary-container">{t("Chonburi's Prime Locations", "ทำเลชั้นนำของชลบุรี")}</span>
           </h1>
 
           {/* Description */}
@@ -547,8 +555,10 @@ export default function Home() {
                 : "none",
             }}
           >
-            Media108 is a LED &amp; Digital Out-of-Home advertising platform that helps brands
-            reach their target audience through verified locations, real data, and measurable campaigns.
+            {t(
+              "Media108 is a LED & Digital Out-of-Home advertising platform that helps brands reach their target audience through verified locations, real data, and measurable campaigns.",
+              "Media108 คือแพลตฟอร์มสื่อโฆษณา LED และ Digital Out-of-Home ที่ช่วยให้แบรนด์เข้าถึงกลุ่มเป้าหมายผ่านทำเลจริง ข้อมูลจริง และแคมเปญที่วัดผลได้"
+            )}
           </p>
 
           {/* CTA Buttons */}
@@ -565,7 +575,7 @@ export default function Home() {
               className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md text-label-md glow-button flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
               style={{ transition: "transform 150ms ease, box-shadow 150ms ease" }}
             >
-              Request Quotation{" "}
+              {t("Request Quotation", "ขอใบเสนอราคา")}{" "}
               <ArrowRight size={16} className="ml-2 inline" />
             </Link>
             <Link
@@ -573,7 +583,7 @@ export default function Home() {
               className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/10 active:scale-95"
               style={{ transition: "all 200ms ease" }}
             >
-              View All Locations
+              {t("View All Locations", "ดูทำเลทั้งหมด")}
             </Link>
           </div>
         </div>
@@ -647,11 +657,11 @@ export default function Home() {
               {/* Section label */}
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-6 h-[1px] bg-primary-container" />
-                <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">About Media108</span>
+                <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("About Media108", "เกี่ยวกับ Media108")}</span>
               </div>
 
               <h2 className="font-headline-xl text-headline-xl text-on-surface mb-5">
-                Company Introduction
+                {t("Company Introduction", "แนะนำบริษัท")}
               </h2>
 
               {/* Animated expand bar */}
@@ -672,20 +682,20 @@ export default function Home() {
                   transition: "opacity 0.7s ease 0.3s, transform 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s",
                 }}
               >
-                Media108 คือเครือข่ายสื่อโฆษณาดิจิทัลที่พัฒนาเพื่อธุรกิจในจังหวัดชลบุรี พัทยา
-                บางแสน ศรีราชา และพื้นที่ EEC เราไม่ได้ขายเพียงพื้นที่บนจอ LED
-                แต่ช่วยให้แบรนด์เลือกทำเลที่เหมาะสม เข้าใจกลุ่มผู้ชม
-                และวางแผนโฆษณาได้อย่างมีประสิทธิภาพด้วยวิสัยทัศน์ที่ต้องการยกระดับสื่อท้องถิ่นสู่มาตรฐานสากล
+                {t(
+                  "Media108 is a digital advertising media network built for businesses in Chonburi, Pattaya, Bang Saen, Sri Racha and the EEC area. We don't just sell space on LED screens — we help brands choose the right location, understand their audience, and plan advertising effectively with a vision to elevate local media to international standards.",
+                  "Media108 คือเครือข่ายสื่อโฆษณาดิจิทัลที่พัฒนาเพื่อธุรกิจในจังหวัดชลบุรี พัทยา บางแสน ศรีราชา และพื้นที่ EEC เราไม่ได้ขายเพียงพื้นที่บนจอ LED แต่ช่วยให้แบรนด์เลือกทำเลที่เหมาะสม เข้าใจกลุ่มผู้ชม และวางแผนโฆษณาได้อย่างมีประสิทธิภาพด้วยวิสัยทัศน์ที่ต้องการยกระดับสื่อท้องถิ่นสู่มาตรฐานสากล"
+                )}
               </p>
 
               {/* Feature chips — stagger pop-in */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: BadgeCheck, label: "Smart City Network", delay: "0.45s" },
-                  { icon: TrendingUp, label: "Data-Driven Planning", delay: "0.55s" },
-                ].map(({ icon: Icon, label, delay }) => (
+                  { icon: BadgeCheck, labelEn: "Smart City Network",   labelTh: "เครือข่าย Smart City",        delay: "0.45s" },
+                  { icon: TrendingUp, labelEn: "Data-Driven Planning", labelTh: "วางแผนด้วยข้อมูลจริง",       delay: "0.55s" },
+                ].map(({ icon: Icon, labelEn, labelTh, delay }) => (
                   <div
-                    key={label}
+                    key={labelEn}
                     className="group flex items-center gap-4 p-4 rounded-xl border cursor-default"
                     style={{
                       background: "rgba(255,255,255,0.03)",
@@ -710,7 +720,7 @@ export default function Home() {
                       onMouseEnter={e => { (e.currentTarget as SVGElement).style.transform = "scale(1.2) rotate(-5deg)"; }}
                       onMouseLeave={e => { (e.currentTarget as SVGElement).style.transform = "scale(1) rotate(0deg)"; }}
                     />
-                    <span className="text-on-surface font-label-md text-[13px]">{label}</span>
+                    <span className="text-on-surface font-label-md text-[13px]">{t(labelEn, labelTh)}</span>
                   </div>
                 ))}
               </div>
@@ -794,20 +804,20 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
             {[
-              { to: 10,  suffix: "+",  label: "Billboard Network" },
-              { to: 1,   suffix: "M+", label: "Daily Traffic" },
-              { to: 100, suffix: "%",  label: "EEC Coverage" },
-              { to: 100, suffix: "%",  label: "Estimated Impression" },
+              { to: 10,  suffix: "+",  labelEn: "Billboard Network",     labelTh: "เครือข่ายป้ายโฆษณา" },
+              { to: 1,   suffix: "M+", labelEn: "Daily Traffic",          labelTh: "ทราฟฟิกต่อวัน" },
+              { to: 100, suffix: "%",  labelEn: "EEC Coverage",            labelTh: "ครอบคลุม EEC" },
+              { to: 100, suffix: "%",  labelEn: "Estimated Impression",    labelTh: "Impression โดยประมาณ" },
             ].map((stat, i) => (
               <div
-                key={stat.label}
+                key={stat.labelEn}
                 className={`sr sr-up sr-d${i + 1} text-center p-8 ${i < 3 ? "md:border-r border-white/10" : ""}`}
               >
                 <div className="font-data-mono text-5xl mb-2 text-primary font-black">
                   <CountUp to={stat.to} suffix={stat.suffix} />
                 </div>
                 <div className="font-label-md uppercase tracking-wider text-on-surface-variant">
-                  {stat.label}
+                  {t(stat.labelEn, stat.labelTh)}
                 </div>
               </div>
             ))}
@@ -823,20 +833,20 @@ export default function Home() {
             <div className="sr sr-left">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-5 h-[1px] bg-primary-container" />
-                <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Prime Locations</span>
+                <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Prime Locations", "ทำเลชั้นนำ")}</span>
               </div>
               <h2 className="font-headline-xl text-headline-xl text-on-surface mb-2">
-                Featured Billboards
+                {t("Featured Billboards", "ป้ายโฆษณาแนะนำ")}
               </h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                ป้ายเด่นในจุดยุทธศาสตร์ที่เข้าถึงกลุ่มเป้าหมายสูงสุด
+                {t("Top billboards in strategic locations with the highest audience reach.", "ป้ายเด่นในจุดยุทธศาสตร์ที่เข้าถึงกลุ่มเป้าหมายสูงสุด")}
               </p>
             </div>
             <Link
               href="/network"
               className="sr sr-right text-primary font-label-md text-label-md border-b border-primary/20 pb-1 hover:text-white hover:border-white transition-all flex items-center group"
             >
-              VIEW ALL LOCATIONS{" "}
+              {t("VIEW ALL LOCATIONS", "ดูทำเลทั้งหมด")}{" "}
               <ArrowUpRight size={16} className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -861,20 +871,20 @@ export default function Home() {
                         {bb.name}
                       </h4>
                       <span className="text-on-surface-variant font-label-md text-label-md">
-                        {bb.location}
+                        {t(bb.locationEn, bb.locationTh)}
                       </span>
                     </div>
                     <span className={`${bb.badgeClass} px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest`}>
                       {bb.badge}
                     </span>
                   </div>
-                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2">{bb.desc}</p>
+                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2">{t(bb.descEn, bb.descTh)}</p>
                   <Link
                     href={bb.href}
                     className="block w-full py-3 bg-white/5 hover:bg-primary hover:text-on-primary transition-all duration-300 rounded-lg font-label-md text-center group-hover:shadow-lg"
                     style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}
                   >
-                    View Detail
+                    {t("View Detail", "ดูรายละเอียด")}
                   </Link>
                 </div>
               </div>
@@ -891,14 +901,16 @@ export default function Home() {
               <div className="sr sr-left mb-8">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-5 h-[1px] bg-primary-container" />
-                  <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Network Coverage</span>
+                  <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Network Coverage", "ขอบเขตเครือข่าย")}</span>
                 </div>
                 <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">
-                  Coverage Area Map
+                  {t("Coverage Area Map", "แผนที่พื้นที่ครอบคลุม")}
                 </h2>
                 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-                  เครือข่าย Media108 ครอบคลุมเส้นทางสำคัญในจังหวัดชลบุรี ตั้งแต่โซนท่องเที่ยว
-                  โซนการศึกษา ไปจนถึงเส้นทางธุรกิจ เราคัดเลือกจุดที่การมองเห็นดีที่สุด
+                  {t(
+                    "The Media108 network covers key routes in Chonburi province — from tourist zones and education zones to business corridors. We select only locations with the best visibility.",
+                    "เครือข่าย Media108 ครอบคลุมเส้นทางสำคัญในจังหวัดชลบุรี ตั้งแต่โซนท่องเที่ยว โซนการศึกษา ไปจนถึงเส้นทางธุรกิจ เราคัดเลือกจุดที่การมองเห็นดีที่สุด"
+                  )}
                 </p>
               </div>
               <div className="space-y-6">
@@ -912,7 +924,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h5 className="font-headline-md text-primary text-xl">{area.title}</h5>
-                      <p className="text-on-surface-variant text-sm">{area.desc}</p>
+                      <p className="text-on-surface-variant text-sm">{t(area.descEn, area.descTh)}</p>
                     </div>
                   </div>
                 ))}
@@ -943,12 +955,12 @@ export default function Home() {
                 <MapPin size={48} className="text-white" />
               </div>
               <div className="relative z-10 p-8 glass-card rounded-2xl">
-                <h4 className="font-headline-md text-white mb-6">Interactive Network Map</h4>
+                <h4 className="font-headline-md text-white mb-6">{t("Interactive Network Map", "แผนที่เครือข่ายแบบอินเทอร์แอคทีฟ")}</h4>
                 <p className="text-on-surface-variant mb-8 text-sm">
-                  Explore our dynamic billboard network across the EEC region in high definition.
+                  {t("Explore our dynamic billboard network across the EEC region in high definition.", "สำรวจเครือข่ายป้ายโฆษณาไดนามิกทั่วพื้นที่ EEC ในความละเอียดสูง")}
                 </p>
                 <button className="px-10 py-4 bg-[#E63946] text-white rounded-lg font-label-md text-label-md hover:bg-white hover:text-[#E63946] transition-all transform hover:scale-105 shadow-xl">
-                  Launch Fullscreen Viewer
+                  {t("Launch Fullscreen Viewer", "เปิดในโหมดเต็มจอ")}
                 </button>
               </div>
             </div>
@@ -962,15 +974,18 @@ export default function Home() {
           <div className="sr sr-up text-center mb-20">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Data Insights</span>
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Data Insights", "ข้อมูลเชิงลึก")}</span>
               <span className="w-5 h-[1px] bg-primary-container" />
             </div>
             <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">
-              Audience &amp; Traffic
+              {t("Audience & Traffic", "ผู้ชม & ทราฟฟิก")}
             </h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent mx-auto rounded-full" />
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-8">
-              สถิติ Reach และ Traffic รวม ที่ช่วยให้แบรนด์เลือกสื่อได้ตรงกับกลุ่มเป้าหมายอย่างแม่นยำ
+              {t(
+                "Reach and Traffic statistics that help brands choose media precisely aligned with their target audience.",
+                "สถิติ Reach และ Traffic รวม ที่ช่วยให้แบรนด์เลือกสื่อได้ตรงกับกลุ่มเป้าหมายอย่างแม่นยำ"
+              )}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-20">
@@ -990,7 +1005,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
             <div className="sr sr-left glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <Clock size={20} className="text-primary" /> Peak Traffic Times
+                <Clock size={20} className="text-primary" /> {t("Peak Traffic Times", "ช่วงเวลาทราฟฟิกพีค")}
               </h4>
               <div className="space-y-8">
                 {peakTimes.map((row, i) => (
@@ -1008,7 +1023,7 @@ export default function Home() {
             </div>
             <div className="sr sr-right glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <Users size={20} className="text-primary" /> Audience Ratio
+                <Users size={20} className="text-primary" /> {t("Audience Ratio", "สัดส่วนผู้ชม")}
               </h4>
               <div className="space-y-6">
                 {audienceRatios.map((row, i) => (
@@ -1024,7 +1039,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="sr sr-up sr-d4 mt-8 p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
-                <p className="text-sm text-on-surface-variant">Data verified by Media108 Analytics Q4 2023</p>
+                <p className="text-sm text-on-surface-variant">{t("Data verified by Media108 Analytics Q4 2023", "ข้อมูลตรวจสอบโดย Media108 Analytics Q4 2023")}</p>
               </div>
             </div>
           </div>
@@ -1037,9 +1052,9 @@ export default function Home() {
           <div className="sr sr-up mb-16 text-center md:text-left">
             <div className="flex items-center gap-2 md:justify-start justify-center mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">What We Do</span>
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("What We Do", "สิ่งที่เราทำ")}</span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">Services Overview</h2>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Services Overview", "ภาพรวมบริการ")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent rounded-full" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
@@ -1048,7 +1063,7 @@ export default function Home() {
                 className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group cursor-default`}>
                 <svc.icon size={44} className="service-icon-hover text-primary mb-6 block transition-colors duration-300" />
                 <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
-                <p className="text-on-surface-variant font-body-md">{svc.desc}</p>
+                <p className="text-on-surface-variant font-body-md">{t(svc.descEn, svc.descTh)}</p>
               </div>
             ))}
           </div>
@@ -1056,11 +1071,11 @@ export default function Home() {
             <Link href="/services"
               className="bg-[#E63946] text-white px-12 py-5 rounded-lg font-label-md shadow-xl hover:bg-[#d1323f] hover:-translate-y-0.5 transition-all text-center"
               style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              ดูบริการทั้งหมด
+              {t("View All Services", "ดูบริการทั้งหมด")}
             </Link>
             <Link href="/contact#form"
               className="bg-transparent border border-white/20 text-white px-12 py-5 rounded-lg font-label-md hover:bg-white/5 hover:border-white/40 transition-all text-center">
-              ปรึกษาแคมเปญกับทีมขาย
+              {t("Consult Our Sales Team", "ปรึกษาแคมเปญกับทีมขาย")}
             </Link>
           </div>
         </div>
@@ -1072,14 +1087,16 @@ export default function Home() {
           <div className="sr sr-up text-center mb-20">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Our Edge</span>
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Our Edge", "จุดเด่นของเรา")}</span>
               <span className="w-5 h-[1px] bg-primary-container" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">Why Media108</h2>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">{t("Why Media108", "ทำไมต้อง Media108")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-transparent via-[#E63946] to-transparent rounded-full mx-auto" />
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-8 leading-relaxed">
-              เราช่วยให้การลงโฆษณากลางแจ้งไม่ใช่แค่การเลือกป้ายที่มองเห็นง่าย
-              แต่เป็นการเลือกทำเลและสื่อที่แม่นยำด้วยข้อมูลและเทคโนโลยี
+              {t(
+                "We make outdoor advertising not just about choosing a visible sign, but about selecting precise locations and media using data and technology.",
+                "เราช่วยให้การลงโฆษณากลางแจ้งไม่ใช่แค่การเลือกป้ายที่มองเห็นง่าย แต่เป็นการเลือกทำเลและสื่อที่แม่นยำด้วยข้อมูลและเทคโนโลยี"
+              )}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -1088,7 +1105,7 @@ export default function Home() {
                 className={`sr sr-scale sr-d${i + 1} glass-card p-12 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-500 shadow-lg group cursor-default`}>
                 <item.icon size={44} className="service-icon-hover text-primary-container mb-8 block transition-colors duration-300 group-hover:text-primary" />
                 <h4 className="font-headline-md text-on-surface mb-6 group-hover:text-primary transition-colors duration-300">{item.title}</h4>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">{item.desc}</p>
+                <p className="text-on-surface-variant font-body-md leading-relaxed">{t(item.descEn, item.descTh)}</p>
               </div>
             ))}
           </div>
@@ -1101,13 +1118,16 @@ export default function Home() {
           <div className="sr sr-up mb-16 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">On Location</span>
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("On Location", "ณ ทำเล")}</span>
               <span className="w-5 h-[1px] bg-primary-container" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">Photo Gallery</h2>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Photo Gallery", "แกลเลอรีภาพถ่าย")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-transparent via-[#E63946] to-transparent rounded-full mx-auto" />
             <p className="font-body-md text-on-surface-variant mt-6">
-              สัมผัสบรรยากาศจริงของทำเลป้ายในเครือข่าย Media108 ทั้งช่วงกลางวันและกลางคืน
+              {t(
+                "Experience the real atmosphere of billboard locations in the Media108 network, both day and night.",
+                "สัมผัสบรรยากาศจริงของทำเลป้ายในเครือข่าย Media108 ทั้งช่วงกลางวันและกลางคืน"
+              )}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1141,13 +1161,13 @@ export default function Home() {
           <div className="sr sr-up mb-20 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Get Started</span>
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Get Started", "เริ่มต้น")}</span>
               <span className="w-5 h-[1px] bg-primary-container" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">How to Buy Ads</h2>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("How to Buy Ads", "วิธีลงโฆษณา")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-transparent via-[#E63946] to-transparent rounded-full mx-auto" />
             <p className="text-on-surface-variant mt-8 font-body-lg">
-              ขั้นตอนง่ายๆ ในการเริ่มแคมเปญโฆษณาดิจิทัลกับเรา
+              {t("Simple steps to start your digital advertising campaign with us.", "ขั้นตอนง่ายๆ ในการเริ่มแคมเปญโฆษณาดิจิทัลกับเรา")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
@@ -1161,8 +1181,8 @@ export default function Home() {
                 <div className="step-number font-display-lg text-8xl leading-none mb-4 opacity-10 group-hover:opacity-25 transition-opacity duration-500">
                   {s.step}
                 </div>
-                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{s.title}</h4>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">{s.desc}</p>
+                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{t(s.titleEn, s.titleTh)}</h4>
+                <p className="text-on-surface-variant font-body-md leading-relaxed">{t(s.descEn, s.descTh)}</p>
               </div>
             ))}
           </div>
@@ -1170,7 +1190,7 @@ export default function Home() {
             <Link href="/contact#form"
               className="px-16 py-6 bg-[#E63946] text-white rounded-lg font-label-md text-label-md glow-button transition-all hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-2xl uppercase tracking-widest"
               style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              เริ่มจองป้ายเลย
+              {t("Book a Billboard Now", "เริ่มจองป้ายเลย")}
             </Link>
           </div>
         </div>
@@ -1195,24 +1215,26 @@ export default function Home() {
                 className="w-1.5 h-1.5 rounded-full bg-white"
                 style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
               />
-              <span className="text-white/70 font-label-md text-[11px] tracking-[0.2em] uppercase">Free Download</span>
+              <span className="text-white/70 font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Free Download", "ดาวน์โหลดฟรี")}</span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">Download Our Media Kit</h2>
+            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Download Our Media Kit", "ดาวน์โหลด Media Kit ของเรา")}</h2>
             <p className="text-white/90 font-body-lg leading-relaxed">
-              ต้องการดูรายละเอียดทำเล ราคา แพ็กเกจ และข้อมูลสถิติผู้ชมอย่างละเอียด ดาวน์โหลด Media Kit
-              หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ
+              {t(
+                "Want detailed location information, pricing, packages, and audience statistics? Download our Media Kit or request a custom quotation designed specifically for your business.",
+                "ต้องการดูรายละเอียดทำเล ราคา แพ็กเกจ และข้อมูลสถิติผู้ชมอย่างละเอียด ดาวน์โหลด Media Kit หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ"
+              )}
             </p>
           </div>
           <div className="sr sr-right sr-d2 flex flex-col sm:flex-row gap-6 w-full md:w-auto">
             <Link href="/media-kit"
               className="bg-white text-primary-container px-12 py-5 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center shadow-2xl hover:-translate-y-1 active:scale-95"
               style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              <Download size={18} className="mr-3 inline" /> DOWNLOAD MEDIA KIT
+              <Download size={18} className="mr-3 inline" /> {t("DOWNLOAD MEDIA KIT", "ดาวน์โหลด MEDIA KIT")}
             </Link>
             <Link href="/contact#form"
               className="bg-transparent border-2 border-white text-white px-12 py-5 rounded-lg font-label-md text-label-md font-bold hover:bg-white/10 active:scale-95 text-center hover:-translate-y-0.5"
               style={{ transition: "all 200ms ease" }}>
-              REQUEST QUOTATION
+              {t("REQUEST QUOTATION", "ขอใบเสนอราคา")}
             </Link>
           </div>
         </div>
@@ -1224,10 +1246,12 @@ export default function Home() {
           {/* Contact block */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mb-32">
             <div className="sr sr-left">
-              <h2 className="font-headline-xl text-headline-xl text-on-surface mb-8">Get In Touch</h2>
+              <h2 className="font-headline-xl text-headline-xl text-on-surface mb-8">{t("Get In Touch", "ติดต่อเรา")}</h2>
               <p className="text-on-surface-variant font-body-lg mb-12">
-                เราพร้อมเป็นพาร์ทเนอร์สื่อโฆษณาที่จะช่วยขับเคลื่อนแคมเปญของคุณให้ประสบความสำเร็จ
-                ติดต่อเราเพื่อรับคำปรึกษาฟรี
+                {t(
+                  "We're ready to be your advertising media partner to help drive your campaign to success. Contact us for a free consultation.",
+                  "เราพร้อมเป็นพาร์ทเนอร์สื่อโฆษณาที่จะช่วยขับเคลื่อนแคมเปญของคุณให้ประสบความสำเร็จ ติดต่อเราเพื่อรับคำปรึกษาฟรี"
+                )}
               </p>
               <div className="space-y-8">
                 <a href="tel:+6638123456" className="flex items-center gap-6 group">
@@ -1236,7 +1260,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
-                      Phone Number
+                      {t("Phone Number", "เบอร์โทรศัพท์")}
                     </p>
                     <p className="text-xl text-on-surface font-headline-md">+66 (0) 38 123 456</p>
                   </div>
@@ -1247,7 +1271,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
-                      Line Official
+                      {t("Line Official", "LINE Official")}
                     </p>
                     <p className="text-xl text-on-surface font-headline-md">@media108</p>
                   </div>
@@ -1258,9 +1282,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-xs text-on-surface-variant font-label-md uppercase tracking-widest mb-1">
-                      Head Office
+                      {t("Head Office", "สำนักงานใหญ่")}
                     </p>
-                    <p className="text-on-surface font-body-md">Chonburi City, Thailand 20000</p>
+                    <p className="text-on-surface font-body-md">{t("Chonburi City, Thailand 20000", "ชลบุรี, ประเทศไทย 20000")}</p>
                   </div>
                 </div>
               </div>
@@ -1270,42 +1294,42 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-label-md text-on-surface-variant mb-2">
-                      Name
+                      {t("Name", "ชื่อ")}
                     </label>
                     <input
                       className="w-full bg-surface-container border border-border-glass rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
-                      placeholder="Your Name"
+                      placeholder={t("Your Name", "ชื่อของคุณ")}
                       type="text"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-label-md text-on-surface-variant mb-2">
-                      Email
+                      {t("Email", "อีเมล")}
                     </label>
                     <input
                       className="w-full bg-surface-container border border-border-glass rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
-                      placeholder="Email Address"
+                      placeholder={t("Email Address", "ที่อยู่อีเมล")}
                       type="email"
                     />
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-label-md text-on-surface-variant mb-2">
-                    Company
+                    {t("Company", "บริษัท")}
                   </label>
                   <input
                     className="w-full bg-surface-container border border-border-glass rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
-                    placeholder="Company Name"
+                    placeholder={t("Company Name", "ชื่อบริษัท")}
                     type="text"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-label-md text-on-surface-variant mb-2">
-                    Message
+                    {t("Message", "ข้อความ")}
                   </label>
                   <textarea
                     className="w-full bg-surface-container border border-border-glass rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-on-surface"
-                    placeholder="Tell us about your campaign..."
+                    placeholder={t("Tell us about your campaign...", "บอกเราเกี่ยวกับแคมเปญของคุณ...")}
                     rows={4}
                   ></textarea>
                 </div>
@@ -1313,7 +1337,7 @@ export default function Home() {
                   className="w-full bg-[#E63946] text-white py-4 rounded-lg font-label-md text-label-md hover:bg-[#d1323f] transition-all shadow-xl"
                   type="submit"
                 >
-                  SEND MESSAGE
+                  {t("SEND MESSAGE", "ส่งข้อความ")}
                 </button>
               </form>
             </div>
@@ -1329,27 +1353,29 @@ export default function Home() {
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzxAPAB9nOqrDOCuORJYTnRRWHgB_iOJG0f39OvN_Ma74f63ydil3zG2UkdpwdL_gCwGITmTUc2uG9iinRcyf83Sa4PEHrRizUBZ8zsgXbduZc0wpHL54kxAYoheQdcTxwqcuTyPF9ln3u5xwWj1OqEzpvNnDGgI8qvuNoXs1bbPozJ8gnDxd5Nh6Is7-g30t9PeOG9t_u1kB3qJe909_B_xV9qOwuCevQsDCcXJsZUzhe5egc4FA2FzWs8P9bRvw5qEorIHD2js"
               />
               <p className="text-on-surface-variant font-body-md pr-12 leading-relaxed">
-                Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision
-                media solutions driven by data and impact.
+                {t(
+                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
+                  "ผู้นำการปฏิวัติสื่อดิจิทัลกลางแจ้งใน Eastern Economic Corridor โซลูชันสื่อแม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                )}
               </p>
             </div>
             <div>
               <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">
-                Navigation
+                {t("Navigation", "นำทาง")}
               </h6>
               <ul className="space-y-4">
-                {[
-                  ["Home", "/"],
-                  ["Media Network", "/network"],
-                  ["Our Services", "/services"],
-                  ["Contact Us", "/contact"],
-                ].map(([label, href]) => (
-                  <li key={label}>
+                {([
+                  { en: "Home",         th: "หน้าหลัก",     href: "/" },
+                  { en: "Media Network",th: "เครือข่ายสื่อ", href: "/network" },
+                  { en: "Our Services", th: "บริการของเรา",  href: "/services" },
+                  { en: "Contact Us",   th: "ติดต่อเรา",     href: "/contact" },
+                ] as { en: string; th: string; href: string }[]).map(({ en, th, href }) => (
+                  <li key={en}>
                     <Link
                       href={href}
                       className="text-on-surface-variant hover:text-primary transition-colors font-body-md"
                     >
-                      {label}
+                      {t(en, th)}
                     </Link>
                   </li>
                 ))}
@@ -1357,21 +1383,21 @@ export default function Home() {
             </div>
             <div>
               <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">
-                Media Focus
+                {t("Media Focus", "จุดเน้นสื่อ")}
               </h6>
               <ul className="space-y-4">
-                {[
-                  "Pattaya Digital Hub",
-                  "Chonburi Strategic",
-                  "Bang Saen Network",
-                  "EEC Industrial Belt",
-                ].map((item) => (
-                  <li key={item}>
+                {([
+                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ" },
+                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม" },
+                ] as { en: string; th: string }[]).map(({ en, th }) => (
+                  <li key={en}>
                     <a
                       href="#"
                       className="text-on-surface-variant hover:text-primary transition-colors font-body-md"
                     >
-                      {item}
+                      {t(en, th)}
                     </a>
                   </li>
                 ))}
@@ -1379,7 +1405,7 @@ export default function Home() {
             </div>
             <div>
               <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">
-                Connect
+                {t("Connect", "ติดต่อ")}
               </h6>
               <div className="flex gap-4 mb-8">
                 {[Share2, Mail].map((Icon, idx) => (
@@ -1394,7 +1420,7 @@ export default function Home() {
               </div>
               <div className="p-4 bg-surface-container-high rounded-lg border border-border-glass">
                 <p className="text-[11px] font-label-md text-on-surface-variant uppercase mb-2">
-                  Subscribe to Media Kit Updates
+                  {t("Subscribe to Media Kit Updates", "รับอัปเดต Media Kit")}
                 </p>
                 <div className="flex gap-2">
                   <input
@@ -1412,15 +1438,15 @@ export default function Home() {
 
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-on-surface-variant font-label-md text-sm">
-              © 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.
+              © 2024 MEDIA108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} Precision DOOH Media Solutions.
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
               <span>
                 Region: <span className="text-on-surface font-bold">TH-EEC</span>
               </span>
               <span className="flex items-center gap-2">
-                Status: <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span>{" "}
-                Optimal
+                {t("Status", "สถานะ")}: <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span>{" "}
+                {t("Optimal", "ปกติ")}
               </span>
             </div>
           </div>

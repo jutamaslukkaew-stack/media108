@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
 import {
   Calendar, MonitorPlay, Eye, TrendingUp, Rocket, Cpu,
   BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Globe, Mail,
@@ -41,6 +42,7 @@ const leaders = [
 
 export default function AboutPage() {
   useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <>
@@ -75,16 +77,17 @@ export default function AboutPage() {
               className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
             >
-              Redefining the{" "}
-              <span className="text-primary">Urban Horizon.</span>
+              {t("Redefining the", "ยกระดับ")}{" "}
+              <span className="text-primary">{t("Urban Horizon.", "เส้นขอบฟ้าเมือง")}</span>
             </h1>
             <p
               className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl"
               style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
             >
-              Media108 is Thailand&apos;s premier DOOH and billboard network provider. We bridge the gap
-              between brands and their audiences through high-impact, technologically superior media
-              assets located in the nation&apos;s most strategic economic corridors.
+              {t(
+                "Media108 is Thailand's premier DOOH and billboard network provider. We bridge the gap between brands and their audiences through high-impact, technologically superior media assets located in the nation's most strategic economic corridors.",
+                "Media108 คือผู้ให้บริการเครือข่ายป้ายบิลบอร์ดและ DOOH ชั้นนำของไทย เราเชื่อมต่อแบรนด์กับกลุ่มเป้าหมายผ่านสื่อที่ทรงพลังและเหนือกว่าด้วยเทคโนโลยี ณ จุดยุทธศาสตร์สำคัญที่สุดของประเทศ"
+              )}
             </p>
             <div
               className="flex flex-wrap gap-6"
@@ -94,13 +97,13 @@ export default function AboutPage() {
                 href="/network"
                 className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest red-glow-hover transition-all active:scale-95"
               >
-                Explore Network
+                {t("Explore Network", "สำรวจเครือข่าย")}
               </Link>
               <Link
                 href="/media-kit"
                 className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95"
               >
-                Download Kit
+                {t("Download Kit", "ดาวน์โหลดสื่อ")}
               </Link>
             </div>
           </div>
@@ -108,10 +111,10 @@ export default function AboutPage() {
           {/* Right — stats panel */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
             {([
-              { value: "16+",    label: "Years in Market",     icon: Calendar     },
-              { value: "250+",   label: "Active Billboards",   icon: MonitorPlay  },
-              { value: "450K+",  label: "Daily Impressions",   icon: Eye          },
-              { value: "85%",    label: "EEC Market Share",    icon: TrendingUp   },
+              { value: "16+",    label: t("Years in Market", "ปีในตลาด"),         icon: Calendar     },
+              { value: "250+",   label: t("Active Billboards", "ป้ายที่ใช้งานอยู่"), icon: MonitorPlay  },
+              { value: "450K+",  label: t("Daily Impressions", "ผู้ชมต่อวัน"),      icon: Eye          },
+              { value: "85%",    label: t("EEC Market Share", "ส่วนแบ่งตลาด EEC"), icon: TrendingUp   },
             ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
@@ -135,10 +138,12 @@ export default function AboutPage() {
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
               <Eye size={36} className="text-primary" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Vision</h2>
+            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Our Vision", "วิสัยทัศน์ของเรา")}</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              To be the undisputed leader in media technology across Southeast Asia, transforming every
-              urban surface into a canvas for meaningful brand storytelling through data-driven innovation.
+              {t(
+                "To be the undisputed leader in media technology across Southeast Asia, transforming every urban surface into a canvas for meaningful brand storytelling through data-driven innovation.",
+                "เป็นผู้นำด้านเทคโนโลยีสื่อที่ไม่มีใครโต้แย้งได้ทั่วเอเชียตะวันออกเฉียงใต้ แปลงทุกพื้นผิวเมืองให้กลายเป็นผืนผ้าใบเพื่อการเล่าเรื่องแบรนด์ที่มีความหมายผ่านนวัตกรรมขับเคลื่อนด้วยข้อมูล"
+              )}
             </p>
           </div>
 
@@ -147,11 +152,12 @@ export default function AboutPage() {
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary flex items-center justify-center">
               <Rocket size={36} className="text-white" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">Our Mission</h2>
+            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Our Mission", "พันธกิจของเรา")}</h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              Empowering advertisers with unmatched visibility and precision. We commit to maintaining the
-              highest standards of hardware integrity and audience analytics to ensure every campaign
-              achieves maximum ROI.
+              {t(
+                "Empowering advertisers with unmatched visibility and precision. We commit to maintaining the highest standards of hardware integrity and audience analytics to ensure every campaign achieves maximum ROI.",
+                "มอบพลังให้ผู้โฆษณาด้วยการมองเห็นและความแม่นยำที่ไม่มีใครเทียบ เรามุ่งมั่นรักษามาตรฐานสูงสุดด้านความสมบูรณ์ของฮาร์ดแวร์และการวิเคราะห์ผู้ชม เพื่อให้ทุกแคมเปญบรรลุ ROI สูงสุด"
+              )}
             </p>
           </div>
         </div>
@@ -172,8 +178,8 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60" />
                 <div className="absolute bottom-8 left-8">
-                  <p className="font-data-mono text-data-mono text-primary mb-2">Location Strategy</p>
-                  <h3 className="font-headline-lg text-headline-lg text-white">Chonburi: The Gateway</h3>
+                  <p className="font-data-mono text-data-mono text-primary mb-2">{t("Location Strategy", "กลยุทธ์ทำเล")}</p>
+                  <h3 className="font-headline-lg text-headline-lg text-white">{t("Chonburi: The Gateway", "ชลบุรี: ประตูสู่อนาคต")}</h3>
                 </div>
               </div>
             </div>
@@ -181,23 +187,23 @@ export default function AboutPage() {
             {/* Text */}
             <div className="w-full md:w-1/2 order-1 md:order-2">
               <h2 className="font-headline-xl text-headline-xl text-white mb-8">
-                Dominating the{" "}
-                <span className="text-primary">EEC Corridor.</span>
+                {t("Dominating the", "ครองความเป็นเจ้าใน")}{" "}
+                <span className="text-primary">{t("EEC Corridor.", "EEC Corridor")}</span>
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
-                We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the
-                beating heart of Thailand&apos;s future economy. By concentrating our highest-fidelity digital
-                assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic
-                of industrial leaders, international tourists, and growing middle-class residents.
+                {t(
+                  "We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the beating heart of Thailand's future economy. By concentrating our highest-fidelity digital assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic of industrial leaders, international tourists, and growing middle-class residents.",
+                  "เราตระหนักตั้งแต่เนิ่นๆ ว่าชลบุรีและเขตพัฒนาพิเศษภาคตะวันออก (EEC) คือหัวใจของเศรษฐกิจไทยในอนาคต ด้วยการกระจุกตัวสินทรัพย์ดิจิทัลคุณภาพสูงสุดในโซนนี้ เราให้ผู้โฆษณาเข้าถึงกลุ่มประชากรที่มีรายได้สูง ทั้งผู้นำอุตสาหกรรม นักท่องเที่ยวต่างชาติ และชนชั้นกลางที่กำลังเติบโต"
+                )}
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">450K+</h4>
-                  <p className="font-body-md text-on-surface-variant">Daily Traffic Impressions</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Daily Traffic Impressions", "ผู้ชมต่อวัน")}</p>
                 </div>
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">85%</h4>
-                  <p className="font-body-md text-on-surface-variant">Market Share in EEC Region</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Market Share in EEC Region", "ส่วนแบ่งตลาดในภูมิภาค EEC")}</p>
                 </div>
               </div>
             </div>
@@ -208,7 +214,7 @@ export default function AboutPage() {
       {/* ── Core Strengths Bento ── */}
       <section className="py-32 px-6 md:px-margin-desktop bg-surface-dim">
         <div className="max-w-container-max mx-auto text-center mb-20">
-          <h2 className="font-headline-xl text-headline-xl text-white mb-4">Core Strengths</h2>
+          <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Core Strengths", "จุดแข็งหลัก")}</h2>
           <div className="w-24 h-1 bg-primary mx-auto" />
         </div>
         <div
@@ -221,10 +227,12 @@ export default function AboutPage() {
               <Cpu size={96} className="text-primary/30 group-hover:text-primary transition-colors" />
             </div>
             <div className="relative z-10">
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Proprietary Technology</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Proprietary Technology", "เทคโนโลยีที่พัฒนาเอง")}</h3>
               <p className="text-on-surface-variant max-w-md">
-                Our LED boards feature custom hardware built for the tropical climate, ensuring 99.9%
-                uptime and true-to-life color reproduction even in direct sunlight.
+                {t(
+                  "Our LED boards feature custom hardware built for the tropical climate, ensuring 99.9% uptime and true-to-life color reproduction even in direct sunlight.",
+                  "ป้าย LED ของเราใช้ฮาร์ดแวร์ที่ออกแบบมาเพื่อสภาพอากาศแบบร้อนชื้น รับประกันความพร้อมใช้งาน 99.9% และสีสันที่สมจริงแม้ในแสงแดดจัด"
+                )}
               </p>
             </div>
           </div>
@@ -233,9 +241,12 @@ export default function AboutPage() {
           <div className="md:col-span-4 bg-primary-container rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-primary/20">
             <BarChart2 size={44} className="text-white" />
             <div>
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Audience Intelligence</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Audience Intelligence", "ข้อมูลเชิงลึกผู้ชม")}</h3>
               <p className="text-white/80">
-                Every billboard is equipped with anonymous video analytics to provide precise demographic data.
+                {t(
+                  "Every billboard is equipped with anonymous video analytics to provide precise demographic data.",
+                  "ป้ายทุกจุดติดตั้งระบบวิเคราะห์วิดีโอแบบนิรนามเพื่อให้ข้อมูลประชากรที่แม่นยำ"
+                )}
               </p>
             </div>
           </div>
@@ -244,9 +255,12 @@ export default function AboutPage() {
           <div className="md:col-span-4 glass-card rounded-2xl p-8 flex flex-col justify-between hover:bg-white/5 transition-all">
             <ShieldCheck size={44} className="text-primary" />
             <div>
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Regulatory Mastery</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Regulatory Mastery", "ความเชี่ยวชาญด้านกฎระเบียบ")}</h3>
               <p className="text-on-surface-variant">
-                100% legal compliance and structural certification for every site in our portfolio.
+                {t(
+                  "100% legal compliance and structural certification for every site in our portfolio.",
+                  "ปฏิบัติตามกฎหมาย 100% และได้รับการรับรองโครงสร้างทุกจุดในพอร์ตโฟลิโอ"
+                )}
               </p>
             </div>
           </div>
@@ -255,10 +269,12 @@ export default function AboutPage() {
           <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_#ffb3b1,_transparent)]" />
             <div className="relative z-10">
-              <h3 className="font-headline-md text-headline-md text-white mb-2">Hyper-Local Domination</h3>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Hyper-Local Domination", "ครองพื้นที่ระดับท้องถิ่น")}</h3>
               <p className="text-on-surface-variant">
-                Strategic placement at the busiest intersections and main arterial roads of Eastern
-                Thailand, capturing attention where it matters most.
+                {t(
+                  "Strategic placement at the busiest intersections and main arterial roads of Eastern Thailand, capturing attention where it matters most.",
+                  "การวางป้ายเชิงกลยุทธ์บริเวณสี่แยกหนาแน่นและถนนสายหลักในภาคตะวันออก ดึงดูดความสนใจในจุดที่สำคัญที่สุด"
+                )}
               </p>
             </div>
           </div>
@@ -270,9 +286,12 @@ export default function AboutPage() {
         <div className="max-w-container-max mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div className="max-w-2xl">
-              <h2 className="font-headline-xl text-headline-xl text-white mb-4">Leadership</h2>
+              <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Leadership", "ทีมผู้บริหาร")}</h2>
               <p className="text-on-surface-variant font-body-lg">
-                The visionaries steering Media108 toward the future of digital advertising in Thailand.
+                {t(
+                  "The visionaries steering Media108 toward the future of digital advertising in Thailand.",
+                  "ผู้มีวิสัยทัศน์ที่นำพา Media108 มุ่งสู่อนาคตของการโฆษณาดิจิทัลในประเทศไทย"
+                )}
               </p>
             </div>
             <div className="hidden md:flex gap-4 mt-6 md:mt-0">
@@ -356,11 +375,13 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left">
               <h2 className="font-headline-xl text-headline-xl text-white mb-6">
-                Ready to amplify your presence in Chonburi?
+                {t("Ready to amplify your presence in Chonburi?", "พร้อมขยายการรับรู้แบรนด์ในชลบุรีแล้วหรือยัง?")}
               </h2>
               <p className="font-body-lg text-white/80">
-                Connect with our sales team today to receive a custom media strategy and billboard
-                availability map.
+                {t(
+                  "Connect with our sales team today to receive a custom media strategy and billboard availability map.",
+                  "ติดต่อทีมขายของเราวันนี้เพื่อรับแผนกลยุทธ์สื่อที่ออกแบบมาเฉพาะคุณและแผนที่ตำแหน่งป้ายที่ว่าง"
+                )}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 flex-shrink-0">
@@ -368,13 +389,13 @@ export default function AboutPage() {
                 href="/contact#form"
                 className="bg-white text-on-primary-container px-10 py-5 rounded-xl font-label-md text-label-md uppercase tracking-widest font-bold hover:scale-105 transition-transform shadow-xl text-center"
               >
-                Contact Sales
+                {t("Contact Sales", "ติดต่อฝ่ายขาย")}
               </Link>
               <Link
                 href="/network"
                 className="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-label-md text-label-md uppercase tracking-widest hover:bg-white/10 transition-all text-center"
               >
-                Media Network
+                {t("Media Network", "เครือข่ายสื่อ")}
               </Link>
             </div>
           </div>
@@ -393,24 +414,37 @@ export default function AboutPage() {
                 <span className="text-white">108</span>
               </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
-                Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision
-                media solutions driven by data and impact.
+                {t(
+                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
+                  "นำแนวโน้มปฏิวัติสื่อดิจิทัลกลางแจ้งในเขตพัฒนาพิเศษภาคตะวันออก โซลูชันสื่อที่แม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                )}
               </p>
             </div>
             <div>
-              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Navigation</h6>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Navigation", "เมนู")}</h6>
               <ul className="space-y-4">
-                {([["Home", "/"], ["About", "/about"], ["Media Network", "/network"], ["Our Services", "/services"], ["Contact Us", "/contact"]] as [string, string][]).map(([label, href]) => (
-                  <li key={label}>
+                {([
+                  [t("Home", "หน้าแรก"), "/"],
+                  [t("About", "เกี่ยวกับเรา"), "/about"],
+                  [t("Media Network", "เครือข่ายสื่อ"), "/network"],
+                  [t("Our Services", "บริการของเรา"), "/services"],
+                  [t("Contact Us", "ติดต่อเรา"), "/contact"],
+                ] as [string, string][]).map(([label, href]) => (
+                  <li key={href}>
                     <Link href={href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{label}</Link>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Media Focus</h6>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Media Focus", "โฟกัสสื่อ")}</h6>
               <ul className="space-y-4">
-                {["Pattaya Digital Hub", "Chonburi Strategic", "Bang Saen Network", "EEC Industrial Belt"].map((item) => (
+                {[
+                  t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),
+                  t("Chonburi Strategic", "ชลบุรีเชิงกลยุทธ์"),
+                  t("Bang Saen Network", "เครือข่ายบางแสน"),
+                  t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),
+                ].map((item) => (
                   <li key={item}>
                     <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
                   </li>
@@ -418,7 +452,7 @@ export default function AboutPage() {
               </ul>
             </div>
             <div>
-              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Connect</h6>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Connect", "ติดตาม")}</h6>
               <div className="flex gap-4">
                 {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
                   <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
@@ -430,12 +464,12 @@ export default function AboutPage() {
           </div>
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-on-surface-variant font-label-md text-sm">
-              © 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.
+              {t("© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.", "© 2024 MEDIA108. สงวนลิขสิทธิ์ โซลูชันสื่อ DOOH ที่แม่นยำ")}
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
-              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>
               <span className="flex items-center gap-2">
-                Status: <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> Optimal
+                {t("Status:", "สถานะ:")} <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> {t("Optimal", "ปกติ")}
               </span>
             </div>
           </div>

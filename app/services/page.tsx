@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
 import { useScrollReveal } from "../hooks/useScrollReveal";
+import { useLanguage } from "../context/LanguageContext";
 import {
   LayoutGrid, MousePointerClick, Palette, Sparkles, Film, Plane,
   Camera, Share2, Target, Store, Coffee, HeartPulse, Briefcase,
@@ -13,16 +14,16 @@ import {
 } from "lucide-react";
 
 /* ── Service cards data ─────────────────────────────────── */
-const services: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: LayoutGrid,      title: "LED Billboard Advertising",    desc: "ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ" },
-  { icon: MousePointerClick, title: "Digital Out-of-Home Campaign", desc: "วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง" },
-  { icon: Palette,         title: "Ad Creative Design",           desc: "ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา" },
-  { icon: Sparkles,        title: "Motion Graphic",               desc: "ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น" },
-  { icon: Film,            title: "Video Production",             desc: "ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ" },
-  { icon: Plane,           title: "Drone Production",             desc: "ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ" },
-  { icon: Camera,          title: "Photography",                  desc: "บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี" },
-  { icon: Share2,          title: "Social Media Content",         desc: "ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร" },
-  { icon: Target,          title: "Campaign Strategy",            desc: "วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก" },
+const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
+  { icon: LayoutGrid,      title: "LED Billboard Advertising",    descEn: "Advertise on single or multiple LED billboards across key strategic locations.", descTh: "ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ" },
+  { icon: MousePointerClick, title: "Digital Out-of-Home Campaign", descEn: "Deploy multi-billboard campaigns simultaneously to create powerful wide-reaching brand awareness.", descTh: "วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง" },
+  { icon: Palette,         title: "Ad Creative Design",           descEn: "Design artwork specifically for LED billboards, focusing on visual appeal and eye-catching aesthetics.", descTh: "ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา" },
+  { icon: Sparkles,        title: "Motion Graphic",               descEn: "Animations for LED displays designed for fluidity and maximum visual impact.", descTh: "ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น" },
+  { icon: Film,            title: "Video Production",             descEn: "Produce high-quality advertising videos from scriptwriting to final edit.", descTh: "ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ" },
+  { icon: Plane,           title: "Drone Production",             descEn: "Drone filming for locations or products, delivering sweeping and spectacular perspectives.", descTh: "ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ" },
+  { icon: Camera,          title: "Photography",                  descEn: "Professional product and service photography to elevate your brand image.", descTh: "บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี" },
+  { icon: Share2,          title: "Social Media Content",         descEn: "Produce comprehensive content for Facebook, TikTok, YouTube and Instagram.", descTh: "ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร" },
+  { icon: Target,          title: "Campaign Strategy",            descEn: "Plan media and select billboards aligned with your goals using in-depth data analytics.", descTh: "วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก" },
 ];
 
 /* ── Package data ───────────────────────────────────────── */
@@ -31,7 +32,7 @@ const packages: {
   recommended: boolean;
   labelColor: string;
   accentBorder: string;
-  items: { icon: LucideIcon; label: string }[];
+  items: { icon: LucideIcon; labelEn: string; labelTh: string }[];
 }[] = [
   {
     title: "SME Starter",
@@ -39,10 +40,10 @@ const packages: {
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: Store,      label: "ร้านอาหาร" },
-      { icon: Coffee,     label: "คาเฟ่" },
-      { icon: HeartPulse, label: "คลินิก" },
-      { icon: Briefcase,  label: "ธุรกิจท้องถิ่น" },
+      { icon: Store,      labelEn: "Restaurant",     labelTh: "ร้านอาหาร" },
+      { icon: Coffee,     labelEn: "Café",           labelTh: "คาเฟ่" },
+      { icon: HeartPulse, labelEn: "Clinic",         labelTh: "คลินิก" },
+      { icon: Briefcase,  labelEn: "Local Business", labelTh: "ธุรกิจท้องถิ่น" },
     ],
   },
   {
@@ -51,9 +52,9 @@ const packages: {
     labelColor: "text-primary",
     accentBorder: "border-t-primary",
     items: [
-      { icon: Hotel,   label: "โรงแรม" },
-      { icon: Utensils, label: "ร้านอาหารพัทยา" },
-      { icon: Map,     label: "แหล่งท่องเที่ยว" },
+      { icon: Hotel,    labelEn: "Hotel",          labelTh: "โรงแรม" },
+      { icon: Utensils, labelEn: "Pattaya Restaurant", labelTh: "ร้านอาหารพัทยา" },
+      { icon: Map,      labelEn: "Tourist Attraction", labelTh: "แหล่งท่องเที่ยว" },
     ],
   },
   {
@@ -62,9 +63,9 @@ const packages: {
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: Building2, label: "คอนโด" },
-      { icon: Home,      label: "บ้านจัดสรร" },
-      { icon: HardHat,   label: "โครงการใหม่" },
+      { icon: Building2, labelEn: "Condominium",    labelTh: "คอนโด" },
+      { icon: Home,      labelEn: "Housing Estate", labelTh: "บ้านจัดสรร" },
+      { icon: HardHat,   labelEn: "New Project",    labelTh: "โครงการใหม่" },
     ],
   },
   {
@@ -73,15 +74,16 @@ const packages: {
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
     items: [
-      { icon: Ticket,      label: "Concert" },
-      { icon: PartyPopper, label: "Festival" },
-      { icon: Trophy,      label: "Sport Event" },
+      { icon: Ticket,      labelEn: "Concert",     labelTh: "คอนเสิร์ต" },
+      { icon: PartyPopper, labelEn: "Festival",    labelTh: "เทศกาล" },
+      { icon: Trophy,      labelEn: "Sport Event", labelTh: "กีฬา" },
     ],
   },
 ];
 
 export default function ServicesPage() {
   useScrollReveal();
+  const { t } = useLanguage();
   useEffect(() => {
     // 3D tilt effect on service cards
     const cards = document.querySelectorAll<HTMLElement>(".service-card");
@@ -143,20 +145,25 @@ export default function ServicesPage() {
               className="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block"
               style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
             >
-              Our Services
+              {t("Our Services", "บริการของเรา")}
             </span>
             <h1
               className="font-display-lg text-display-lg mb-6 leading-tight text-white"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
             >
-              นำเสนอบริการเป็นมากกว่า<br />&ldquo;ขายพื้นที่โฆษณา&rdquo;
+              {t(
+                "More than just \"selling ad space\"",
+                "นำเสนอบริการเป็นมากกว่า\"ขายพื้นที่โฆษณา\""
+              )}
             </h1>
             <p
               className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
             >
-              Media108 ยกระดับแบรนด์ของคุณด้วยโซลูชันสื่อดิจิทัลนอกบ้านแบบครบวงจร ตั้งแต่การวางกลยุทธ์
-              การออกแบบ ไปจนถึงการผลิตเนื้อหาคุณภาพสูงระดับ Cinematic
+              {t(
+                "Media108 elevates your brand with comprehensive digital out-of-home solutions — from strategy and design to cinematic-quality content production.",
+                "Media108 ยกระดับแบรนด์ของคุณด้วยโซลูชันสื่อดิจิทัลนอกบ้านแบบครบวงจร ตั้งแต่การวางกลยุทธ์ การออกแบบ ไปจนถึงการผลิตเนื้อหาคุณภาพสูงระดับ Cinematic"
+              )}
             </p>
             <div
               className="flex flex-wrap gap-4"
@@ -166,13 +173,13 @@ export default function ServicesPage() {
                 href="#packages"
                 className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all"
               >
-                ดูแพ็กเกจแนะนำ
+                {t("View Recommended Packages", "ดูแพ็กเกจแนะนำ")}
               </a>
               <a
                 href="#services"
                 className="px-8 py-4 rounded-lg font-label-md text-label-md border border-white/20 hover:bg-white/10 transition-all uppercase tracking-wider text-white"
               >
-                บริการทั้งหมด
+                {t("All Services", "บริการทั้งหมด")}
               </a>
             </div>
           </div>
@@ -181,7 +188,7 @@ export default function ServicesPage() {
         {/* ── Services Grid ── */}
         <section id="services" className="py-24 px-margin-desktop max-w-container-max mx-auto">
           <div className="sr sr-up mb-16">
-            <h2 className="font-headline-xl text-headline-xl mb-4 text-white">บริการระดับมืออาชีพ</h2>
+            <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Professional Services", "บริการระดับมืออาชีพ")}</h2>
             <div className="h-1 w-24 bg-primary rounded-full" />
           </div>
 
@@ -195,7 +202,7 @@ export default function ServicesPage() {
                   <svc.icon size={22} className="text-primary" />
                 </div>
                 <h3 className="font-headline-md text-headline-md mb-3 text-white">{svc.title}</h3>
-                <p className="font-body-md text-on-surface-variant">{svc.desc}</p>
+                <p className="font-body-md text-on-surface-variant">{t(svc.descEn, svc.descTh)}</p>
               </div>
             ))}
           </div>
@@ -205,9 +212,12 @@ export default function ServicesPage() {
         <section id="packages" className="py-24 bg-surface-container-low border-y border-white/5">
           <div className="max-w-container-max mx-auto px-margin-desktop">
             <div className="sr sr-up text-center mb-16">
-              <h2 className="font-headline-xl text-headline-xl mb-4 text-white">Packages ที่ควรนำเสนอ</h2>
+              <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Recommended Packages", "Packages ที่ควรนำเสนอ")}</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                แพ็กเกจที่ออกแบบมาเพื่อตอบโจทย์ธุรกิจทุกขนาดและทุกอุตสาหกรรม
+                {t(
+                  "Packages designed to meet the needs of every business size and industry.",
+                  "แพ็กเกจที่ออกแบบมาเพื่อตอบโจทย์ธุรกิจทุกขนาดและทุกอุตสาหกรรม"
+                )}
               </p>
             </div>
 
@@ -226,24 +236,24 @@ export default function ServicesPage() {
                   )}
 
                   <h3 className="font-headline-md text-headline-md mb-4 text-white">{pkg.title}</h3>
-                  <p className={`${pkg.labelColor} font-bold mb-6`}>เหมาะสำหรับ:</p>
+                  <p className={`${pkg.labelColor} font-bold mb-6`}>{t("Suitable for:", "เหมาะสำหรับ:")}</p>
 
                   <ul className="space-y-4 mb-10 flex-grow">
                     {pkg.items.map((item) => (
-                      <li key={item.label} className="flex items-start">
+                      <li key={item.labelEn} className="flex items-start">
                         <item.icon size={20} className="text-primary mr-3 shrink-0 mt-0.5" />
-                        <span className="font-body-md text-on-surface-variant">{item.label}</span>
+                        <span className="font-body-md text-on-surface-variant">{t(item.labelEn, item.labelTh)}</span>
                       </li>
                     ))}
                   </ul>
 
                   {pkg.recommended ? (
                     <button className="w-full py-4 rounded-lg bg-primary-container text-white font-label-md text-label-md uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all">
-                      สอบถามข้อมูล
+                      {t("Enquire Now", "สอบถามข้อมูล")}
                     </button>
                   ) : (
                     <button className="w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider text-white">
-                      เลือกแพ็กเกจนี้
+                      {t("Choose This Package", "เลือกแพ็กเกจนี้")}
                     </button>
                   )}
                 </div>
@@ -256,16 +266,19 @@ export default function ServicesPage() {
         <section className="py-24 px-margin-desktop max-w-container-max mx-auto text-center">
           <div className="sr sr-up max-w-3xl mx-auto">
             <h2 className="font-headline-xl text-headline-xl mb-6 text-white">
-              ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?
+              {t("Need a media plan tailored specifically for you?", "ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?")}
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-10">
-              เราไม่ได้แค่ขายพื้นที่ แต่เราช่วยคุณวางแผนเพื่อให้ทุกวินาทีบนหน้าจอมีความหมายและคุ้มค่ากับการลงทุนมากที่สุด
+              {t(
+                "We don't just sell space — we help you plan so that every second on screen is meaningful and delivers maximum return on investment.",
+                "เราไม่ได้แค่ขายพื้นที่ แต่เราช่วยคุณวางแผนเพื่อให้ทุกวินาทีบนหน้าจอมีความหมายและคุ้มค่ากับการลงทุนมากที่สุด"
+              )}
             </p>
             <Link
               href="/network"
               className="inline-block bg-primary-container text-white px-12 py-5 rounded-lg font-headline-md text-headline-md hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all active:scale-95"
             >
-              เริ่มต้นโครงการของคุณ
+              {t("Start Your Project", "เริ่มต้นโครงการของคุณ")}
             </Link>
           </div>
         </section>
@@ -282,7 +295,10 @@ export default function ServicesPage() {
               <span className="text-primary">Media</span><span className="text-white">108</span>
             </div>
             <p className="text-on-surface-variant font-body-md text-sm mb-6 leading-relaxed opacity-70">
-              ยกระดับแบรนด์ผ่านสื่อดิจิทัลนอกบ้านที่มีความแม่นยำสูงและการผลิตที่เปี่ยมคุณภาพ
+              {t(
+                "Elevate your brand through precision digital out-of-home media and quality-driven production.",
+                "ยกระดับแบรนด์ผ่านสื่อดิจิทัลนอกบ้านที่มีความแม่นยำสูงและการผลิตที่เปี่ยมคุณภาพ"
+              )}
             </p>
             <div className="flex gap-4">
               {[Globe, Radio].map((Icon, idx) => (
@@ -297,8 +313,12 @@ export default function ServicesPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Network</h4>
-            {["Network Map", "Global Offices", "Case Studies"].map((l) => (
+            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Network", "เครือข่าย")}</h4>
+            {[
+              t("Network Map", "แผนที่เครือข่าย"),
+              t("Global Offices", "สำนักงานทั่วโลก"),
+              t("Case Studies", "กรณีศึกษา"),
+            ].map((l) => (
               <a key={l} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
                 {l}
               </a>
@@ -306,8 +326,12 @@ export default function ServicesPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Company</h4>
-            {["Careers", "Privacy Policy", "Terms of Service"].map((l) => (
+            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Company", "บริษัท")}</h4>
+            {[
+              t("Careers", "ร่วมงานกับเรา"),
+              t("Privacy Policy", "นโยบายความเป็นส่วนตัว"),
+              t("Terms of Service", "เงื่อนไขการให้บริการ"),
+            ].map((l) => (
               <a key={l} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
                 {l}
               </a>
@@ -315,16 +339,16 @@ export default function ServicesPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">Contact</h4>
+            <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
             <a className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
-              Contact Sales
+              {t("Contact Sales", "ติดต่อฝ่ายขาย")}
             </a>
-            <p className="text-on-surface-variant text-sm">สำนักงานใหญ่: ชลบุรี, ประเทศไทย</p>
+            <p className="text-on-surface-variant text-sm">{t("HQ: Chonburi, Thailand", "สำนักงานใหญ่: ชลบุรี, ประเทศไทย")}</p>
             <p className="text-on-surface-variant text-sm">+66 (0) 108 108 108</p>
           </div>
         </div>
         <div className="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">
-          © 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.
+          {t("© 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.", "© 2024 Media108. สงวนลิขสิทธิ์ ความแม่นยำในสื่อดิจิทัลกลางแจ้ง")}
         </div>
       </footer>
     </>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FileText, CalendarCheck, Download, User, MessageCircle, type LucideIcon } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 const items: {
   icon: LucideIcon;
@@ -58,6 +59,7 @@ const items: {
 ];
 
 export default function GlobalCTABar() {
+  const { t } = useLanguage();
   const nonGreen = items.filter((i) => !i.green);
   const green = items.find((i) => i.green)!;
 
@@ -84,7 +86,7 @@ export default function GlobalCTABar() {
             >
               <item.icon size={18} className={item.color} />
               <span className={`text-[9px] font-medium ${item.color} leading-none text-center line-clamp-1 opacity-80`}>
-                {item.labelTh}
+                {t(item.labelEn, item.labelTh)}
               </span>
             </Link>
           )
@@ -105,7 +107,7 @@ export default function GlobalCTABar() {
                 <span className="block text-[10px] text-white/80 uppercase font-bold tracking-tighter">
                   {item.labelEn}
                 </span>
-                <span className="block font-label-md text-white whitespace-nowrap">{item.labelTh}</span>
+                <span className="block font-label-md text-white whitespace-nowrap">{t(item.labelEn, item.labelTh)}</span>
               </div>
             </Link>
           ) : (
@@ -119,7 +121,7 @@ export default function GlobalCTABar() {
                 <span className={`block text-[10px] ${item.color} uppercase font-bold tracking-tighter opacity-70`}>
                   {item.labelEn}
                 </span>
-                <span className="block font-label-md text-on-surface whitespace-nowrap">{item.labelTh}</span>
+                <span className="block font-label-md text-on-surface whitespace-nowrap">{t(item.labelEn, item.labelTh)}</span>
               </div>
             </Link>
           )

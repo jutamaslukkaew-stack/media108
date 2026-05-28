@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 type NavPage = "home" | "about" | "network" | "billboard" | "services" | "media-kit" | "contact";
 
@@ -10,16 +11,18 @@ interface NavbarProps {
   activePage?: NavPage;
 }
 
-const navLinks: { label: string; href: string; page: NavPage }[] = [
-  { label: "Home",          href: "/",          page: "home"      },
-  { label: "About",         href: "/about",     page: "about"     },
-  { label: "Media Network", href: "/network",   page: "network"   },
-  { label: "Billboard Listing", href: "/billboard", page: "billboard" },
-  { label: "Services",      href: "/services",  page: "services"  },
-  { label: "Media Kit & Pricing", href: "/media-kit", page: "media-kit" },
-];
-
 export default function Navbar({ activePage = "home" }: NavbarProps) {
+  const { lang, setLang, t } = useLanguage();
+
+  const navLinks: { label: string; href: string; page: NavPage }[] = [
+    { label: t("Home", "หน้าหลัก"),              href: "/",          page: "home"      },
+    { label: t("About", "เกี่ยวกับเรา"),          href: "/about",     page: "about"     },
+    { label: t("Media Network", "เครือข่ายสื่อ"), href: "/network",   page: "network"   },
+    { label: t("Billboards", "ป้ายทั้งหมด"),      href: "/billboard", page: "billboard" },
+    { label: t("Services", "บริการ"),             href: "/services",  page: "services"  },
+    { label: t("Media Kit", "ราคา & Media Kit"),  href: "/media-kit", page: "media-kit" },
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
       const nav = document.getElementById("main-nav");
@@ -69,18 +72,48 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           })}
         </div>
 
-        {/* ── Right: CTA ── */}
-        <div className="hidden md:flex items-center">
+        {/* ── Right: Language toggle + CTA ── */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Language Toggle */}
+          <div className="flex items-center rounded-lg border border-white/15 overflow-hidden text-[11px] font-label-md font-bold tracking-widest">
+            <button
+              onClick={() => setLang("th")}
+              className={`px-3 py-2 transition-all ${lang === "th" ? "bg-primary text-white" : "text-on-surface-variant hover:bg-white/5"}`}
+            >
+              TH
+            </button>
+            <button
+              onClick={() => setLang("en")}
+              className={`px-3 py-2 transition-all ${lang === "en" ? "bg-primary text-white" : "text-on-surface-variant hover:bg-white/5"}`}
+            >
+              EN
+            </button>
+          </div>
+
           <Link
             href="/contact#form"
             className="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg font-label-md text-label-md uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all duration-300 whitespace-nowrap"
           >
-            Contact Sales
+            {t("Contact Sales", "ติดต่อฝ่ายขาย")}
           </Link>
         </div>
 
-        {/* ── Mobile menu ── */}
-        <div className="md:hidden">
+        {/* ── Mobile: lang toggle + menu ── */}
+        <div className="md:hidden flex items-center gap-3">
+          <div className="flex items-center rounded-lg border border-white/15 overflow-hidden text-[10px] font-label-md font-bold">
+            <button
+              onClick={() => setLang("th")}
+              className={`px-2 py-1.5 transition-all ${lang === "th" ? "bg-primary text-white" : "text-on-surface-variant"}`}
+            >
+              TH
+            </button>
+            <button
+              onClick={() => setLang("en")}
+              className={`px-2 py-1.5 transition-all ${lang === "en" ? "bg-primary text-white" : "text-on-surface-variant"}`}
+            >
+              EN
+            </button>
+          </div>
           <Menu className="text-on-surface" size={28} />
         </div>
 
