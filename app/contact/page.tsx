@@ -20,6 +20,8 @@ export default function ContactPage() {
   const [pdpa, setPdpa] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useScrollReveal();
 
@@ -27,10 +29,32 @@ export default function ContactPage() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!pdpa) return;
-    setSubmitted(true);
+
+    setLoading(true);
+    setSubmitError(null);
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง");
+      }
+
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "เกิดข้อผิดพลาด กรุณาลองใหม่";
+      setSubmitError(message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   /* ── shared input/label class helpers ── */
@@ -97,7 +121,12 @@ export default function ContactPage() {
                   )}
                 </p>
                 <button
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => {
+                    setSubmitted(false);
+                    setSubmitError(null);
+                    setForm({ name: "", company: "", phone: "", email: "", service: "", message: "" });
+                    setPdpa(false);
+                  }}
                   className="mt-4 border border-white/20 hover:bg-white/10 px-8 py-3 rounded-lg font-label-md text-label-md text-white transition-all"
                 >
                   {t("Submit Again", "ส่งอีกครั้ง")}
@@ -209,12 +238,26 @@ export default function ContactPage() {
                   </label>
                 </div>
 
+                {submitError && (
+                  <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 rounded-lg px-4 py-3">
+                    <span className="text-red-400 text-lg">⚠️</span>
+                    <p className="text-red-400 text-sm">{submitError}</p>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  disabled={!pdpa}
-                  className="w-full bg-primary-container text-white font-headline-md text-headline-md py-5 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none"
+                  disabled={!pdpa || loading}
+                  className="w-full bg-primary-container text-white font-headline-md text-headline-md py-5 rounded-lg font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] transition-all duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none flex items-center justify-center gap-3"
                 >
-                  {t("Submit Proposal Request", "ส่งใบขอเสนอราคา")}
+                  {loading ? (
+                    <>
+                      <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      {t("Sending…", "กำลังส่ง…")}
+                    </>
+                  ) : (
+                    t("Submit Proposal Request", "ส่งใบขอเสนอราคา")
+                  )}
                 </button>
               </form>
             )}
