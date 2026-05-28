@@ -384,60 +384,60 @@ export default function AboutPage() {
       <GlobalCTABar />
 
       {/* ── Footer ── */}
-      <footer className="w-full py-16 px-6 md:px-margin-desktop flex flex-col items-center gap-8 bg-surface-container-lowest border-t border-border-glass">
-        <div className="w-full max-w-container-max grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-1">
-            <div className="mb-8 text-2xl font-black tracking-tight">
-              <span className="text-primary">Media</span>
-              <span className="text-white">108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            <div className="md:col-span-1">
+              <div className="mb-6 text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span>
+                <span className="text-white">108</span>
+              </div>
+              <p className="text-on-surface-variant font-body-md leading-relaxed">
+                Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision
+                media solutions driven by data and impact.
+              </p>
             </div>
-            <p className="text-on-surface-variant font-body-md max-w-xs">
-              Elevating the landscape of Out-of-Home advertising through precision and technology.
-            </p>
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Platform</h4>
-            {["Media Network", "Billboard Info", "Services"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Resources</h4>
-            {["Download Media Kit", "Request Quotation", "Book This Billboard"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col gap-4">
-            <h4 className="text-white font-headline-md text-lg mb-2">Connect</h4>
-            {["Contact Sales", "LINE OA"].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">
-                {l}
-              </a>
-            ))}
-            <div className="flex gap-4 mt-4">
-              {[Globe, Mail].map((Icon, idx) => (
-                <div
-                  key={idx}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 cursor-pointer transition-colors text-on-surface-variant"
-                >
-                  <Icon size={18} />
-                </div>
-              ))}
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Navigation</h6>
+              <ul className="space-y-4">
+                {([["Home", "/"], ["About", "/about"], ["Media Network", "/network"], ["Our Services", "/services"], ["Contact Us", "/contact"]] as [string, string][]).map(([label, href]) => (
+                  <li key={label}>
+                    <Link href={href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Media Focus</h6>
+              <ul className="space-y-4">
+                {["Pattaya Digital Hub", "Chonburi Strategic", "Bang Saen Network", "EEC Industrial Belt"].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Connect</h6>
+              <div className="flex gap-4">
+                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
+                  <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
+                    <Icon size={20} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-full max-w-container-max pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-body-md text-sm gap-4">
-          <p>© 2024 Media108. All Rights Reserved.</p>
-          <div className="flex gap-8">
-            {["Privacy Policy", "Terms of Service"].map((l) => (
-              <a key={l} className="hover:text-white transition-colors" href="#">
-                {l}
-              </a>
-            ))}
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-on-surface-variant font-label-md text-sm">
+              © 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.
+            </div>
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                Status: <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> Optimal
+              </span>
+            </div>
           </div>
         </div>
       </footer>

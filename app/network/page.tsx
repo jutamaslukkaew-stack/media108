@@ -307,54 +307,59 @@ export default function NetworkPage() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="w-full pt-24 pb-16 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest border-t border-white/5">
-        <div className="max-w-container-max mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-20">
-            <div className="flex flex-col gap-8 max-w-sm">
-              <span className="font-display-lg text-headline-lg text-white font-black">MEDIA108</span>
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+            <div className="md:col-span-1">
+              <div className="mb-6 text-2xl font-black tracking-tight">
+                <span className="text-primary">Media</span>
+                <span className="text-white">108</span>
+              </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
-                Premium media architecture for the modern brand. Elevating the digital-out-of-home standard across Southeast Asia&apos;s most vital economic corridors.
+                Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision
+                media solutions driven by data and impact.
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-20">
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Navigation</h4>
-                <nav className="flex flex-col gap-4">
-                  {[["Home", "/"], ["About", "/about"], ["Media Network", "/network"]].map(([l, h]) => (
-                    <Link key={l} href={h} className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">{l}</Link>
-                  ))}
-                </nav>
-              </div>
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Resources</h4>
-                <nav className="flex flex-col gap-4">
-                  {[["Media Kit", "/media-kit"], ["Quotations", "/contact#form"], ["LINE OA", "#"]].map(([l, h]) => (
-                    <Link key={l} href={h} className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">{l}</Link>
-                  ))}
-                </nav>
-              </div>
-              <div className="flex flex-col gap-8">
-                <h4 className="uppercase text-primary font-medium text-[12px] tracking-[0.2em] font-label-md">Contact</h4>
-                <nav className="flex flex-col gap-4">
-                  <Link href="/contact" className="text-on-surface-variant hover:text-primary transition-all text-[13px] tracking-wide font-light">Sales Inquiries</Link>
-                  <div className="flex gap-6 mt-4">
-                    {[Globe, Mail].map((Icon, idx) => (
-                      <Icon key={idx} size={20} className="text-on-surface-variant/40 hover:text-primary cursor-pointer transition-colors" />
-                    ))}
-                  </div>
-                </nav>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Navigation</h6>
+              <ul className="space-y-4">
+                {([["Home", "/"], ["About", "/about"], ["Media Network", "/network"], ["Our Services", "/services"], ["Contact Us", "/contact"]] as [string, string][]).map(([label, href]) => (
+                  <li key={label}>
+                    <Link href={href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Media Focus</h6>
+              <ul className="space-y-4">
+                {["Pattaya Digital Hub", "Chonburi Strategic", "Bang Saen Network", "EEC Industrial Belt"].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">Connect</h6>
+              <div className="flex gap-4">
+                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
+                  <a key={idx} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface-variant hover:text-white">
+                    <Icon size={20} />
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-          <div className="w-full h-px bg-white/5 my-12" />
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <p className="text-on-surface-variant/60 text-[11px] uppercase tracking-[0.15em] font-medium font-label-md">
-              © 2024 Media108. All Rights Reserved.
-            </p>
-            <div className="flex gap-12">
-              {[["Privacy", "#"], ["Terms", "#"]].map(([l, h]) => (
-                <Link key={l} href={h} className="text-on-surface-variant/60 hover:text-primary text-[11px] uppercase tracking-[0.15em] font-medium transition-colors font-label-md">{l}</Link>
-              ))}
+          <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-on-surface-variant font-label-md text-sm">
+              © 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.
+            </div>
+            <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
+              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span className="flex items-center gap-2">
+                Status: <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> Optimal
+              </span>
             </div>
           </div>
         </div>

@@ -50,7 +50,7 @@ const items: {
     icon: MessageCircle,
     labelEn: "LINE OA",
     labelTh: "ติดต่อผ่าน LINE",
-    href: "#",
+    href: "https://lin.ee/NXKWYdJ",
     green: true,
     color: "text-white",
     hover: "",
