@@ -957,10 +957,11 @@ export default function Home() {
                       {bb.badge}
                     </span>
                   </div>
-                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2 flex-1">{t(bb.descEn, bb.descTh)}</p>
+                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2">{t(bb.descEn, bb.descTh)}</p>
+                  <div className="flex-1" />
                   <Link
                     href={bb.href}
-                    className="block w-full py-3 bg-white/5 hover:bg-primary hover:text-on-primary transition-all duration-300 rounded-lg font-label-md text-center group-hover:shadow-lg mt-auto"
+                    className="block w-full py-3 bg-white/5 hover:bg-primary hover:text-on-primary transition-all duration-300 rounded-lg font-label-md text-center group-hover:shadow-lg"
                     style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}
                   >
                     {t("View Detail", "ดูรายละเอียด")}
