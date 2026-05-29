@@ -21,6 +21,7 @@ const leaders = [
     bio: "ผู้นำและผู้ก่อตั้ง Media108 ด้วยประสบการณ์กว่า 15 ปีในธุรกิจสื่อโฆษณากลางแจ้งและเครือข่าย DOOH ในภาคตะวันออก",
     bioEn: "Founder and driving force behind Media108, with 15+ years in outdoor advertising and DOOH networks across the Eastern Economic Corridor.",
     img: "/team/ceo.jpg",
+    initials: "ฉ",
   },
   {
     name: "เสริมสุข อรุณคีรีวัฒน์",
@@ -30,6 +31,17 @@ const leaders = [
     bio: "ผู้เชี่ยวชาญด้านกลยุทธ์การขายสื่อโฆษณา ดูแลลูกค้าและพันธมิตรธุรกิจทั่วภาคตะวันออก",
     bioEn: "Media sales strategy specialist managing key accounts and business partnerships across the Eastern region.",
     img: "/team/sales-manager.jpg",
+    initials: "ส",
+  },
+  {
+    name: "ปัณณภัสร์ แสงแก้ว",
+    nameEn: "Pannaphat Saengkaew",
+    title: "Sales Manager",
+    titleTh: "ผู้จัดการฝ่ายขาย",
+    bio: "ดูแลงานขายและประสานงานลูกค้า ช่วยแบรนด์วางแผนแคมเปญสื่อโฆษณาอย่างตรงกลุ่มเป้าหมาย",
+    bioEn: "Handles sales and client coordination, helping brands plan targeted advertising campaigns.",
+    img: "/team/sales-manager-2.jpg",
+    initials: "ป",
   },
 ];
 
@@ -297,34 +309,42 @@ export default function AboutPage() {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {leaders.map((leader) => (
               <div key={leader.name} className="group">
                 {/* Portrait */}
                 <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-5 relative">
+                  {/* Initials placeholder — shown while/if photo missing */}
+                  <div
+                    className="absolute inset-0 flex items-center justify-center"
+                    style={{ background: "linear-gradient(145deg, #1e3a6e 0%, #0d1b3e 100%)" }}
+                  >
+                    <span className="text-white/20 font-bold" style={{ fontSize: "7rem", userSelect: "none" }}>
+                      {leader.initials}
+                    </span>
+                  </div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt={leader.name}
-                    className="w-full h-full object-cover object-top"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
                     style={{
-                      filter: "grayscale(0.15) brightness(0.88) contrast(1.1)",
+                      filter: "grayscale(0.1) brightness(0.9) contrast(1.05)",
                       transition: "filter 800ms ease, transform 800ms cubic-bezier(0.16,1,0.3,1)",
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(0) brightness(0.95) contrast(1.05)";
+                        "grayscale(0) brightness(0.97) contrast(1)";
                       (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(0.15) brightness(0.88) contrast(1.1)";
+                        "grayscale(0.1) brightness(0.9) contrast(1.05)";
                       (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
                     }}
                     src={leader.img}
                     onError={(e) => {
-                      /* fallback if photo file not yet placed in /public/team/ */
-                      (e.currentTarget as HTMLImageElement).src =
-                        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face&facepad=3";
+                      /* hide broken-image icon — placeholder div behind will show */
+                      (e.currentTarget as HTMLImageElement).style.display = "none";
                     }}
                   />
 
