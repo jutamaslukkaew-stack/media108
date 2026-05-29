@@ -931,8 +931,8 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {featuredBillboards.map((bb, i) => (
-              <div key={bb.name} className={`sr sr-scale sr-d${i + 1} billboard-card group relative overflow-hidden rounded-xl glass-card`}>
-                <div className="aspect-[4/3] overflow-hidden relative">
+              <div key={bb.name} className={`sr sr-scale sr-d${i + 1} billboard-card group relative overflow-hidden rounded-xl glass-card flex flex-col`}>
+                <div className="aspect-[4/3] overflow-hidden relative flex-shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     alt={bb.alt}
@@ -943,7 +943,7 @@ export default function Home() {
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                     style={{ background: "linear-gradient(to bottom, transparent 60%, rgba(230,57,70,0.15) 100%)" }} />
                 </div>
-                <div className="p-8">
+                <div className="p-8 flex flex-col flex-1">
                   <div className="flex justify-between items-start mb-6">
                     <div>
                       <h4 className="font-headline-md text-headline-md text-on-surface mb-1 group-hover:text-primary transition-colors duration-300">
@@ -957,10 +957,10 @@ export default function Home() {
                       {bb.badge}
                     </span>
                   </div>
-                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2">{t(bb.descEn, bb.descTh)}</p>
+                  <p className="text-on-surface-variant font-body-md mb-6 line-clamp-2 flex-1">{t(bb.descEn, bb.descTh)}</p>
                   <Link
                     href={bb.href}
-                    className="block w-full py-3 bg-white/5 hover:bg-primary hover:text-on-primary transition-all duration-300 rounded-lg font-label-md text-center group-hover:shadow-lg"
+                    className="block w-full py-3 bg-white/5 hover:bg-primary hover:text-on-primary transition-all duration-300 rounded-lg font-label-md text-center group-hover:shadow-lg mt-auto"
                     style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}
                   >
                     {t("View Detail", "ดูรายละเอียด")}
