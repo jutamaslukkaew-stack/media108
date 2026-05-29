@@ -77,8 +77,8 @@ export default function AboutPage() {
               className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
             >
-              {t("Redefining the", "ยกระดับ")}{" "}
-              <span className="text-primary">{t("Urban Horizon.", "เส้นขอบฟ้าเมือง")}</span>
+              {t("Strategic Outdoor Media", "สื่อโฆษณากลางแจ้งเชิงกลยุทธ์")}{" "}
+              <span className="text-primary">{t("Across Eastern Thailand.", "ทั่วภาคตะวันออกของไทย")}</span>
             </h1>
             <p
               className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl"
@@ -86,7 +86,7 @@ export default function AboutPage() {
             >
               {t(
                 "Media108 is Thailand's premier DOOH and billboard network provider. We bridge the gap between brands and their audiences through high-impact, technologically superior media assets located in the nation's most strategic economic corridors.",
-                "Media108 คือผู้ให้บริการเครือข่ายป้ายบิลบอร์ดและ DOOH ชั้นนำของไทย เราเชื่อมต่อแบรนด์กับกลุ่มเป้าหมายผ่านสื่อที่ทรงพลังและเหนือกว่าด้วยเทคโนโลยี ณ จุดยุทธศาสตร์สำคัญที่สุดของประเทศ"
+                "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ชั้นนำในพื้นที่ชลบุรี-พัทยา-EEC เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยแบรนด์วางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และวัดผลลัพธ์ได้จริง"
               )}
             </p>
             <div
@@ -111,10 +111,10 @@ export default function AboutPage() {
           {/* Right — stats panel */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
             {([
-              { value: "16+",    label: t("Years in Market", "ปีในตลาด"),         icon: Calendar     },
-              { value: "250+",   label: t("Active Billboards", "ป้ายที่ใช้งานอยู่"), icon: MonitorPlay  },
-              { value: "450K+",  label: t("Daily Impressions", "ผู้ชมต่อวัน"),      icon: Eye          },
-              { value: "85%",    label: t("EEC Market Share", "ส่วนแบ่งตลาด EEC"), icon: TrendingUp   },
+              { value: "16+",    label: t("Years in Market",   "ปีประสบการณ์ด้านสื่อ"),     icon: Calendar     },
+              { value: "250+",   label: t("Active Billboards", "ป้ายโฆษณาในเครือข่าย"),    icon: MonitorPlay  },
+              { value: "450K+",  label: t("Daily Impressions", "Impressions ต่อวัน"),       icon: Eye          },
+              { value: "85%",    label: t("EEC Market Share",  "ส่วนแบ่งตลาด EEC"),        icon: TrendingUp   },
             ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
@@ -142,7 +142,7 @@ export default function AboutPage() {
             <p className="font-body-lg text-body-lg text-on-surface-variant">
               {t(
                 "To be the undisputed leader in media technology across Southeast Asia, transforming every urban surface into a canvas for meaningful brand storytelling through data-driven innovation.",
-                "เป็นผู้นำด้านเทคโนโลยีสื่อที่ไม่มีใครโต้แย้งได้ทั่วเอเชียตะวันออกเฉียงใต้ แปลงทุกพื้นผิวเมืองให้กลายเป็นผืนผ้าใบเพื่อการเล่าเรื่องแบรนด์ที่มีความหมายผ่านนวัตกรรมขับเคลื่อนด้วยข้อมูล"
+                "เป็นผู้นำด้านเครือข่ายสื่อโฆษณากลางแจ้งในภาคตะวันออก ด้วยการนำเทคโนโลยีและข้อมูลจราจรมาใช้วางกลยุทธ์สื่อให้แบรนด์เข้าถึงกลุ่มเป้าหมายได้แม่นยำและวัดผลได้จริง"
               )}
             </p>
           </div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
             <p className="font-body-lg text-body-lg text-on-surface-variant">
               {t(
                 "Empowering advertisers with unmatched visibility and precision. We commit to maintaining the highest standards of hardware integrity and audience analytics to ensure every campaign achieves maximum ROI.",
-                "มอบพลังให้ผู้โฆษณาด้วยการมองเห็นและความแม่นยำที่ไม่มีใครเทียบ เรามุ่งมั่นรักษามาตรฐานสูงสุดด้านความสมบูรณ์ของฮาร์ดแวร์และการวิเคราะห์ผู้ชม เพื่อให้ทุกแคมเปญบรรลุ ROI สูงสุด"
+                "ช่วยให้ผู้โฆษณาเข้าถึงกลุ่มเป้าหมายได้ตรงจุดและแม่นยำที่สุด เรารักษามาตรฐานคุณภาพของจอ LED และวิเคราะห์ข้อมูลผู้ชมอย่างต่อเนื่อง เพื่อให้ทุกแคมเปญได้ผลลัพธ์ที่คุ้มค่าที่สุด"
               )}
             </p>
           </div>
@@ -187,19 +187,19 @@ export default function AboutPage() {
             {/* Text */}
             <div className="w-full md:w-1/2 order-1 md:order-2">
               <h2 className="font-headline-xl text-headline-xl text-white mb-8">
-                {t("Dominating the", "ครองความเป็นเจ้าใน")}{" "}
-                <span className="text-primary">{t("EEC Corridor.", "EEC Corridor")}</span>
+                {t("Our Home Ground:", "พื้นที่ที่เราเชี่ยวชาญ:")}{" "}
+                <span className="text-primary">{t("The EEC Zone.", "เขต EEC ชลบุรี–ระยอง")}</span>
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
                 {t(
                   "We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the beating heart of Thailand's future economy. By concentrating our highest-fidelity digital assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic of industrial leaders, international tourists, and growing middle-class residents.",
-                  "เราตระหนักตั้งแต่เนิ่นๆ ว่าชลบุรีและเขตพัฒนาพิเศษภาคตะวันออก (EEC) คือหัวใจของเศรษฐกิจไทยในอนาคต ด้วยการกระจุกตัวสินทรัพย์ดิจิทัลคุณภาพสูงสุดในโซนนี้ เราให้ผู้โฆษณาเข้าถึงกลุ่มประชากรที่มีรายได้สูง ทั้งผู้นำอุตสาหกรรม นักท่องเที่ยวต่างชาติ และชนชั้นกลางที่กำลังเติบโต"
+                  "ชลบุรีและเขต EEC คือศูนย์กลางเศรษฐกิจที่เติบโตเร็วที่สุดของไทย Media108 วางเครือข่ายป้ายโฆษณาในทุกจุดยุทธศาสตร์ของพื้นที่นี้ ให้แบรนด์เข้าถึงทั้งนักท่องเที่ยว คนทำงาน และผู้บริหารในย่านอุตสาหกรรมได้ในจุดเดียว"
                 )}
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">450K+</h4>
-                  <p className="font-body-md text-on-surface-variant">{t("Daily Traffic Impressions", "ผู้ชมต่อวัน")}</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Daily Traffic Impressions", "Impressions จากจราจรต่อวัน")}</p>
                 </div>
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">85%</h4>
@@ -231,7 +231,7 @@ export default function AboutPage() {
               <p className="text-on-surface-variant max-w-md">
                 {t(
                   "Our LED boards feature custom hardware built for the tropical climate, ensuring 99.9% uptime and true-to-life color reproduction even in direct sunlight.",
-                  "ป้าย LED ของเราใช้ฮาร์ดแวร์ที่ออกแบบมาเพื่อสภาพอากาศแบบร้อนชื้น รับประกันความพร้อมใช้งาน 99.9% และสีสันที่สมจริงแม้ในแสงแดดจัด"
+                  "จอ LED ของเราออกแบบสำหรับสภาพอากาศร้อนชื้นในไทยโดยเฉพาะ รับประกันความพร้อมใช้งาน 99.9% และแสดงผลสีสันคมชัดแม้กลางแดดจัด"
                 )}
               </p>
             </div>
@@ -245,7 +245,7 @@ export default function AboutPage() {
               <p className="text-white/80">
                 {t(
                   "Every billboard is equipped with anonymous video analytics to provide precise demographic data.",
-                  "ป้ายทุกจุดติดตั้งระบบวิเคราะห์วิดีโอแบบนิรนามเพื่อให้ข้อมูลประชากรที่แม่นยำ"
+                  "ป้ายทุกจุดมีระบบวิเคราะห์กลุ่มผู้ชมแบบไม่ระบุตัวตน ให้ข้อมูลกลุ่มเป้าหมายที่แม่นยำแก่ลูกค้า"
                 )}
               </p>
             </div>
@@ -259,7 +259,7 @@ export default function AboutPage() {
               <p className="text-on-surface-variant">
                 {t(
                   "100% legal compliance and structural certification for every site in our portfolio.",
-                  "ปฏิบัติตามกฎหมาย 100% และได้รับการรับรองโครงสร้างทุกจุดในพอร์ตโฟลิโอ"
+                  "ป้ายทุกจุดได้รับใบอนุญาตถูกต้องตามกฎหมายและผ่านการรับรองโครงสร้างมาตรฐาน 100%"
                 )}
               </p>
             </div>
@@ -273,7 +273,7 @@ export default function AboutPage() {
               <p className="text-on-surface-variant">
                 {t(
                   "Strategic placement at the busiest intersections and main arterial roads of Eastern Thailand, capturing attention where it matters most.",
-                  "การวางป้ายเชิงกลยุทธ์บริเวณสี่แยกหนาแน่นและถนนสายหลักในภาคตะวันออก ดึงดูดความสนใจในจุดที่สำคัญที่สุด"
+                  "คัดเลือกทำเลบริเวณสี่แยกหนาแน่นและถนนสายหลักในภาคตะวันออก เพื่อให้แบรนด์ของคุณปรากฏในจุดที่กลุ่มเป้าหมายมองเห็นมากที่สุด"
                 )}
               </p>
             </div>
@@ -290,7 +290,7 @@ export default function AboutPage() {
               <p className="text-on-surface-variant font-body-lg">
                 {t(
                   "The visionaries steering Media108 toward the future of digital advertising in Thailand.",
-                  "ผู้มีวิสัยทัศน์ที่นำพา Media108 มุ่งสู่อนาคตของการโฆษณาดิจิทัลในประเทศไทย"
+                  "ทีมผู้บริหารที่ขับเคลื่อน Media108 ให้เป็นเครือข่ายสื่อโฆษณาชั้นนำของภาคตะวันออก"
                 )}
               </p>
             </div>
@@ -375,12 +375,12 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left">
               <h2 className="font-headline-xl text-headline-xl text-white mb-6">
-                {t("Ready to amplify your presence in Chonburi?", "พร้อมขยายการรับรู้แบรนด์ในชลบุรีแล้วหรือยัง?")}
+                {t("Ready to grow your brand in Chonburi & EEC?", "พร้อมขยายแบรนด์ในชลบุรีและ EEC แล้วหรือยัง?")}
               </h2>
               <p className="font-body-lg text-white/80">
                 {t(
                   "Connect with our sales team today to receive a custom media strategy and billboard availability map.",
-                  "ติดต่อทีมขายของเราวันนี้เพื่อรับแผนกลยุทธ์สื่อที่ออกแบบมาเฉพาะคุณและแผนที่ตำแหน่งป้ายที่ว่าง"
+                  "คุยกับทีมงานของเราเพื่อรับกลยุทธ์สื่อที่ออกแบบเฉพาะแบรนด์ของคุณ พร้อมรายชื่อทำเลที่พร้อมลงโฆษณา"
                 )}
               </p>
             </div>
@@ -416,7 +416,7 @@ export default function AboutPage() {
               <p className="text-on-surface-variant font-body-md leading-relaxed">
                 {t(
                   "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
-                  "นำแนวโน้มปฏิวัติสื่อดิจิทัลกลางแจ้งในเขตพัฒนาพิเศษภาคตะวันออก โซลูชันสื่อที่แม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>

@@ -15,15 +15,15 @@ import {
 
 /* ── Service cards data ─────────────────────────────────── */
 const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: LayoutGrid,      title: "LED Billboard Advertising",    descEn: "Advertise on single or multiple LED billboards across key strategic locations.", descTh: "ลงโฆษณาบนป้าย LED เดี่ยวหรือหลายจุด ทั่วพื้นที่ยุทธศาสตร์สำคัญ" },
-  { icon: MousePointerClick, title: "Digital Out-of-Home Campaign", descEn: "Deploy multi-billboard campaigns simultaneously to create powerful wide-reaching brand awareness.", descTh: "วาง Campaign หลายป้ายพร้อมกัน เพื่อสร้างการรับรู้ที่ทรงพลังในวงกว้าง" },
-  { icon: Palette,         title: "Ad Creative Design",           descEn: "Design artwork specifically for LED billboards, focusing on visual appeal and eye-catching aesthetics.", descTh: "ออกแบบ Artwork สำหรับป้าย LED โดยเฉพาะ เน้นความสวยงามและดึงดูดสายตา" },
-  { icon: Sparkles,        title: "Motion Graphic",               descEn: "Animations for LED displays designed for fluidity and maximum visual impact.", descTh: "ภาพเคลื่อนไหวสำหรับจอ LED ที่ถูกออกแบบมาเพื่อความลื่นไหลและโดดเด่น" },
-  { icon: Film,            title: "Video Production",             descEn: "Produce high-quality advertising videos from scriptwriting to final edit.", descTh: "ผลิตวิดีโอโฆษณาคุณภาพสูง ตั้งแต่การเขียนบทไปจนถึงการตัดต่อ" },
-  { icon: Plane,           title: "Drone Production",             descEn: "Drone filming for locations or products, delivering sweeping and spectacular perspectives.", descTh: "ถ่าย Drone สำหรับสถานที่หรือสินค้า เพื่อมุมมองที่กว้างขวางและอลังการ" },
-  { icon: Camera,          title: "Photography",                  descEn: "Professional product and service photography to elevate your brand image.", descTh: "บริการถ่ายภาพสินค้าและบริการระดับ Professional เพื่อภาพลักษณ์แบรนด์ที่ดี" },
-  { icon: Share2,          title: "Social Media Content",         descEn: "Produce comprehensive content for Facebook, TikTok, YouTube and Instagram.", descTh: "ผลิตเนื้อหาสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร" },
-  { icon: Target,          title: "Campaign Strategy",            descEn: "Plan media and select billboards aligned with your goals using in-depth data analytics.", descTh: "วางแผนสื่อและเลือกป้ายให้เหมาะกับเป้าหมาย ด้วยการวิเคราะห์ข้อมูลเชิงลึก" },
+  { icon: LayoutGrid,        title: "พื้นที่โฆษณาบนจอ LED",           descEn: "Reserve ad space on single or multiple LED billboards in prime strategic locations.",                       descTh: "จองพื้นที่โฆษณาบนจอ LED เดี่ยวหรือหลายจุดในทำเลยุทธศาสตร์ที่คัดสรรมาแล้ว" },
+  { icon: MousePointerClick, title: "แคมเปญ Digital Out-of-Home",       descEn: "Run coordinated multi-billboard campaigns to maximise brand awareness across the region.",              descTh: "รันแคมเปญพร้อมกันหลายป้าย เพื่อสร้างการรับรู้แบรนด์ในวงกว้างทั่วพื้นที่ EEC" },
+  { icon: Palette,           title: "ออกแบบกราฟิกโฆษณา",              descEn: "Design high-impact artworks optimised for LED billboard display and road-visibility standards.",         descTh: "ออกแบบกราฟิกที่เหมาะกับจอ LED กลางแจ้ง มองเห็นชัดเจนจากถนน ดึงดูดสายตาผู้ผ่านไปมา" },
+  { icon: Sparkles,          title: "Motion Graphic สำหรับ LED",        descEn: "Create fluid, attention-grabbing animations built to the technical specs of LED outdoor displays.",     descTh: "สร้างภาพเคลื่อนไหวที่ลื่นไหลและโดดเด่น ออกแบบตามข้อกำหนดทางเทคนิคของจอ LED กลางแจ้ง" },
+  { icon: Film,              title: "ผลิตวิดีโอโฆษณา",                 descEn: "Full-cycle video production from script to final cut — built for both LED screens and digital platforms.", descTh: "ผลิตวิดีโอโฆษณาครบวงจร ตั้งแต่เขียนบทจนถึงตัดต่อสุดท้าย เหมาะทั้งจอ LED และสื่อออนไลน์" },
+  { icon: Plane,             title: "ถ่าย Drone",                      descEn: "Aerial drone footage for locations, properties, or events — delivering cinematic wide-angle views.",    descTh: "บินถ่าย Drone เพื่อสถานที่ โครงการ หรืออีเวนต์ ได้มุมมองกว้างและสวยงามระดับมืออาชีพ" },
+  { icon: Camera,            title: "ถ่ายภาพสินค้าและบริการ",           descEn: "Professional photography that elevates your product or service presentation.",                           descTh: "ถ่ายภาพสินค้าและบริการระดับมืออาชีพ ช่วยยกระดับภาพลักษณ์แบรนด์ได้ทันที" },
+  { icon: Share2,            title: "คอนเทนต์โซเชียลมีเดีย",           descEn: "Produce ready-to-publish content for Facebook, TikTok, YouTube, and Instagram.",                      descTh: "ผลิตคอนเทนต์พร้อมลงสำหรับ Facebook, TikTok, YouTube และ Instagram อย่างครบวงจร" },
+  { icon: Target,            title: "วางกลยุทธ์แคมเปญสื่อ",            descEn: "Build a data-driven media plan — picking the right locations, channels, and timing for your campaign.", descTh: "วางแผนกลยุทธ์สื่อด้วยข้อมูลจราจรจริง เลือกทำเล ช่วงเวลา และรูปแบบที่เหมาะกับเป้าหมาย" },
 ];
 
 /* ── Package data ───────────────────────────────────────── */
@@ -153,7 +153,7 @@ export default function ServicesPage() {
             >
               {t(
                 "More than just \"selling ad space\"",
-                "นำเสนอบริการเป็นมากกว่า\"ขายพื้นที่โฆษณา\""
+                "มากกว่าการ\"ขายพื้นที่ป้าย\" — เราช่วยวางกลยุทธ์สื่อให้คุณ"
               )}
             </h1>
             <p
@@ -162,7 +162,7 @@ export default function ServicesPage() {
             >
               {t(
                 "Media108 elevates your brand with comprehensive digital out-of-home solutions — from strategy and design to cinematic-quality content production.",
-                "Media108 ยกระดับแบรนด์ของคุณด้วยโซลูชันสื่อดิจิทัลนอกบ้านแบบครบวงจร ตั้งแต่การวางกลยุทธ์ การออกแบบ ไปจนถึงการผลิตเนื้อหาคุณภาพสูงระดับ Cinematic"
+                "Media108 ให้บริการสื่อโฆษณากลางแจ้งแบบครบวงจร ตั้งแต่วางกลยุทธ์ เลือกทำเล ออกแบบกราฟิก จนถึงผลิตคอนเทนต์คุณภาพสูง — ทุกอย่างในทีมเดียว"
               )}
             </p>
             <div
@@ -212,11 +212,11 @@ export default function ServicesPage() {
         <section id="packages" className="py-24 bg-surface-container-low border-y border-white/5">
           <div className="max-w-container-max mx-auto px-margin-desktop">
             <div className="sr sr-up text-center mb-16">
-              <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Recommended Packages", "Packages ที่ควรนำเสนอ")}</h2>
+              <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Recommended Packages", "แพ็กเกจแนะนำสำหรับธุรกิจของคุณ")}</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
                 {t(
                   "Packages designed to meet the needs of every business size and industry.",
-                  "แพ็กเกจที่ออกแบบมาเพื่อตอบโจทย์ธุรกิจทุกขนาดและทุกอุตสาหกรรม"
+                  "เลือกแพ็กเกจที่เหมาะกับธุรกิจและงบประมาณของคุณ หรือให้ทีมเราออกแบบแผนเฉพาะสำหรับแคมเปญของคุณ"
                 )}
               </p>
             </div>
@@ -248,13 +248,19 @@ export default function ServicesPage() {
                   </ul>
 
                   {pkg.recommended ? (
-                    <button className="w-full py-4 rounded-lg bg-primary-container text-white font-label-md text-label-md uppercase tracking-wider font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all">
+                    <Link
+                      href="/contact"
+                      className="block w-full py-4 rounded-lg bg-primary-container text-white font-label-md text-label-md uppercase tracking-wider font-bold text-center hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all"
+                    >
                       {t("Enquire Now", "สอบถามข้อมูล")}
-                    </button>
+                    </Link>
                   ) : (
-                    <button className="w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider text-white">
+                    <Link
+                      href="/contact"
+                      className="block w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider text-white text-center"
+                    >
                       {t("Choose This Package", "เลือกแพ็กเกจนี้")}
-                    </button>
+                    </Link>
                   )}
                 </div>
               ))}
@@ -271,11 +277,11 @@ export default function ServicesPage() {
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-10">
               {t(
                 "We don't just sell space — we help you plan so that every second on screen is meaningful and delivers maximum return on investment.",
-                "เราไม่ได้แค่ขายพื้นที่ แต่เราช่วยคุณวางแผนเพื่อให้ทุกวินาทีบนหน้าจอมีความหมายและคุ้มค่ากับการลงทุนมากที่สุด"
+                "เราไม่ได้แค่ขายพื้นที่ป้าย เราช่วยวางกลยุทธ์สื่อทั้งหมดให้คุณ เพื่อให้ทุกวินาทีบนจอ LED สร้างผลลัพธ์ที่วัดได้จริง"
               )}
             </p>
             <Link
-              href="/network"
+              href="/contact"
               className="inline-block bg-primary-container text-white px-12 py-5 rounded-lg font-headline-md text-headline-md hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all active:scale-95"
             >
               {t("Start Your Project", "เริ่มต้นโครงการของคุณ")}
@@ -297,7 +303,7 @@ export default function ServicesPage() {
             <p className="text-on-surface-variant font-body-md text-sm mb-6 leading-relaxed opacity-70">
               {t(
                 "Elevate your brand through precision digital out-of-home media and quality-driven production.",
-                "ยกระดับแบรนด์ผ่านสื่อดิจิทัลนอกบ้านที่มีความแม่นยำสูงและการผลิตที่เปี่ยมคุณภาพ"
+                "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
               )}
             </p>
             <div className="flex gap-4">

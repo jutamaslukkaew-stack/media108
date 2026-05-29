@@ -80,8 +80,8 @@ export default function ContactPage() {
             className="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white"
             style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
           >
-            {t("Contact Our", "ติดต่อ")}{" "}
-            <span className="text-primary italic">{t("Media Specialists", "ทีมผู้เชี่ยวชาญสื่อ")}</span>
+            {t("Talk to Our", "พูดคุยกับ")}{" "}
+            <span className="text-primary italic">{t("Media Strategy Team", "ทีมวางกลยุทธ์สื่อของเรา")}</span>
           </h1>
           <p
             className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto"
@@ -89,7 +89,7 @@ export default function ContactPage() {
           >
             {t(
               "Bridge the gap between your brand and millions of urban eyes. Our experts are ready to curate your global media footprint.",
-              "เชื่อมต่อแบรนด์ของคุณกับสายตานับล้านในเมือง ผู้เชี่ยวชาญของเราพร้อมออกแบบแผนสื่อที่ตรงเป้าหมาย"
+              "บอกเราถึงเป้าหมายและงบประมาณของคุณ ทีมงานจะช่วยออกแบบกลยุทธ์สื่อและเลือกทำเลที่เหมาะสมที่สุดให้ฟรี"
             )}
           </p>
         </div>
@@ -194,11 +194,13 @@ export default function ContactPage() {
                       onFocus={() => setFocusedField("service")}
                       onBlur={() => setFocusedField(null)}
                     >
-                      <option value="">{t("Select a billboard location or service", "เลือกตำแหน่งป้ายหรือบริการ")}</option>
-                      <option>{t("Premium DOOH – Bangkok CBD", "พรีเมียม DOOH – กรุงเทพ CBD")}</option>
-                      <option>{t("Regional Network – Chonburi", "เครือข่ายภูมิภาค – ชลบุรี")}</option>
-                      <option>{t("Data Analytics & Insights", "วิเคราะห์ข้อมูลและ Insights")}</option>
-                      <option>{t("Full Media Strategy", "วางกลยุทธ์สื่อครบวงจร")}</option>
+                      <option value="">{t("Select a service or location", "เลือกบริการหรือทำเลที่สนใจ")}</option>
+                      <option>{t("LED Billboard – Pattaya", "ป้าย LED – พัทยา")}</option>
+                      <option>{t("LED Billboard – Sri Racha EEC", "ป้าย LED – ศรีราชา EEC")}</option>
+                      <option>{t("LED Billboard – Jomtien Coastal", "ป้าย LED – จอมเทียนชายฝั่ง")}</option>
+                      <option>{t("Campaign Strategy & Planning", "วางกลยุทธ์แคมเปญสื่อ")}</option>
+                      <option>{t("Motion Graphic / Video Production", "Motion Graphic / ผลิตวิดีโอโฆษณา")}</option>
+                      <option>{t("Full Media Package", "แพ็กเกจสื่อครบวงจร")}</option>
                     </select>
                     <ChevronDown size={20} className="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" />
                   </div>
@@ -209,7 +211,7 @@ export default function ContactPage() {
                   <label className={labelClass("message")}>{t("Additional Requirements", "ความต้องการเพิ่มเติม")}</label>
                   <textarea
                     name="message" value={form.message} onChange={handleChange}
-                    placeholder={t("How can our specialists assist you?", "ผู้เชี่ยวชาญของเราจะช่วยคุณได้อย่างไร?")}
+                    placeholder={t("Tell us about your campaign goals, budget, or target audience", "บอกเราเกี่ยวกับเป้าหมายแคมเปญ งบประมาณ หรือกลุ่มเป้าหมายของคุณ")}
                     rows={4}
                     className={`${inputClass("message")} resize-none`}
                     onFocus={() => setFocusedField("message")}
@@ -273,7 +275,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-headline-md text-headline-md text-white">LINE Official Account</h3>
                   <p className="font-body-md text-on-surface-variant">
-                    {t("Instant response from our team", "รับการตอบกลับทันทีจากทีมงาน")}
+                    {t("Chat with us for the fastest response", "แชทกับเราเพื่อรับการตอบกลับรวดเร็วที่สุด")}
                   </p>
                 </div>
               </div>
@@ -293,8 +295,7 @@ export default function ContactPage() {
               {([
                 { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                              bodyTh: "062-563-6199",                              span: false },
                 { icon: Mail,       titleEn: "Email",   titleTh: "อีเมล",    bodyEn: "media.108.company@gmail.com",               bodyTh: "media.108.company@gmail.com",               span: false },
-                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงาน",  bodyEn: "Join our world-class media team",           bodyTh: "ร่วมทีมสื่อระดับโลกของเรา",               span: true, arrow: true },
-                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงาน",  bodyEn: "Join our world-class media team",    bodyTh: "ร่วมทีมสื่อระดับโลกของเรา",     span: true, arrow: true },
+                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงานกับเรา",  bodyEn: "Join the Media108 team",   bodyTh: "มาร่วมเป็นส่วนหนึ่งของทีม Media108",  span: true, arrow: true },
               ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean }[]).map((item) => (
                 <div
                   key={item.titleEn}
@@ -353,7 +354,7 @@ export default function ContactPage() {
               <p className="font-body-md text-body-md text-on-surface-variant">
                 {t(
                   "Precision DOOH Media Solutions for the Modern Era.",
-                  "โซลูชันสื่อ DOOH แม่นยำสำหรับยุคใหม่"
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา"
                 )}
               </p>
             </div>

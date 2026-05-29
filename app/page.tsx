@@ -16,105 +16,105 @@ const featuredBillboards = [
   {
     href: "/billboard/pattaya-sukhumvit-01",
     img: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80",
-    alt: "Pattaya Sukhumvit 01",
+    alt: "ป้าย LED พัทยา-สุขุมวิท เส้นทางหลัก",
     name: "Pattaya Sukhumvit 01",
     locationEn: "Main Pattaya Route",
-    locationTh: "เส้นทางหลักพัทยา",
-    badge: "Available",
+    locationTh: "เส้นทางหลักพัทยา–สุขุมวิท",
+    badge: "พร้อมลงโฆษณา",
     badgeClass: "bg-primary/10 text-primary",
-    descEn: "Clients like Love Pier Beach Cafe, Camera Hotel and Pool-Villa.com chose this billboard to reach Pattaya inbound tourists around the clock.",
-    descTh: "ลูกค้าอย่าง Love Pier Beach Cafe, Camera Hotel และ Pool-Villa.com เลือกป้ายนี้เพื่อเข้าถึงนักท่องเที่ยวขาเข้าพัทยาตลอด 24 ชม.",
+    descEn: "A key route connecting Pattaya City to Sukhumvit Road, reaching tourists and residents 24 hours a day — ideal for hospitality, food, and lifestyle brands.",
+    descTh: "ทำเลหลักเชื่อมพัทยากับสุขุมวิท เข้าถึงนักท่องเที่ยวและผู้อยู่อาศัยตลอด 24 ชั่วโมง เหมาะกับแบรนด์ท่องเที่ยว อาหาร และไลฟ์สไตล์",
   },
   {
     href: "/billboard/pattaya-gateway",
     img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
-    alt: "Pattaya Gateway",
+    alt: "ป้าย LED สี่แยกพัทยากลาง Gateway",
     name: "Pattaya Gateway",
     locationEn: "Pattaya Central Intersection",
-    locationTh: "สี่แยกพัทยากลาง",
-    badge: "Available",
+    locationTh: "สี่แยกกลางเมืองพัทยา",
+    badge: "พร้อมลงโฆษณา",
     badgeClass: "bg-primary/10 text-primary",
-    descEn: "Concert Hall, Wedding Hall, Corporate Hall and Draco campaigns all chose this spot to announce events to urban residents and families.",
-    descTh: "แคมเปญ Concert Hall, Wedding Hall, Corporate Hall และ Draco ต่างเลือกจุดนี้เพื่อประกาศกิจกรรมสู่กลุ่มคนเมืองและครอบครัว",
+    descEn: "The central crossroads of Pattaya — the highest footfall intersection in the city, perfect for event announcements, promotions, and mass-market campaigns.",
+    descTh: "สี่แยกศูนย์กลางพัทยาที่มีการจราจรหนาแน่นที่สุด เหมาะกับแคมเปญกิจกรรม โปรโมชัน และสินค้าแมสมาร์เก็ต",
   },
   {
     href: "/billboard/eec-tech-square",
     img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
-    alt: "EEC Tech Square",
+    alt: "ป้าย LED EEC Tech Square ศรีราชา นิคมอุตสาหกรรม",
     name: "EEC Tech Square",
     locationEn: "Sri Racha – Industrial Estate",
-    locationTh: "ศรีราชา–นิคมอุตสาหกรรม",
-    badge: "High Demand",
+    locationTh: "ศรีราชา–เขตนิคมอุตสาหกรรม",
+    badge: "ความต้องการสูง",
     badgeClass: "bg-[#E63946]/20 text-[#E63946]",
-    descEn: "SCC, Dev recruitment and Printing 108 chose this location to precisely target employees and executives in the EEC zone.",
-    descTh: "SCC, รับสมัครพนักงาน Dev และ Printing 108 เลือกพื้นที่นี้เจาะกลุ่มพนักงานและผู้บริหารในย่าน EEC โดยตรง",
+    descEn: "Located in the heart of the EEC zone, this billboard targets executives and high-income professionals — ideal for B2B brands and talent recruitment campaigns.",
+    descTh: "ทำเลกลางย่าน EEC ศรีราชา เจาะกลุ่มผู้บริหารและพนักงานรายได้สูง เหมาะกับแบรนด์ B2B และแคมเปญสรรหาบุคลากร",
   },
 ];
 
 const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: MapPin,   title: "Chonburi Hub",       descEn: "Key strategic locations in the city center and main business districts", descTh: "จุดยุทธศาสตร์กลางเมืองและย่านธุรกิจหลัก" },
-  { icon: Umbrella, title: "Pattaya & Bang Saen", descEn: "Reach both Thai and international tourists",                           descTh: "เข้าถึงกลุ่มนักท่องเที่ยวทั้งไทยและต่างชาติ" },
-  { icon: Factory,  title: "Sri Racha EEC",       descEn: "New economic zone and industrial worker demographic",                   descTh: "ย่านเศรษฐกิจใหม่และกลุ่มพนักงานอุตสาหกรรม" },
+  { icon: MapPin,   title: "Chonburi Hub",       descEn: "Strategic billboards in the city center and key business districts with high-volume daily traffic",   descTh: "ป้ายกลางเมืองชลบุรีและย่านธุรกิจหลัก จราจรหนาแน่นตลอดทั้งวัน" },
+  { icon: Umbrella, title: "Pattaya & Bang Saen", descEn: "Cover major tourist destinations and leisure zones, reaching both Thai and international visitors", descTh: "ครอบคลุมแหล่งท่องเที่ยวสำคัญ เข้าถึงนักท่องเที่ยวไทยและต่างชาติ" },
+  { icon: Factory,  title: "Sri Racha EEC",       descEn: "The new economic corridor and high-purchasing-power industrial workforce",                          descTh: "เขตเศรษฐกิจพิเศษ EEC กลุ่มพนักงานอุตสาหกรรมที่มีกำลังซื้อสูง" },
 ];
 
 const stats = [
-  { label: "Total Reach",  value: "2.4M+", width: "85%" },
-  { label: "Daily Traffic", value: "1.2M+", width: "70%" },
-  { label: "Impressions",  value: "35M+",  width: "95%" },
+  { label: "การเข้าถึงทั้งหมด",   value: "2.4M+", width: "85%" },
+  { label: "ยานพาหนะต่อวัน",     value: "1.2M+", width: "70%" },
+  { label: "Impressions/เดือน",  value: "35M+",  width: "95%" },
 ];
 
 const peakTimes = [
-  { time: "07:00 - 09:30 (Morning Rush)", pct: "92% Peak", width: "92%" },
-  { time: "16:30 - 19:30 (Evening Rush)", pct: "95% Peak", width: "95%" },
-  { time: "12:00 - 13:30 (Lunch Break)",  pct: "68% Peak", width: "68%" },
+  { time: "07:00 – 09:30  ช่วงเช้าเร่งด่วน", pct: "92% สูงสุด", width: "92%" },
+  { time: "16:30 – 19:30  ช่วงเย็นเร่งด่วน", pct: "95% สูงสุด", width: "95%" },
+  { time: "12:00 – 13:30  ช่วงพักกลางวัน",   pct: "68% สูงสุด", width: "68%" },
 ];
 
 const audienceRatios = [
-  { label: "Local Residents",          pct: "45%", barClass: "bg-primary",           width: "45%" },
-  { label: "Tourists & Travelers",     pct: "35%", barClass: "bg-primary-container",  width: "35%" },
-  { label: "Students & Professionals", pct: "20%", barClass: "bg-white/40",           width: "20%" },
+  { label: "คนในพื้นที่ / ผู้อยู่อาศัย",   pct: "45%", barClass: "bg-primary",          width: "45%" },
+  { label: "นักท่องเที่ยว",                pct: "35%", barClass: "bg-primary-container", width: "35%" },
+  { label: "วัยทำงาน / นักศึกษา",          pct: "20%", barClass: "bg-white/40",          width: "20%" },
 ];
 
 const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: Monitor,      title: "LED Billboard",    descEn: "Advertise on premium LED billboards in key locations across Chonburi and Pattaya.",                          descTh: "ลงโฆษณาบนป้าย LED คุณภาพสูงในทำเลสำคัญทั่วชลบุรีและพัทยา" },
-  { icon: Film,         title: "Video Ads",         descEn: "Produce and publish video ads with brightness and color tuned for LED displays.",                           descTh: "ผลิตและลงวิดีโอโฆษณาที่ปรับจูนความสว่างและสีสันให้เหมาะกับจอ LED" },
-  { icon: Paintbrush,   title: "Motion Graphic",    descEn: "Design 2D/3D motion graphics that stand out and capture attention from the street.",                       descTh: "ออกแบบภาพเคลื่อนไหว 2D/3D ให้โดดเด่นและดึงดูดสายตาจากท้องถนน" },
-  { icon: CalendarDays, title: "Campaign Planning", descEn: "Plan locations, timing, and campaign formats to maximize value for your budget.",                           descTh: "วางแผนเลือกทำเล ช่วงเวลา และรูปแบบแคมเปญให้คุ้มค่า Budget ที่สุด" },
+  { icon: Monitor,      title: "LED Billboard",    descEn: "Reserve ad space on high-resolution LED billboards in prime locations across Chonburi and Pattaya.",       descTh: "จองพื้นที่โฆษณาบนจอ LED ความละเอียดสูงในทำเลยุทธศาสตร์ทั่วชลบุรีและพัทยา" },
+  { icon: Film,         title: "Video Ads",         descEn: "Produce compelling video ads calibrated for LED brightness and colour accuracy outdoors.",                 descTh: "ผลิตวิดีโอโฆษณาที่ปรับแสงและสีให้คมชัดบนจอ LED กลางแจ้งโดยเฉพาะ" },
+  { icon: Paintbrush,   title: "Motion Graphic",    descEn: "Create 2D/3D motion graphics designed to grab attention and build brand recall at speed.",                descTh: "สร้างสรรค์ภาพเคลื่อนไหว 2D/3D ที่โดดเด่น ดึงดูดสายตา และสร้างการจดจำแบรนด์" },
+  { icon: CalendarDays, title: "กลยุทธ์แคมเปญ",    descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
 ];
 
 const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: Building2, title: "EEC Specialists",      descEn: "Deep expertise in Chonburi and the Eastern region, covering key strategic locations with high purchasing power.",                         descTh: "เชี่ยวชาญพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมจุดยุทธศาสตร์สำคัญที่มีกำลังซื้อสูง" },
-  { icon: LineChart, title: "Data-Driven Decisions", descEn: "Using real Traffic and Audience data to help clients choose the most precise locations and reduce budget waste.",                         descTh: "ใช้ข้อมูล Traffic และ Audience จริงในการช่วยลูกค้าเลือกทำเลที่แม่นยำที่สุด ลดการสูญเสียงบประมาณ" },
-  { icon: Wand2,     title: "Full-Service Studio",   descEn: "A full-cycle creative production team for both Motion Graphics and Anamorphic 3D that delivers real-world impact.",                    descTh: "มีทีมผลิตสื่อโฆษณาครบวงจร ทั้ง Motion Graphics และ Anamorphic 3D ที่สร้าง Impact ได้จริง" },
+  { icon: Building2, title: "เชี่ยวชาญพื้นที่ EEC",      descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
+  { icon: LineChart, title: "ตัดสินใจด้วยข้อมูลจริง",    descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
+  { icon: Wand2,     title: "สตูดิโอครบวงจร",            descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
 ];
 
 const gallery = [
   {
     src: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
-    alt: "Daylight Shot",
-    title: "Daylight Clarity",
-    sub: "Sukhumvit Main Road",
+    alt: "ป้าย LED Media108 กลางวัน เส้นทางสุขุมวิท",
+    title: "คมชัดทุกชั่วโมง",
+    sub: "สุขุมวิท – เส้นทางหลัก",
   },
   {
     src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
-    alt: "Night Shot",
-    title: "Vibrant Night Life",
-    sub: "Pattaya Central Hub",
+    alt: "ป้าย LED Media108 กลางคืน ย่านพัทยา",
+    title: "โดดเด่นยามค่ำคืน",
+    sub: "พัทยา – ศูนย์กลางการค้า",
     border: true,
   },
   {
     src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
-    alt: "Drone Shot",
-    title: "Drone Overview",
-    sub: "EEC Coverage Area",
+    alt: "มุมมองเครือข่ายป้ายโฆษณา EEC ชลบุรี",
+    title: "ครอบคลุมทั่ว EEC",
+    sub: "เขตเศรษฐกิจพิเศษ EEC",
   },
 ];
 
 const steps = [
-  { step: "01", titleEn: "Choose Location",  titleTh: "เลือกทำเล",     descEn: "Select the billboard or area that fits your target audience from the EEC-wide network.",                      descTh: "เลือกป้ายหรือพื้นที่ที่เหมาะกับกลุ่มเป้าหมายของคุณจาก Network ทั่ว EEC" },
-  { step: "02", titleEn: "Request a Quote",  titleTh: "ขอราคา",        descEn: "Submit details to receive the best package and time slot suited to your budget.",                             descTh: "ส่งรายละเอียดเพื่อรับ Package และ Slot เวลาที่เหมาะสมกับ Budget" },
-  { step: "03", titleEn: "Submit Ad Files",  titleTh: "ส่งไฟล์โฆษณา", descEn: "Upload your creative file for our team to verify quality and color standards.",                              descTh: "อัปโหลด Creative File ให้ทีมตรวจสอบความสมบูรณ์และมาตรฐานสี" },
-  { step: "04", titleEn: "Launch Campaign",  titleTh: "เริ่มแคมเปญ",  descEn: "Your ad goes live on the billboard at the scheduled time, with a full campaign summary report provided.",   descTh: "โฆษณาขึ้นป้ายตามเวลาที่จอง พร้อมรับรายงานสรุปผลแคมเปญ" },
+  { step: "01", titleEn: "Choose Location",  titleTh: "เลือกทำเลที่ใช่",   descEn: "Browse our EEC-wide network and pick the billboard or zone that matches your target audience.",                      descTh: "เลือกป้ายหรือโซนที่ตรงกับกลุ่มเป้าหมายของคุณจากเครือข่ายทั่ว EEC" },
+  { step: "02", titleEn: "Request a Quote",  titleTh: "ขอใบเสนอราคา",     descEn: "Tell us your campaign details and we will prepare the best package and time slots for your budget.",                  descTh: "แจ้งรายละเอียดแคมเปญ ทีมเราจะจัดทำแพ็กเกจและช่วงเวลาที่คุ้มค่าที่สุดให้คุณ" },
+  { step: "03", titleEn: "Submit Ad Files",  titleTh: "ส่งไฟล์งานโฆษณา", descEn: "Upload your artwork for our team to check quality, colour calibration, and display standards.",                       descTh: "ส่งไฟล์งานให้ทีมตรวจสอบคุณภาพ ความถูกต้องของสี และมาตรฐานการแสดงผล" },
+  { step: "04", titleEn: "Launch Campaign",  titleTh: "เปิดแคมเปญ",       descEn: "Your ad goes live on schedule. We provide a full post-campaign performance report.",                                  descTh: "โฆษณาขึ้นป้ายตามกำหนด พร้อมรับรายงานสรุปผลแคมเปญจากทีมงาน" },
 ];
 
 /* ── CountUp Component ── */
@@ -530,7 +530,7 @@ export default function Home() {
                 style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
               />
               <span className="text-primary font-label-md text-label-md tracking-widest uppercase">
-                {t("Eastern Economic Corridor Pioneer", "ผู้บุกเบิก Eastern Economic Corridor")}
+                {t("Eastern Economic Corridor Pioneer", "ผู้นำสื่อโฆษณา EEC ชลบุรี–พัทยา")}
               </span>
             </div>
           </div>
@@ -544,8 +544,8 @@ export default function Home() {
                 : "none",
             }}
           >
-            {t("Premium Digital Advertising in", "โฆษณาดิจิทัลพรีเมียมใน")}{" "}
-            <span className="text-primary-container">{t("Chonburi's Prime Locations", "ทำเลชั้นนำของชลบุรี")}</span>
+            {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}{" "}
+            <span className="text-primary-container">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
           </h1>
 
           {/* Description */}
@@ -559,7 +559,7 @@ export default function Home() {
           >
             {t(
               "Media108 is a LED & Digital Out-of-Home advertising platform that helps brands reach their target audience through verified locations, real data, and measurable campaigns.",
-              "Media108 คือแพลตฟอร์มสื่อโฆษณา LED และ Digital Out-of-Home ที่ช่วยให้แบรนด์เข้าถึงกลุ่มเป้าหมายผ่านทำเลจริง ข้อมูลจริง และแคมเปญที่วัดผลได้"
+              "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่เชื่อมแบรนด์สู่กลุ่มเป้าหมายผ่านทำเลยุทธศาสตร์ ข้อมูลจราจรจริง และแคมเปญที่วัดผลได้"
             )}
           </p>
 
@@ -577,11 +577,11 @@ export default function Home() {
               className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md text-label-md glow-button flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
               style={{ transition: "transform 150ms ease, box-shadow 150ms ease" }}
             >
-              {t("Request Quotation", "ขอใบเสนอราคา")}{" "}
+              {t("Request Quotation", "ขอใบเสนอราคาฟรี")}{" "}
               <ArrowRight size={16} className="ml-2 inline" />
             </Link>
             <Link
-              href="/network"
+              href="/billboard"
               className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/10 active:scale-95"
               style={{ transition: "all 200ms ease" }}
             >
@@ -663,7 +663,7 @@ export default function Home() {
               </div>
 
               <h2 className="font-headline-xl text-headline-xl text-on-surface mb-5">
-                {t("Company Introduction", "แนะนำบริษัท")}
+                {t("Who We Are", "เราคือใคร")}
               </h2>
 
               {/* Animated expand bar */}
@@ -686,15 +686,15 @@ export default function Home() {
               >
                 {t(
                   "Media108 is a digital advertising media network built for businesses in Chonburi, Pattaya, Bang Saen, Sri Racha and the EEC area. We don't just sell space on LED screens — we help brands choose the right location, understand their audience, and plan advertising effectively with a vision to elevate local media to international standards.",
-                  "Media108 คือเครือข่ายสื่อโฆษณาดิจิทัลที่พัฒนาเพื่อธุรกิจในจังหวัดชลบุรี พัทยา บางแสน ศรีราชา และพื้นที่ EEC เราไม่ได้ขายเพียงพื้นที่บนจอ LED แต่ช่วยให้แบรนด์เลือกทำเลที่เหมาะสม เข้าใจกลุ่มผู้ชม และวางแผนโฆษณาได้อย่างมีประสิทธิภาพด้วยวิสัยทัศน์ที่ต้องการยกระดับสื่อท้องถิ่นสู่มาตรฐานสากล"
+                  "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่ให้บริการธุรกิจในชลบุรี พัทยา บางแสน ศรีราชา และพื้นที่ EEC เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยวางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และออกแบบแคมเปญให้วัดผลได้จริง"
                 )}
               </p>
 
               {/* Feature chips — stagger pop-in */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: BadgeCheck, labelEn: "Smart City Network",   labelTh: "เครือข่าย Smart City",        delay: "0.45s" },
-                  { icon: TrendingUp, labelEn: "Data-Driven Planning", labelTh: "วางแผนด้วยข้อมูลจริง",       delay: "0.55s" },
+                  { icon: BadgeCheck, labelEn: "Smart City Network",   labelTh: "เครือข่ายสื่อ Smart City",   delay: "0.45s" },
+                  { icon: TrendingUp, labelEn: "Data-Driven Planning", labelTh: "วางกลยุทธ์ด้วยข้อมูลจริง",  delay: "0.55s" },
                 ].map(({ icon: Icon, labelEn, labelTh, delay }) => (
                   <div
                     key={labelEn}
@@ -806,10 +806,10 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
             {[
-              { to: 10,  suffix: "+",  labelEn: "Billboard Network",     labelTh: "เครือข่ายป้ายโฆษณา" },
-              { to: 1,   suffix: "M+", labelEn: "Daily Traffic",          labelTh: "ทราฟฟิกต่อวัน" },
-              { to: 100, suffix: "%",  labelEn: "EEC Coverage",            labelTh: "ครอบคลุม EEC" },
-              { to: 100, suffix: "%",  labelEn: "Estimated Impression",    labelTh: "Impression โดยประมาณ" },
+              { to: 10,  suffix: "+",  labelEn: "Billboard Locations",    labelTh: "จุดป้ายในเครือข่าย" },
+              { to: 1,   suffix: "M+", labelEn: "Vehicles Per Day",        labelTh: "ยานพาหนะต่อวัน" },
+              { to: 100, suffix: "%",  labelEn: "EEC Zone Coverage",       labelTh: "ครอบคลุมพื้นที่ EEC" },
+              { to: 35,  suffix: "M+", labelEn: "Monthly Impressions",     labelTh: "Impressions ต่อเดือน" },
             ].map((stat, i) => (
               <div
                 key={stat.labelEn}
@@ -841,11 +841,11 @@ export default function Home() {
                 {t("Featured Billboards", "ป้ายโฆษณาแนะนำ")}
               </h2>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                {t("Top billboards in strategic locations with the highest audience reach.", "ป้ายเด่นในจุดยุทธศาสตร์ที่เข้าถึงกลุ่มเป้าหมายสูงสุด")}
+                {t("High-impact billboards in prime locations with maximum audience reach.", "ป้ายโฆษณาเด่นในทำเลยุทธศาสตร์ที่เข้าถึงกลุ่มเป้าหมายได้มากที่สุด")}
               </p>
             </div>
             <Link
-              href="/network"
+              href="/billboard"
               className="sr sr-right text-primary font-label-md text-label-md border-b border-primary/20 pb-1 hover:text-white hover:border-white transition-all flex items-center group"
             >
               {t("VIEW ALL LOCATIONS", "ดูทำเลทั้งหมด")}{" "}
@@ -911,7 +911,7 @@ export default function Home() {
                 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
                   {t(
                     "The Media108 network covers key routes in Chonburi province — from tourist zones and education zones to business corridors. We select only locations with the best visibility.",
-                    "เครือข่าย Media108 ครอบคลุมเส้นทางสำคัญในจังหวัดชลบุรี ตั้งแต่โซนท่องเที่ยว โซนการศึกษา ไปจนถึงเส้นทางธุรกิจ เราคัดเลือกจุดที่การมองเห็นดีที่สุด"
+                    "เครือข่าย Media108 ครอบคลุมเส้นทางหลักในชลบุรี ตั้งแต่โซนท่องเที่ยว ย่านธุรกิจ ไปจนถึงนิคมอุตสาหกรรม EEC เราคัดเลือกเฉพาะทำเลที่มีการมองเห็นสูงสุด"
                   )}
                 </p>
               </div>
@@ -959,7 +959,7 @@ export default function Home() {
               <div className="relative z-10 p-8 glass-card rounded-2xl">
                 <h4 className="font-headline-md text-white mb-6">{t("Interactive Network Map", "แผนที่เครือข่ายแบบอินเทอร์แอคทีฟ")}</h4>
                 <p className="text-on-surface-variant mb-8 text-sm">
-                  {t("Explore our dynamic billboard network across the EEC region in high definition.", "สำรวจเครือข่ายป้ายโฆษณาไดนามิกทั่วพื้นที่ EEC ในความละเอียดสูง")}
+                  {t("Explore our billboard network across the EEC region and find the right location for your campaign.", "สำรวจเครือข่ายป้ายโฆษณาทั่วพื้นที่ EEC และเลือกทำเลที่ใช่สำหรับแคมเปญของคุณ")}
                 </p>
                 <button className="px-10 py-4 bg-[#E63946] text-white rounded-lg font-label-md text-label-md hover:bg-white hover:text-[#E63946] transition-all transform hover:scale-105 shadow-xl">
                   {t("Launch Fullscreen Viewer", "เปิดในโหมดเต็มจอ")}
@@ -985,8 +985,8 @@ export default function Home() {
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent mx-auto rounded-full" />
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-8">
               {t(
-                "Reach and Traffic statistics that help brands choose media precisely aligned with their target audience.",
-                "สถิติ Reach และ Traffic รวม ที่ช่วยให้แบรนด์เลือกสื่อได้ตรงกับกลุ่มเป้าหมายอย่างแม่นยำ"
+                "Real reach and traffic data that helps brands select the right media placement for their target audience.",
+                "ตัวเลขการเข้าถึงและข้อมูลจราจรจริงที่ช่วยให้แบรนด์เลือกทำเลสื่อได้ตรงกับกลุ่มเป้าหมายอย่างแม่นยำ"
               )}
             </p>
           </div>
@@ -1007,7 +1007,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
             <div className="sr sr-left glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <Clock size={20} className="text-primary" /> {t("Peak Traffic Times", "ช่วงเวลาทราฟฟิกพีค")}
+                <Clock size={20} className="text-primary" /> {t("Peak Traffic Hours", "ช่วงเวลาจราจรหนาแน่นสูงสุด")}
               </h4>
               <div className="space-y-8">
                 {peakTimes.map((row, i) => (
@@ -1025,7 +1025,7 @@ export default function Home() {
             </div>
             <div className="sr sr-right glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
-                <Users size={20} className="text-primary" /> {t("Audience Ratio", "สัดส่วนผู้ชม")}
+                <Users size={20} className="text-primary" /> {t("Audience Breakdown", "สัดส่วนกลุ่มผู้ชม")}
               </h4>
               <div className="space-y-6">
                 {audienceRatios.map((row, i) => (
@@ -1041,7 +1041,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="sr sr-up sr-d4 mt-8 p-4 bg-primary/5 rounded-lg border border-primary/20 text-center">
-                <p className="text-sm text-on-surface-variant">{t("Data verified by Media108 Analytics Q4 2023", "ข้อมูลตรวจสอบโดย Media108 Analytics Q4 2023")}</p>
+                <p className="text-sm text-on-surface-variant">{t("Data sourced from Media108 Traffic Analytics 2024", "ข้อมูลจาก Media108 Traffic Analytics ปี 2567")}</p>
               </div>
             </div>
           </div>
@@ -1056,7 +1056,7 @@ export default function Home() {
               <span className="w-5 h-[1px] bg-primary-container" />
               <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("What We Do", "สิ่งที่เราทำ")}</span>
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Services Overview", "ภาพรวมบริการ")}</h2>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Services Overview", "บริการของเรา")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent rounded-full" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
@@ -1097,7 +1097,7 @@ export default function Home() {
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-8 leading-relaxed">
               {t(
                 "We make outdoor advertising not just about choosing a visible sign, but about selecting precise locations and media using data and technology.",
-                "เราช่วยให้การลงโฆษณากลางแจ้งไม่ใช่แค่การเลือกป้ายที่มองเห็นง่าย แต่เป็นการเลือกทำเลและสื่อที่แม่นยำด้วยข้อมูลและเทคโนโลยี"
+                "เราเปลี่ยนการลงโฆษณากลางแจ้งจากการ 'เลือกป้ายที่ใหญ่' เป็นการ 'วางกลยุทธ์สื่อ' ที่แม่นยำด้วยข้อมูลจราจรและเทคโนโลยีดิจิทัล"
               )}
             </p>
           </div>
@@ -1128,7 +1128,7 @@ export default function Home() {
             <p className="font-body-md text-on-surface-variant mt-6">
               {t(
                 "Experience the real atmosphere of billboard locations in the Media108 network, both day and night.",
-                "สัมผัสบรรยากาศจริงของทำเลป้ายในเครือข่าย Media108 ทั้งช่วงกลางวันและกลางคืน"
+                "ชมภาพจริงจากทำเลป้ายในเครือข่าย Media108 ทั้งช่วงกลางวันและกลางคืน"
               )}
             </p>
           </div>
@@ -1169,7 +1169,7 @@ export default function Home() {
             <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("How to Buy Ads", "วิธีลงโฆษณา")}</h2>
             <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-transparent via-[#E63946] to-transparent rounded-full mx-auto" />
             <p className="text-on-surface-variant mt-8 font-body-lg">
-              {t("Simple steps to start your digital advertising campaign with us.", "ขั้นตอนง่ายๆ ในการเริ่มแคมเปญโฆษณาดิจิทัลกับเรา")}
+              {t("Four simple steps to launch your outdoor advertising campaign with us.", "4 ขั้นตอนง่ายๆ เพื่อเริ่มแคมเปญโฆษณากลางแจ้งกับ Media108")}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
@@ -1192,7 +1192,7 @@ export default function Home() {
             <Link href="/contact#form"
               className="px-16 py-6 bg-[#E63946] text-white rounded-lg font-label-md text-label-md glow-button transition-all hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-2xl uppercase tracking-widest"
               style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              {t("Book a Billboard Now", "เริ่มจองป้ายเลย")}
+              {t("Reserve Your Billboard Now", "จองป้ายโฆษณาได้เลย")}
             </Link>
           </div>
         </div>
@@ -1223,7 +1223,7 @@ export default function Home() {
             <p className="text-white/90 font-body-lg leading-relaxed">
               {t(
                 "Want detailed location information, pricing, packages, and audience statistics? Download our Media Kit or request a custom quotation designed specifically for your business.",
-                "ต้องการดูรายละเอียดทำเล ราคา แพ็กเกจ และข้อมูลสถิติผู้ชมอย่างละเอียด ดาวน์โหลด Media Kit หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ"
+                "ดูข้อมูลทำเล แพ็กเกจ ราคา และสถิติกลุ่มผู้ชมแบบละเอียดได้ใน Media Kit ดาวน์โหลดฟรี หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ"
               )}
             </p>
           </div>
@@ -1252,7 +1252,7 @@ export default function Home() {
               <p className="text-on-surface-variant font-body-lg mb-12">
                 {t(
                   "We're ready to be your advertising media partner to help drive your campaign to success. Contact us for a free consultation.",
-                  "เราพร้อมเป็นพาร์ทเนอร์สื่อโฆษณาที่จะช่วยขับเคลื่อนแคมเปญของคุณให้ประสบความสำเร็จ ติดต่อเราเพื่อรับคำปรึกษาฟรี"
+                  "ทีมงาน Media108 พร้อมเป็นพาร์ทเนอร์กลยุทธ์สื่อของคุณ ตั้งแต่การเลือกทำเล วางแผนแคมเปญ จนถึงรายงานผล ติดต่อเราเพื่อรับคำปรึกษาฟรี"
                 )}
               </p>
               <div className="space-y-8">
@@ -1368,7 +1368,7 @@ export default function Home() {
               <p className="text-on-surface-variant font-body-md pr-12 leading-relaxed">
                 {t(
                   "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
-                  "ผู้นำการปฏิวัติสื่อดิจิทัลกลางแจ้งใน Eastern Economic Corridor โซลูชันสื่อแม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>

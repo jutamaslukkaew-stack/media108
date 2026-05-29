@@ -89,7 +89,7 @@ export const billboards: Record<string, BillboardData> = {
     title: "Pattaya Sukhumvit 01",
     subtitle: "Sukhumvit Road, Pattaya",
     description:
-      "The ultimate digital gateway to Thailand's Eastern Economic Corridor. Dominating the main artery connecting Bangkok to the heart of Pattaya.",
+      "ทำเลยุทธศาสตร์บนเส้นทางหลักพัทยา–สุขุมวิท จุดเชื่อมระหว่างกรุงเทพฯ กับพัทยา มีปริมาณจราจรกว่า 1.4 แสนคันต่อวัน",
     price: "฿45,000",
     status: "Available",
 
@@ -114,16 +114,16 @@ export const billboards: Record<string, BillboardData> = {
     ],
 
     strategicDescription:
-      "Located at the \"North Corner\" of Sukhumvit Road, this asset intercepts 100% of traffic entering Pattaya from Bangkok and Chonburi. It is the first and last thing commuters see.",
+      "ตั้งอยู่ที่ 'มุมเหนือ' ของถนนสุขุมวิท ดักทราฟฟิก 100% ของรถที่เข้าพัทยาจากกรุงเทพฯ และชลบุรี — สิ่งแรกและสุดท้ายที่ผู้สัญจรทุกคันจะมองเห็น",
 
     locationStory:
-      "This isn't just a screen; it's a waypoint. Strategically placed at the convergence of industrial growth and luxury tourism, Sukhumvit 01 marks the entry to Thailand's most vibrant coastal city.",
+      "ไม่ใช่แค่จอโฆษณา แต่คือ 'ประตูเข้าเมือง' จุดบรรจบของเขต EEC ที่กำลังเติบโตและแหล่งท่องเที่ยวชายฝั่งที่คึกคักที่สุดในไทย Sukhumvit 01 คือทำเลที่ทุกแบรนด์ใน EEC ต้องการ",
     audienceStory:
-      "Reach the deciders. From luxury condo owners in Wongamat to corporate executives traveling from Laem Chabang port, your brand speaks to those who drive the economy.",
+      "เข้าถึงกลุ่มผู้มีอำนาจตัดสินใจ ตั้งแต่เจ้าของคอนโดหรูวงศ์อมาตย์ไปจนถึงผู้บริหารระดับสูงที่เดินทางจากท่าเรือแหลมฉบัง แบรนด์คุณจะได้พูดกับกลุ่มเป้าหมายที่ขับเคลื่อนเศรษฐกิจภาคตะวันออกโดยตรง",
     trafficStory:
-      "Congestion is your friend. With average speeds dropping significantly at this intersection during peak hours, your creative has the luxury of time to leave a lasting impression.",
+      "รถติดคือโอกาสของคุณ ด้วยความเร็วเฉลี่ยที่ลดลงอย่างมากในชั่วโมงเร่งด่วน โฆษณาของคุณมีเวลาเพียงพอที่จะสร้าง Impression ที่ติดตาและจดจำได้",
     businessFit:
-      "Ideal for luxury automotive, real estate developers, premium beverages, and financial services looking to establish a dominant presence in the Eastern corridor.",
+      "เหมาะสำหรับยานยนต์ระดับพรีเมียม อสังหาริมทรัพย์ เครื่องดื่มหรู และสถาบันการเงิน ที่ต้องการสร้างการรับรู้แบรนด์ในพื้นที่ EEC ชลบุรี–พัทยา",
 
     carsPerDay: "142,000+",
     motorcyclesPerDay: "48,000+",
@@ -136,9 +136,9 @@ export const billboards: Record<string, BillboardData> = {
 
     ageRange: "28 – 55",
     audienceBreakdown: [
-      { label: "Locals", pct: 45, color: "bg-white" },
-      { label: "Tourist", pct: 35, color: "bg-primary-container" },
-      { label: "Commuter", pct: 20, color: "bg-primary" },
+      { label: "คนท้องถิ่น", pct: 45, color: "bg-white" },
+      { label: "นักท่องเที่ยว", pct: 35, color: "bg-primary-container" },
+      { label: "ผู้สัญจร", pct: 20, color: "bg-primary" },
     ],
 
     mapLat: 12.9217,
@@ -154,29 +154,29 @@ export const billboards: Record<string, BillboardData> = {
 
     pricingTiers: [
       {
-        label: "Short Term",
-        name: "Launch Pad",
+        label: "ระยะสั้น",
+        name: "เริ่มต้นโฆษณา",
         price: "฿45,000",
-        unit: "/week",
-        features: ["15s Spotlight", "180 spots/day", "Standard Reporting"],
-        ctaLabel: "Choose Plan",
+        unit: "/สัปดาห์",
+        features: ["สปอต 15 วินาที", "180 สปอต/วัน", "รายงานผลมาตรฐาน"],
+        ctaLabel: "เลือกแพ็กเกจ",
       },
       {
-        label: "Monthly Dominance",
-        name: "Market Leader",
+        label: "รายเดือน",
+        name: "ครองพื้นที่",
         price: "฿160,000",
-        unit: "/mo",
-        features: ["15s Spotlight", "240 spots/day", "Pro Traffic Analytics", "Dynamic Creative Feed"],
+        unit: "/เดือน",
+        features: ["สปอต 15 วินาที", "240 สปอต/วัน", "วิเคราะห์จราจรเชิงลึก", "ปรับโฆษณาอัตโนมัติตามเวลา"],
         highlight: true,
-        ctaLabel: "Activate Now",
+        ctaLabel: "เริ่มลงโฆษณา",
       },
       {
-        label: "Custom Enterprise",
-        name: "Total Takeover",
-        price: "POA",
+        label: "เฉพาะองค์กร",
+        name: "ครองสื่อเต็มรูปแบบ",
+        price: "ขอใบเสนอราคา",
         unit: "",
-        features: ["Exclusive 1:1 rotation", "Full-screen takeover", "Real-time sensor triggers"],
-        ctaLabel: "Contact Sales",
+        features: ["หมุนเวียนแบบ 1:1 เฉพาะแบรนด์", "ครองจอทั้งหมด", "ทริกเกอร์อัตโนมัติตามเซ็นเซอร์"],
+        ctaLabel: "ติดต่อทีมขาย",
       },
     ],
 
@@ -258,9 +258,9 @@ export const billboards: Record<string, BillboardData> = {
 
     ageRange: "20 – 50",
     audienceBreakdown: [
-      { label: "Tourist", pct: 50, color: "bg-primary-container" },
-      { label: "Local", pct: 35, color: "bg-white" },
-      { label: "Transit", pct: 15, color: "bg-primary" },
+      { label: "นักท่องเที่ยว", pct: 50, color: "bg-primary-container" },
+      { label: "คนท้องถิ่น", pct: 35, color: "bg-white" },
+      { label: "ผู้สัญจร", pct: 15, color: "bg-primary" },
     ],
 
     mapLat: 12.9270,
@@ -350,9 +350,9 @@ export const billboards: Record<string, BillboardData> = {
 
     ageRange: "25 – 50",
     audienceBreakdown: [
-      { label: "Worker", pct: 55, color: "bg-white" },
-      { label: "Business", pct: 30, color: "bg-primary-container" },
-      { label: "Transit", pct: 15, color: "bg-primary" },
+      { label: "พนักงาน/แรงงาน", pct: 55, color: "bg-white" },
+      { label: "นักธุรกิจ", pct: 30, color: "bg-primary-container" },
+      { label: "ผู้สัญจร", pct: 15, color: "bg-primary" },
     ],
 
     mapLat: 13.1328,
@@ -441,9 +441,9 @@ export const billboards: Record<string, BillboardData> = {
 
     ageRange: "28 – 55",
     audienceBreakdown: [
-      { label: "Tourist", pct: 60, color: "bg-primary-container" },
-      { label: "Local", pct: 25, color: "bg-white" },
-      { label: "Expat", pct: 15, color: "bg-primary" },
+      { label: "นักท่องเที่ยว", pct: 60, color: "bg-primary-container" },
+      { label: "คนท้องถิ่น", pct: 25, color: "bg-white" },
+      { label: "ชาวต่างชาติ", pct: 15, color: "bg-primary" },
     ],
 
     mapLat: 12.8849,

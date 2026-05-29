@@ -13,9 +13,9 @@ const allBillboards = Object.values(billboards);
 
 /* ── Per-slug metadata to match Stitch card layout ── */
 const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string; audienceTh: string; id: string; typeEn: string; typeTh: string }> = {
-  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",    zoneTh: "เส้นทางหลักพัทยา",    audienceEn: "HNW Travelers",      audienceTh: "นักเดินทางกำลังซื้อสูง", id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "pattaya-gateway":      { zoneEn: "Central Intersection",  zoneTh: "สี่แยกกลาง",           audienceEn: "Tourists & Locals",  audienceTh: "นักท่องเที่ยวและคนท้องถิ่น", id: "PY-GW-04", typeEn: "Landmark LED", typeTh: "LED แลนด์มาร์ค" },
-  "jomtien-coastal":      { zoneEn: "Coastal Strip",         zoneTh: "ย่านชายฝั่ง",           audienceEn: "Tourists & Expats",  audienceTh: "นักท่องเที่ยวและชาวต่างชาติ", id: "JT-CST-03", typeEn: "Digital Static", typeTh: "ดิจิทัลสแตติก" },
+  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",    zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท", audienceEn: "High-Income Travelers", audienceTh: "นักเดินทางกำลังซื้อสูง",   id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "pattaya-gateway":      { zoneEn: "Central Intersection",  zoneTh: "สี่แยกกลางเมืองพัทยา",       audienceEn: "Tourists & Locals",     audienceTh: "นักท่องเที่ยวและคนท้องถิ่น", id: "PY-GW-04", typeEn: "Landmark LED",     typeTh: "LED แลนด์มาร์ค" },
+  "jomtien-coastal":      { zoneEn: "Coastal Strip",         zoneTh: "ย่านชายฝั่งจอมเทียน",        audienceEn: "Tourists & Expats",     audienceTh: "นักท่องเที่ยวและชาวต่างชาติ", id: "JT-CST-03", typeEn: "Digital Static",   typeTh: "ดิจิทัลสแตติก" },
 };
 
 /* ── Map pin positions (% within the map image) ── */
@@ -121,8 +121,8 @@ export default function BillboardListingPage() {
             className="text-white max-w-3xl mb-4 drop-shadow-2xl font-display-lg"
             style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1, animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}
           >
-            {t("Dominate the", "ครองพื้นที่")}{" "}
-            <span style={{ color: "#E63946" }}>{t("EEC Corridor", "EEC Corridor")}</span>
+            {t("Choose Your Billboard in", "เลือกทำเลโฆษณาใน")}{" "}
+            <span style={{ color: "#E63946" }}>{t("the EEC Zone", "เครือข่าย EEC")}</span>
           </h1>
           <p
             className="font-body-lg text-on-surface-variant max-w-xl p-4 rounded-lg"
@@ -130,7 +130,7 @@ export default function BillboardListingPage() {
           >
             {t(
               "Interactive coverage map of Thailand's premier DOOH inventory. Select a pin to view location data and performance metrics.",
-              "แผนที่ครอบคลุมแบบอินเทอร์แอคทีฟของสินค้าคงคลัง DOOH ชั้นนำของไทย เลือกพินเพื่อดูข้อมูลตำแหน่งและตัวชี้วัดประสิทธิภาพ"
+              "คลิกที่ตำแหน่งบนแผนที่เพื่อดูรายละเอียดทำเล ข้อมูลจราจร และราคาของป้ายโฆษณาในเครือข่าย Media108"
             )}
           </p>
         </div>
@@ -289,7 +289,7 @@ export default function BillboardListingPage() {
                   <div className="absolute bottom-4 left-4 flex items-center gap-2">
                     <Eye size={18} className="text-white" />
                     <span className="text-white font-bold text-[12px]">
-                      {bb.carsPerDay} {t("Daily Reach", "การเข้าถึงต่อวัน")}
+                      {bb.carsPerDay} {t("Vehicles/Day", "ยานพาหนะ/วัน")}
                     </span>
                   </div>
                 </div>

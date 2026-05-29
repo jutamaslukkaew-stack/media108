@@ -80,16 +80,16 @@ const coverageFeatures: {
     iconBg: "bg-primary/20",
     iconColor: "text-primary",
     title: "Reach & Frequency",
-    descEn: "Analyze actual ad viewers and access frequency for precise campaign measurement.",
-    descTh: "วิเคราะห์จำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง",
+    descEn: "Measure real viewer counts and exposure frequency — precise data for every campaign.",
+    descTh: "วัดจำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง เพื่อวิเคราะห์ประสิทธิภาพแคมเปญได้แม่นยำ",
   },
   {
     icon: Map,
     iconBg: "bg-secondary/20",
     iconColor: "text-secondary",
     title: "Traffic Heatmaps",
-    descEn: "Heat maps showing target audience density at different times of day.",
-    descTh: "แผนภาพแสดงความหนาแน่นของกลุ่มเป้าหมายในแต่ละช่วงเวลา",
+    descEn: "Traffic heatmaps showing audience density by time — helping you pick the highest-impact slots.",
+    descTh: "แผนที่ความหนาแน่นจราจรแยกตามช่วงเวลา ช่วยเลือก Slot โฆษณาที่ให้ผลสูงสุด",
   },
 ];
 
@@ -128,7 +128,7 @@ export default function MediaKitPage() {
             >
               {t(
                 "Elevate your brand with Precision DOOH Solutions that reach your target audience with maximum accuracy.",
-                "ยกระดับแบรนด์ของคุณด้วยนวัตกรรมสื่อโฆษณา Precision DOOH Solutions ที่เข้าถึงกลุ่มเป้าหมายอย่างแม่นยำที่สุด"
+                "ข้อมูลครบสำหรับการตัดสินใจลงโฆษณา — ทำเล ราคา แพ็กเกจ และสถิติกลุ่มผู้ชมในเครือข่าย Media108"
               )}
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function MediaKitPage() {
               <p className="font-body-md text-body-md text-on-surface-variant">
                 {t(
                   "Get the complete kit including Company Profile and technical details of every billboard location in the Media108 network, along with campaign success case studies.",
-                  "รับข้อมูลฉบับเต็มประกอบด้วย Company Profile และรายละเอียดทางเทคนิคของ Billboard ทุกตำแหน่งในเครือข่าย Media108 พร้อมกรณีศึกษาความสำเร็จ"
+                  "ดาวน์โหลดข้อมูลครบ: Company Profile รายละเอียดทำเลป้ายทุกจุด สเปคทางเทคนิค และตัวอย่างแคมเปญที่ประสบความสำเร็จ"
                 )}
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
@@ -300,7 +300,7 @@ export default function MediaKitPage() {
                 <span className="font-label-md text-label-md text-on-surface-variant">
                   {t(
                     "Smooth motion playback for cinematic visuals.",
-                    "เล่นวิดีโอราบรื่นสำหรับภาพระดับโรงภาพยนตร์"
+                    "เล่นวิดีโอราบรื่น ไม่กระตุก เหมาะสำหรับ Motion Graphic ทุกประเภท"
                   )}
                 </span>
               </div>
@@ -313,12 +313,12 @@ export default function MediaKitPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div className="space-y-8">
               <h2 className="font-headline-xl text-headline-xl text-white">
-                {t("Coverage & Insight Reports", "รายงานการครอบคลุมและ Insights")}
+                {t("Coverage & Audience Insights", "รายงานผลและข้อมูลเชิงลึกกลุ่มผู้ชม")}
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant">
                 {t(
                   'We don\'t just provide ad space — we provide "data" for the best decision-making. Our coverage reports include precise insights to measure campaign success.',
-                  'เราไม่ได้ให้แค่พื้นที่โฆษณา แต่เราให้ "ข้อมูล" เพื่อการตัดสินใจที่ดีที่สุด รายงานความครอบคลุมของเราประกอบด้วยข้อมูลเชิงลึกที่แม่นยำเพื่อวัดผลสำเร็จของแคมเปญ'
+                  "เราไม่ได้ให้แค่พื้นที่ป้ายโฆษณา แต่ให้ข้อมูลจราจรและกลุ่มผู้ชมที่ช่วยให้คุณตัดสินใจได้อย่างมั่นใจ พร้อมรายงานสรุปผลแคมเปญหลังสิ้นสุดการลงโฆษณา"
                 )}
               </p>
               <div className="space-y-6">
@@ -376,7 +376,7 @@ export default function MediaKitPage() {
                 <span className="text-primary">Media</span><span className="text-white">108</span>
               </div>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                {t("Precision DOOH Media Solutions for the Modern Era.", "โซลูชันสื่อ DOOH แม่นยำสำหรับยุคใหม่")}
+                {t("Leading outdoor advertising network across Chonburi–Pattaya EEC.", "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา")}
               </p>
             </div>
 

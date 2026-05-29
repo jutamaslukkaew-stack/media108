@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 
 const statsBase: { value: string; labelEn: string; labelTh: string; icon: LucideIcon }[] = [
-  { value: "252",   labelEn: "Active Locations", labelTh: "จำนวนจุดที่ใช้งาน", icon: MapPin     },
-  { value: "3",     labelEn: "Network Segments", labelTh: "กลุ่มเครือข่าย",    icon: Network    },
-  { value: "450K+", labelEn: "Daily Reach",      labelTh: "ผู้ชมต่อวัน",        icon: Eye        },
-  { value: "99.9%", labelEn: "Uptime SLA",       labelTh: "ความพร้อมใช้งาน",   icon: BadgeCheck },
+  { value: "252",   labelEn: "Active Locations",   labelTh: "จุดป้ายในเครือข่าย",    icon: MapPin     },
+  { value: "3",     labelEn: "Network Segments",   labelTh: "กลุ่มเครือข่ายหลัก",   icon: Network    },
+  { value: "450K+", labelEn: "Daily Reach",        labelTh: "การเข้าถึงต่อวัน",     icon: Eye        },
+  { value: "99.9%", labelEn: "Display Uptime",     labelTh: "ความพร้อมใช้งานของจอ", icon: BadgeCheck },
 ];
 
 const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count: string; subEn: string; subTh: string; descEn: string; descTh: string; tagEn: string; tagTh: string; color: string }[] = [
@@ -25,8 +25,8 @@ const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count:
     count: "124",
     subEn: "Verified Locations",
     subTh: "จุดที่ยืนยันแล้ว",
-    descEn: "Urban intersections and primary arterial roads in Chonburi. Continuous brand exposure for modern commuters.",
-    descTh: "สี่แยกและถนนสายหลักในชลบุรี สร้างการรับรู้แบรนด์อย่างต่อเนื่องสำหรับผู้สัญจรยุคใหม่",
+    descEn: "Urban intersections and main arterial roads in Chonburi — delivering continuous brand exposure to daily commuters.",
+    descTh: "สี่แยกสำคัญและถนนสายหลักในชลบุรี สร้างการรับรู้แบรนด์อย่างต่อเนื่องสำหรับผู้ใช้รถบนท้องถนนทุกวัน",
     tagEn: "Core",
     tagTh: "หลัก",
     color: "#E63946",
@@ -38,8 +38,8 @@ const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count:
     count: "86",
     subEn: "Digital-First Nodes",
     subTh: "จุดดิจิทัลเฉพาะ",
-    descEn: "Targeting Gen-Z and Millennials near educational hubs and student districts. Precision digital clusters.",
-    descTh: "เจาะกลุ่ม Gen-Z และ Millennials บริเวณแหล่งการศึกษาและย่านนักศึกษา คลัสเตอร์ดิจิทัลแม่นยำ",
+    descEn: "Reaching Gen-Z and Millennials near universities and student districts — precise digital placements for the next generation.",
+    descTh: "เข้าถึงกลุ่ม Gen-Z และวัยทำงานตอนต้นบริเวณมหาวิทยาลัยและย่านนักศึกษา ตำแหน่งโฆษณาดิจิทัลที่แม่นยำ",
     tagEn: "Growth",
     tagTh: "เติบโต",
     color: "#ffb3b1",
@@ -51,8 +51,8 @@ const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count:
     count: "42",
     subEn: "Premium Placements",
     subTh: "ตำแหน่งพรีเมียม",
-    descEn: "Coastal prestige and entertainment districts. Luxury reach across Pattaya and Bang Saen beachfronts.",
-    descTh: "ย่านชายฝั่งอันทรงเกียรติและย่านบันเทิง การเข้าถึงกลุ่มหรูหราทั่วพัทยาและบางแสน",
+    descEn: "Premium coastal and entertainment zones — reaching high-spending tourists along Pattaya and Bang Saen beachfronts.",
+    descTh: "ย่านชายหาดและบันเทิงชั้นนำ เข้าถึงนักท่องเที่ยวกำลังซื้อสูงตลอดแนวชายฝั่งพัทยาและบางแสน",
     tagEn: "Premium",
     tagTh: "พรีเมียม",
     color: "#bfc5e4",
@@ -103,7 +103,7 @@ export default function NetworkPage() {
             >
               {t(
                 "Engineering high-frequency visibility through curated media ecosystems. We don't just place ads; we design visual dominance.",
-                "สร้างการมองเห็นความถี่สูงผ่านระบบนิเวศสื่อที่คัดสรรอย่างพิถีพิถัน เราไม่ได้แค่วางโฆษณา แต่ออกแบบการครองพื้นที่ทางสายตา"
+                "เครือข่ายป้ายโฆษณาที่คัดเลือกทำเลอย่างเป็นระบบ ให้แบรนด์ของคุณมองเห็นได้บ่อยที่สุดในจุดที่กลุ่มเป้าหมายสัญจรผ่านทุกวัน"
               )}
             </p>
             <div
@@ -180,7 +180,7 @@ export default function NetworkPage() {
               <p className="text-on-surface-variant/60 font-light max-w-xl mx-auto">
                 {t(
                   "Orchestrated inventory designed to meet specific demographic objectives across the EEC corridor.",
-                  "คลังสื่อที่ได้รับการจัดสรรเพื่อตอบเป้าหมายประชากรเฉพาะทั่ว EEC corridor"
+                  "แบ่งเครือข่ายป้ายเป็น 3 กลุ่มตามกลุ่มเป้าหมาย เพื่อให้แคมเปญของคุณเข้าถึงคนที่ใช่ในทำเลที่ใช่"
                 )}
               </p>
             </div>
@@ -279,13 +279,13 @@ export default function NetworkPage() {
                     className="font-display-lg text-white uppercase leading-tight mb-6"
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, letterSpacing: "0.05em" }}
                   >
-                    {t("Own the EEC", "ครอง EEC")}<br />
-                    <span style={{ color: "#E63946" }}>{t("Corridor", "Corridor")}</span> {t("Today.", "วันนี้")}
+                    {t("Start Your Brand's", "ให้แบรนด์ของคุณ")}<br />
+                    <span style={{ color: "#E63946" }}>{t("EEC Presence", "ปรากฏทั่ว EEC")}</span> {t("Now.", "วันนี้เลย")}
                   </h3>
                   <p className="text-white/60 font-light leading-relaxed max-w-md mb-10">
                     {t(
                       "Secure your brand's visibility at Thailand's highest-traffic DOOH locations. First-mover advantage in the fastest-growing economic zone in Southeast Asia.",
-                      "รักษาการมองเห็นแบรนด์ของคุณในจุด DOOH ที่มีปริมาณการจราจรสูงที่สุดในไทย ได้เปรียบผู้บุกเบิกในเขตเศรษฐกิจที่เติบโตเร็วที่สุดในเอเชียตะวันออกเฉียงใต้"
+                      "จอง ป้ายโฆษณา LED ในทำเลจราจรหนาแน่นที่สุดของ EEC ก่อนใคร เพิ่มการมองเห็นแบรนด์ในเขตเศรษฐกิจที่เติบโตเร็วที่สุดของไทย"
                     )}
                   </p>
                   {/* Mini stats row */}
@@ -340,8 +340,8 @@ export default function NetworkPage() {
               </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
                 {t(
-                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
-                  "นำแนวโน้มปฏิวัติสื่อดิจิทัลกลางแจ้งในเขตพัฒนาพิเศษภาคตะวันออก โซลูชันสื่อที่แม่นยำขับเคลื่อนด้วยข้อมูลและผลกระทบ"
+                  "Leading outdoor advertising network in the EEC zone — connecting brands to audiences with real traffic data.",
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>
