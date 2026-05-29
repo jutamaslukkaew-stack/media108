@@ -37,6 +37,10 @@ export interface BillboardData {
   imgNight: string;
   imgDrone?: string;
 
+  // Map coordinates (lat/lng for OpenStreetMap embed)
+  mapLat?: number;
+  mapLng?: number;
+
   // Strategic section description
   strategicDescription?: string;
 
@@ -137,6 +141,8 @@ export const billboards: Record<string, BillboardData> = {
       { label: "Commuter", pct: 20, color: "bg-primary" },
     ],
 
+    mapLat: 12.9217,
+    mapLng: 100.8677,
     mapImg:
       "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     nearby: [
@@ -257,6 +263,8 @@ export const billboards: Record<string, BillboardData> = {
       { label: "Transit", pct: 15, color: "bg-primary" },
     ],
 
+    mapLat: 12.9270,
+    mapLng: 100.8831,
     mapImg:
       "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [
@@ -347,6 +355,8 @@ export const billboards: Record<string, BillboardData> = {
       { label: "Transit", pct: 15, color: "bg-primary" },
     ],
 
+    mapLat: 13.1328,
+    mapLng: 100.9166,
     mapImg:
       "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [
@@ -436,6 +446,8 @@ export const billboards: Record<string, BillboardData> = {
       { label: "Expat", pct: 15, color: "bg-primary" },
     ],
 
+    mapLat: 12.8849,
+    mapLng: 100.8742,
     mapImg:
       "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?w=1200&q=80",
     nearby: [

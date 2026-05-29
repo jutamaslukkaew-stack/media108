@@ -6,7 +6,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useLanguage } from "../context/LanguageContext";
 import {
   Store, Globe, Building2, Ticket, Maximize2, Ruler, Aperture,
-  BarChart2, Map, FileText, CloudDownload, Video, CheckCircle,
+  BarChart2, Map, FileText, CloudDownload, Video, CheckCircle, Mail, Phone, MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 

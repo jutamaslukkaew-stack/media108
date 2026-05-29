@@ -258,10 +258,12 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               ref={heroImgRef}
-              alt="Hero Background"
+              alt="ป้าย LED Media108 กลางคืน – Pattaya Sukhumvit DOOH Billboard"
               className="w-full h-full object-cover"
               style={{ willChange: "transform" }}
               src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80"
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="absolute inset-0 hero-gradient" />
 

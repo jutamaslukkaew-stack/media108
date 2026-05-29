@@ -69,9 +69,11 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               id="hero-bg-img"
-              alt={data.title}
+              alt={`ป้าย LED ${data.title} – ${data.subtitle} สื่อโฆษณา DOOH Media108`}
               className="w-full h-full object-cover will-change-transform"
               src={heroImg}
+              fetchPriority="high"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           </div>
@@ -180,20 +182,42 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               </div>
             </div>
             <div className="sr sr-right glass-card rounded-2xl overflow-hidden aspect-square relative border border-white/10">
-              <div className="absolute inset-0 bg-[#0A1128] flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt={`Map – ${data.title}`}
-                  className="w-full h-full object-cover opacity-50 grayscale contrast-125"
-                  src={data.mapImg}
+              {data.mapLat && data.mapLng ? (
+                /* OpenStreetMap embed – ไม่ต้องใช้ API Key */
+                <iframe
+                  title={`แผนที่ตำแหน่ง ${data.title}`}
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  src={`https://www.openstreetmap.org/export/embed.html?bbox=${data.mapLng - 0.018},${data.mapLat - 0.018},${data.mapLng + 0.018},${data.mapLat + 0.018}&layer=mapnik&marker=${data.mapLat},${data.mapLng}`}
                 />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-8 h-8 bg-primary-container rounded-full animate-ping absolute inset-0 opacity-75" />
-                  <div className="w-8 h-8 bg-primary-container rounded-full relative flex items-center justify-center border-4 border-surface shadow-2xl">
-                    <MapPin size={12} className="text-white" />
+              ) : (
+                /* fallback: static image */
+                <div className="absolute inset-0 bg-[#0A1128] flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    alt={`แผนที่ตำแหน่ง ${data.title}`}
+                    className="w-full h-full object-cover opacity-50 grayscale contrast-125"
+                    src={data.mapImg}
+                  />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-8 h-8 bg-primary-container rounded-full animate-ping absolute inset-0 opacity-75" />
+                    <div className="w-8 h-8 bg-primary-container rounded-full relative flex items-center justify-center border-4 border-surface shadow-2xl">
+                      <MapPin size={12} className="text-white" />
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
+              {/* Open in Google Maps button */}
+              {data.mapLat && data.mapLng && (
+                <a
+                  href={`https://www.google.com/maps?q=${data.mapLat},${data.mapLng}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 right-3 bg-surface/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs text-primary font-bold flex items-center gap-1.5 hover:bg-primary hover:text-white transition-all border border-white/10"
+                >
+                  <MapPin size={12} /> เปิดใน Google Maps
+                </a>
+              )}
             </div>
           </div>
         </section>
