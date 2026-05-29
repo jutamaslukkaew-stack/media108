@@ -46,9 +46,9 @@ export default function BillboardMap({ billboards, t }: Props) {
     });
     leafletMap.current = map;
 
-    /* ── Dark/satellite-style tile layer (Carto Dark) ── */
+    /* ── Light tile layer (Carto Positron — clean, readable) ── */
     L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+      "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
       {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
         subdomains: "abcd",
@@ -131,8 +131,8 @@ export default function BillboardMap({ billboards, t }: Props) {
       {/* Popup style override to match site dark theme */}
       <style>{`
         .billboard-popup .leaflet-popup-content-wrapper {
-          background: #141d3f !important;
-          border: 1px solid rgba(255,255,255,0.12) !important;
+          background: #0f172a !important;
+          border: 1px solid rgba(255,255,255,0.15) !important;
           border-radius: 12px !important;
           padding: 0 !important;
           box-shadow: 0 24px 48px rgba(0,0,0,0.6) !important;
@@ -150,17 +150,18 @@ export default function BillboardMap({ billboards, t }: Props) {
           z-index: 10;
         }
         .leaflet-control-zoom a {
-          background: #141d3f !important;
-          color: white !important;
-          border-color: rgba(255,255,255,0.15) !important;
+          background: #ffffff !important;
+          color: #1e293b !important;
+          border-color: #e2e8f0 !important;
+          font-weight: 700 !important;
         }
-        .leaflet-control-zoom a:hover { background: #E63946 !important; }
+        .leaflet-control-zoom a:hover { background: #E63946 !important; color: white !important; }
         .leaflet-control-attribution {
-          background: rgba(6,17,51,0.8) !important;
+          background: rgba(255,255,255,0.85) !important;
           color: #64748b !important;
           font-size: 10px !important;
         }
-        .leaflet-control-attribution a { color: #94a3b8 !important; }
+        .leaflet-control-attribution a { color: #475569 !important; }
         @keyframes pulse-ring {
           0%   { transform: scale(0.8); opacity: 1; }
           70%  { transform: scale(2);   opacity: 0; }
