@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
@@ -8,6 +9,19 @@ import { billboards } from "../data/billboards";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useLanguage } from "../context/LanguageContext";
 import { Map, List, SlidersHorizontal, ChevronDown, Eye, ChevronsDown } from "lucide-react";
+
+/* ── Dynamic import — Leaflet needs browser env (no SSR) ── */
+const BillboardMap = dynamic(() => import("../components/BillboardMap"), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="w-full rounded-2xl flex items-center justify-center"
+      style={{ height: "620px", background: "#141d3f", border: "1px solid rgba(255,255,255,0.1)" }}
+    >
+      <div className="text-on-surface-variant animate-pulse">กำลังโหลดแผนที่…</div>
+    </div>
+  ),
+});
 
 const allBillboards = Object.values(billboards);
 
@@ -252,8 +266,18 @@ export default function BillboardListingPage() {
           </div>
         </div>
 
+        {/* ── MAP VIEW ── */}
+        {viewMode === "map" && (
+          <div className="mb-12">
+            <BillboardMap billboards={allBillboards} t={t} />
+            <p className="text-on-surface-variant text-sm text-center mt-4 opacity-60">
+              {t("Click a pin to view billboard details. Hover to preview.", "คลิกพินเพื่อดูรายละเอียดป้าย | วางเมาส์เพื่อดูตัวอย่าง")}
+            </p>
+          </div>
+        )}
+
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${viewMode === "map" ? "mt-8" : ""}`}>
           {visible.map((bb, i) => {
             const info = meta[bb.slug] ?? { zoneEn: "—", zoneTh: "—", audienceEn: "—", audienceTh: "—", id: bb.slug.toUpperCase(), typeEn: "Digital LED", typeTh: "ดิจิทัล LED" };
             const badge = badgeCls[bb.status] ?? "bg-white/20 text-white";
