@@ -14,28 +14,22 @@ import {
 /* ── Data ─────────────────────────────────────────────── */
 const leaders = [
   {
-    name: "Dr. Arisara Tan",
-    title: "CEO & Chief Visionary",
-    bio: "20+ years in regional DOOH and smart city infrastructure development.",
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1000&fit=crop&crop=face&facepad=3",
+    name: "ฉัตรมงคล เขมาภิรัตน์",
+    nameEn: "Chatmongkol Khemapirat",
+    title: "CEO",
+    titleTh: "ประธานเจ้าหน้าที่บริหาร",
+    bio: "ผู้นำและผู้ก่อตั้ง Media108 ด้วยประสบการณ์กว่า 15 ปีในธุรกิจสื่อโฆษณากลางแจ้งและเครือข่าย DOOH ในภาคตะวันออก",
+    bioEn: "Founder and driving force behind Media108, with 15+ years in outdoor advertising and DOOH networks across the Eastern Economic Corridor.",
+    img: "/team/ceo.jpg",
   },
   {
-    name: "Pakorn V.",
-    title: "Head of Data Science",
-    bio: "Former lead algorithm architect for global logistics networks.",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop&crop=face&facepad=3",
-  },
-  {
-    name: "Sarah Jenkins",
-    title: "Chief Creative Officer",
-    bio: "Award-winning creative director specializing in immersive large-scale digital campaigns.",
-    img: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=800&h=1000&fit=crop&crop=face&facepad=3",
-  },
-  {
-    name: "Lester Cheng",
-    title: "Director of Operations",
-    bio: "Specialist in large-scale hardware rollout and smart-grid integration.",
-    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1000&fit=crop&crop=face&facepad=3",
+    name: "เสริมสุข อรุณคีรีวัฒน์",
+    nameEn: "Sermsuk Arunkheerwat",
+    title: "Sales Manager",
+    titleTh: "ผู้จัดการฝ่ายขาย",
+    bio: "ผู้เชี่ยวชาญด้านกลยุทธ์การขายสื่อโฆษณา ดูแลลูกค้าและพันธมิตรธุรกิจทั่วภาคตะวันออก",
+    bioEn: "Media sales strategy specialist managing key accounts and business partnerships across the Eastern region.",
+    img: "/team/sales-manager.jpg",
   },
 ];
 
@@ -303,7 +297,7 @@ export default function AboutPage() {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
             {leaders.map((leader) => (
               <div key={leader.name} className="group">
                 {/* Portrait */}
@@ -313,54 +307,57 @@ export default function AboutPage() {
                     alt={leader.name}
                     className="w-full h-full object-cover object-top"
                     style={{
-                      filter: "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)",
+                      filter: "grayscale(0.15) brightness(0.88) contrast(1.1)",
                       transition: "filter 800ms ease, transform 800ms cubic-bezier(0.16,1,0.3,1)",
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(0.2) brightness(0.82) contrast(1.15) saturate(1.2)";
+                        "grayscale(0) brightness(0.95) contrast(1.05)";
                       (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLImageElement).style.filter =
-                        "grayscale(1) brightness(0.68) contrast(1.35) saturate(0)";
+                        "grayscale(0.15) brightness(0.88) contrast(1.1)";
                       (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
                     }}
                     src={leader.img}
+                    onError={(e) => {
+                      /* fallback if photo file not yet placed in /public/team/ */
+                      (e.currentTarget as HTMLImageElement).src =
+                        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face&facepad=3";
+                    }}
                   />
 
-                  {/* Deep cinematic vignette — corners & edges */}
+                  {/* Deep cinematic vignette */}
                   <div className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse 80% 85% at 50% 40%, transparent 45%, rgba(3,8,30,0.75) 100%)",
-                    }}
+                    style={{ background: "radial-gradient(ellipse 80% 85% at 50% 40%, transparent 45%, rgba(3,8,30,0.65) 100%)" }}
                   />
-                  {/* Bottom gradient — text legibility */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
-                    style={{
-                      background: "linear-gradient(to top, rgba(6,17,51,0.98) 0%, transparent 100%)",
-                    }}
+                  {/* Bottom gradient */}
+                  <div className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
+                    style={{ background: "linear-gradient(to top, rgba(6,17,51,0.97) 0%, transparent 100%)" }}
                   />
-                  {/* Hover: red brand tint */}
+                  {/* Hover: red tint */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: "linear-gradient(160deg, rgba(230,57,70,0.18) 0%, transparent 55%)" }}
+                    style={{ background: "linear-gradient(160deg, rgba(230,57,70,0.15) 0%, transparent 55%)" }}
                   />
 
-                  {/* Name overlay inside card (bottom) */}
-                  <div className="absolute bottom-0 inset-x-0 p-4">
-                    <p className="font-label-md text-[10px] text-primary uppercase tracking-[0.2em] mb-1">
+                  {/* Name overlay */}
+                  <div className="absolute bottom-0 inset-x-0 p-6">
+                    <p className="font-label-md text-[11px] text-primary uppercase tracking-[0.22em] mb-2">
                       {leader.title}
                     </p>
-                    <h3 className="font-headline-md text-[18px] text-white leading-tight">
+                    <h3 className="font-headline-md text-[22px] text-white leading-tight mb-1">
                       {leader.name}
                     </h3>
+                    <p className="text-white/50 text-[12px] tracking-wide">
+                      {leader.titleTh}
+                    </p>
                   </div>
                 </div>
 
                 {/* Bio below card */}
                 <p className="text-on-surface-variant text-sm leading-relaxed">
-                  {leader.bio}
+                  {t(leader.bioEn, leader.bio)}
                 </p>
               </div>
             ))}
