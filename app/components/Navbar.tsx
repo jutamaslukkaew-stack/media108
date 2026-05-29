@@ -49,7 +49,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center shrink-0">
-          <span className="text-primary font-black text-2xl tracking-tight">Media</span>
+          <span className="text-primary font-black text-2xl tracking-tight uppercase">MEDIA</span>
           <span className="text-white font-black text-2xl tracking-tight">108</span>
         </Link>
 
