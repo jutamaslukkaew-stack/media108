@@ -206,15 +206,16 @@ export default function MediaKitPage() {
                     ))}
                   </ul>
 
-                  <button
-                    className={`w-full py-3 rounded-lg font-label-md text-label-md transition-all ${
+                  <a
+                    href="https://www.media108.com/contact#for"
+                    className={`block w-full py-3 rounded-lg font-label-md text-label-md text-center transition-all ${
                       pkg.featured
                         ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02]"
                         : "bg-surface-container-highest text-on-surface hover:bg-primary hover:text-on-primary"
                     }`}
                   >
                     {t("Request Price", "สอบถามราคา")}
-                  </button>
+                  </a>
                 </div>
               );
             })}
