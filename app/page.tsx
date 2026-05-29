@@ -58,9 +58,9 @@ const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: 
 ];
 
 const stats = [
-  { label: "การเข้าถึงทั้งหมด",   value: "2.4M+", width: "85%" },
-  { label: "ยานพาหนะต่อวัน",     value: "1.2M+", width: "70%" },
-  { label: "Impressions/เดือน",  value: "35M+",  width: "95%" },
+  { label: "การเข้าถึงทั้งหมด",  to: 2.4, suffix: "M+", decimals: 1, width: "85%" },
+  { label: "ยานพาหนะต่อวัน",    to: 1.2, suffix: "M+", decimals: 1, width: "70%" },
+  { label: "Impressions/เดือน", to: 35,  suffix: "M+", decimals: 0, width: "95%" },
 ];
 
 const peakTimes = [
@@ -143,6 +143,88 @@ function CountUp({ to, suffix = "", duration = 1400 }: { to: number; suffix?: st
     return () => obs.disconnect();
   }, [to, duration]);
   return <span ref={ref}>{count}{suffix}</span>;
+}
+
+/* ── FloatCountUp — handles decimal values like 2.4M+ ── */
+function FloatCountUp({ to, suffix = "", decimals = 0, duration = 1800, active }: {
+  to: number; suffix?: string; decimals?: number; duration?: number; active: boolean;
+}) {
+  const [count, setCount] = useState(0);
+  const started = useRef(false);
+  useEffect(() => {
+    if (!active || started.current) return;
+    started.current = true;
+    const startTime = Date.now();
+    const tick = () => {
+      const p = Math.min((Date.now() - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setCount(parseFloat((eased * to).toFixed(decimals)));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [active, to, decimals, duration]);
+  return <>{count.toFixed(decimals)}{suffix}</>;
+}
+
+/* ── StatsDataSection — the animated audience stats grid ── */
+function StatsDataSection({ items }: { items: { label: string; to: number; suffix: string; decimals: number; width: string }[] }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
+  const [barWidths, setBarWidths] = useState(items.map(() => "0%"));
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActive(true);
+          setTimeout(() => setBarWidths(items.map((s) => s.width)), 350);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [items]);
+
+  return (
+    <div ref={sectionRef} className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-20">
+      {items.map((s, i) => (
+        <div
+          key={s.label}
+          className="glass-card p-10 rounded-2xl text-center border-b-4 border-b-primary/50 hover:border-b-primary"
+          style={{
+            opacity: active ? 1 : 0,
+            transform: active ? "translateY(0) scale(1)" : "translateY(32px) scale(0.9)",
+            transition: `opacity 0.65s ease ${i * 130}ms, transform 0.75s cubic-bezier(0.16,1,0.3,1) ${i * 130}ms, border-color 0.3s`,
+          }}
+        >
+          <p className="text-primary font-label-md uppercase tracking-widest mb-4">{s.label}</p>
+          <div
+            className="font-data-mono text-6xl text-white mb-6"
+            style={{
+              textShadow: active ? "0 0 22px rgba(230,57,70,0.5), 0 0 8px rgba(230,57,70,0.3)" : "none",
+              transition: `text-shadow 0.9s ease ${i * 130 + 400}ms`,
+            }}
+          >
+            <FloatCountUp to={s.to} suffix={s.suffix} decimals={s.decimals} active={active} duration={1800} />
+          </div>
+          {/* Progress bar — animated from 0 → target */}
+          <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+            <div
+              className="bg-primary h-full rounded-full"
+              style={{
+                width: barWidths[i],
+                transition: `width 1.4s cubic-bezier(0.16,1,0.3,1) ${i * 130 + 300}ms`,
+              }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /* ── StatsSection Component ── */
@@ -1068,20 +1150,7 @@ export default function Home() {
               )}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-20">
-            {stats.map((s, i) => (
-              <div
-                key={s.label}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-2xl text-center border-b-4 border-b-primary/50 hover:border-b-primary transition-colors duration-300`}
-              >
-                <p className="text-primary font-label-md uppercase tracking-widest mb-4">{s.label}</p>
-                <div className="font-data-mono text-6xl text-white mb-6">{s.value}</div>
-                <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                  <div className="bg-primary h-full progress-bar" style={{ width: s.width }} />
-                </div>
-              </div>
-            ))}
-          </div>
+          <StatsDataSection items={stats} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
             <div className="sr sr-left glass-card p-10 rounded-2xl">
               <h4 className="font-headline-md text-on-surface mb-8 flex items-center gap-3">
