@@ -446,7 +446,7 @@ export default function Home() {
               alt="ป้าย LED Media108 กลางคืน – Pattaya Sukhumvit DOOH Billboard"
               className="w-full h-full object-cover"
               style={{ willChange: "transform" }}
-              src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80"
+              src="/image/hero homej.png"
               fetchPriority="high"
               decoding="async"
             />
