@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
@@ -30,6 +30,32 @@ const iconMap: Record<string, LucideIcon> = {
   local_dining:   Utensils,
 };
 
+/* ── Category → campaign banner image mapping ── */
+const categoryImages: Record<string, string> = {
+  "ร้านอาหาร":          "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80",
+  "คาเฟ่":              "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=900&q=80",
+  "ร้านอาหาร & คาเฟ่":  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80",
+  "โรงแรม":             "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80",
+  "ท่องเที่ยว":          "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=900&q=80",
+  "พักผ่อน & รีสอร์ท":  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80",
+  "ท่องเที่ยว & รีสอร์ท":"https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=900&q=80",
+  "กิจกรรม & บันเทิง":  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80",
+  "กิจกรรม":            "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80",
+  "กิจกรรม & ดนตรี":    "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=900&q=80",
+  "อสังหาริมทรัพย์":     "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80",
+  "IT & เทคโนโลยี":     "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=900&q=80",
+  "IT & Software":       "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=900&q=80",
+  "HR & Corporate":      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80",
+  "CSR & องค์กร":       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=80",
+  "สื่อ & โฆษณา":       "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&q=80",
+  "ตลาด & ชุมชน":       "https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=80",
+  "สวนน้ำ & กีฬา":      "https://images.unsplash.com/photo-1530549387789-4c1017266635?w=900&q=80",
+  "สถานที่จัดงาน":       "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=80",
+  "บันเทิง & ไลฟ์สไตล์": "https://images.unsplash.com/photo-1549577434-d7615fd4ceac?w=900&q=80",
+  "การเงิน & อสังหา":   "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=900&q=80",
+};
+const DEFAULT_CAMPAIGN_IMG = "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=80";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -39,6 +65,161 @@ export default function BillboardDetailPage({ params }: PageProps) {
   const data = billboards[slug];
   if (!data) notFound();
   return <BillboardDetail data={data!} />;
+}
+
+/* ── Campaign Showcase Carousel Component ── */
+function CampaignCarousel({
+  campaigns,
+  t,
+}: {
+  campaigns: { name: string; category: string }[];
+  t: (en: string, th: string) => string;
+}) {
+  /* Show max 5 slides */
+  const slides = campaigns.slice(0, 5).map((c) => ({
+    ...c,
+    img: categoryImages[c.category] ?? DEFAULT_CAMPAIGN_IMG,
+  }));
+
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const total = slides.length;
+
+  const prev = useCallback(() => setCurrent((i) => (i - 1 + total) % total), [total]);
+  const next = useCallback(() => setCurrent((i) => (i + 1) % total), [total]);
+
+  /* Auto-play every 4 s */
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(next, 4000);
+    return () => clearInterval(id);
+  }, [paused, next]);
+
+  return (
+    <section className="py-20 bg-surface-container-lowest border-t border-border-glass overflow-hidden">
+      <div className="max-w-container-max mx-auto px-margin-desktop">
+
+        {/* Header */}
+        <div className="flex items-end justify-between mb-10">
+          <div className="sr sr-up">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-5 h-[1px] bg-primary-container" />
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Real Campaigns</span>
+            </div>
+            <h2 className="font-headline-lg text-headline-lg text-white mb-1">
+              {t("Sample Campaigns on This Billboard", "ตัวอย่างแคมเปญบนป้ายนี้")}
+            </h2>
+            <p className="text-on-surface-variant text-sm">
+              {t("Brands that have run real campaigns here", "แบรนด์และธุรกิจที่เคยลงโฆษณาจริงบนป้ายนี้")}
+            </p>
+          </div>
+          {/* Prev / Next buttons */}
+          <div className="flex gap-3 shrink-0">
+            <button
+              onClick={prev}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all"
+              aria-label="Previous"
+            >
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <button
+              onClick={next}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-primary hover:border-primary transition-all"
+              aria-label="Next"
+            >
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Carousel Track */}
+        <div
+          className="relative overflow-hidden rounded-2xl"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div
+            ref={trackRef}
+            className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            style={{ transform: `translateX(-${current * 100}%)` }}
+          >
+            {slides.map((slide, i) => (
+              <div
+                key={i}
+                className="relative shrink-0 w-full"
+                style={{ aspectRatio: "16/7" }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={slide.img}
+                  alt={slide.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
+
+                {/* Slide number badge */}
+                <div className="absolute top-6 right-6 bg-black/50 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 uppercase tracking-widest">
+                  {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                </div>
+
+                {/* Content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+                  <span className="inline-block bg-primary text-white text-[10px] font-bold uppercase tracking-[0.15em] px-3 py-1 rounded-full mb-4">
+                    {slide.category}
+                  </span>
+                  <h3 className="text-white font-bold mb-2 leading-tight"
+                    style={{ fontSize: "clamp(1.4rem, 3vw, 2.2rem)", letterSpacing: "-0.02em" }}>
+                    {slide.name}
+                  </h3>
+                  <p className="text-white/60 text-sm">
+                    {t("Advertised on this billboard", "โฆษณาบนป้ายนี้จริง")}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dot indicators + progress */}
+        <div className="flex items-center gap-3 mt-6 justify-center">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => { setCurrent(i); setPaused(true); setTimeout(() => setPaused(false), 6000); }}
+              className="relative overflow-hidden rounded-full transition-all duration-300"
+              style={{
+                width: i === current ? "32px" : "8px",
+                height: "8px",
+                background: i === current ? "#E63946" : "rgba(255,255,255,0.2)",
+              }}
+              aria-label={`Go to slide ${i + 1}`}
+            >
+              {i === current && !paused && (
+                <span
+                  className="absolute inset-y-0 left-0 bg-white/40 rounded-full"
+                  style={{ animation: "progress-bar 4s linear forwards" }}
+                />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes progress-bar {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+      `}</style>
+    </section>
+  );
 }
 
 /* ─────────────────────────────────────────────────────── */
@@ -378,36 +559,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </section>
         )}
 
-        {/* ── 8b. Recent Campaigns ── */}
+        {/* ── 8b. Campaign Showcase Carousel ── */}
         {data.recentCampaigns && data.recentCampaigns.length > 0 && (
-          <section className="py-20 bg-surface-container-lowest border-t border-border-glass">
-            <div className="max-w-container-max mx-auto px-margin-desktop">
-              <div className="sr sr-up mb-10">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="w-5 h-[1px] bg-primary-container" />
-                  <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">Real Campaigns</span>
-                </div>
-                <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Sample Campaigns on This Billboard", "ตัวอย่างแคมเปญบนป้ายนี้")}</h2>
-                <p className="text-on-surface-variant text-sm">{t("Brands and businesses that have advertised on this billboard", "แบรนด์และธุรกิจที่เคยลงโฆษณาจริงบนป้ายนี้")}</p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                {data.recentCampaigns.map((c, i) => (
-                  <div
-                    key={i}
-                    className="sr sr-up glass-card rounded-xl p-4 border border-border-glass hover:border-primary/30 hover:bg-primary/5 transition-all duration-200 group"
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0 group-hover:bg-primary-container transition-colors" />
-                      <div>
-                        <p className="text-on-surface font-semibold text-sm leading-snug mb-1">{c.name}</p>
-                        <p className="text-on-surface-variant text-[11px] tracking-wide uppercase">{c.category}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+          <CampaignCarousel campaigns={data.recentCampaigns} t={t} />
         )}
 
         {/* ── 9. Related Billboards ── */}
