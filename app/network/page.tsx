@@ -399,7 +399,8 @@ export default function NetworkPage() {
           </div>
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-on-surface-variant font-label-md text-sm">
-              {t("© 2024 MEDIA108. All rights reserved. Precision DOOH Media Solutions.", "© 2024 MEDIA108. สงวนลิขสิทธิ์ โซลูชันสื่อ DOOH ที่แม่นยำ")}
+              © 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}
+              <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
               <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>

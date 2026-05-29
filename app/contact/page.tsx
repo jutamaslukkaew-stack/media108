@@ -328,11 +328,12 @@ export default function ContactPage() {
                   <p className="font-body-md text-on-surface-variant">{t("Chonburi, Thailand", "ชลบุรี, ประเทศไทย")}</p>
                 </div>
               </div>
-              <div className="bg-surface-container-low p-4 rounded-lg border border-white/5">
-                <p className="font-label-md text-label-md text-white mb-1">Media108 Digital Hub</p>
-                <p className="font-body-md text-on-surface-variant text-sm">
-                  {t("Industrial Estate Road, 20130", "ถนนนิคมอุตสาหกรรม 20130")}
-                </p>
+              <div className="bg-surface-container-low p-4 rounded-lg border border-white/5 space-y-1">
+                <p className="font-label-md text-label-md text-white">บริษัท มีเดีย 108 จำกัด</p>
+                <p className="font-body-md text-on-surface-variant text-sm">MEDIA 108 COMPANY LIMITED</p>
+                <p className="font-body-md text-on-surface-variant text-sm mt-2">800/108 ถนนสุขุมวิท ต.แสนสุข</p>
+                <p className="font-body-md text-on-surface-variant text-sm">อ.เมืองชลบุรี จ.ชลบุรี</p>
+                <p className="font-body-md text-on-surface-variant text-xs mt-2 opacity-60">เลขทะเบียน 0205548033971</p>
               </div>
             </div>
 
@@ -348,8 +349,8 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
             {/* Brand */}
             <div className="md:col-span-1 space-y-4">
-              <div className="text-2xl font-black tracking-tight">
-                <span className="text-primary">Media</span><span className="text-white">108</span>
+              <div className="text-2xl font-black tracking-tight uppercase">
+                <span className="text-primary">MEDIA</span><span className="text-white">108</span>
               </div>
               <p className="font-body-md text-body-md text-on-surface-variant">
                 {t(
@@ -418,7 +419,8 @@ export default function ContactPage() {
 
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-on-surface-variant font-label-md text-sm">
-              © 2024 MEDIA108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} Precision DOOH Media Solutions.
+              © 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}
+              <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
               <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>

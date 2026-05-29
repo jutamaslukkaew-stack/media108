@@ -349,11 +349,11 @@ export default function ServicesPage() {
             <a href="mailto:media.108.company@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">media.108.company@gmail.com</a>
             <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
             <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-primary transition-colors text-sm">LINE: @media108</a>
-            <p className="text-on-surface-variant text-sm">{t("HQ: Chonburi, Thailand", "สำนักงานใหญ่: ชลบุรี, ประเทศไทย")}</p>
+            <p className="text-on-surface-variant text-sm">800/108 ถ.สุขุมวิท ต.แสนสุข อ.เมืองชลบุรี จ.ชลบุรี</p>
           </div>
         </div>
         <div className="px-margin-desktop py-8 border-t border-white/5 text-center text-on-surface-variant text-xs opacity-60">
-          {t("© 2024 Media108. All rights reserved. Precision in Digital Out-of-Home.", "© 2024 Media108. สงวนลิขสิทธิ์ ความแม่นยำในสื่อดิจิทัลกลางแจ้ง")}
+          © 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} | เลขทะเบียน 0205548033971
         </div>
       </footer>
     </>

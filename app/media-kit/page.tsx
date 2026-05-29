@@ -444,7 +444,8 @@ export default function MediaKitPage() {
 
           <div className="pt-12 border-t border-border-glass flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="font-label-md text-label-md text-on-surface-variant opacity-60 text-sm">
-              © 2024 MEDIA108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} Precision DOOH Media Solutions.
+              © 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}
+              <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </p>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
               <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>

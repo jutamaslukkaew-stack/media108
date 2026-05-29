@@ -647,7 +647,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
         </div>
         <div className="max-w-container-max mx-auto px-margin-desktop mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-on-surface-variant text-xs">© 2024 Media108. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}</p>
+          <p className="text-on-surface-variant text-xs">© 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} | เลขทะเบียน 0205548033971</p>
           <div className="flex gap-8">
             <span className="text-on-surface-variant text-xs">GLOBAL PARTNER PROGRAM</span>
             <span className="text-on-surface-variant text-xs">ISO 27001 CERTIFIED</span>

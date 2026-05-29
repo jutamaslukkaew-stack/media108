@@ -392,7 +392,7 @@ export default function BillboardListingPage() {
           ))}
         </div>
         <div className="text-secondary opacity-80 text-[16px]">
-          © 2024 Media108 DOOH. {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")}
+          © 2026 บริษัท มีเดีย 108 จำกัด (MEDIA 108 COMPANY LIMITED) {t("All rights reserved.", "สงวนลิขสิทธิ์ทุกประการ")} | เลขทะเบียน 0205548033971
         </div>
       </footer>
 
