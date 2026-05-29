@@ -26,7 +26,22 @@
       "Read(//Users/pannaphat/.gh/**)",
       "Bash(git remote *)",
       "Bash(git credential *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://images.unsplash.com/photo-1505248629789-cacd85d70f13?w=400&q=80\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&q=80\")",
+      "Bash(git commit *)",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(npm install *)",
+      "Bash(sudo chown -R 501:20 \"/Users/pannaphat/.npm\")",
+      "Bash(find /Users/pannaphat/Downloads /Users/pannaphat/Desktop /Users/pannaphat/Pictures -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.webp\" 2>/dev/null | head -30)",
+      "Bash(find /tmp /var/folders -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.webp\" 2>/dev/null | grep -v \".DS_Store\" | head -20)",
+      "Bash(open /Users/pannaphat/media108/public/team/)",
+      "Bash(identify \"/Users/pannaphat/รูปทีม/ดาวน์โหลด.jpeg\")"
     ]
   }
 }
