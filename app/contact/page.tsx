@@ -228,7 +228,7 @@ export default function ContactPage() {
                       "I consent to the collection and processing of my personal data according to the ",
                       "ฉันยินยอมให้เก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลของฉันตาม "
                     )}
-                    <a className="text-primary underline hover:text-primary/80" href="#">
+                    <a className="text-primary underline hover:text-primary/80" href="/privacy-policy" target="_blank" rel="noopener noreferrer">
                       {t("PDPA Policy", "นโยบาย PDPA")}
                     </a>
                     {t(
@@ -385,14 +385,14 @@ export default function ContactPage() {
               </h5>
               <nav className="flex flex-col gap-2">
                 {([
-                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ" },
-                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค" },
-                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน" },
-                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม" },
-                ] as { en: string; th: string }[]).map((l) => (
-                  <a key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
+                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
+                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                ] as { en: string; th: string; href: string }[]).map((l) => (
+                  <Link key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href={l.href}>
                     {t(l.en, l.th)}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
@@ -403,15 +403,14 @@ export default function ContactPage() {
                 {t("Connect", "ติดต่อ")}
               </h5>
               <div className="flex gap-3">
-                {([Globe, Mail] as LucideIcon[]).map((Icon, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors"
-                  >
-                    <Icon size={20} className="text-primary" />
-                  </a>
-                ))}
+                <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer"
+                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-[#06C755]/20 transition-colors">
+                  <Globe size={20} className="text-primary" />
+                </a>
+                <a href="mailto:media.108.company@gmail.com"
+                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors">
+                  <Mail size={20} className="text-primary" />
+                </a>
               </div>
             </div>
           </div>

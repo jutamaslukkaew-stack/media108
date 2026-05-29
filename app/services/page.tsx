@@ -314,27 +314,27 @@ export default function ServicesPage() {
 
           <div className="flex flex-col gap-4">
             <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Network", "เครือข่าย")}</h4>
-            {[
-              t("Network Map", "แผนที่เครือข่าย"),
-              t("Global Offices", "สำนักงานทั่วโลก"),
-              t("Case Studies", "กรณีศึกษา"),
-            ].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
-                {l}
-              </a>
+            {([
+              { label: t("Network Map", "แผนที่เครือข่าย"), href: "/network" },
+              { label: t("Global Offices", "สำนักงานทั่วโลก"), href: "/about" },
+              { label: t("Case Studies", "กรณีศึกษา"), href: "/billboard" },
+            ] as { label: string; href: string }[]).map((l) => (
+              <Link key={l.label} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href={l.href}>
+                {l.label}
+              </Link>
             ))}
           </div>
 
           <div className="flex flex-col gap-4">
             <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Company", "บริษัท")}</h4>
-            {[
-              t("Careers", "ร่วมงานกับเรา"),
-              t("Privacy Policy", "นโยบายความเป็นส่วนตัว"),
-              t("Terms of Service", "เงื่อนไขการให้บริการ"),
-            ].map((l) => (
-              <a key={l} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href="#">
-                {l}
-              </a>
+            {([
+              { label: t("Careers", "ร่วมงานกับเรา"),               href: "/contact" },
+              { label: t("Privacy Policy", "นโยบายความเป็นส่วนตัว"), href: "/privacy-policy" },
+              { label: t("Terms of Service", "เงื่อนไขการให้บริการ"), href: "/privacy-policy" },
+            ] as { label: string; href: string }[]).map((l) => (
+              <Link key={l.label} className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm" href={l.href}>
+                {l.label}
+              </Link>
             ))}
           </div>
 

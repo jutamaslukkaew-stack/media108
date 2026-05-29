@@ -364,14 +364,14 @@ export default function NetworkPage() {
             <div>
               <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Media Focus", "โฟกัสสื่อ")}</h6>
               <ul className="space-y-4">
-                {[
-                  t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),
-                  t("Chonburi Strategic", "ชลบุรีเชิงกลยุทธ์"),
-                  t("Bang Saen Network", "เครือข่ายบางแสน"),
-                  t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),
-                ].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item}</a>
+                {([
+                  { label: t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),   href: "/billboard/pattaya-sukhumvit-01" },
+                  { label: t("Chonburi Strategic",  "ชลบุรีเชิงกลยุทธ์"),  href: "/billboard/pattaya-gateway" },
+                  { label: t("Bang Saen Network",   "เครือข่ายบางแสน"),    href: "/billboard" },
+                  { label: t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),  href: "/billboard/eec-tech-square" },
+                ] as { label: string; href: string }[]).map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item.label}</Link>
                   </li>
                 ))}
               </ul>

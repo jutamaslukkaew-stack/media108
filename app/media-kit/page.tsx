@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import GlobalCTABar from "../components/GlobalCTABar";
 import { useScrollReveal } from "../hooks/useScrollReveal";
@@ -404,14 +405,14 @@ export default function MediaKitPage() {
               </h5>
               <nav className="flex flex-col gap-2">
                 {([
-                  { en: "Pattaya Digital Hub", th: "พัทยา ดิจิทัล ฮับ" },
-                  { en: "Chonburi Strategic",  th: "ชลบุรี สตราทีจิค" },
-                  { en: "Bang Saen Network",   th: "เครือข่ายบางแสน" },
-                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม" },
-                ] as { en: string; th: string }[]).map((l) => (
-                  <a key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href="#">
+                  { en: "Pattaya Digital Hub", th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
+                  { en: "Chonburi Strategic",  th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
+                  { en: "Bang Saen Network",   th: "เครือข่ายบางแสน",     href: "/billboard" },
+                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                ] as { en: string; th: string; href: string }[]).map((l) => (
+                  <Link key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href={l.href}>
                     {t(l.en, l.th)}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>

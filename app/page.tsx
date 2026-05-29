@@ -14,7 +14,7 @@ import {
 
 const featuredBillboards = [
   {
-    href: "/billboard/m108-cbd-01",
+    href: "/billboard/pattaya-sukhumvit-01",
     img: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80",
     alt: "Pattaya Sukhumvit 01",
     name: "Pattaya Sukhumvit 01",
@@ -26,7 +26,7 @@ const featuredBillboards = [
     descTh: "ลูกค้าอย่าง Love Pier Beach Cafe, Camera Hotel และ Pool-Villa.com เลือกป้ายนี้เพื่อเข้าถึงนักท่องเที่ยวขาเข้าพัทยาตลอด 24 ชม.",
   },
   {
-    href: "/billboard/m108-uni-42",
+    href: "/billboard/pattaya-gateway",
     img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
     alt: "Pattaya Gateway",
     name: "Pattaya Gateway",
@@ -38,7 +38,7 @@ const featuredBillboards = [
     descTh: "แคมเปญ Concert Hall, Wedding Hall, Corporate Hall และ Draco ต่างเลือกจุดนี้เพื่อประกาศกิจกรรมสู่กลุ่มคนเมืองและครอบครัว",
   },
   {
-    href: "/billboard/m108-air-09",
+    href: "/billboard/eec-tech-square",
     img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
     alt: "EEC Tech Square",
     name: "EEC Tech Square",
@@ -1400,18 +1400,18 @@ export default function Home() {
               </h6>
               <ul className="space-y-4">
                 {([
-                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ" },
-                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค" },
-                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน" },
-                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม" },
-                ] as { en: string; th: string }[]).map(({ en, th }) => (
+                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
+                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                ] as { en: string; th: string; href: string }[]).map(({ en, th, href }) => (
                   <li key={en}>
-                    <a
-                      href="#"
+                    <Link
+                      href={href}
                       className="text-on-surface-variant hover:text-primary transition-colors font-body-md"
                     >
                       {t(en, th)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -1421,15 +1421,22 @@ export default function Home() {
                 {t("Connect", "ติดต่อ")}
               </h6>
               <div className="flex gap-4 mb-8">
-                {[Share2, Mail].map((Icon, idx) => (
-                  <a
-                    key={idx}
-                    href="#"
-                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface hover:text-on-primary"
-                  >
-                    <Icon size={20} />
-                  </a>
-                ))}
+                <a
+                  href="https://lin.ee/NXKWYdJ"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-[#06C755] transition-all text-on-surface hover:text-white"
+                  aria-label="LINE OA"
+                >
+                  <Share2 size={20} />
+                </a>
+                <a
+                  href="mailto:media.108.company@gmail.com"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary transition-all text-on-surface hover:text-on-primary"
+                  aria-label="Email"
+                >
+                  <Mail size={20} />
+                </a>
               </div>
               <div className="p-4 bg-surface-container-high rounded-lg border border-border-glass">
                 <p className="text-[11px] font-label-md text-on-surface-variant uppercase mb-2">

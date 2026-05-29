@@ -105,14 +105,14 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 className="flex flex-wrap gap-4 pt-4"
                 style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.48s both" }}
               >
-                <button className="bg-primary-container hover:brightness-110 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(230,57,70,0.3)]">
+                <Link href="/contact#form" className="bg-primary-container hover:brightness-110 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(230,57,70,0.3)]">
                   {t("Request Immediate Quote", "ขอใบเสนอราคาทันที")}
                   <ArrowRight size={18} />
-                </button>
-                <button className="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all">
+                </Link>
+                <Link href="/media-kit" className="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all">
                   <Download size={18} />
                   {t("Download Media Kit", "ดาวน์โหลด Media Kit")}
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -362,15 +362,16 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    className={`mt-auto w-full py-4 rounded-lg font-bold transition-all ${
+                  <Link
+                    href="/contact#form"
+                    className={`mt-auto w-full py-4 rounded-lg font-bold transition-all text-center block ${
                       tier.highlight
                         ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.4)] active:scale-95"
                         : "border border-white/20 text-white hover:bg-white/10"
                     }`}
                   >
                     {tier.ctaLabel}
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -469,12 +470,12 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Quick Links", "ลิงก์ด่วน")}</h4>
             {([
-              { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว" },
-              { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน" },
-              { en: "Contact Support",  th: "ติดต่อฝ่ายสนับสนุน" },
-              { en: "Global Network",   th: "เครือข่ายทั่วโลก" },
-            ] as { en: string; th: string }[]).map((l) => (
-              <a key={l.en} className="text-on-surface-variant hover:text-primary-container transition-colors text-sm" href="#">{t(l.en, l.th)}</a>
+              { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว", href: "/privacy-policy" },
+              { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน",     href: "/privacy-policy" },
+              { en: "Contact Support",  th: "ติดต่อฝ่ายสนับสนุน",    href: "/contact" },
+              { en: "Global Network",   th: "เครือข่ายทั่วโลก",       href: "/network" },
+            ] as { en: string; th: string; href: string }[]).map((l) => (
+              <Link key={l.en} className="text-on-surface-variant hover:text-primary-container transition-colors text-sm" href={l.href}>{t(l.en, l.th)}</Link>
             ))}
           </div>
           <div className="flex flex-col gap-4">
@@ -485,9 +486,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Social", "โซเชียล")}</h4>
             <div className="flex gap-4">
-              {["FB", "IG", "LN"].map((s) => (
-                <a key={s} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">{s}</a>
-              ))}
+              <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-[#06C755] hover:text-white transition-all text-sm font-bold">LN</a>
+              <a href="mailto:media.108.company@gmail.com" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">@</a>
+              <a href="tel:+66625636199" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">☎</a>
             </div>
           </div>
         </div>

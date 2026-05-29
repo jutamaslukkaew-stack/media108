@@ -357,10 +357,10 @@ export default function BillboardListingPage() {
         <div className="font-display-lg font-bold text-on-surface mb-4 text-2xl">Media108</div>
         <div className="flex flex-wrap justify-center gap-8 mb-8">
           {([
-            { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว", href: "#" },
-            { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน",      href: "#" },
-            { en: "Sustainability",   th: "ความยั่งยืน",            href: "#" },
-            { en: "Careers",          th: "ร่วมงานกับเรา",           href: "#" },
+            { en: "Privacy Policy",   th: "นโยบายความเป็นส่วนตัว", href: "/privacy-policy" },
+            { en: "Terms of Service", th: "ข้อกำหนดการใช้งาน",      href: "/privacy-policy" },
+            { en: "Sustainability",   th: "ความยั่งยืน",            href: "/about" },
+            { en: "Careers",          th: "ร่วมงานกับเรา",           href: "/contact" },
           ] as { en: string; th: string; href: string }[]).map((l) => (
             <Link key={l.en} href={l.href} className="text-on-surface-variant hover:text-primary transition-colors text-[16px]">
               {t(l.en, l.th)}
