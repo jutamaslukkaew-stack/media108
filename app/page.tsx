@@ -145,6 +145,109 @@ function CountUp({ to, suffix = "", duration = 1400 }: { to: number; suffix?: st
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
+/* ── StatsSection Component ── */
+const STATS = [
+  { to: 10,  suffix: "+",  labelEn: "Billboard Locations",  labelTh: "จุดป้ายในเครือข่าย" },
+  { to: 1,   suffix: "M+", labelEn: "Vehicles Per Day",     labelTh: "ยานพาหนะต่อวัน" },
+  { to: 100, suffix: "%",  labelEn: "EEC Zone Coverage",    labelTh: "ครอบคลุมพื้นที่ EEC" },
+  { to: 35,  suffix: "M+", labelEn: "Monthly Impressions",  labelTh: "Impressions ต่อเดือน" },
+];
+
+function StatsSection({ t }: { t: (en: string, th: string) => string }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="py-24 relative z-10 bg-surface border-y border-border-glass overflow-hidden"
+    >
+      {/* Top scan-line accent */}
+      <div
+        className="absolute inset-x-0 top-0 h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.4), transparent)" }}
+      />
+      {/* Ambient glow behind numbers */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 60% 40% at 50% 50%, rgba(230,57,70,0.06) 0%, transparent 70%)",
+          opacity: visible ? 1 : 0,
+          transition: "opacity 1.2s ease",
+        }}
+      />
+
+      <div className="max-w-container-max mx-auto px-margin-desktop">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+          {STATS.map((stat, i) => (
+            <div
+              key={stat.labelEn}
+              className={`text-center p-8 ${i < 3 ? "md:border-r border-white/10" : ""}`}
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(32px)",
+                transition: `opacity 0.7s ease ${i * 120}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 120}ms`,
+              }}
+            >
+              {/* Number */}
+              <div
+                className="font-data-mono text-5xl mb-2 font-black"
+                style={{
+                  color: "#E63946",
+                  textShadow: visible ? "0 0 24px rgba(230,57,70,0.55), 0 0 8px rgba(230,57,70,0.35)" : "none",
+                  transition: `text-shadow 0.8s ease ${i * 120 + 400}ms`,
+                }}
+              >
+                <CountUp to={stat.to} suffix={stat.suffix} duration={1600} />
+              </div>
+
+              {/* Animated underbar */}
+              <div
+                className="mx-auto mb-3 h-[2px] rounded-full"
+                style={{
+                  background: "linear-gradient(90deg, transparent, #E63946, transparent)",
+                  width: visible ? "60%" : "0%",
+                  transition: `width 0.8s cubic-bezier(0.16,1,0.3,1) ${i * 120 + 200}ms`,
+                }}
+              />
+
+              {/* Label */}
+              <div
+                className="font-label-md uppercase tracking-wider text-on-surface-variant"
+                style={{ fontSize: "11px" }}
+              >
+                {t(stat.labelEn, stat.labelTh)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom scan-line accent */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-[1px]"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.3), transparent)" }}
+      />
+    </section>
+  );
+}
+
 const tickerLocations = [
   "PATTAYA CENTRAL", "JOMTIEN BEACH", "SRI RACHA EEC", "BANG SAEN",
   "LAEM CHABANG PORT", "CHONBURI CITY", "AMATA CITY", "RAYONG",
@@ -800,33 +903,7 @@ export default function Home() {
       </section>
 
       {/* ── 3. Key Numbers ── */}
-      <section className="py-24 relative z-10 bg-surface border-y border-border-glass overflow-hidden">
-        {/* Subtle scan line accent */}
-        <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.4), transparent)" }} />
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-gutter">
-            {[
-              { to: 10,  suffix: "+",  labelEn: "Billboard Locations",    labelTh: "จุดป้ายในเครือข่าย" },
-              { to: 1,   suffix: "M+", labelEn: "Vehicles Per Day",        labelTh: "ยานพาหนะต่อวัน" },
-              { to: 100, suffix: "%",  labelEn: "EEC Zone Coverage",       labelTh: "ครอบคลุมพื้นที่ EEC" },
-              { to: 35,  suffix: "M+", labelEn: "Monthly Impressions",     labelTh: "Impressions ต่อเดือน" },
-            ].map((stat, i) => (
-              <div
-                key={stat.labelEn}
-                className={`sr sr-up sr-d${i + 1} text-center p-8 ${i < 3 ? "md:border-r border-white/10" : ""}`}
-              >
-                <div className="font-data-mono text-5xl mb-2 text-primary font-black">
-                  <CountUp to={stat.to} suffix={stat.suffix} />
-                </div>
-                <div className="font-label-md uppercase tracking-wider text-on-surface-variant">
-                  {t(stat.labelEn, stat.labelTh)}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-[1px]" style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.3), transparent)" }} />
-      </section>
+      <StatsSection t={t} />
 
       {/* ── 4. Featured Billboards ── */}
       <section className="bg-surface py-32 overflow-hidden" id="billboard">
