@@ -79,13 +79,13 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           <div className="flex items-center rounded-lg border border-white/15 overflow-hidden text-[11px] font-label-md font-bold tracking-widest">
             <button
               onClick={() => setLang("th")}
-              className={`px-3 py-2 transition-all ${lang === "th" ? "bg-primary text-white" : "text-on-surface-variant hover:bg-white/5"}`}
+              className={`px-3 py-2 transition-all ${lang === "th" ? "bg-primary text-blue-200" : "text-blue-400 hover:bg-white/5"}`}
             >
               TH
             </button>
             <button
               onClick={() => setLang("en")}
-              className={`px-3 py-2 transition-all ${lang === "en" ? "bg-primary text-white" : "text-on-surface-variant hover:bg-white/5"}`}
+              className={`px-3 py-2 transition-all ${lang === "en" ? "bg-primary text-blue-200" : "text-blue-400 hover:bg-white/5"}`}
             >
               EN
             </button>
@@ -104,13 +104,13 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
           <div className="flex items-center rounded-lg border border-white/15 overflow-hidden text-[10px] font-label-md font-bold">
             <button
               onClick={() => setLang("th")}
-              className={`px-2 py-1.5 transition-all ${lang === "th" ? "bg-primary text-white" : "text-on-surface-variant"}`}
+              className={`px-2 py-1.5 transition-all ${lang === "th" ? "bg-primary text-blue-200" : "text-blue-400"}`}
             >
               TH
             </button>
             <button
               onClick={() => setLang("en")}
-              className={`px-2 py-1.5 transition-all ${lang === "en" ? "bg-primary text-white" : "text-on-surface-variant"}`}
+              className={`px-2 py-1.5 transition-all ${lang === "en" ? "bg-primary text-blue-200" : "text-blue-400"}`}
             >
               EN
             </button>
