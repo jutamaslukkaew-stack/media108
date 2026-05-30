@@ -41,7 +41,27 @@
       "Bash(find /Users/pannaphat/Downloads /Users/pannaphat/Desktop /Users/pannaphat/Pictures -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.webp\" 2>/dev/null | head -30)",
       "Bash(find /tmp /var/folders -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.png\" -o -name \"*.webp\" 2>/dev/null | grep -v \".DS_Store\" | head -20)",
       "Bash(open /Users/pannaphat/media108/public/team/)",
-      "Bash(identify \"/Users/pannaphat/รูปทีม/ดาวน์โหลด.jpeg\")"
+      "Bash(identify \"/Users/pannaphat/รูปทีม/ดาวน์โหลด.jpeg\")",
+      "Bash(cp \"/Users/pannaphat/Downloads/สถานที่แนะนำติดตั้งป้ายดิจิตอล_ชลบุรี.pages\" /tmp/billboards.pages)",
+      "Bash(unzip -o /tmp/billboards.pages -d /tmp/billboards_pages/)",
+      "Bash(cp \"/Users/pannaphat/media108/ข้อมูสถานที่ติดป้าย/สถานที่แนะนำติดตั้งป้ายดิจิตอล_ชลบุรี.pages\" /tmp/billboards.pages && unzip -o /tmp/billboards.pages -d /tmp/billboards_pages/ 2>&1 | head -30)",
+      "Bash(mdimport -t -d3 \"/Users/pannaphat/media108/ข้อมูสถานที่ติดป้าย/สถานที่แนะนำติดตั้งป้ายดิจิตอล_ชลบุรี.pages\")",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "WebFetch(domain:maps.googleapis.com)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(find ~/Desktop ~/Downloads ~/Documents -maxdepth 3 -name \"*.jpg\" -o -name \"*.png\" -o -name \"*.jpeg\" 2>/dev/null | grep -i \"bang\\\\|burapha\\\\|chon\\\\|sri\\\\|rob\\\\|sukhumvit\\\\|billboard\\\\|mockup\\\\|pattaya\\\\|nong\" | head -20)",
+      "Bash(sort -k9)",
+      "Bash(grep -n \"GlobalCTABar\\\\|<\\\\/main>\\\\|<\\\\/>\\\\s*$\" /Users/pannaphat/media108/app/billboard/\\\\[slug\\\\]/page.tsx)",
+      "Bash(find /Users/pannaphat -maxdepth 5 \\\\\\( -name \"*.pdf\" -o -name \"*media*kit*\" -o -name \"*mediakit*\" -o -name \"*Media*Kit*\" \\\\\\) 2>/dev/null | grep -v \"Library\\\\|node_modules\\\\|.next\" | head -15)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import fpdf; print\\('ok'\\)\")",
+      "Bash(npx next *)",
+      "Bash(echo \"Started PID $!\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\" http://localhost:3000/billboard/pattaya-sukhumvit-01)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/billboard/pattaya-gateway)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/billboard/eec-tech-square)"
     ]
   }
 }
