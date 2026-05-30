@@ -15,7 +15,7 @@ import {
 const featuredBillboards = [
   {
     href: "/billboard/pattaya-sukhumvit-01",
-    img: "https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200&q=80",
+    img: "/image/pattaya-sukhumvit.jpg",
     alt: "ป้าย LED พัทยา-สุขุมวิท เส้นทางหลัก",
     name: "Pattaya Sukhumvit 01",
     locationEn: "Main Pattaya Route",
@@ -27,7 +27,7 @@ const featuredBillboards = [
   },
   {
     href: "/billboard/pattaya-gateway",
-    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
+    img: "/image/pattaya-gateway.jpg",
     alt: "ป้าย LED สี่แยกพัทยากลาง Gateway",
     name: "Pattaya Gateway",
     locationEn: "Pattaya Central Intersection",
