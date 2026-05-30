@@ -93,10 +93,8 @@ export const billboards: Record<string, BillboardData> = {
     price: "฿45,000",
     status: "Available",
 
-    imgHero:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1920&q=80",
-    imgDay:
-      "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80",
+    imgHero: "/image/pattaya-sukhumvit.jpg",
+    imgDay:  "/image/pattaya-sukhumvit.jpg",
     imgNight:
       "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80",
     imgDrone:
@@ -229,8 +227,7 @@ export const billboards: Record<string, BillboardData> = {
     price: "ขอใบเสนอราคา",
     status: "Available",
 
-    imgDay:
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
+    imgDay:  "/image/pattaya-gateway.jpg",
     imgNight:
       "https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?w=1200&q=80",
 
