@@ -27,11 +27,6 @@ const allBillboards = Object.values(billboards);
 
 /* ── Per-slug metadata to match Stitch card layout ── */
 const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string; audienceTh: string; id: string; typeEn: string; typeTh: string }> = {
-  // existing
-  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",       zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท",  audienceEn: "High-Income Travelers",  audienceTh: "นักเดินทางกำลังซื้อสูง",       id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "pattaya-gateway":      { zoneEn: "Central Intersection",     zoneTh: "สี่แยกกลางเมืองพัทยา",       audienceEn: "Tourists & Locals",      audienceTh: "นักท่องเที่ยวและคนท้องถิ่น",   id: "PY-GW-04", typeEn: "Large Format LED", typeTh: "LED แลนด์มาร์ค" },
-  "eec-tech-square":      { zoneEn: "Sri Racha Industrial",     zoneTh: "นิคมอุตสาหกรรมศรีราชา",      audienceEn: "Professionals & B2B",    audienceTh: "ผู้บริหารและธุรกิจ B2B",        id: "EEC-SR-02", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "jomtien-coastal":      { zoneEn: "Jomtien Coastal Strip",    zoneTh: "ย่านชายฝั่งจอมเทียน",        audienceEn: "Tourists & Expats",      audienceTh: "นักท่องเที่ยวและชาวต่างชาติ",  id: "JT-CST-03", typeEn: "Large Format LED", typeTh: "ดิจิทัลสแตติก" },
   // bangsaen
   "bangsaen-galaxy-junction":      { zoneEn: "Bangsaen Beach Entry",       zoneTh: "ทางเข้าหาดบางแสน",         audienceEn: "Tourists & Students",    audienceTh: "นักท่องเที่ยวและนักศึกษา",     id: "BS-GLX-01", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
   "bangsaen-burapha-university":   { zoneEn: "Burapha University Zone",     zoneTh: "โซนมหาวิทยาลัยบูรพา",      audienceEn: "Students & Parents",     audienceTh: "นักศึกษาและผู้ปกครอง",         id: "BS-BUU-02", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
@@ -50,9 +45,16 @@ const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string;
 
 /* ── Map pin positions (% within the map image) ── */
 const pins: Record<string, { top: string; left: string }> = {
-  "pattaya-sukhumvit-01": { top: "28%", left: "33%" },
-  "pattaya-gateway":      { top: "50%", left: "54%" },
-  "jomtien-coastal":      { top: "65%", left: "42%" },
+  "bangsaen-galaxy-junction":       { top: "12%", left: "38%" },
+  "bangsaen-burapha-university":    { top: "14%", left: "42%" },
+  "bangsaen-tech-college":          { top: "16%", left: "36%" },
+  "chonburi-tech-college-sukhumvit":{ top: "24%", left: "45%" },
+  "chonburi-city-school-zone":      { top: "26%", left: "47%" },
+  "sriracha-robinson-junction":     { top: "38%", left: "40%" },
+  "sriracha-central-mall":          { top: "40%", left: "42%" },
+  "sriracha-assumption-school":     { top: "42%", left: "38%" },
+  "pattaya-dolphin-roundabout":     { top: "58%", left: "50%" },
+  "pattaya-central-junction":       { top: "62%", left: "54%" },
 };
 
 /* ── Status badge ── */
@@ -64,10 +66,6 @@ const badgeCls: Record<string, string> = {
 
 /* ── Filter mappings ── */
 const areaMap: Record<string, string> = {
-  "pattaya-sukhumvit-01":          "Pattaya",
-  "pattaya-gateway":               "Pattaya",
-  "eec-tech-square":               "Sri Racha",
-  "jomtien-coastal":               "Pattaya",
   "bangsaen-galaxy-junction":      "Bangsaen",
   "bangsaen-burapha-university":   "Bangsaen",
   "bangsaen-tech-college":         "Bangsaen",
@@ -89,10 +87,6 @@ const areaTh: Record<string, string> = {
 };
 
 const audienceMap: Record<string, string[]> = {
-  "pattaya-sukhumvit-01":           ["Tourists", "Professionals"],
-  "pattaya-gateway":                ["Tourists", "Locals"],
-  "eec-tech-square":                ["Professionals", "B2B"],
-  "jomtien-coastal":                ["Tourists", "Expats"],
   "bangsaen-galaxy-junction":       ["Tourists", "Locals"],
   "bangsaen-burapha-university":    ["Tourists", "Locals"],
   "bangsaen-tech-college":          ["Locals"],
@@ -106,10 +100,6 @@ const audienceMap: Record<string, string[]> = {
 };
 
 const mediaTypeMap: Record<string, string> = {
-  "pattaya-sukhumvit-01":           "Large Format LED",
-  "pattaya-gateway":                "Large Format LED",
-  "eec-tech-square":                "Large Format LED",
-  "jomtien-coastal":                "Large Format LED",
   "bangsaen-galaxy-junction":       "Large Format LED",
   "bangsaen-burapha-university":    "Large Format LED",
   "bangsaen-tech-college":          "Large Format LED",
