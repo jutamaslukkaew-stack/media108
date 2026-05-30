@@ -46,6 +46,28 @@ const badgeCls: Record<string, string> = {
   "Sold Out":   "bg-white/20 text-white",
 };
 
+/* ── Filter mappings ── */
+const areaMap: Record<string, string> = {
+  "pattaya-sukhumvit-01": "Pattaya",
+  "pattaya-gateway":      "Pattaya",
+  "eec-tech-square":      "Sri Racha",
+  "jomtien-coastal":      "Pattaya",
+};
+
+const audienceMap: Record<string, string[]> = {
+  "pattaya-sukhumvit-01": ["Tourists", "Professionals"],
+  "pattaya-gateway":      ["Tourists", "Locals"],
+  "eec-tech-square":      ["Professionals", "B2B"],
+  "jomtien-coastal":      ["Tourists", "Expats"],
+};
+
+const mediaTypeMap: Record<string, string> = {
+  "pattaya-sukhumvit-01": "Large Format LED",
+  "pattaya-gateway":      "Large Format LED",
+  "eec-tech-square":      "Large Format LED",
+  "jomtien-coastal":      "Large Format LED",
+};
+
 export default function BillboardListingPage() {
   const { t } = useLanguage();
   const [areaFilter, setAreaFilter] = useState("All Regions");
@@ -69,7 +91,15 @@ export default function BillboardListingPage() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const filtered = useMemo(() => allBillboards, []);
+  const filtered = useMemo(() => {
+    return allBillboards.filter((bb) => {
+      const areaOk = areaFilter === "All Regions" || areaFilter === "ทุกภูมิภาค" || areaMap[bb.slug] === areaFilter;
+      const audOk  = audienceFilter === "Universal" || audienceFilter === "ทั่วไป"
+        || (audienceMap[bb.slug] ?? []).some((a) => audienceFilter.includes(a) || a.includes(audienceFilter));
+      const mediaOk = mediaFilter === "All Formats" || mediaFilter === "ทุกรูปแบบ" || mediaTypeMap[bb.slug] === mediaFilter;
+      return areaOk && audOk && mediaOk;
+    });
+  }, [areaFilter, audienceFilter, mediaFilter]);
   const visible = filtered.slice(0, visibleCount);
 
   return (
@@ -168,11 +198,9 @@ export default function BillboardListingPage() {
                 value={areaFilter}
                 onChange={(e) => setAreaFilter(e.target.value)}
               >
-                <option>{t("All Regions", "ทุกภูมิภาค")}</option>
-                <option>Pattaya</option>
-                <option>Bang Saen</option>
-                <option>Sri Racha</option>
-                <option>Chonburi</option>
+                <option value="All Regions">{t("All Regions", "ทุกภูมิภาค")}</option>
+                <option value="Pattaya">{t("Pattaya", "พัทยา")}</option>
+                <option value="Sri Racha">{t("Sri Racha", "ศรีราชา")}</option>
               </select>
             </div>
             {/* Audience */}
@@ -185,10 +213,10 @@ export default function BillboardListingPage() {
                 value={audienceFilter}
                 onChange={(e) => setAudienceFilter(e.target.value)}
               >
-                <option>{t("Universal", "ทั่วไป")}</option>
-                <option>{t("Tourists", "นักท่องเที่ยว")}</option>
-                <option>{t("Students", "นักศึกษา")}</option>
-                <option>{t("Professionals", "มืออาชีพ")}</option>
+                <option value="Universal">{t("All Audiences", "ทั่วไป")}</option>
+                <option value="Tourists">{t("Tourists", "นักท่องเที่ยว")}</option>
+                <option value="Professionals">{t("Professionals", "มืออาชีพ/B2B")}</option>
+                <option value="Locals">{t("Locals", "คนท้องถิ่น")}</option>
               </select>
             </div>
             {/* Media Type */}
@@ -201,10 +229,8 @@ export default function BillboardListingPage() {
                 value={mediaFilter}
                 onChange={(e) => setMediaFilter(e.target.value)}
               >
-                <option>{t("All Formats", "ทุกรูปแบบ")}</option>
-                <option>{t("Large Format LED", "LED ขนาดใหญ่")}</option>
-                <option>{t("Digital Pylons", "Digital Pylons")}</option>
-                <option>{t("University Network", "เครือข่ายมหาวิทยาลัย")}</option>
+                <option value="All Formats">{t("All Formats", "ทุกรูปแบบ")}</option>
+                <option value="Large Format LED">{t("Large Format LED", "LED ขนาดใหญ่")}</option>
               </select>
             </div>
           </div>
@@ -273,6 +299,15 @@ export default function BillboardListingPage() {
             <p className="text-on-surface-variant text-sm text-center mt-4 opacity-60">
               {t("Click a pin to view billboard details. Hover to preview.", "คลิกพินเพื่อดูรายละเอียดป้าย | วางเมาส์เพื่อดูตัวอย่าง")}
             </p>
+          </div>
+        )}
+
+        {/* Empty state */}
+        {filtered.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-on-surface-variant text-lg mb-2">{t("No billboards found", "ไม่พบป้ายที่ตรงกับเงื่อนไข")}</p>
+            <button onClick={() => { setAreaFilter("All Regions"); setAudienceFilter("Universal"); setMediaFilter("All Formats"); }}
+              className="text-primary underline text-sm mt-2">{t("Clear filters", "ล้างตัวกรอง")}</button>
           </div>
         )}
 
