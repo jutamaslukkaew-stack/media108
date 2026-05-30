@@ -413,6 +413,240 @@ export default function BillboardListingPage() {
         )}
       </main>
 
+      {/* ── RECOMMENDED INSTALLATION LOCATIONS ── */}
+      <section style={{ background: "#040e2a" }} className="py-24">
+        <div className="max-w-[1440px] mx-auto px-16">
+
+          {/* Header */}
+          <div className="sr sr-up mb-14">
+            <p className="text-primary font-label-md text-[11px] uppercase tracking-[0.25em] mb-3">
+              {t("Installation Guide", "คู่มือเลือกทำเล")}
+            </p>
+            <h2 className="text-white font-display-lg mb-4" style={{ fontSize: "clamp(1.8rem,3vw,2.5rem)", fontWeight: 700, letterSpacing: "-0.03em" }}>
+              {t("10 Recommended Billboard Sites in Chonburi", "10 ทำเลแนะนำสำหรับติดตั้งป้ายในชลบุรี")}
+            </h2>
+            <p className="text-on-surface-variant font-body-md max-w-2xl leading-relaxed">
+              {t(
+                "High-impact locations across Bangsaen, Mueang Chonburi, Si Racha and Pattaya — identified through traffic surveys and local planning data.",
+                "ทำเลศักยภาพสูงครอบคลุมบางแสน เมืองชลบุรี ศรีราชา และพัทยา คัดเลือกจากข้อมูลจราจรและแผนพัฒนาท้องถิ่น"
+              )}
+            </p>
+          </div>
+
+          {/* Zone grid */}
+          {([
+            {
+              zone: "บางแสน", zoneEn: "Bangsaen", color: "#3B82F6",
+              sites: [
+                {
+                  id: 1,
+                  name: "แยกแกแล็คซี่ – ถนนลงหาดบางแสน",
+                  nameEn: "Galaxy Junction – Bangsaen Beach Rd",
+                  reason: "จุดเข้าหาดบางแสน รถชะลอหน้าไฟแดง เส้นหลักเข้าแหล่งท่องเที่ยว",
+                  reasonEn: "Key entry to Bangsaen Beach; high dwell time at traffic lights.",
+                  audience: "นักท่องเที่ยว · นักศึกษา · คนพื้นที่",
+                  audienceEn: "Tourists · Students · Locals",
+                  contact: "เทศบาลเมืองแสนสุข / แขวงทางหลวงชลบุรีที่ 2",
+                  contactEn: "Saensuk Municipality / Chonburi Highway Dist. 2",
+                },
+                {
+                  id: 2,
+                  name: "ถนนลงหาดบางแสน หน้า/ใกล้ ม.บูรพา",
+                  nameEn: "Bangsaen Beach Rd – near Burapha University",
+                  reason: "ใกล้มหาวิทยาลัยบูรพาและชุมชนรอบมหาวิทยาลัย รถเข้า-ออกตลอดวัน",
+                  reasonEn: "Adjacent to Burapha University; constant student & commuter traffic.",
+                  audience: "นักศึกษา · ผู้ปกครอง · นักท่องเที่ยว",
+                  audienceEn: "Students · Parents · Tourists",
+                  contact: "เจ้าของตึกหรือที่ดินริมถนน / เทศบาลเมืองแสนสุข",
+                  contactEn: "Roadside building owners / Saensuk Municipality",
+                },
+                {
+                  id: 3,
+                  name: "ทางเข้าวิทยาลัยเทคนิคบางแสน ฝั่งสุขุมวิท",
+                  nameEn: "Bangsaen Technical College Entrance – Sukhumvit Side",
+                  reason: "เชื่อมสุขุมวิทไปบางแสน มีสถานศึกษาและรถผ่านจากเมืองชลบุรี–ศรีราชา",
+                  reasonEn: "Sukhumvit connector to Bangsaen; school zone with cross-city traffic.",
+                  audience: "นักเรียน · นักศึกษา · รถสัญจรสุขุมวิท",
+                  audienceEn: "Students · Sukhumvit commuters",
+                  contact: "เจ้าของที่ดินหน้าเส้นสุขุมวิท / แขวงทางหลวง",
+                  contactEn: "Sukhumvit frontage owners / Highway District",
+                },
+              ],
+            },
+            {
+              zone: "เมืองชลบุรี", zoneEn: "Mueang Chonburi", color: "#8B5CF6",
+              sites: [
+                {
+                  id: 4,
+                  name: "หน้าวิทยาลัยเทคโนโลยีชลบุรี ถนนสุขุมวิท",
+                  nameEn: "Chonburi Tech College – Sukhumvit Rd",
+                  reason: "ติดถนนสุขุมวิท ใกล้ย่านการศึกษาและเมืองชลบุรี เหมาะกับรถวิ่งผ่านระยะไกล",
+                  reasonEn: "High-speed long-range visibility; near education district & city center.",
+                  audience: "นักเรียน · ผู้ปกครอง · รถเข้าเมือง",
+                  audienceEn: "Students · Parents · City-bound drivers",
+                  contact: "เจ้าของอาคาร/ที่ดินใกล้วิทยาลัย / เทศบาลหรือทางหลวง",
+                  contactEn: "Nearby building owners / Municipality or Highway",
+                },
+                {
+                  id: 5,
+                  name: "โซนเข้าเมืองชลบุรี ใกล้ รร.ชลกันยานุกูล–ชลราษฎรอำรุง",
+                  nameEn: "Chonburi City Entry – near Chon Kanyanukon & Chonrasat Schools",
+                  reason: "โซนโรงเรียนใหญ่ในเมือง เหมาะกับครอบครัว นักเรียน ผู้ปกครอง และคนทำงาน",
+                  reasonEn: "Major school zone; ideal for family, education & working-adult segments.",
+                  audience: "นักเรียน · ผู้ปกครอง · คนทำงานในเมือง",
+                  audienceEn: "Students · Parents · City workers",
+                  contact: "เจ้าของตึกริมถนน / เทศบาลเมืองชลบุรี",
+                  contactEn: "Roadside building owners / Chonburi City Municipality",
+                },
+              ],
+            },
+            {
+              zone: "ศรีราชา", zoneEn: "Si Racha", color: "#F59E0B",
+              sites: [
+                {
+                  id: 6,
+                  name: "แยก Robinson Sriracha – ถนนสุขุมวิท",
+                  nameEn: "Robinson Sriracha Junction – Sukhumvit Rd",
+                  reason: "แลนด์มาร์กกลางเมืองศรีราชา รถสุขุมวิทหนาแน่นและมีคนเข้าออกห้างสูง",
+                  reasonEn: "Central Si Racha landmark; dense Sukhumvit traffic & high mall footfall.",
+                  audience: "คนทำงาน · ครอบครัว · รถสุขุมวิท",
+                  audienceEn: "Workers · Families · Sukhumvit traffic",
+                  contact: "เจ้าของอาคาร/ที่ดินรอบแยก / เทศบาลนครเจ้าพระยาสุรศักดิ์",
+                  contactEn: "Junction landowners / Chaophraya Surasak Municipality",
+                },
+                {
+                  id: 7,
+                  name: "โซน Central Si Racha – ถนนสุขุมวิท",
+                  nameEn: "Central Si Racha Zone – Sukhumvit Rd",
+                  reason: "จุดรวมคนและรถสูง เหมาะกับแบรนด์ร้านอาหาร คาเฟ่ อสังหาฯ คลินิก",
+                  reasonEn: "High footfall hub; ideal for F&B, real estate, clinics & local services.",
+                  audience: "ครอบครัว · คนทำงาน · นักช้อป · นักท่องเที่ยว",
+                  audienceEn: "Families · Workers · Shoppers · Tourists",
+                  contact: "เซ็นทรัลหรือเจ้าของที่รอบห้าง / เทศบาลนครเจ้าพระยาสุรศักดิ์",
+                  contactEn: "Central or nearby landowners / Chaophraya Surasak Municipality",
+                },
+                {
+                  id: 8,
+                  name: "แยกโรงเรียนอัสสัมชัญศรีราชา – ถนนสุขุมวิท",
+                  nameEn: "Assumption Si Racha School Junction – Sukhumvit Rd",
+                  reason: "โรงเรียนใหญ่และเป็นจุดที่คนพื้นที่รู้จัก รถชะลอเข้าเมืองและผ่านสุขุมวิท",
+                  reasonEn: "Well-known local landmark; school traffic & city-entry slowdown zone.",
+                  audience: "นักเรียน · ผู้ปกครอง · คนทำงาน",
+                  audienceEn: "Students · Parents · Workers",
+                  contact: "เจ้าของที่ดินริมสุขุมวิท / แขวงทางหลวง / เทศบาล",
+                  contactEn: "Sukhumvit frontage owners / Highway Dist. / Municipality",
+                },
+              ],
+            },
+            {
+              zone: "พัทยา", zoneEn: "Pattaya", color: "#E63946",
+              sites: [
+                {
+                  id: 9,
+                  name: "วงเวียนปลาโลมา – Terminal 21 Pattaya / พัทยาเหนือ",
+                  nameEn: "Dolphin Roundabout – Terminal 21 / North Pattaya",
+                  reason: "จุดนักท่องเที่ยวสูงมาก เป็นทางเข้าเมืองพัทยาและใกล้แลนด์มาร์กสำคัญ",
+                  reasonEn: "Top tourist volume; main Pattaya city entrance near key landmarks.",
+                  audience: "นักท่องเที่ยวไทย–ต่างชาติ · รถเข้าเมืองพัทยา",
+                  audienceEn: "Thai & international tourists · City-bound drivers",
+                  contact: "เมืองพัทยา / เจ้าของตึกหรือที่ดินรอบวงเวียน",
+                  contactEn: "City of Pattaya / Roundabout area landowners",
+                },
+                {
+                  id: 10,
+                  name: "แยกพัทยากลาง – ถนนสุขุมวิท / ถนนพัทยากลาง",
+                  nameEn: "Central Pattaya Junction – Sukhumvit Rd / Central Pattaya Rd",
+                  reason: "เส้นตัดหลักเข้าเมืองพัทยา มีรถสัญจรและธุรกิจริมถนนจำนวนมาก",
+                  reasonEn: "Primary arterial crossroads; dense roadside commerce and vehicle flow.",
+                  audience: "นักท่องเที่ยว · คนทำงาน · นักเรียน · รถเข้าเมือง",
+                  audienceEn: "Tourists · Workers · Students · City-bound traffic",
+                  contact: "เมืองพัทยา / เจ้าของอาคารริมถนน",
+                  contactEn: "City of Pattaya / Roadside building owners",
+                },
+              ],
+            },
+          ] as { zone: string; zoneEn: string; color: string; sites: { id: number; name: string; nameEn: string; reason: string; reasonEn: string; audience: string; audienceEn: string; contact: string; contactEn: string }[] }[]).map((group) => (
+            <div key={group.zone} className="sr sr-up mb-14 last:mb-0">
+              {/* Zone header */}
+              <div className="flex items-center gap-4 mb-6">
+                <div
+                  className="w-1 h-8 rounded-full"
+                  style={{ background: group.color }}
+                />
+                <div>
+                  <span className="text-white font-bold text-xl font-display-lg">{t(group.zoneEn, group.zone)}</span>
+                  <span className="text-on-surface-variant font-label-md text-[12px] ml-3">
+                    {group.sites.length} {t("sites", "ทำเล")}
+                  </span>
+                </div>
+              </div>
+
+              {/* Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {group.sites.map((site) => (
+                  <div
+                    key={site.id}
+                    className="rounded-2xl p-6 border border-white/8 hover:border-white/20 transition-all duration-300 flex flex-col gap-4"
+                    style={{ background: "rgba(255,255,255,0.03)" }}
+                  >
+                    {/* Number + Name */}
+                    <div className="flex items-start gap-3">
+                      <span
+                        className="shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-[12px]"
+                        style={{ background: group.color }}
+                      >
+                        {site.id}
+                      </span>
+                      <h3 className="text-white font-semibold text-[15px] leading-snug">
+                        {t(site.nameEn, site.name)}
+                      </h3>
+                    </div>
+
+                    {/* Reason */}
+                    <p className="text-on-surface-variant text-[13px] leading-relaxed border-l-2 pl-3" style={{ borderColor: group.color + "60" }}>
+                      {t(site.reasonEn, site.reason)}
+                    </p>
+
+                    <div className="mt-auto space-y-2 pt-3 border-t border-white/5">
+                      {/* Audience */}
+                      <div className="flex items-start gap-2">
+                        <span className="text-[10px] uppercase tracking-wider font-label-md text-on-surface-variant shrink-0 pt-0.5">
+                          {t("Audience", "กลุ่มคน")}
+                        </span>
+                        <span className="text-white text-[12px]">{t(site.audienceEn, site.audience)}</span>
+                      </div>
+                      {/* Contact */}
+                      <div className="flex items-start gap-2">
+                        <span className="text-[10px] uppercase tracking-wider font-label-md text-on-surface-variant shrink-0 pt-0.5">
+                          {t("Contact", "ติดต่อ")}
+                        </span>
+                        <span className="text-on-surface-variant text-[12px] leading-snug">{t(site.contactEn, site.contact)}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          {/* CTA */}
+          <div className="sr sr-up mt-16 text-center">
+            <p className="text-on-surface-variant font-body-md mb-5">
+              {t(
+                "Interested in any of these locations? Our team can arrange a site survey.",
+                "สนใจทำเลใดทำเลหนึ่ง? ทีมงานของเราพร้อมลงสำรวจพื้นที่ให้คุณ"
+              )}
+            </p>
+            <a
+              href="/contact#form"
+              className="inline-block bg-primary-container text-on-primary-container px-8 py-3 rounded-lg font-label-md uppercase tracking-wider hover:brightness-110 transition-all"
+            >
+              {t("Request a Site Survey", "ขอสำรวจทำเล")}
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── Footer ── */}
       <footer
         className="w-full px-16 py-12 flex flex-col items-center gap-2 border-t border-white/5 mt-20"
