@@ -75,8 +75,8 @@ export default function NetworkPage() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="Network Grid"
-              className="w-full h-full object-cover grayscale"
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+              className="w-full h-full object-cover"
+              src="/image/hero network.png"
             />
           </div>
           <div className="relative z-10 max-w-5xl mx-auto">
@@ -255,7 +255,7 @@ export default function NetworkPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   alt="EEC Corridor Billboard"
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80"
+                  src="/image/hero network.png"
                   className="w-full h-full object-cover"
                 />
                 {/* Dark + red gradient overlay */}
