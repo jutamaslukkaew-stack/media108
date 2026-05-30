@@ -55,6 +55,14 @@ const areaMap: Record<string, string> = {
   "jomtien-coastal":      "Pattaya",
 };
 
+/* Thai area labels for filter matching */
+const areaTh: Record<string, string> = {
+  "Bangsaen":        "บางแสน",
+  "Mueang Chonburi": "เมืองชลบุรี",
+  "Sri Racha":       "ศรีราชา",
+  "Pattaya":         "พัทยา",
+};
+
 const audienceMap: Record<string, string[]> = {
   "pattaya-sukhumvit-01": ["Tourists", "Professionals"],
   "pattaya-gateway":      ["Tourists", "Locals"],
@@ -99,7 +107,8 @@ export default function BillboardListingPage() {
       const isAllAudience = audienceFilter === "Universal" || audienceFilter === "ทั่วไป";
       const isAllMedia    = mediaFilter === "All Formats" || mediaFilter === "ทุกรูปแบบ";
 
-      const areaOk  = isAllArea     || areaMap[bb.slug] === areaFilter;
+      const slugArea = areaMap[bb.slug];
+      const areaOk  = isAllArea || slugArea === areaFilter || areaTh[slugArea ?? ""] === areaFilter;
       const audOk   = isAllAudience || (audienceMap[bb.slug] ?? []).includes(audienceFilter);
       const mediaOk = isAllMedia    || mediaTypeMap[bb.slug] === mediaFilter;
       return areaOk && audOk && mediaOk;
@@ -204,8 +213,10 @@ export default function BillboardListingPage() {
                 onChange={(e) => setAreaFilter(e.target.value)}
               >
                 <option value="All Regions">{t("All Regions", "ทุกภูมิภาค")}</option>
-                <option value="Pattaya">{t("Pattaya", "พัทยา")}</option>
+                <option value="Bangsaen">{t("Bangsaen", "บางแสน")}</option>
+                <option value="Mueang Chonburi">{t("Mueang Chonburi", "เมืองชลบุรี")}</option>
                 <option value="Sri Racha">{t("Sri Racha", "ศรีราชา")}</option>
+                <option value="Pattaya">{t("Pattaya", "พัทยา")}</option>
               </select>
             </div>
             {/* Audience */}
