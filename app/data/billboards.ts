@@ -227,9 +227,9 @@ export const billboards: Record<string, BillboardData> = {
     price: "ขอใบเสนอราคา",
     status: "Available",
 
-    imgDay:  "/image/pattaya-gateway.jpg",
-    imgNight:
-      "https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?w=1200&q=80",
+    imgDay:   "/image/pattaya-gateway.jpg",
+    imgNight: "/image/pattaya-gateway.jpg",
+    imgDrone: "/image/pattaya-gateway.jpg",
 
     specs: [
       { label: "Screen Size", value: "18m x 9m" },
