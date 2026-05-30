@@ -119,7 +119,7 @@ export default function BillboardListingPage() {
   const [mediaFilter, setMediaFilter] = useState("All Formats");
   const [viewMode, setViewMode] = useState<"map" | "list">("list");
   const [sortBy, setSortBy] = useState("Popularity");
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(12);
 
   useScrollReveal();
 
@@ -136,7 +136,7 @@ export default function BillboardListingPage() {
   }, []);
 
   const filtered = useMemo(() => {
-    setVisibleCount(6); // reset when filters change
+    setVisibleCount(12); // reset when filters change
     return allBillboards.filter((bb) => {
       const isAllArea     = areaFilter === "All Regions" || areaFilter === "ทุกภูมิภาค";
       const isAllAudience = audienceFilter === "Universal" || audienceFilter === "ทั่วไป";
