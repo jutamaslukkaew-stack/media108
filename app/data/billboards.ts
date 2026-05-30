@@ -83,9 +83,9 @@ export interface BillboardData {
 }
 
 export const billboards: Record<string, BillboardData> = {
-  /* ════════════════════════════════════════════════════════
+  /* ========================================================
      BANGSAEN ZONE  (3 sites)
-  ════════════════════════════════════════════════════════ */
+  ======================================================== */
   "bangsaen-galaxy-junction": {
     slug: "bangsaen-galaxy-junction",
     tag: "บางแสน",
@@ -94,8 +94,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "จุดเข้าหาดบางแสนที่มีรถชะลอหน้าไฟแดง เป็นเส้นหลักเข้าแหล่งท่องเที่ยวชายฝั่งที่คึกคักที่สุดของชลบุรี",
     price: "฿28,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/bangsaen-galaxy-junction.png",
+    imgNight: "/image/locations/bangsaen-galaxy-junction-night.png",
     imgDrone: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     specs: [
       { label: "Dimensions",      value: "14m × 7m" },
@@ -131,8 +131,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "shopping_cart", name: "ตลาดบางแสน",          distance: "800m" },
     ],
     related: [
-      { slug: "bangsaen-burapha-university", title: "บางแสน ม.บูรพา",       subtitle: "บางแสน, ชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80" },
-      { slug: "pattaya-dolphin-roundabout",  title: "วงเวียนปลาโลมา พัทยา", subtitle: "พัทยาเหนือ",     status: "Available", img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" },
+      { slug: "bangsaen-burapha-university", title: "บางแสน ม.บูรพา",       subtitle: "บางแสน, ชลบุรี", status: "Available", img: "/image/locations/bangsaen-burapha-university.png" },
+      { slug: "pattaya-dolphin-roundabout",  title: "วงเวียนปลาโลมา พัทยา", subtitle: "พัทยาเหนือ",     status: "Available", img: "/image/locations/pattaya-dolphin-roundabout.png" },
     ],
   },
 
@@ -144,8 +144,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "ใกล้มหาวิทยาลัยบูรพาและชุมชนรอบมหาวิทยาลัย มีรถเข้า-ออกบางแสนตลอดวัน กลุ่มเป้าหมายหลักคือนักศึกษาและผู้ปกครอง",
     price: "฿25,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?w=1200&q=80",
+    imgDay:   "/image/locations/bangsaen-burapha-university.png",
+    imgNight: "/image/locations/bangsaen-burapha-university-night.png",
     specs: [
       { label: "Dimensions",      value: "12m × 6m" },
       { label: "Resolution",      value: "1920 × 960" },
@@ -180,8 +180,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "local_cafe",   name: "ย่านร้านอาหารนักศึกษา", distance: "300m" },
     ],
     related: [
-      { slug: "bangsaen-galaxy-junction", title: "แยกแกแล็คซี่ บางแสน", subtitle: "บางแสน, ชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
-      { slug: "bangsaen-tech-college",    title: "บางแสน วิทยาลัยเทคนิค", subtitle: "บางแสน, ชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
+      { slug: "bangsaen-galaxy-junction", title: "แยกแกแล็คซี่ บางแสน", subtitle: "บางแสน, ชลบุรี", status: "Available", img: "/image/locations/bangsaen-galaxy-junction.png" },
+      { slug: "bangsaen-tech-college",    title: "บางแสน วิทยาลัยเทคนิค", subtitle: "บางแสน, ชลบุรี", status: "Available", img: "/image/locations/bangsaen-tech-college.png" },
     ],
   },
 
@@ -193,8 +193,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "จุดเชื่อมถนนสุขุมวิทสู่บางแสน มีสถานศึกษาและรถผ่านจากเมืองชลบุรี–ศรีราชาตลอดวัน",
     price: "฿22,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1558015856-62b84b88b72b?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/bangsaen-tech-college.png",
+    imgNight: "/image/locations/bangsaen-tech-college-night.png",
     specs: [
       { label: "Dimensions",      value: "10m × 5m" },
       { label: "Resolution",      value: "1920 × 960" },
@@ -229,14 +229,14 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "beach_access",  name: "หาดบางแสน",             distance: "2.5 km" },
     ],
     related: [
-      { slug: "bangsaen-galaxy-junction",    title: "แยกแกแล็คซี่ บางแสน",    subtitle: "บางแสน, ชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
-      { slug: "chonburi-tech-college-sukhumvit", title: "วิทยาลัยเทคโนโลยีชลบุรี", subtitle: "เมืองชลบุรี",     status: "Available", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80" },
+      { slug: "bangsaen-galaxy-junction",    title: "แยกแกแล็คซี่ บางแสน",    subtitle: "บางแสน, ชลบุรี", status: "Available", img: "/image/locations/bangsaen-galaxy-junction.png" },
+      { slug: "chonburi-tech-college-sukhumvit", title: "วิทยาลัยเทคโนโลยีชลบุรี", subtitle: "เมืองชลบุรี",     status: "Available", img: "/image/locations/chonburi-tech-college-sukhumvit.png" },
     ],
   },
 
-  /* ════════════════════════════════════════════════════════
+  /* ========================================================
      MUEANG CHONBURI ZONE  (2 sites)
-  ════════════════════════════════════════════════════════ */
+  ======================================================== */
   "chonburi-tech-college-sukhumvit": {
     slug: "chonburi-tech-college-sukhumvit",
     tag: "เมืองชลบุรี",
@@ -245,8 +245,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "ติดถนนสุขุมวิทใจกลางเมืองชลบุรี เหมาะกับรถวิ่งผ่านระยะไกล ใกล้ย่านการศึกษาและเมือง",
     price: "฿30,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/chonburi-tech-college-sukhumvit.png",
+    imgNight: "/image/locations/chonburi-tech-college-sukhumvit-night.png",
     specs: [
       { label: "Dimensions",      value: "16m × 8m" },
       { label: "Resolution",      value: "1920 × 960" },
@@ -281,8 +281,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "location_city",    name: "เมืองชลบุรี",              distance: "2 km" },
     ],
     related: [
-      { slug: "chonburi-city-school-zone", title: "โรงเรียนกลางเมืองชลบุรี", subtitle: "เมืองชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=800&q=80" },
-      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา",     status: "Available", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
+      { slug: "chonburi-city-school-zone", title: "โรงเรียนกลางเมืองชลบุรี", subtitle: "เมืองชลบุรี", status: "Available", img: "/image/locations/chonburi-city-school-zone.png" },
+      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา",     status: "Available", img: "/image/locations/sriracha-robinson-junction.png" },
     ],
   },
 
@@ -294,8 +294,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "โซนโรงเรียนใหญ่ 2 แห่งกลางเมืองชลบุรี เหมาะกับกลุ่มครอบครัว นักเรียน ผู้ปกครอง และคนทำงาน",
     price: "฿28,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/chonburi-city-school-zone.png",
+    imgNight: "/image/locations/chonburi-city-school-zone-night.png",
     specs: [
       { label: "Dimensions",      value: "14m × 7m" },
       { label: "Resolution",      value: "1920 × 960" },
@@ -330,14 +330,14 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "location_city", name: "ตลาดกลางเมืองชลบุรี", distance: "800m" },
     ],
     related: [
-      { slug: "chonburi-tech-college-sukhumvit", title: "วิทยาลัยเทคโนโลยีชลบุรี", subtitle: "เมืองชลบุรี", status: "Available", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" },
-      { slug: "sriracha-robinson-junction",       title: "แยก Robinson ศรีราชา",     subtitle: "ศรีราชา",     status: "Available", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
+      { slug: "chonburi-tech-college-sukhumvit", title: "วิทยาลัยเทคโนโลยีชลบุรี", subtitle: "เมืองชลบุรี", status: "Available", img: "/image/locations/chonburi-tech-college-sukhumvit.png" },
+      { slug: "sriracha-robinson-junction",       title: "แยก Robinson ศรีราชา",     subtitle: "ศรีราชา",     status: "Available", img: "/image/locations/sriracha-robinson-junction.png" },
     ],
   },
 
-  /* ════════════════════════════════════════════════════════
+  /* ========================================================
      SI RACHA ZONE  (3 sites)
-  ════════════════════════════════════════════════════════ */
+  ======================================================== */
   "sriracha-robinson-junction": {
     slug: "sriracha-robinson-junction",
     tag: "ศรีราชา",
@@ -346,8 +346,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "แลนด์มาร์กกลางเมืองศรีราชา รถสุขุมวิทหนาแน่นและมีคนเข้าออกห้างสูง ทำเลระดับพรีเมียมของศรีราชา",
     price: "฿40,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/sriracha-robinson-junction.png",
+    imgNight: "/image/locations/sriracha-robinson-junction-night.png",
     imgDrone: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     specs: [
       { label: "Dimensions",      value: "18m × 10m" },
@@ -383,8 +383,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "business",       name: "นิคมอุตสาหกรรมศรีราชา", distance: "5 km" },
     ],
     related: [
-      { slug: "sriracha-central-mall",      title: "Central Si Racha",     subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80" },
-      { slug: "sriracha-assumption-school", title: "แยกอัสสัมชัญ ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80" },
+      { slug: "sriracha-central-mall",      title: "Central Si Racha",     subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-central-mall.png" },
+      { slug: "sriracha-assumption-school", title: "แยกอัสสัมชัญ ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-assumption-school.png" },
     ],
   },
 
@@ -396,8 +396,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "จุดรวมคนและรถสูงสุดในศรีราชา เหมาะกับแบรนด์ร้านอาหาร คาเฟ่ อสังหาฯ คลินิก และบริการท้องถิ่น",
     price: "฿42,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/sriracha-central-mall.png",
+    imgNight: "/image/locations/sriracha-central-mall-night.png",
     imgDrone: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     specs: [
       { label: "Dimensions",      value: "20m × 10m" },
@@ -433,8 +433,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "business",       name: "อาคารสำนักงานรอบห้าง",   distance: "200m" },
     ],
     related: [
-      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available",    img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
-      { slug: "sriracha-assumption-school", title: "แยกอัสสัมชัญ ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80" },
+      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available",    img: "/image/locations/sriracha-robinson-junction.png" },
+      { slug: "sriracha-assumption-school", title: "แยกอัสสัมชัญ ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-assumption-school.png" },
     ],
   },
 
@@ -446,8 +446,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "โรงเรียนใหญ่และเป็นจุดที่คนพื้นที่รู้จักดี รถชะลอเข้าเมืองและผ่านสุขุมวิท เหมาะกับกลุ่มครอบครัวและการศึกษา",
     price: "฿32,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1558015856-62b84b88b72b?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/sriracha-assumption-school.png",
+    imgNight: "/image/locations/sriracha-assumption-school-night.png",
     specs: [
       { label: "Dimensions",      value: "14m × 8m" },
       { label: "Resolution",      value: "1920 × 960" },
@@ -482,14 +482,14 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "shopping_cart", name: "ตลาดและร้านค้าย่าน",       distance: "400m" },
     ],
     related: [
-      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
-      { slug: "sriracha-central-mall",      title: "Central Si Racha",     subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80" },
+      { slug: "sriracha-robinson-junction", title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-robinson-junction.png" },
+      { slug: "sriracha-central-mall",      title: "Central Si Racha",     subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-central-mall.png" },
     ],
   },
 
-  /* ════════════════════════════════════════════════════════
+  /* ========================================================
      PATTAYA ZONE  (2 new sites)
-  ════════════════════════════════════════════════════════ */
+  ======================================================== */
   "pattaya-dolphin-roundabout": {
     slug: "pattaya-dolphin-roundabout",
     tag: "พัทยา",
@@ -498,8 +498,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "จุดนักท่องเที่ยวสูงมาก เป็นทางเข้าเมืองพัทยาและใกล้แลนด์มาร์กสำคัญ ทั้ง Terminal 21 และ Walking Street",
     price: "฿55,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1530521954074-e64f4810b5b0?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/pattaya-dolphin-roundabout.png",
+    imgNight: "/image/locations/pattaya-dolphin-roundabout-night.png",
     imgDrone: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     specs: [
       { label: "Dimensions",      value: "20m × 12m" },
@@ -536,8 +536,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "beach_access",   name: "หาดพัทยาเหนือ",         distance: "800m" },
     ],
     related: [
-      { slug: "pattaya-central-junction",  title: "แยกพัทยากลาง",        subtitle: "พัทยา", status: "Available", img: "https://images.unsplash.com/photo-1493564738392-d148cfbd6eda?w=800&q=80" },
-      { slug: "sriracha-robinson-junction",title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80" },
+      { slug: "pattaya-central-junction",  title: "แยกพัทยากลาง",        subtitle: "พัทยา", status: "Available", img: "/image/locations/pattaya-central-junction.png" },
+      { slug: "sriracha-robinson-junction",title: "แยก Robinson ศรีราชา", subtitle: "ศรีราชา", status: "Available", img: "/image/locations/sriracha-robinson-junction.png" },
     ],
   },
 
@@ -549,8 +549,8 @@ export const billboards: Record<string, BillboardData> = {
     description: "เส้นตัดหลักเข้าเมืองพัทยากลาง มีรถสัญจรและธุรกิจริมถนนจำนวนมาก ทำเลสำคัญสำหรับทุกแบรนด์ที่มุ่งเป้าพัทยา",
     price: "฿50,000",
     status: "Available",
-    imgDay:   "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    imgNight: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=1200&q=80",
+    imgDay:   "/image/locations/pattaya-central-junction.png",
+    imgNight: "/image/locations/pattaya-central-junction-night.png",
     imgDrone: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1200&q=80",
     specs: [
       { label: "Dimensions",      value: "20m × 12m" },
@@ -586,8 +586,8 @@ export const billboards: Record<string, BillboardData> = {
       { icon: "hotel",          name: "โรงแรมย่านพัทยากลาง", distance: "300m" },
     ],
     related: [
-      { slug: "pattaya-dolphin-roundabout",  title: "วงเวียนปลาโลมา", subtitle: "พัทยาเหนือ", status: "Available", img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" },
-      { slug: "sriracha-central-mall",       title: "Central Si Racha", subtitle: "ศรีราชา",     status: "Available", img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&q=80" },
+      { slug: "pattaya-dolphin-roundabout",  title: "วงเวียนปลาโลมา", subtitle: "พัทยาเหนือ", status: "Available", img: "/image/locations/pattaya-dolphin-roundabout.png" },
+      { slug: "sriracha-central-mall",       title: "Central Si Racha", subtitle: "ศรีราชา",     status: "Available", img: "/image/locations/sriracha-central-mall.png" },
     ],
   },
 };

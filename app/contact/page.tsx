@@ -387,10 +387,10 @@ export default function ContactPage() {
               </h5>
               <nav className="flex flex-col gap-2">
                 {([
-                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
-                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
-                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard" },
-                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                  { en: "Pattaya Billboards",   th: "ป้ายพัทยา",            href: "/billboard/pattaya-dolphin-roundabout" },
+                  { en: "Si Racha Hub",         th: "ฮับศรีราชา",           href: "/billboard/sriracha-central-mall" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard/bangsaen-galaxy-junction" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { en: string; th: string; href: string }[]).map((l) => (
                   <Link key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href={l.href}>
                     {t(l.en, l.th)}

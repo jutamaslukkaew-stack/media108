@@ -14,40 +14,40 @@ import {
 
 const featuredBillboards = [
   {
-    href: "/billboard/pattaya-sukhumvit-01",
-    img: "/image/pattaya-sukhumvit.jpg",
-    alt: "ป้าย LED พัทยา-สุขุมวิท เส้นทางหลัก",
-    name: "Pattaya Sukhumvit 01",
-    locationEn: "Main Pattaya Route",
-    locationTh: "เส้นทางหลักพัทยา–สุขุมวิท",
+    href: "/billboard/pattaya-dolphin-roundabout",
+    img: "/image/locations/pattaya-dolphin-roundabout.png",
+    alt: "ป้าย LED วงเวียนปลาโลมา Terminal 21 พัทยา",
+    name: "วงเวียนปลาโลมา พัทยา",
+    locationEn: "Dolphin Roundabout – Terminal 21",
+    locationTh: "พัทยาเหนือ, ถนนสุขุมวิท",
     badge: "พร้อมลงโฆษณา",
     badgeClass: "bg-primary/10 text-primary",
-    descEn: "A key route connecting Pattaya City to Sukhumvit Road, reaching tourists and residents 24 hours a day — ideal for hospitality, food, and lifestyle brands.",
-    descTh: "ทำเลหลักเชื่อมพัทยากับสุขุมวิท เข้าถึงนักท่องเที่ยวและผู้อยู่อาศัยตลอด 24 ชั่วโมง เหมาะกับแบรนด์ท่องเที่ยว อาหาร และไลฟ์สไตล์",
+    descEn: "Pattaya's busiest gateway — over 200,000 vehicles daily. Directly opposite Terminal 21, capturing every tourist and resident entering the city.",
+    descTh: "ประตูพัทยาที่คึกคักที่สุด รถกว่า 200,000 คัน/วัน ตรงข้าม Terminal 21 เหมาะกับโรงแรม ทัวร์ ร้านอาหาร และแบรนด์ Luxury",
   },
   {
-    href: "/billboard/pattaya-gateway",
-    img: "/image/pattaya-gateway.jpg",
-    alt: "ป้าย LED สี่แยกพัทยากลาง Gateway",
-    name: "Pattaya Gateway",
-    locationEn: "Pattaya Central Intersection",
-    locationTh: "สี่แยกกลางเมืองพัทยา",
+    href: "/billboard/sriracha-central-mall",
+    img: "/image/locations/sriracha-robinson-junction.png",
+    alt: "ป้าย LED Central Si Racha ถนนสุขุมวิท",
+    name: "Central Si Racha",
+    locationEn: "Sukhumvit Road, Si Racha",
+    locationTh: "ถนนสุขุมวิท หน้า Central Si Racha",
     badge: "พร้อมลงโฆษณา",
     badgeClass: "bg-primary/10 text-primary",
-    descEn: "The central crossroads of Pattaya — the highest footfall intersection in the city, perfect for event announcements, promotions, and mass-market campaigns.",
-    descTh: "สี่แยกศูนย์กลางพัทยาที่มีการจราจรหนาแน่นที่สุด เหมาะกับแคมเปญกิจกรรม โปรโมชัน และสินค้าแมสมาร์เก็ต",
+    descEn: "The highest-traffic point in Si Racha — 130,000+ vehicles daily, covering families, industrial workers, and expats from the EEC zone.",
+    descTh: "จุดรวมรถสูงสุดในศรีราชา 130,000+ คัน/วัน ครอบคลุมครอบครัว คนทำงานนิคม และต่างชาติ EEC",
   },
   {
-    href: "/billboard/eec-tech-square",
-    img: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1200&q=80",
-    alt: "ป้าย LED EEC Tech Square ศรีราชา นิคมอุตสาหกรรม",
-    name: "EEC Tech Square",
-    locationEn: "Sri Racha – Industrial Estate",
-    locationTh: "ศรีราชา–เขตนิคมอุตสาหกรรม",
-    badge: "ความต้องการสูง",
-    badgeClass: "bg-[#E63946]/20 text-[#E63946]",
-    descEn: "Located in the heart of the EEC zone, this billboard targets executives and high-income professionals — ideal for B2B brands and talent recruitment campaigns.",
-    descTh: "ทำเลกลางย่าน EEC ศรีราชา เจาะกลุ่มผู้บริหารและพนักงานรายได้สูง เหมาะกับแบรนด์ B2B และแคมเปญสรรหาบุคลากร",
+    href: "/billboard/bangsaen-galaxy-junction",
+    img: "/image/locations/bangsaen-galaxy-junction.png",
+    alt: "ป้าย LED แยกแกแล็คซี่ ทางลงหาดบางแสน",
+    name: "แยกแกแล็คซี่ บางแสน",
+    locationEn: "Bang Saen Beach Entry – Galaxy Junction",
+    locationTh: "ถนนลงหาดบางแสน, ชลบุรี",
+    badge: "พร้อมลงโฆษณา",
+    badgeClass: "bg-primary/10 text-primary",
+    descEn: "The gateway to Bang Saen Beach — every vehicle stops at this red light before the beach, delivering 60–90 seconds of uninterrupted ad exposure.",
+    descTh: "ทางเข้าหาดบางแสน รถทุกคันหยุดรอไฟแดงนาน 60–90 วินาที เหมาะกับร้านอาหาร รีสอร์ท และ FMCG",
   },
 ];
 
@@ -90,23 +90,23 @@ const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }
 
 const gallery = [
   {
-    src: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920&q=80",
-    alt: "ป้าย LED Media108 กลางวัน เส้นทางสุขุมวิท",
-    title: "คมชัดทุกชั่วโมง",
-    sub: "สุขุมวิท – เส้นทางหลัก",
+    src: "/image/locations/pattaya-dolphin-roundabout.png",
+    alt: "ป้าย LED วงเวียนปลาโลมา Terminal 21 พัทยา กลางวัน",
+    title: "วงเวียนปลาโลมา พัทยา",
+    sub: "พัทยาเหนือ – ตรงข้าม Terminal 21",
   },
   {
-    src: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&q=80",
-    alt: "ป้าย LED Media108 กลางคืน ย่านพัทยา",
+    src: "/image/locations/bangsaen-galaxy-junction-night.png",
+    alt: "ป้าย LED แยกแกแล็คซี่ บางแสน กลางคืน",
     title: "โดดเด่นยามค่ำคืน",
-    sub: "พัทยา – ศูนย์กลางการค้า",
+    sub: "แยกแกแล็คซี่ – ทางลงหาดบางแสน",
     border: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80",
-    alt: "มุมมองเครือข่ายป้ายโฆษณา EEC ชลบุรี",
-    title: "ครอบคลุมทั่ว EEC",
-    sub: "เขตเศรษฐกิจพิเศษ EEC",
+    src: "/image/locations/sriracha-central-mall.png",
+    alt: "ป้าย LED หน้า Central Si Racha ศรีราชา",
+    title: "Central Si Racha",
+    sub: "ศรีราชา – ถนนสุขุมวิท EEC",
   },
 ];
 
@@ -342,6 +342,7 @@ export default function Home() {
   const [heroReady, setHeroReady] = useState(false);
   const introRef = useRef<HTMLDivElement>(null);
   const [introVisible, setIntroVisible] = useState(false);
+  const [showMapModal, setShowMapModal] = useState(false);
 
   useEffect(() => {
     // Trigger entrance animations after mount
@@ -762,7 +763,7 @@ export default function Home() {
               className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md text-label-md glow-button flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
               style={{ transition: "transform 150ms ease, box-shadow 150ms ease" }}
             >
-              {t("Request Quotation", "ขอใบเสนอราคาฟรี")}{" "}
+              {t("Request Quotation", "ขอใบเสนอราคา")}{" "}
               <ArrowRight size={16} className="ml-2 inline" />
             </Link>
             <Link
@@ -1121,7 +1122,10 @@ export default function Home() {
                 <p className="text-on-surface-variant mb-8 text-sm">
                   {t("Explore our billboard network across the EEC region and find the right location for your campaign.", "สำรวจเครือข่ายป้ายโฆษณาทั่วพื้นที่ EEC และเลือกทำเลที่ใช่สำหรับแคมเปญของคุณ")}
                 </p>
-                <button className="px-10 py-4 bg-[#E63946] text-white rounded-lg font-label-md text-label-md hover:bg-white hover:text-[#E63946] transition-all transform hover:scale-105 shadow-xl">
+                <button
+                  onClick={() => setShowMapModal(true)}
+                  className="px-10 py-4 bg-[#E63946] text-white rounded-lg font-label-md text-label-md hover:bg-white hover:text-[#E63946] transition-all transform hover:scale-105 shadow-xl"
+                >
                   {t("Launch Fullscreen Viewer", "เปิดในโหมดเต็มจอ")}
                 </button>
               </div>
@@ -1548,10 +1552,10 @@ export default function Home() {
               </h6>
               <ul className="space-y-4">
                 {([
-                  { en: "Pattaya Digital Hub",  th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
-                  { en: "Chonburi Strategic",   th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
-                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard" },
-                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                  { en: "Pattaya Billboards",   th: "ป้ายพัทยา",            href: "/billboard/pattaya-dolphin-roundabout" },
+                  { en: "Si Racha Hub",         th: "ฮับศรีราชา",           href: "/billboard/sriracha-central-mall" },
+                  { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard/bangsaen-galaxy-junction" },
+                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { en: string; th: string; href: string }[]).map(({ en, th, href }) => (
                   <li key={en}>
                     <Link
@@ -1623,6 +1627,56 @@ export default function Home() {
       </footer>
 
       <GlobalCTABar />
+
+      {/* ── Interactive Map Modal ── */}
+      {showMapModal && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 backdrop-blur-md"
+          onClick={() => setShowMapModal(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl mx-4 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            style={{ height: "80vh" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between px-5 py-3 bg-[#0a1230] border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <MapPin size={16} className="text-primary" />
+                <span className="text-white font-label-md text-sm">
+                  {t("Media108 Billboard Network — EEC Region", "เครือข่ายป้ายโฆษณา Media108 — พื้นที่ EEC")}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.google.com/maps/@13.1,100.92,10z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary text-xs hover:text-white transition-colors"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {t("Open in Google Maps", "เปิดใน Google Maps")} ↗
+                </a>
+                <button
+                  onClick={() => setShowMapModal(false)}
+                  className="text-white/60 hover:text-white transition-colors text-xl leading-none"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            {/* Map — OpenStreetMap (works on all environments, no API key needed) */}
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=100.80,12.85,101.00,13.40&layer=mapnik&marker=13.1,100.92"
+              className="w-full border-0"
+              style={{ height: "calc(80vh - 48px)" }}
+              allowFullScreen
+              loading="lazy"
+              title="Media108 Network Map"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

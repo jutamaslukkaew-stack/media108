@@ -457,10 +457,10 @@ export default function AboutPage() {
               <h6 className="text-on-surface font-label-md uppercase tracking-widest mb-8">{t("Media Focus", "โฟกัสสื่อ")}</h6>
               <ul className="space-y-4">
                 {([
-                  { label: t("Pattaya Digital Hub", "ฮับดิจิทัลพัทยา"),   href: "/billboard/pattaya-sukhumvit-01" },
-                  { label: t("Chonburi Strategic",  "ชลบุรีเชิงกลยุทธ์"),  href: "/billboard/pattaya-gateway" },
-                  { label: t("Bang Saen Network",   "เครือข่ายบางแสน"),    href: "/billboard" },
-                  { label: t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),  href: "/billboard/eec-tech-square" },
+                  { label: t("Pattaya Billboards",  "ป้ายพัทยา"),            href: "/billboard/pattaya-dolphin-roundabout" },
+                  { label: t("Si Racha Hub",        "ฮับศรีราชา"),           href: "/billboard/sriracha-central-mall" },
+                  { label: t("Bang Saen Network",   "เครือข่ายบางแสน"),     href: "/billboard/bangsaen-galaxy-junction" },
+                  { label: t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),   href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { label: string; href: string }[]).map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item.label}</Link>

@@ -150,10 +150,14 @@ export default function MediaKitPage() {
                 )}
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="inline-flex items-center gap-3 bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02] transition-all duration-300">
+                <a
+                  href="/media-kit.pdf"
+                  download="Media108-MediaKit-2024.pdf"
+                  className="inline-flex items-center gap-3 bg-primary-container text-white px-8 py-4 rounded-lg font-label-md text-label-md font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02] transition-all duration-300"
+                >
                   <FileText size={20} />
                   {t("DOWNLOAD PDF MEDIA KIT", "ดาวน์โหลด PDF MEDIA KIT")}
-                </button>
+                </a>
               </div>
             </div>
 
@@ -406,10 +410,10 @@ export default function MediaKitPage() {
               </h5>
               <nav className="flex flex-col gap-2">
                 {([
-                  { en: "Pattaya Digital Hub", th: "พัทยา ดิจิทัล ฮับ",  href: "/billboard/pattaya-sukhumvit-01" },
-                  { en: "Chonburi Strategic",  th: "ชลบุรี สตราทีจิค",    href: "/billboard/pattaya-gateway" },
-                  { en: "Bang Saen Network",   th: "เครือข่ายบางแสน",     href: "/billboard" },
-                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม",  href: "/billboard/eec-tech-square" },
+                  { en: "Pattaya Billboards",  th: "ป้ายพัทยา",            href: "/billboard/pattaya-dolphin-roundabout" },
+                  { en: "Si Racha Hub",        th: "ฮับศรีราชา",           href: "/billboard/sriracha-central-mall" },
+                  { en: "Bang Saen Network",   th: "เครือข่ายบางแสน",     href: "/billboard/bangsaen-galaxy-junction" },
+                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { en: string; th: string; href: string }[]).map((l) => (
                   <Link key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href={l.href}>
                     {t(l.en, l.th)}

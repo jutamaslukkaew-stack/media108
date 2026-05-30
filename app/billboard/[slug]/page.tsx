@@ -226,6 +226,7 @@ function CampaignCarousel({
 function BillboardDetail({ data }: { data: BillboardData }) {
   const { t } = useLanguage();
   useScrollReveal();
+  const [showDroneModal, setShowDroneModal] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -323,13 +324,21 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">{t("Night Visibility (Dynamic Contrast)", "ความโดดเด่นกลางคืน (Contrast ไดนามิก)")}</p>
             </div>
             <div className="sr sr-up space-y-4">
-              <div className="aspect-video rounded-2xl overflow-hidden glass-card relative group cursor-pointer">
+              <div
+                className="aspect-video rounded-2xl overflow-hidden glass-card relative group cursor-pointer"
+                onClick={() => setShowDroneModal(true)}
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img alt="Drone View" className="w-full h-full object-cover opacity-60" src={data.imgDrone ?? data.imgDay} />
+                <img alt="Drone View" className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-300" src={data.imgDrone ?? data.imgDay} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-primary-container/20 border border-primary-container/50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 rounded-full bg-primary-container/20 border border-primary-container/50 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary-container/40 transition-all duration-300">
                     <Play size={36} className="text-primary-container fill-current" />
                   </div>
+                </div>
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white/60 group-hover:text-white/90 transition-colors">
+                    {t("Click to view aerial map", "คลิกเพื่อดูแผนที่ทางอากาศ")}
+                  </span>
                 </div>
               </div>
               <p className="text-xs font-bold uppercase tracking-widest text-center text-on-surface-variant">{t("Drone View Preview", "ตัวอย่างมุมมองโดรน")}</p>
@@ -609,6 +618,69 @@ function BillboardDetail({ data }: { data: BillboardData }) {
       </main>
 
       <GlobalCTABar />
+
+      {/* ── Drone View Modal ── */}
+      {showDroneModal && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/85 backdrop-blur-md"
+          onClick={() => setShowDroneModal(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl mx-4 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header bar */}
+            <div className="flex items-center justify-between px-5 py-3 bg-surface-container-lowest border-b border-white/10">
+              <div className="flex items-center gap-3">
+                <MapPin size={16} className="text-primary" />
+                <span className="text-sm font-bold text-on-surface">{data.title}</span>
+                <span className="text-xs text-on-surface-variant">{data.subtitle}</span>
+              </div>
+              <button
+                onClick={() => setShowDroneModal(false)}
+                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-on-surface transition-colors text-sm font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Map iframe – satellite / aerial view */}
+            <div className="aspect-video bg-surface-container">
+              {data.mapLat && data.mapLng ? (
+                <iframe
+                  title={`แผนที่ทางอากาศ ${data.title}`}
+                  src={`https://maps.google.com/maps?q=${data.mapLat},${data.mapLng}&z=18&t=k&output=embed`}
+                  className="w-full h-full border-0"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              ) : (
+                <img
+                  alt="Drone View"
+                  src={data.imgDrone ?? data.imgDay}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+
+            {/* Footer */}
+            <div className="flex items-center justify-between px-5 py-3 bg-surface-container-lowest">
+              <span className="text-xs text-on-surface-variant uppercase tracking-widest font-bold">
+                {t("Aerial View – Google Maps Satellite", "มุมมองทางอากาศ – Google Maps Satellite")}
+              </span>
+              <a
+                href={`https://maps.google.com/?q=${data.mapLat},${data.mapLng}&t=k`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-primary hover:text-primary-container transition-colors flex items-center gap-1"
+              >
+                {t("Open in Google Maps", "เปิดใน Google Maps")}
+                <ArrowUpRight size={12} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Footer ── */}
       <footer className="bg-surface-container-lowest border-t border-white/10 py-24 pb-36">
