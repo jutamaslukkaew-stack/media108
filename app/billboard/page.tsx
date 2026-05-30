@@ -87,8 +87,8 @@ export default function BillboardListingPage() {
           <img
             ref={mapImgRef}
             alt="EEC Corridor Map"
-            className="w-full h-full object-cover opacity-40"
-            src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1200&q=80"
+            className="w-full h-full object-cover opacity-80"
+            src="/image/hero billboard.png"
           />
         </div>
 
