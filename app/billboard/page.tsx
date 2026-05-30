@@ -27,10 +27,25 @@ const allBillboards = Object.values(billboards);
 
 /* ── Per-slug metadata to match Stitch card layout ── */
 const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string; audienceTh: string; id: string; typeEn: string; typeTh: string }> = {
-  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",       zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท",  audienceEn: "High-Income Travelers",  audienceTh: "นักเดินทางกำลังซื้อสูง",      id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "pattaya-gateway":      { zoneEn: "Central Intersection",    zoneTh: "สี่แยกกลางเมืองพัทยา",        audienceEn: "Tourists & Locals",      audienceTh: "นักท่องเที่ยวและคนท้องถิ่น",  id: "PY-GW-04", typeEn: "Large Format LED", typeTh: "LED แลนด์มาร์ค" },
-  "eec-tech-square":      { zoneEn: "Sri Racha Industrial",    zoneTh: "นิคมอุตสาหกรรมศรีราชา",       audienceEn: "Professionals & B2B",    audienceTh: "ผู้บริหารและธุรกิจ B2B",       id: "EEC-SR-02", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "jomtien-coastal":      { zoneEn: "Jomtien Coastal Strip",   zoneTh: "ย่านชายฝั่งจอมเทียน",         audienceEn: "Tourists & Expats",      audienceTh: "นักท่องเที่ยวและชาวต่างชาติ",  id: "JT-CST-03", typeEn: "Large Format LED", typeTh: "ดิจิทัลสแตติก" },
+  // existing
+  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",       zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท",  audienceEn: "High-Income Travelers",  audienceTh: "นักเดินทางกำลังซื้อสูง",       id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "pattaya-gateway":      { zoneEn: "Central Intersection",     zoneTh: "สี่แยกกลางเมืองพัทยา",       audienceEn: "Tourists & Locals",      audienceTh: "นักท่องเที่ยวและคนท้องถิ่น",   id: "PY-GW-04", typeEn: "Large Format LED", typeTh: "LED แลนด์มาร์ค" },
+  "eec-tech-square":      { zoneEn: "Sri Racha Industrial",     zoneTh: "นิคมอุตสาหกรรมศรีราชา",      audienceEn: "Professionals & B2B",    audienceTh: "ผู้บริหารและธุรกิจ B2B",        id: "EEC-SR-02", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "jomtien-coastal":      { zoneEn: "Jomtien Coastal Strip",    zoneTh: "ย่านชายฝั่งจอมเทียน",        audienceEn: "Tourists & Expats",      audienceTh: "นักท่องเที่ยวและชาวต่างชาติ",  id: "JT-CST-03", typeEn: "Large Format LED", typeTh: "ดิจิทัลสแตติก" },
+  // bangsaen
+  "bangsaen-galaxy-junction":      { zoneEn: "Bangsaen Beach Entry",       zoneTh: "ทางเข้าหาดบางแสน",         audienceEn: "Tourists & Students",    audienceTh: "นักท่องเที่ยวและนักศึกษา",     id: "BS-GLX-01", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
+  "bangsaen-burapha-university":   { zoneEn: "Burapha University Zone",     zoneTh: "โซนมหาวิทยาลัยบูรพา",      audienceEn: "Students & Parents",     audienceTh: "นักศึกษาและผู้ปกครอง",         id: "BS-BUU-02", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
+  "bangsaen-tech-college":         { zoneEn: "Bangsaen Tech – Sukhumvit",   zoneTh: "บางแสน–สุขุมวิท",           audienceEn: "Students & Commuters",   audienceTh: "นักเรียนและผู้สัญจรสุขุมวิท",  id: "BS-TEC-03", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
+  // mueang chonburi
+  "chonburi-tech-college-sukhumvit":{ zoneEn: "Mueang Chonburi – Sukhumvit", zoneTh: "เมืองชลบุรี–สุขุมวิท",    audienceEn: "Students & City Traffic",audienceTh: "นักเรียนและจราจรเมืองชลบุรี",  id: "CB-TEC-04", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "chonburi-city-school-zone":     { zoneEn: "Chonburi School Zone",        zoneTh: "โซนโรงเรียนเมืองชลบุรี",   audienceEn: "Families & Workers",     audienceTh: "ครอบครัวและคนทำงาน",           id: "CB-SCH-05", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
+  // sri racha
+  "sriracha-robinson-junction":    { zoneEn: "Robinson Sriracha Junction",  zoneTh: "แยก Robinson ศรีราชา",      audienceEn: "Workers & Families",     audienceTh: "คนทำงานและครอบครัว",           id: "SR-ROB-06", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "sriracha-central-mall":         { zoneEn: "Central Si Racha Zone",       zoneTh: "โซน Central ศรีราชา",       audienceEn: "Shoppers & Tourists",    audienceTh: "นักช้อปและนักท่องเที่ยว",      id: "SR-CEN-07", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "sriracha-assumption-school":    { zoneEn: "Assumption School Junction",  zoneTh: "แยกอัสสัมชัญ ศรีราชา",     audienceEn: "Families & Students",    audienceTh: "ครอบครัวและนักเรียน",          id: "SR-ASP-08", typeEn: "Large Format LED", typeTh: "LED ขนาดกลาง" },
+  // pattaya (new)
+  "pattaya-dolphin-roundabout":    { zoneEn: "Dolphin Roundabout N.Pattaya",zoneTh: "วงเวียนปลาโลมา พัทยาเหนือ", audienceEn: "Int'l & Thai Tourists", audienceTh: "นักท่องเที่ยวไทยและต่างชาติ",  id: "PY-DLP-09", typeEn: "Large Format LED", typeTh: "LED แลนด์มาร์ค" },
+  "pattaya-central-junction":      { zoneEn: "Central Pattaya Junction",    zoneTh: "แยกพัทยากลาง",              audienceEn: "Tourists & Locals",      audienceTh: "นักท่องเที่ยวและคนท้องถิ่น",   id: "PY-CTR-10", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
 };
 
 /* ── Map pin positions (% within the map image) ── */
@@ -49,10 +64,20 @@ const badgeCls: Record<string, string> = {
 
 /* ── Filter mappings ── */
 const areaMap: Record<string, string> = {
-  "pattaya-sukhumvit-01": "Pattaya",
-  "pattaya-gateway":      "Pattaya",
-  "eec-tech-square":      "Sri Racha",
-  "jomtien-coastal":      "Pattaya",
+  "pattaya-sukhumvit-01":          "Pattaya",
+  "pattaya-gateway":               "Pattaya",
+  "eec-tech-square":               "Sri Racha",
+  "jomtien-coastal":               "Pattaya",
+  "bangsaen-galaxy-junction":      "Bangsaen",
+  "bangsaen-burapha-university":   "Bangsaen",
+  "bangsaen-tech-college":         "Bangsaen",
+  "chonburi-tech-college-sukhumvit":"Mueang Chonburi",
+  "chonburi-city-school-zone":     "Mueang Chonburi",
+  "sriracha-robinson-junction":    "Sri Racha",
+  "sriracha-central-mall":         "Sri Racha",
+  "sriracha-assumption-school":    "Sri Racha",
+  "pattaya-dolphin-roundabout":    "Pattaya",
+  "pattaya-central-junction":      "Pattaya",
 };
 
 /* Thai area labels for filter matching */
@@ -64,17 +89,37 @@ const areaTh: Record<string, string> = {
 };
 
 const audienceMap: Record<string, string[]> = {
-  "pattaya-sukhumvit-01": ["Tourists", "Professionals"],
-  "pattaya-gateway":      ["Tourists", "Locals"],
-  "eec-tech-square":      ["Professionals", "B2B"],
-  "jomtien-coastal":      ["Tourists", "Expats"],
+  "pattaya-sukhumvit-01":           ["Tourists", "Professionals"],
+  "pattaya-gateway":                ["Tourists", "Locals"],
+  "eec-tech-square":                ["Professionals", "B2B"],
+  "jomtien-coastal":                ["Tourists", "Expats"],
+  "bangsaen-galaxy-junction":       ["Tourists", "Locals"],
+  "bangsaen-burapha-university":    ["Tourists", "Locals"],
+  "bangsaen-tech-college":          ["Locals"],
+  "chonburi-tech-college-sukhumvit":["Locals", "Professionals"],
+  "chonburi-city-school-zone":      ["Locals"],
+  "sriracha-robinson-junction":     ["Professionals", "Locals"],
+  "sriracha-central-mall":          ["Tourists", "Locals", "Professionals"],
+  "sriracha-assumption-school":     ["Locals"],
+  "pattaya-dolphin-roundabout":     ["Tourists"],
+  "pattaya-central-junction":       ["Tourists", "Locals"],
 };
 
 const mediaTypeMap: Record<string, string> = {
-  "pattaya-sukhumvit-01": "Large Format LED",
-  "pattaya-gateway":      "Large Format LED",
-  "eec-tech-square":      "Large Format LED",
-  "jomtien-coastal":      "Large Format LED",
+  "pattaya-sukhumvit-01":           "Large Format LED",
+  "pattaya-gateway":                "Large Format LED",
+  "eec-tech-square":                "Large Format LED",
+  "jomtien-coastal":                "Large Format LED",
+  "bangsaen-galaxy-junction":       "Large Format LED",
+  "bangsaen-burapha-university":    "Large Format LED",
+  "bangsaen-tech-college":          "Large Format LED",
+  "chonburi-tech-college-sukhumvit":"Large Format LED",
+  "chonburi-city-school-zone":      "Large Format LED",
+  "sriracha-robinson-junction":     "Large Format LED",
+  "sriracha-central-mall":          "Large Format LED",
+  "sriracha-assumption-school":     "Large Format LED",
+  "pattaya-dolphin-roundabout":     "Large Format LED",
+  "pattaya-central-junction":       "Large Format LED",
 };
 
 export default function BillboardListingPage() {
