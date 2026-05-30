@@ -27,9 +27,10 @@ const allBillboards = Object.values(billboards);
 
 /* ── Per-slug metadata to match Stitch card layout ── */
 const meta: Record<string, { zoneEn: string; zoneTh: string; audienceEn: string; audienceTh: string; id: string; typeEn: string; typeTh: string }> = {
-  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",    zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท", audienceEn: "High-Income Travelers", audienceTh: "นักเดินทางกำลังซื้อสูง",   id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
-  "pattaya-gateway":      { zoneEn: "Central Intersection",  zoneTh: "สี่แยกกลางเมืองพัทยา",       audienceEn: "Tourists & Locals",     audienceTh: "นักท่องเที่ยวและคนท้องถิ่น", id: "PY-GW-04", typeEn: "Landmark LED",     typeTh: "LED แลนด์มาร์ค" },
-  "jomtien-coastal":      { zoneEn: "Coastal Strip",         zoneTh: "ย่านชายฝั่งจอมเทียน",        audienceEn: "Tourists & Expats",     audienceTh: "นักท่องเที่ยวและชาวต่างชาติ", id: "JT-CST-03", typeEn: "Digital Static",   typeTh: "ดิจิทัลสแตติก" },
+  "pattaya-sukhumvit-01": { zoneEn: "Main Pattaya Route",       zoneTh: "เส้นทางหลักพัทยา–สุขุมวิท",  audienceEn: "High-Income Travelers",  audienceTh: "นักเดินทางกำลังซื้อสูง",      id: "PY-SKV-01", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "pattaya-gateway":      { zoneEn: "Central Intersection",    zoneTh: "สี่แยกกลางเมืองพัทยา",        audienceEn: "Tourists & Locals",      audienceTh: "นักท่องเที่ยวและคนท้องถิ่น",  id: "PY-GW-04", typeEn: "Large Format LED", typeTh: "LED แลนด์มาร์ค" },
+  "eec-tech-square":      { zoneEn: "Sri Racha Industrial",    zoneTh: "นิคมอุตสาหกรรมศรีราชา",       audienceEn: "Professionals & B2B",    audienceTh: "ผู้บริหารและธุรกิจ B2B",       id: "EEC-SR-02", typeEn: "Large Format LED", typeTh: "LED ขนาดใหญ่" },
+  "jomtien-coastal":      { zoneEn: "Jomtien Coastal Strip",   zoneTh: "ย่านชายฝั่งจอมเทียน",         audienceEn: "Tourists & Expats",      audienceTh: "นักท่องเที่ยวและชาวต่างชาติ",  id: "JT-CST-03", typeEn: "Large Format LED", typeTh: "ดิจิทัลสแตติก" },
 };
 
 /* ── Map pin positions (% within the map image) ── */
@@ -92,11 +93,15 @@ export default function BillboardListingPage() {
   }, []);
 
   const filtered = useMemo(() => {
+    setVisibleCount(6); // reset when filters change
     return allBillboards.filter((bb) => {
-      const areaOk = areaFilter === "All Regions" || areaFilter === "ทุกภูมิภาค" || areaMap[bb.slug] === areaFilter;
-      const audOk  = audienceFilter === "Universal" || audienceFilter === "ทั่วไป"
-        || (audienceMap[bb.slug] ?? []).some((a) => audienceFilter.includes(a) || a.includes(audienceFilter));
-      const mediaOk = mediaFilter === "All Formats" || mediaFilter === "ทุกรูปแบบ" || mediaTypeMap[bb.slug] === mediaFilter;
+      const isAllArea     = areaFilter === "All Regions" || areaFilter === "ทุกภูมิภาค";
+      const isAllAudience = audienceFilter === "Universal" || audienceFilter === "ทั่วไป";
+      const isAllMedia    = mediaFilter === "All Formats" || mediaFilter === "ทุกรูปแบบ";
+
+      const areaOk  = isAllArea     || areaMap[bb.slug] === areaFilter;
+      const audOk   = isAllAudience || (audienceMap[bb.slug] ?? []).includes(audienceFilter);
+      const mediaOk = isAllMedia    || mediaTypeMap[bb.slug] === mediaFilter;
       return areaOk && audOk && mediaOk;
     });
   }, [areaFilter, audienceFilter, mediaFilter]);
