@@ -97,6 +97,11 @@
   .gap-gutter          { gap: 24px; }
   .p-gutter            { padding: 24px; }
 
+  /* ── Mobile spacing overrides ── */
+  @media (max-width: 767px) {
+    .px-margin-desktop { padding-left: 20px; padding-right: 20px; }
+  }
+
   /* Glass & glow effects */
   .glass-card {
     background: rgba(255, 255, 255, 0.04);

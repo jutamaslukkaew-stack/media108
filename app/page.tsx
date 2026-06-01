@@ -258,7 +258,7 @@ function StatsSection({ t }: { t: (en: string, th: string) => string }) {
   return (
     <section
       ref={sectionRef}
-      className="py-24 relative z-10 bg-surface border-y border-border-glass overflow-hidden"
+      className="py-10 md:py-24 relative z-10 bg-surface border-y border-border-glass overflow-hidden"
     >
       {/* Top scan-line accent */}
       <div
@@ -427,7 +427,7 @@ export default function Home() {
       <Navbar activePage="home" />
 
       {/* ── 1. Hero Banner ── */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center pt-20 overflow-hidden">
 
         {/* ── Background Layer ── */}
         <div className="absolute inset-0 z-0">
@@ -691,7 +691,7 @@ export default function Home() {
         </div>
 
         {/* ── Main Content ── */}
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop py-24 flex flex-col items-center text-center">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop py-10 md:py-24 flex flex-col items-center text-center">
 
           {/* Badge with broadcast signal rings */}
           <div
@@ -820,7 +820,7 @@ export default function Home() {
       {/* ── 2. Company Introduction ── */}
       <section
         ref={introRef}
-        className="relative py-32 overflow-hidden"
+        className="relative py-10 md:py-32 overflow-hidden"
         id="about"
         style={{ background: "linear-gradient(180deg, #0f193b 0%, #061133 100%)" }}
       >
@@ -972,7 +972,7 @@ export default function Home() {
                     <div className="flex items-start gap-2.5">
                       <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
                       <div>
-                        <p className="text-on-surface font-label-md text-[13px] leading-tight">บริษัท พริ้นติ้ง 108 จำกัด</p>
+                        <p className="text-on-surface font-label-md text-[13px] leading-tight">บริษัท มีเดีย108 จำกัด</p>
                         <p className="text-on-surface-variant text-[11px] mt-0.5">Chonburi, Thailand · EEC Zone</p>
                       </div>
                     </div>
@@ -989,9 +989,9 @@ export default function Home() {
       <StatsSection t={t} />
 
       {/* ── 4. Featured Billboards ── */}
-      <section className="bg-surface py-32 overflow-hidden" id="billboard">
+      <section className="bg-surface py-10 md:py-32 overflow-hidden" id="billboard">
         <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-6">
             <div className="sr sr-left">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-5 h-[1px] bg-primary-container" />
@@ -1057,9 +1057,9 @@ export default function Home() {
       </section>
 
       {/* ── 5. Coverage Area Map ── */}
-      <section className="bg-surface-container-low py-32 border-t border-border-glass" id="network">
+      <section className="bg-surface-container-low py-10 md:py-32 border-t border-border-glass" id="network">
         <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-24 items-center">
             <div>
               <div className="sr sr-left mb-8">
                 <div className="flex items-center gap-2 mb-3">
@@ -1135,7 +1135,7 @@ export default function Home() {
       </section>
 
       {/* ── 6. Audience & Traffic ── */}
-      <section className="bg-surface-container-highest py-32">
+      <section className="bg-surface-container-highest py-10 md:py-32">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up text-center mb-20">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1200,7 +1200,7 @@ export default function Home() {
       </section>
 
       {/* ── 7. Services Overview ── */}
-      <section className="bg-surface-container py-32" id="services">
+      <section className="bg-surface-container py-10 md:py-32" id="services">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-16 text-center md:text-left">
             <div className="flex items-center gap-2 md:justify-start justify-center mb-3">
@@ -1235,7 +1235,7 @@ export default function Home() {
       </section>
 
       {/* ── 8. Why Media108 ── */}
-      <section className="bg-surface py-32 border-y border-border-glass">
+      <section className="bg-surface py-10 md:py-32 border-y border-border-glass">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up text-center mb-20">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1266,7 +1266,7 @@ export default function Home() {
       </section>
 
       {/* ── 9. Photo Gallery ── */}
-      <section className="bg-surface-container-lowest py-32">
+      <section className="bg-surface-container-lowest py-10 md:py-32">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-16 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1309,7 +1309,7 @@ export default function Home() {
       </section>
 
       {/* ── 10. How to Buy Ads ── */}
-      <section className="bg-surface-container py-32 border-t border-border-glass">
+      <section className="bg-surface-container py-10 md:py-32 border-t border-border-glass">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-20 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1350,7 +1350,7 @@ export default function Home() {
       </section>
 
       {/* ── 11. Media Kit CTA ── */}
-      <section className="bg-primary-container py-24 relative overflow-hidden">
+      <section className="bg-primary-container py-10 md:py-24 relative overflow-hidden">
         {/* Animated background pattern */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
@@ -1509,7 +1509,7 @@ export default function Home() {
           </div>
 
           {/* Footer columns */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-20 border-t border-border-glass pt-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-10 md:mb-20 border-t border-border-glass pt-10 md:pt-20">
             <div className="md:col-span-1">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
