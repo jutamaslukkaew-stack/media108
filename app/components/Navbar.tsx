@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
-type NavPage = "home" | "about" | "network" | "billboard" | "services" | "media-kit" | "contact";
+type NavPage = "home" | "about" | "network" | "billboard" | "services" | "media-kit" | "contact" | "blog";
 
 interface NavbarProps {
   activePage?: NavPage;
@@ -22,6 +22,7 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
     { label: t("Billboards", "ป้ายทั้งหมด"),      href: "/billboard", page: "billboard" },
     { label: t("Services", "บริการ"),             href: "/services",  page: "services"  },
     { label: t("Media Kit", "ราคา & Media Kit"),  href: "/media-kit", page: "media-kit" },
+    { label: t("Insights", "บทความ"),              href: "/blog",      page: "blog"      },
   ];
 
   useEffect(() => {

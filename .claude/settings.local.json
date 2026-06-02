@@ -61,7 +61,13 @@
       "Bash(curl -s http://localhost:3000)",
       "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\" http://localhost:3000/billboard/pattaya-sukhumvit-01)",
       "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/billboard/pattaya-gateway)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/billboard/eec-tech-square)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code} → %{redirect_url}\\\\n\" http://localhost:3000/billboard/eec-tech-square)",
+      "WebFetch(domain:bpp.doh.go.th)",
+      "WebFetch(domain:www.doh.go.th)",
+      "WebFetch(domain:mis.doh.go.th)",
+      "WebFetch(domain:www.tomtom.com)",
+      "WebFetch(domain:www.ieat.go.th)",
+      "WebFetch(domain:www.onep.go.th)"
     ]
   }
 }
