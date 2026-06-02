@@ -1263,7 +1263,10 @@ export default function Home() {
             {services.map((svc, i) => (
               <Link key={svc.title} href={svc.href}
                 className={`sr sr-scale sr-d${i + 1} glass-card p-8 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group flex flex-col`}>
-                <svc.icon size={40} className="text-primary mb-5 block transition-colors duration-300 group-hover:text-primary-container" />
+                {/* Icon with circular button style */}
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
+                  <svc.icon size={28} className="text-primary transition-colors duration-300 group-hover:text-primary-container" />
+                </div>
                 <h4 className="font-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
                 <p className="text-on-surface-variant font-body-md text-sm flex-1">{t(svc.descEn, svc.descTh)}</p>
                 <div className="flex items-center gap-2 mt-5 text-primary text-xs font-bold group-hover:gap-3 transition-all">
@@ -1307,8 +1310,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {whyUs.map((item, i) => (
               <Link key={item.titleEn} href={item.href}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary hover:border-primary-container/30 transition-all duration-300 shadow-lg group flex flex-col`}>
-                <item.icon size={40} className="text-primary-container mb-6 block transition-colors duration-300 group-hover:text-primary" />
+                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-300 shadow-lg group flex flex-col`}>
+                {/* Icon with circular button style */}
+                <div className="w-14 h-14 rounded-2xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center mb-6 group-hover:bg-primary-container/20 group-hover:border-primary-container/40 transition-all duration-300">
+                  <item.icon size={28} className="text-primary-container transition-colors duration-300 group-hover:text-primary" />
+                </div>
                 <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{t(item.titleEn, item.titleTh)}</h4>
                 <p className="text-on-surface-variant font-body-md leading-relaxed flex-1">{t(item.descEn, item.descTh)}</p>
                 <div className="flex items-center gap-2 mt-6 text-primary-container text-sm font-bold group-hover:gap-3 transition-all">
