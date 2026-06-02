@@ -935,15 +935,14 @@ export default function Home() {
                 }}
               >
                 <div className="rounded-2xl overflow-hidden relative" style={{ height: "380px" }}>
-                  {/* Map iframe */}
+                  {/* Map iframe — OpenStreetMap (ไม่ต้องใช้ API key) */}
                   <iframe
-                    src="https://maps.google.com/maps?q=13.2399983,100.9344037&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=100.9194,13.2250,100.9494,13.2550&layer=mapnik&marker=13.2400,100.9344"
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) saturate(0.85) brightness(0.88)" }}
                     allowFullScreen
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
                     title="Media108 Location"
                   />
 
