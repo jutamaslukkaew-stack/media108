@@ -172,7 +172,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Chonburi Corridor ── */}
-      <section className="py-32 px-6 md:px-margin-desktop relative">
+      <section className="py-14 px-6 md:px-margin-desktop relative">
         <div className="max-w-container-max mx-auto">
           <div className="flex flex-col md:flex-row gap-16 items-center">
             {/* Image */}
@@ -220,14 +220,14 @@ export default function AboutPage() {
       </section>
 
       {/* ── Core Strengths Bento ── */}
-      <section className="py-32 px-6 md:px-margin-desktop bg-surface-dim">
-        <div className="max-w-container-max mx-auto text-center mb-20">
+      <section className="py-14 px-6 md:px-margin-desktop bg-surface-dim">
+        <div className="max-w-container-max mx-auto text-center mb-8">
           <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Core Strengths", "จุดแข็งหลัก")}</h2>
           <div className="w-24 h-1 bg-primary mx-auto" />
         </div>
         <div
           className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-12 gap-6"
-          style={{ gridAutoRows: "280px" }}
+          style={{ gridAutoRows: "220px" }}
         >
           {/* Strength 1 — wide */}
           <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end group overflow-hidden relative">
@@ -274,8 +274,9 @@ export default function AboutPage() {
           </div>
 
           {/* Strength 4 — wide */}
-          <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-end relative overflow-hidden">
+          <div className="md:col-span-8 glass-card rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_#ffb3b1,_transparent)]" />
+            <MapPin size={44} className="text-primary relative z-10" />
             <div className="relative z-10">
               <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Hyper-Local Domination", "ครองพื้นที่ระดับท้องถิ่น")}</h3>
               <p className="text-on-surface-variant">
@@ -290,9 +291,9 @@ export default function AboutPage() {
       </section>
 
       {/* ── Leadership ── */}
-      <section className="py-32 px-6 md:px-margin-desktop">
+      <section className="py-14 px-6 md:px-margin-desktop">
         <div className="max-w-container-max mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-6">
             <div className="max-w-2xl">
               <h2 className="font-headline-xl text-headline-xl text-white mb-4">{t("Leadership", "ทีมผู้บริหาร")}</h2>
               <p className="text-on-surface-variant font-body-lg">
@@ -426,7 +427,7 @@ export default function AboutPage() {
       {/* ── Footer ── */}
       <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
         <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-6">
             <div className="md:col-span-1">
               <div className="mb-6 text-2xl font-black tracking-tight">
                 <span className="text-primary">Media</span>
