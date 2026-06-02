@@ -204,8 +204,8 @@ export default function ServicesPage() {
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
             >
               {t(
-                "More than just \"selling ad space\"",
-                "มากกว่าการ\"ขายพื้นที่ป้าย\" — เราช่วยวางกลยุทธ์สื่อให้คุณ"
+                "LED Billboard Advertising & Creative Production — All in One Team",
+                "โฆษณาบนจอ LED พร้อม งานครีเอทีฟ ในทีมเดียว"
               )}
             </h1>
             <p
@@ -213,8 +213,8 @@ export default function ServicesPage() {
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
             >
               {t(
-                "Media108 elevates your brand with comprehensive digital out-of-home solutions — from strategy and design to cinematic-quality content production.",
-                "Media108 ให้บริการสื่อโฆษณากลางแจ้งแบบครบวงจร ตั้งแต่วางกลยุทธ์ เลือกทำเล ออกแบบกราฟิก จนถึงผลิตคอนเทนต์คุณภาพสูง — ทุกอย่างในทีมเดียว"
+                "From reserving LED billboard space and running DOOH campaigns, to designing graphics, creating motion graphics, shooting product photos, and producing video ads — Media108 handles everything in-house.",
+                "ตั้งแต่จองพื้นที่โฆษณาบนจอ LED รันแคมเปญ Digital Out-of-Home ออกแบบกราฟิก ทำ Motion Graphic ถ่ายภาพสินค้า ไปจนถึงผลิตวิดีโอโฆษณา — Media108 ดูแลครบทุกขั้นตอนในทีมเดียว"
               )}
             </p>
             <div
