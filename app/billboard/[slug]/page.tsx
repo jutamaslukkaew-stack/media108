@@ -359,7 +359,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {data.nearby.map((place) => {
                   const PlaceIcon = iconMap[place.icon] ?? MapPin;
-                  const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(place.name)}`;
+                  const mapsUrl = data.mapLat && data.mapLng
+                    ? `https://www.google.com/maps/search/${encodeURIComponent(place.name)}/@${data.mapLat},${data.mapLng},16z`
+                    : `https://www.google.com/maps/search/${encodeURIComponent(place.name)}`;
                   return (
                   <a
                     key={place.name}
