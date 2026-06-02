@@ -1,6 +1,7 @@
 "use client";
 
 import React, { use, useEffect, useState, useRef, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
@@ -9,6 +10,12 @@ import { billboards } from "../../data/billboards";
 import type { BillboardData } from "../../data/billboards";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { useLanguage } from "../../context/LanguageContext";
+
+/* Leaflet must load client-side only (no SSR) */
+const BillboardDetailMap = dynamic(
+  () => import("../../components/BillboardDetailMap"),
+  { ssr: false, loading: () => <div className="w-full h-full bg-surface-container animate-pulse rounded-2xl" /> }
+);
 import {
   ArrowRight, Download, Play, MapPin, BookOpen, Users, TrendingUp,
   Handshake, CheckCircle, ArrowUpRight, ShoppingCart, GraduationCap,
@@ -386,12 +393,11 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             </div>
             <div className="sr sr-right glass-card rounded-2xl overflow-hidden aspect-square relative border border-white/10">
               {data.mapLat && data.mapLng ? (
-                /* OpenStreetMap embed – ไม่ต้องใช้ API Key */
-                <iframe
-                  title={`แผนที่ตำแหน่ง ${data.title}`}
-                  className="w-full h-full border-0"
-                  loading="lazy"
-                  src={`https://www.openstreetmap.org/export/embed.html?bbox=${data.mapLng - 0.018},${data.mapLat - 0.018},${data.mapLng + 0.018},${data.mapLat + 0.018}&layer=mapnik&marker=${data.mapLat},${data.mapLng}`}
+                <BillboardDetailMap
+                  lat={data.mapLat}
+                  lng={data.mapLng}
+                  title={data.title}
+                  nearby={data.nearby}
                 />
               ) : (
                 /* fallback: static image */
@@ -416,7 +422,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                   href={`https://www.google.com/maps?q=${data.mapLat},${data.mapLng}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-3 right-3 bg-surface/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs text-primary font-bold flex items-center gap-1.5 hover:bg-primary hover:text-white transition-all border border-white/10"
+                  className="absolute bottom-3 right-3 z-[1000] bg-surface/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-xs text-primary font-bold flex items-center gap-1.5 hover:bg-primary hover:text-white transition-all border border-white/10"
                 >
                   <MapPin size={12} /> เปิดใน Google Maps
                 </a>
