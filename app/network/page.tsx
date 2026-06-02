@@ -167,9 +167,9 @@ export default function NetworkPage() {
         </section>
 
         {/* ── Network Segments ── */}
-        <section className="py-32 px-margin-mobile md:px-margin-desktop bg-surface">
+        <section className="py-14 px-margin-mobile md:px-margin-desktop bg-surface">
           <div className="max-w-container-max mx-auto">
-            <div className="sr sr-up text-center mb-20">
+            <div className="sr sr-up text-center mb-8">
               <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-semibold mb-4 block font-label-md">{t("Coverage", "ความครอบคลุม")}</span>
               <h2
                 className="font-display-lg uppercase text-white mb-6"
@@ -244,7 +244,7 @@ export default function NetworkPage() {
         </section>
 
         {/* ── CTA Banner ── */}
-        <section className="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+        <section className="py-10 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
           <div className="max-w-container-max mx-auto">
             <div
               className="relative rounded-3xl overflow-hidden"
