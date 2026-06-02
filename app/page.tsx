@@ -82,10 +82,10 @@ const services: { icon: LucideIcon; title: string; descEn: string; descTh: strin
   { icon: CalendarDays, title: "Campaign Strategy",  descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
 ];
 
-const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string }[] = [
-  { icon: Building2, titleEn: "Chonburi Local Experts",    titleTh: "เชี่ยวชาญพื้นที่ Chonburi",  descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
-  { icon: LineChart, titleEn: "Data-Driven Decisions",     titleTh: "ตัดสินใจด้วยข้อมูลจริง",     descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
-  { icon: Wand2,     titleEn: "Full Creative Studio",      titleTh: "สตูดิโอครบวงจร",              descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
+const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string; href: string }[] = [
+  { icon: Building2, titleEn: "Chonburi Local Experts",    titleTh: "เชี่ยวชาญพื้นที่ Chonburi",  href: "/network",   descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
+  { icon: LineChart, titleEn: "Data-Driven Decisions",     titleTh: "ตัดสินใจด้วยข้อมูลจริง",     href: "/billboard", descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
+  { icon: Wand2,     titleEn: "Full Creative Studio",      titleTh: "สตูดิโอครบวงจร",              href: "/services",  descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
 ];
 
 const gallery = [
@@ -1303,12 +1303,15 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {whyUs.map((item, i) => (
-              <div key={item.titleEn}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-12 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-500 shadow-lg group cursor-default`}>
-                <item.icon size={44} className="service-icon-hover text-primary-container mb-8 block transition-colors duration-300 group-hover:text-primary" />
-                <h4 className="font-headline-md text-on-surface mb-6 group-hover:text-primary transition-colors duration-300">{t(item.titleEn, item.titleTh)}</h4>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">{t(item.descEn, item.descTh)}</p>
-              </div>
+              <Link key={item.titleEn} href={item.href}
+                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary hover:border-primary-container/30 transition-all duration-300 shadow-lg group flex flex-col`}>
+                <item.icon size={40} className="text-primary-container mb-6 block transition-colors duration-300 group-hover:text-primary" />
+                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{t(item.titleEn, item.titleTh)}</h4>
+                <p className="text-on-surface-variant font-body-md leading-relaxed flex-1">{t(item.descEn, item.descTh)}</p>
+                <div className="flex items-center gap-2 mt-6 text-primary-container text-sm font-bold group-hover:gap-3 transition-all">
+                  {t("Learn more", "ดูข้อมูลเพิ่มเติม")} <ArrowRight size={14} />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
