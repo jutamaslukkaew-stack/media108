@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 
 const statsBase: { value: string; labelEn: string; labelTh: string; icon: LucideIcon }[] = [
-  { value: "252",   labelEn: "Active Locations",   labelTh: "จุดป้ายในเครือข่าย",    icon: MapPin     },
-  { value: "3",     labelEn: "Network Segments",   labelTh: "กลุ่มเครือข่ายหลัก",   icon: Network    },
-  { value: "450K+", labelEn: "Daily Reach",        labelTh: "การเข้าถึงต่อวัน",     icon: Eye        },
-  { value: "99.9%", labelEn: "Display Uptime",     labelTh: "ความพร้อมใช้งานของจอ", icon: BadgeCheck },
+  { value: "10",    labelEn: "Active Locations",   labelTh: "จุดป้ายในเครือข่าย",    icon: MapPin     },
+  { value: "3",     labelEn: "Network Zones",      labelTh: "โซนเครือข่ายหลัก",     icon: Network    },
+  { value: "8",     labelEn: "Ad Slots / Loop",    labelTh: "สล็อตโฆษณาต่อรอบ",    icon: Eye        },
+  { value: "20+",   labelEn: "Years in Business",  labelTh: "ปีที่ดำเนินธุรกิจ",    icon: BadgeCheck },
 ];
 
 const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count: string; subEn: string; subTh: string; descEn: string; descTh: string; tagEn: string; tagTh: string; color: string }[] = [
@@ -291,9 +291,9 @@ export default function NetworkPage() {
                   {/* Mini stats row */}
                   <div className="flex flex-wrap gap-8">
                     {[
-                      { v: "252+", l: t("Locations", "จำนวนจุด") },
-                      { v: "450K", l: t("Daily Reach", "ผู้ชมต่อวัน") },
-                      { v: "16 Yrs", l: t("Experience", "ประสบการณ์") },
+                      { v: "10", l: t("Locations", "จุดป้าย") },
+                      { v: "4", l: t("Cities", "เมืองหลัก") },
+                      { v: "20+", l: t("Years", "ปีประสบการณ์") },
                     ].map((s) => (
                       <div key={s.l}>
                         <div className="text-white font-black text-xl font-display-lg leading-none">{s.v}</div>
