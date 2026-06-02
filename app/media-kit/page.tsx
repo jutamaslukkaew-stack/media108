@@ -211,7 +211,7 @@ export default function MediaKitPage() {
                   </ul>
 
                   <a
-                    href="https://www.media108.com/contact#for"
+                    href="/contact"
                     className={`block w-full py-3 rounded-lg font-label-md text-label-md text-center transition-all ${
                       pkg.featured
                         ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:scale-[1.02]"
