@@ -10,7 +10,7 @@ import {
   LayoutGrid, MousePointerClick, Palette, Sparkles, Film, Plane,
   Camera, Share2, Target, Store, Coffee, HeartPulse, Briefcase,
   Hotel, Utensils, Map, Building2, Home, HardHat, Ticket, PartyPopper,
-  Trophy, Globe, Radio, type LucideIcon,
+  Trophy, Globe, Radio, CheckCircle, type LucideIcon,
 } from "lucide-react";
 
 /* ── Service cards data ─────────────────────────────────── */
@@ -32,6 +32,13 @@ const packages: {
   recommended: boolean;
   labelColor: string;
   accentBorder: string;
+  priceEn: string;
+  priceTh: string;
+  unitEn: string;
+  unitTh: string;
+  durationEn: string;
+  durationTh: string;
+  features: { en: string; th: string }[];
   items: { icon: LucideIcon; labelEn: string; labelTh: string }[];
 }[] = [
   {
@@ -39,6 +46,18 @@ const packages: {
     recommended: false,
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
+    priceEn: "฿12,000",
+    priceTh: "฿12,000",
+    unitEn: "/month",
+    unitTh: "/เดือน",
+    durationEn: "Min. 1 month",
+    durationTh: "ขั้นต่ำ 1 เดือน",
+    features: [
+      { en: "1 shared slot (15 sec)",        th: "1 shared slot (15 วินาที)" },
+      { en: "1 location of your choice",     th: "เลือก 1 ทำเลในเครือข่าย" },
+      { en: "Standard operating hours",      th: "เวลาออกอากาศมาตรฐาน" },
+      { en: "Ad file upload & basic report", th: "อัปโหลดไฟล์โฆษณา + รายงานพื้นฐาน" },
+    ],
     items: [
       { icon: Store,      labelEn: "Restaurant",     labelTh: "ร้านอาหาร" },
       { icon: Coffee,     labelEn: "Café",           labelTh: "คาเฟ่" },
@@ -51,8 +70,20 @@ const packages: {
     recommended: true,
     labelColor: "text-primary",
     accentBorder: "border-t-primary",
+    priceEn: "฿45,000",
+    priceTh: "฿45,000",
+    unitEn: "/month",
+    unitTh: "/เดือน",
+    durationEn: "1–3 months",
+    durationTh: "1–3 เดือน",
+    features: [
+      { en: "2 shared slots on 1–2 locations", th: "2 slots บน 1–2 ทำเลโซนท่องเที่ยว" },
+      { en: "Extended hours until 02:00",       th: "ออกอากาศถึง 02:00" },
+      { en: "Creative consultation included",   th: "คำปรึกษา creative รวมอยู่แล้ว" },
+      { en: "Full performance report",          th: "รายงานประสิทธิภาพเต็มรูปแบบ" },
+    ],
     items: [
-      { icon: Hotel,    labelEn: "Hotel",          labelTh: "โรงแรม" },
+      { icon: Hotel,    labelEn: "Hotel",             labelTh: "โรงแรม" },
       { icon: Utensils, labelEn: "Pattaya Restaurant", labelTh: "ร้านอาหารพัทยา" },
       { icon: Map,      labelEn: "Tourist Attraction", labelTh: "แหล่งท่องเที่ยว" },
     ],
@@ -62,6 +93,18 @@ const packages: {
     recommended: false,
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
+    priceEn: "฿80,000",
+    priceTh: "฿80,000",
+    unitEn: "/month",
+    unitTh: "/เดือน",
+    durationEn: "3–6 months",
+    durationTh: "3–6 เดือน",
+    features: [
+      { en: "Exclusive or 4 slots across 2–3 locations", th: "Exclusive หรือ 4 slots, 2–3 ทำเล" },
+      { en: "Primetime 07:00–20:00 scheduling",          th: "ช่วง Primetime 07:00–20:00" },
+      { en: "Full creative team + weekly reports",       th: "ทีม creative + รายงานรายสัปดาห์" },
+      { en: "Mid-campaign artwork changes allowed",      th: "ปรับชิ้นงานระหว่างแคมเปญได้" },
+    ],
     items: [
       { icon: Building2, labelEn: "Condominium",    labelTh: "คอนโด" },
       { icon: Home,      labelEn: "Housing Estate", labelTh: "บ้านจัดสรร" },
@@ -73,6 +116,18 @@ const packages: {
     recommended: false,
     labelColor: "text-primary-fixed-dim",
     accentBorder: "border-t-secondary/30",
+    priceEn: "฿18,000",
+    priceTh: "฿18,000",
+    unitEn: "/week",
+    unitTh: "/สัปดาห์",
+    durationEn: "1–4 weeks",
+    durationTh: "1–4 สัปดาห์",
+    features: [
+      { en: "3–5 high-frequency slots network-wide", th: "3–5 slots ความถี่สูง ทั่วเครือข่าย" },
+      { en: "All-day broadcast 06:00–24:00",          th: "ออกอากาศตลอดวัน 06:00–24:00" },
+      { en: "48-hour fast-track launch",              th: "ขึ้นป้ายภายใน 48 ชั่วโมง" },
+      { en: "All file formats accepted",              th: "รองรับทุก format ไฟล์" },
+    ],
     items: [
       { icon: Ticket,      labelEn: "Concert",     labelTh: "คอนเสิร์ต" },
       { icon: PartyPopper, labelEn: "Festival",    labelTh: "เทศกาล" },
@@ -235,14 +290,32 @@ export default function ServicesPage() {
                     </div>
                   )}
 
-                  <h3 className="font-headline-md text-headline-md mb-4 text-white">{pkg.title}</h3>
-                  <p className={`${pkg.labelColor} font-bold mb-6`}>{t("Suitable for:", "เหมาะสำหรับ:")}</p>
+                  <h3 className="font-headline-md text-headline-md mb-2 text-white">{pkg.title}</h3>
 
-                  <ul className="space-y-4 mb-10 flex-grow">
+                  {/* Price */}
+                  <div className="flex items-baseline gap-1 mb-1">
+                    <span className="font-headline-lg text-headline-lg text-primary-container">{t(pkg.priceEn, pkg.priceTh)}</span>
+                    <span className="text-sm text-outline">{t(pkg.unitEn, pkg.unitTh)}</span>
+                  </div>
+                  <p className="text-xs text-outline mb-5">{t(pkg.durationEn, pkg.durationTh)}</p>
+
+                  {/* Features */}
+                  <ul className="space-y-2 mb-5 flex-grow">
+                    {pkg.features.map((f) => (
+                      <li key={f.en} className="flex items-start gap-2 text-sm text-on-surface-variant">
+                        <CheckCircle size={14} className="text-green-400 fill-green-400 shrink-0 mt-0.5" />
+                        {t(f.en, f.th)}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Suitable for */}
+                  <p className={`${pkg.labelColor} font-bold text-xs uppercase tracking-wider mb-3`}>{t("Suitable for:", "เหมาะสำหรับ:")}</p>
+                  <ul className="space-y-2 mb-6">
                     {pkg.items.map((item) => (
-                      <li key={item.labelEn} className="flex items-start">
-                        <item.icon size={20} className="text-primary mr-3 shrink-0 mt-0.5" />
-                        <span className="font-body-md text-on-surface-variant">{t(item.labelEn, item.labelTh)}</span>
+                      <li key={item.labelEn} className="flex items-center gap-2 text-sm">
+                        <item.icon size={15} className="text-primary shrink-0" />
+                        <span className="text-on-surface-variant">{t(item.labelEn, item.labelTh)}</span>
                       </li>
                     ))}
                   </ul>

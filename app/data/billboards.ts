@@ -28,7 +28,8 @@ export interface BillboardData {
   title: string;
   subtitle: string;
   description: string;
-  price: string;
+  price: string;          // ค่าโฆษณา — shared slot (15 sec)
+  exclusivePrice: string; // ค่าเช่าป้าย — exclusive full-screen
   status: "Available" | "High Demand" | "Sold Out";
 
   // Visual preview
@@ -93,6 +94,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนลงหาดบางแสน, ชลบุรี",
     description: "จุดเข้าหาดบางแสนที่มีรถชะลอหน้าไฟแดง เป็นเส้นหลักเข้าแหล่งท่องเที่ยวชายฝั่งที่คึกคักที่สุดของชลบุรี",
     price: "฿13,000",
+    exclusivePrice: "฿80,000",
     status: "Available",
     imgDay:   "/image/locations/bangsaen-galaxy-junction.png",
     imgNight: "/image/locations/bangsaen-galaxy-junction-night.png",
@@ -143,6 +145,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนลงหาดบางแสน หน้ามหาวิทยาลัยบูรพา",
     description: "ใกล้มหาวิทยาลัยบูรพาและชุมชนรอบมหาวิทยาลัย มีรถเข้า-ออกบางแสนตลอดวัน กลุ่มเป้าหมายหลักคือนักศึกษาและผู้ปกครอง",
     price: "฿12,000",
+    exclusivePrice: "฿75,000",
     status: "Available",
     imgDay:   "/image/locations/bangsaen-burapha-university.png",
     imgNight: "/image/locations/bangsaen-burapha-university-night.png",
@@ -192,6 +195,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ทางเข้าวิทยาลัยเทคนิคบางแสน, สุขุมวิท",
     description: "จุดเชื่อมถนนสุขุมวิทสู่บางแสน มีสถานศึกษาและรถผ่านจากเมืองชลบุรี–ศรีราชาตลอดวัน",
     price: "฿10,000",
+    exclusivePrice: "฿65,000",
     status: "Available",
     imgDay:   "/image/locations/bangsaen-tech-college.png",
     imgNight: "/image/locations/bangsaen-tech-college-night.png",
@@ -244,6 +248,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "หน้าวิทยาลัยเทคโนโลยีชลบุรี, ถนนสุขุมวิท",
     description: "ติดถนนสุขุมวิทใจกลางเมืองชลบุรี เหมาะกับรถวิ่งผ่านระยะไกล ใกล้ย่านการศึกษาและเมือง",
     price: "฿16,000",
+    exclusivePrice: "฿100,000",
     status: "Available",
     imgDay:   "/image/locations/chonburi-tech-college-sukhumvit.png",
     imgNight: "/image/locations/chonburi-tech-college-sukhumvit-night.png",
@@ -293,6 +298,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ใกล้ รร.ชลกันยานุกูล–ชลราษฎรอำรุง, เมืองชลบุรี",
     description: "โซนโรงเรียนใหญ่ 2 แห่งกลางเมืองชลบุรี เหมาะกับกลุ่มครอบครัว นักเรียน ผู้ปกครอง และคนทำงาน",
     price: "฿15,000",
+    exclusivePrice: "฿90,000",
     status: "Available",
     imgDay:   "/image/locations/chonburi-city-school-zone.png",
     imgNight: "/image/locations/chonburi-city-school-zone-night.png",
@@ -345,6 +351,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนสุขุมวิท หน้า Robinson Sriracha",
     description: "แลนด์มาร์กกลางเมืองศรีราชา รถสุขุมวิทหนาแน่นและมีคนเข้าออกห้างสูง ทำเลระดับพรีเมียมของศรีราชา",
     price: "฿20,000",
+    exclusivePrice: "฿120,000",
     status: "Available",
     imgDay:   "/image/locations/sriracha-robinson-junction.png",
     imgNight: "/image/locations/sriracha-robinson-junction-night.png",
@@ -395,6 +402,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนสุขุมวิท หน้า Central Si Racha",
     description: "จุดรวมคนและรถสูงสุดในศรีราชา เหมาะกับแบรนด์ร้านอาหาร คาเฟ่ อสังหาฯ คลินิก และบริการท้องถิ่น",
     price: "฿22,000",
+    exclusivePrice: "฿140,000",
     status: "Available",
     imgDay:   "/image/locations/sriracha-central-mall.png",
     imgNight: "/image/locations/sriracha-central-mall-night.png",
@@ -445,6 +453,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนสุขุมวิท หน้าโรงเรียนอัสสัมชัญศรีราชา",
     description: "โรงเรียนใหญ่และเป็นจุดที่คนพื้นที่รู้จักดี รถชะลอเข้าเมืองและผ่านสุขุมวิท เหมาะกับกลุ่มครอบครัวและการศึกษา",
     price: "฿16,000",
+    exclusivePrice: "฿100,000",
     status: "Available",
     imgDay:   "/image/locations/sriracha-assumption-school.png",
     imgNight: "/image/locations/sriracha-assumption-school-night.png",
@@ -497,6 +506,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "พัทยาเหนือ, ถนนสุขุมวิท",
     description: "จุดนักท่องเที่ยวสูงมาก เป็นทางเข้าเมืองพัทยาและใกล้แลนด์มาร์กสำคัญ ทั้ง Terminal 21 และ Walking Street",
     price: "฿28,000",
+    exclusivePrice: "฿180,000",
     status: "Available",
     imgDay:   "/image/locations/pattaya-dolphin-roundabout.png",
     imgNight: "/image/locations/pattaya-dolphin-roundabout-night.png",
@@ -548,6 +558,7 @@ export const billboards: Record<string, BillboardData> = {
     subtitle: "ถนนสุขุมวิท × ถนนพัทยากลาง",
     description: "เส้นตัดหลักเข้าเมืองพัทยากลาง มีรถสัญจรและธุรกิจริมถนนจำนวนมาก ทำเลสำคัญสำหรับทุกแบรนด์ที่มุ่งเป้าพัทยา",
     price: "฿25,000",
+    exclusivePrice: "฿160,000",
     status: "Available",
     imgDay:   "/image/locations/pattaya-central-junction.png",
     imgNight: "/image/locations/pattaya-central-junction-night.png",

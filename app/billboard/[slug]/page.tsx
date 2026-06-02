@@ -520,53 +520,86 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
         </section>
 
-        {/* ── 8. Investment Tiers ── */}
-        {data.pricingTiers && (
-          <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
-            <div className="text-center mb-16">
-              <h2 className="font-headline-lg text-headline-lg text-white mb-4">{t("Pricing & Packages", "ราคาและแพ็กเกจ")}</h2>
-              <p className="text-on-surface-variant">{t("Flexible packages for every campaign scale and budget.", "แพ็กเกจยืดหยุ่นสำหรับทุกขนาดแคมเปญและงบประมาณ")}</p>
+        {/* ── 8. Pricing ── */}
+        <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
+          <div className="text-center mb-16">
+            <h2 className="font-headline-lg text-headline-lg text-white mb-4">{t("Pricing", "ราคาโฆษณา")}</h2>
+            <p className="text-on-surface-variant">{t("Choose the format that fits your campaign and budget.", "เลือกรูปแบบที่เหมาะกับแคมเปญและงบประมาณของคุณ")}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+            {/* Shared Slot */}
+            <div className="sr sr-up glass-card p-10 rounded-2xl flex flex-col items-center text-center">
+              <p className="text-xs uppercase tracking-widest mb-4 text-outline">{t("Shared Rotation", "ค่าโฆษณา")}</p>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Shared Slot", "แชร์ป้าย")}</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="font-headline-lg text-headline-lg text-primary-container">{data.price}</span>
+                <span className="text-sm text-outline">/{t("month", "เดือน")}</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-on-surface-variant w-full text-left text-sm">
+                {[
+                  t("15-second ad slot in rotation", "สล็อตโฆษณา 15 วินาที วนสลับ"),
+                  t("Shared with up to 8–10 brands", "แชร์กับแบรนด์อื่นสูงสุด 8–10 ราย"),
+                  t("Runs every ~2 minutes", "ขึ้นป้ายทุก ~2 นาที"),
+                  t("Standard operating hours", "เวลาออกอากาศมาตรฐาน"),
+                ].map((feat) => (
+                  <li key={feat} className="flex items-center gap-2">
+                    <CheckCircle size={15} className="text-green-400 flex-shrink-0 fill-green-400" />
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contact#form"
+                className="mt-auto w-full py-4 rounded-lg border border-white/20 text-white font-bold hover:bg-white/10 transition-all text-center block"
+              >
+                {t("Book This Slot", "จองสล็อตนี้")}
+              </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {data.pricingTiers.map((tier) => (
-                <div
-                  key={tier.name}
-                  className={`sr sr-up glass-card p-10 rounded-2xl flex flex-col items-center text-center relative overflow-hidden ${tier.highlight ? "border border-primary-container/60" : ""}`}
-                >
-                  {tier.highlight && (
-                    <div className="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-bold uppercase tracking-tight">
-                      {t("Most Popular", "ยอดนิยม")}
-                    </div>
-                  )}
-                  <p className="text-xs uppercase tracking-widest mb-6 text-outline">{tier.label}</p>
-                  <p className="font-headline-md text-headline-md text-white mb-2">{tier.name}</p>
-                  <div className="flex items-baseline gap-1 mb-8">
-                    <span className="font-headline-lg text-headline-lg text-primary-container">{tier.price}</span>
-                    {tier.unit && <span className="text-sm text-outline">{tier.unit}</span>}
-                  </div>
-                  <ul className="space-y-4 mb-10 text-on-surface-variant w-full text-left">
-                    {tier.features.map((feat) => (
-                      <li key={feat} className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-400 flex-shrink-0 fill-green-400" />
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href="/contact#form"
-                    className={`mt-auto w-full py-4 rounded-lg font-bold transition-all text-center block ${
-                      tier.highlight
-                        ? "bg-primary-container text-white hover:shadow-[0_0_20px_rgba(230,57,70,0.4)] active:scale-95"
-                        : "border border-white/20 text-white hover:bg-white/10"
-                    }`}
-                  >
-                    {tier.ctaLabel}
-                  </Link>
-                </div>
-              ))}
+
+            {/* Exclusive */}
+            <div className="sr sr-up glass-card p-10 rounded-2xl flex flex-col items-center text-center border border-primary-container/60 relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-bold uppercase tracking-tight">
+                {t("Full Screen", "เช่าเต็มจอ")}
+              </div>
+              <p className="text-xs uppercase tracking-widest mb-4 text-outline">{t("Exclusive Rental", "ค่าเช่าป้าย")}</p>
+              <h3 className="font-headline-md text-headline-md text-white mb-2">{t("Exclusive", "เช่าป้ายทั้งหมด")}</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="font-headline-lg text-headline-lg text-primary-container">{data.exclusivePrice}</span>
+                <span className="text-sm text-outline">/{t("month", "เดือน")}</span>
+              </div>
+              <ul className="space-y-3 mb-8 text-on-surface-variant w-full text-left text-sm">
+                {[
+                  t("100% screen time — your brand only", "จอของคุณคนเดียว 100% ตลอดเวลา"),
+                  t("No other advertisers sharing the screen", "ไม่มีแบรนด์อื่นแชร์จอ"),
+                  t("Unlimited creative rotations", "เปลี่ยนชิ้นงานได้ไม่จำกัด"),
+                  t("Extended hours available", "เลือกเวลาออกอากาศได้เต็มที่"),
+                ].map((feat) => (
+                  <li key={feat} className="flex items-center gap-2">
+                    <CheckCircle size={15} className="text-green-400 flex-shrink-0 fill-green-400" />
+                    {feat}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/contact#form"
+                className="mt-auto w-full py-4 rounded-lg bg-primary-container text-white font-bold hover:shadow-[0_0_20px_rgba(230,57,70,0.4)] active:scale-95 transition-all text-center block"
+              >
+                {t("Enquire About Exclusive", "สอบถามค่าเช่าป้าย")}
+              </Link>
             </div>
-          </section>
-        )}
+
+          </div>
+
+          {/* Packages link */}
+          <p className="text-center mt-10 text-on-surface-variant text-sm">
+            {t("Looking for a campaign package?", "ต้องการแพ็กเกจแคมเปญ?")}
+            {" "}
+            <Link href="/services#packages" className="text-primary-container font-bold hover:underline">
+              {t("View Packages →", "ดูแพ็กเกจ →")}
+            </Link>
+          </p>
+        </section>
 
         {/* ── 8b. Campaign Showcase Carousel ── */}
         {data.recentCampaigns && data.recentCampaigns.length > 0 && (
