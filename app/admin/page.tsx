@@ -172,7 +172,9 @@ export default function AdminPage() {
       <header className="sticky top-0 z-50 bg-[#020b2e]/95 backdrop-blur border-b border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-xl font-black"><span className="text-[#e63946]">Media</span><span className="text-white">108</span></span>
+            <a href="/" className="text-xl font-black hover:opacity-80 transition-opacity">
+              <span className="text-[#e63946]">Media</span><span className="text-white">108</span>
+            </a>
             <span className="text-gray-500 text-sm hidden sm:block">/ Admin Panel</span>
           </div>
           <div className="flex items-center gap-2">
@@ -187,6 +189,9 @@ export default function AdminPage() {
                 </button>
               </>
             )}
+            <a href="/" className="flex items-center gap-1.5 text-gray-400 hover:text-white text-sm transition-colors px-2 border border-white/10 rounded-lg py-2 hover:border-white/30">
+              ← <span>เว็บไซต์</span>
+            </a>
             <button onClick={() => setLoggedIn(false)} className="flex items-center gap-1.5 text-gray-500 hover:text-white text-sm transition-colors px-2">
               <LogOut size={14}/> <span className="hidden sm:block">ออก</span>
             </button>
