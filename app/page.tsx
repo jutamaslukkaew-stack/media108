@@ -79,13 +79,13 @@ const services: { icon: LucideIcon; title: string; descEn: string; descTh: strin
   { icon: Monitor,      title: "LED Billboard",    descEn: "Reserve ad space on high-resolution LED billboards in prime locations across Chonburi and Pattaya.",       descTh: "จองพื้นที่โฆษณาบนจอ LED ความละเอียดสูงในทำเลยุทธศาสตร์ทั่วชลบุรีและพัทยา" },
   { icon: Film,         title: "Video Ads",         descEn: "Produce compelling video ads calibrated for LED brightness and colour accuracy outdoors.",                 descTh: "ผลิตวิดีโอโฆษณาที่ปรับแสงและสีให้คมชัดบนจอ LED กลางแจ้งโดยเฉพาะ" },
   { icon: Paintbrush,   title: "Motion Graphic",    descEn: "Create 2D/3D motion graphics designed to grab attention and build brand recall at speed.",                descTh: "สร้างสรรค์ภาพเคลื่อนไหว 2D/3D ที่โดดเด่น ดึงดูดสายตา และสร้างการจดจำแบรนด์" },
-  { icon: CalendarDays, title: "กลยุทธ์แคมเปญ",    descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
+  { icon: CalendarDays, title: "Campaign Strategy",  descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
 ];
 
-const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: Building2, title: "เชี่ยวชาญพื้นที่ Chonburi",      descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
-  { icon: LineChart, title: "ตัดสินใจด้วยข้อมูลจริง",    descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
-  { icon: Wand2,     title: "สตูดิโอครบวงจร",            descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
+const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string }[] = [
+  { icon: Building2, titleEn: "Chonburi Local Experts",    titleTh: "เชี่ยวชาญพื้นที่ Chonburi",  descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
+  { icon: LineChart, titleEn: "Data-Driven Decisions",     titleTh: "ตัดสินใจด้วยข้อมูลจริง",     descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
+  { icon: Wand2,     titleEn: "Full Creative Studio",      titleTh: "สตูดิโอครบวงจร",              descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
 ];
 
 const gallery = [
@@ -1303,10 +1303,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
             {whyUs.map((item, i) => (
-              <div key={item.title}
+              <div key={item.titleEn}
                 className={`sr sr-scale sr-d${i + 1} glass-card p-12 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-500 shadow-lg group cursor-default`}>
                 <item.icon size={44} className="service-icon-hover text-primary-container mb-8 block transition-colors duration-300 group-hover:text-primary" />
-                <h4 className="font-headline-md text-on-surface mb-6 group-hover:text-primary transition-colors duration-300">{item.title}</h4>
+                <h4 className="font-headline-md text-on-surface mb-6 group-hover:text-primary transition-colors duration-300">{t(item.titleEn, item.titleTh)}</h4>
                 <p className="text-on-surface-variant font-body-md leading-relaxed">{t(item.descEn, item.descTh)}</p>
               </div>
             ))}
