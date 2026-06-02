@@ -56,7 +56,7 @@ export default function AboutPage() {
       <Navbar activePage="about" />
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[92vh] flex items-end pb-24 px-6 md:px-margin-desktop overflow-hidden pt-20">
+      <section className="relative flex items-center pb-10 px-6 md:px-margin-desktop overflow-hidden pt-24">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -71,14 +71,14 @@ export default function AboutPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-container-max mx-auto w-full flex flex-col lg:flex-row items-end gap-16">
+        <div className="relative z-10 max-w-container-max mx-auto w-full flex flex-col lg:flex-row items-center gap-10">
           {/* Left — main text */}
           <div className="flex-1 max-w-2xl">
             <span
               className="inline-block py-1 px-3 mb-6 bg-primary/10 border border-primary/20 text-primary font-label-md text-label-md rounded-full uppercase tracking-widest"
               style={{ animation: "hero-entry 0.6s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
             >
-              Est. 2008
+              Est. 2005
             </span>
             <h1
               className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
@@ -115,31 +115,31 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Right — stats panel */}
-          <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
-            {([
-              { value: "20+",    label: t("Years in Business",  "ปีที่ดำเนินธุรกิจ"),        icon: Calendar     },
-              { value: "10",     label: t("Billboard Locations","จุดป้ายในเครือข่าย"),      icon: MonitorPlay  },
-              { value: "4",      label: t("Cities Covered",     "เมืองหลักที่ครอบคลุม"),   icon: MapPin       },
-              { value: "2548",   label: t("Est. (DBD Registered)","ปีจดทะเบียน (กรมพัฒน์ฯ)"), icon: BadgeCheck   },
-            ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
-              <div
-                key={s.label}
-                className="rounded-2xl p-6 flex flex-col gap-3"
-                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
-              >
-                <s.icon size={22} className="text-primary" />
-                <div className="font-display-lg text-white text-3xl font-black leading-none">{s.value}</div>
-                <div className="font-label-md text-[11px] uppercase tracking-[0.15em] text-on-surface-variant/70">{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* ── Vision & Mission ── */}
-      <section className="py-24 px-6 md:px-margin-desktop bg-surface-container-lowest">
-        <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter">
+      {/* ── Stats + Vision & Mission ── */}
+      <section className="py-10 px-6 md:px-margin-desktop bg-surface-container-lowest">
+        <div className="max-w-container-max mx-auto space-y-10">
+
+          {/* Stats row */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {([
+              { value: "20+",  label: t("Years in Business",     "ปีที่ดำเนินธุรกิจ"),        icon: Calendar   },
+              { value: "10",   label: t("Billboard Locations",   "จุดป้ายในเครือข่าย"),      icon: MonitorPlay},
+              { value: "4",    label: t("Cities Covered",        "เมืองหลักที่ครอบคลุม"),   icon: MapPin     },
+              { value: "2548", label: t("Est. (DBD Registered)", "ปีจดทะเบียน (กรมพัฒน์ฯ)"), icon: BadgeCheck },
+            ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
+              <div key={s.label} className="glass-card rounded-2xl p-6 flex flex-col gap-3">
+                <s.icon size={20} className="text-primary" />
+                <div className="text-white text-3xl font-black leading-none">{s.value}</div>
+                <div className="text-[11px] uppercase tracking-[0.15em] text-on-surface-variant/70">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Vision & Mission */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {/* Vision */}
           <div className="sr sr-left sr-d1 glass-card p-12 rounded-xl flex flex-col justify-center">
             <div className="mb-6 w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -167,7 +167,8 @@ export default function AboutPage() {
               )}
             </p>
           </div>
-        </div>
+        </div>{/* end grid vision/mission */}
+        </div>{/* end space-y-10 */}
       </section>
 
       {/* ── Chonburi Corridor ── */}
