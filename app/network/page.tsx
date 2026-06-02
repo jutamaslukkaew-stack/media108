@@ -179,7 +179,7 @@ export default function NetworkPage() {
               </h2>
               <p className="text-on-surface-variant/60 font-light max-w-xl mx-auto">
                 {t(
-                  "Orchestrated inventory designed to meet specific demographic objectives across the EEC corridor.",
+                  "Orchestrated inventory designed to meet specific demographic objectives across Chonburi.",
                   "แบ่งเครือข่ายป้ายเป็น 3 กลุ่มตามกลุ่มเป้าหมาย เพื่อให้แคมเปญของคุณเข้าถึงคนที่ใช่ในทำเลที่ใช่"
                 )}
               </p>
@@ -254,7 +254,7 @@ export default function NetworkPage() {
               <div className="absolute inset-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt="EEC Corridor Billboard"
+                  alt="Chonburi Corridor Billboard"
                   src="/image/hero network.png"
                   className="w-full h-full object-cover"
                 />
@@ -280,12 +280,12 @@ export default function NetworkPage() {
                     style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, letterSpacing: "0.05em" }}
                   >
                     {t("Start Your Brand's", "ให้แบรนด์ของคุณ")}<br />
-                    <span style={{ color: "#E63946" }}>{t("EEC Presence", "ปรากฏทั่ว EEC")}</span> {t("Now.", "วันนี้เลย")}
+                    <span style={{ color: "#E63946" }}>{t("Chonburi Presence", "ปรากฏทั่ว Chonburi")}</span> {t("Now.", "วันนี้เลย")}
                   </h3>
                   <p className="text-white/60 font-light leading-relaxed max-w-md mb-10">
                     {t(
                       "Secure your brand's visibility at Thailand's highest-traffic DOOH locations. First-mover advantage in the fastest-growing economic zone in Southeast Asia.",
-                      "จอง ป้ายโฆษณา LED ในทำเลจราจรหนาแน่นที่สุดของ EEC ก่อนใคร เพิ่มการมองเห็นแบรนด์ในเขตเศรษฐกิจที่เติบโตเร็วที่สุดของไทย"
+                      "จอง ป้ายโฆษณา LED ในทำเลจราจรหนาแน่นที่สุดของ Chonburi ก่อนใคร เพิ่มการมองเห็นแบรนด์ในเขตเศรษฐกิจที่เติบโตเร็วที่สุดของไทย"
                     )}
                   </p>
                   {/* Mini stats row */}
@@ -340,8 +340,8 @@ export default function NetworkPage() {
               </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
                 {t(
-                  "Leading outdoor advertising network in the EEC zone — connecting brands to audiences with real traffic data.",
-                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
+                  "Leading outdoor advertising network in Chonburi — connecting brands to audiences with real traffic data.",
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>
@@ -368,7 +368,7 @@ export default function NetworkPage() {
                   { label: t("Pattaya Billboards",  "ป้ายพัทยา"),            href: "/billboard/pattaya-dolphin-roundabout" },
                   { label: t("Si Racha Hub",        "ฮับศรีราชา"),           href: "/billboard/sriracha-central-mall" },
                   { label: t("Bang Saen Network",   "เครือข่ายบางแสน"),     href: "/billboard/bangsaen-galaxy-junction" },
-                  { label: t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),   href: "/billboard/chonburi-tech-college-sukhumvit" },
+                  { label: t("Industrial Zone", "แถบอุตสาหกรรม Chonburi"),   href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { label: string; href: string }[]).map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item.label}</Link>
@@ -403,7 +403,7 @@ export default function NetworkPage() {
               <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
-              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-CBI</span></span>
               <span className="flex items-center gap-2">
                 {t("Status:", "สถานะ:")} <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> {t("Optimal", "ปกติ")}
               </span>

@@ -24,12 +24,12 @@ const GA_ID    = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default:  "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา EEC",
+    default:  "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา Chonburi",
     template: "%s | Media108",
   },
   description:
-    "Media108 แพลตฟอร์มสื่อโฆษณา DOOH และป้าย LED ชั้นนำในภาคตะวันออก ครอบคลุมชลบุรี พัทยา บางแสน ศรีราชา และเขต EEC เข้าถึงกลุ่มเป้าหมายด้วยข้อมูลจริงและแคมเปญที่วัดผลได้",
-  keywords: ["Media108", "DOOH", "ป้าย LED", "สื่อโฆษณา", "ชลบุรี", "พัทยา", "EEC", "Digital Signage"],
+    "Media108 แพลตฟอร์มสื่อโฆษณา DOOH และป้าย LED ชั้นนำในภาคตะวันออก ครอบคลุมชลบุรี พัทยา บางแสน ศรีราชา และเขต Chonburi เข้าถึงกลุ่มเป้าหมายด้วยข้อมูลจริงและแคมเปญที่วัดผลได้",
+  keywords: ["Media108", "DOOH", "ป้าย LED", "สื่อโฆษณา", "ชลบุรี", "พัทยา", "Chonburi", "Digital Signage"],
   authors: [{ name: "Media108", url: SITE_URL }],
   creator: "Media108",
   publisher: "Media108",
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     locale:    "th_TH",
     url:       SITE_URL,
     siteName:  "Media108",
-    title:     "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา EEC",
+    title:     "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา Chonburi",
     description:
-      "แพลตฟอร์มสื่อโฆษณา DOOH ชั้นนำในภาคตะวันออก ครอบคลุมชลบุรี พัทยา EEC",
+      "แพลตฟอร์มสื่อโฆษณา DOOH ชั้นนำในภาคตะวันออก ครอบคลุมชลบุรี พัทยา Chonburi",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Media108" }],
   },
   twitter: {
     card:        "summary_large_image",
-    title:       "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา EEC",
+    title:       "Media108 | สื่อโฆษณา DOOH LED ชลบุรี พัทยา Chonburi",
     description: "แพลตฟอร์มสื่อโฆษณา DOOH ชั้นนำในภาคตะวันออก",
     images:      ["/og-image.png"],
   },

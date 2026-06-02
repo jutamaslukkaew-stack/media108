@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) {
     return {
       title: "ป้ายโฆษณา | Media108",
-      description: "สื่อโฆษณา DOOH LED ชลบุรี พัทยา EEC",
+      description: "สื่อโฆษณา DOOH LED ชลบุรี พัทยา Chonburi",
     };
   }
 

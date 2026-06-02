@@ -690,7 +690,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <span className="text-primary-container">Media</span><span className="text-white">108</span>
             </div>
             <p className="text-on-surface-variant leading-relaxed">
-              {t("Leading LED billboard network in Chonburi–Pattaya EEC, connecting brands to their audience with real data.", "เครือข่ายป้าย LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา ช่วยแบรนด์เข้าถึงกลุ่มเป้าหมายด้วยข้อมูลจราจรจริง")}
+              {t("Leading LED billboard network in Chonburi–Pattaya, connecting brands to their audience with real data.", "เครือข่ายป้าย LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา ช่วยแบรนด์เข้าถึงกลุ่มเป้าหมายด้วยข้อมูลจราจรจริง")}
             </p>
           </div>
           <div className="flex flex-col gap-4">

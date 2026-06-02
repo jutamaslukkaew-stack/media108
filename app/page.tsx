@@ -34,8 +34,8 @@ const featuredBillboards = [
     locationTh: "ถนนสุขุมวิท หน้า Central Si Racha",
     badge: "พร้อมลงโฆษณา",
     badgeClass: "bg-primary/10 text-primary",
-    descEn: "The highest-traffic point in Si Racha — 130,000+ vehicles daily, covering families, industrial workers, and expats from the EEC zone.",
-    descTh: "จุดรวมรถสูงสุดในศรีราชา 130,000+ คัน/วัน ครอบคลุมครอบครัว คนทำงานนิคม และต่างชาติ EEC",
+    descEn: "The highest-traffic point in Si Racha — 130,000+ vehicles daily, covering families, industrial workers, and expats from the Chonburi.",
+    descTh: "จุดรวมรถสูงสุดในศรีราชา 130,000+ คัน/วัน ครอบคลุมครอบครัว คนทำงานนิคม และต่างชาติ Chonburi",
   },
   {
     href: "/billboard/bangsaen-galaxy-junction",
@@ -54,7 +54,7 @@ const featuredBillboards = [
 const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
   { icon: MapPin,   title: "Chonburi Hub",       descEn: "Strategic billboards in the city center and key business districts with high-volume daily traffic",   descTh: "ป้ายกลางเมืองชลบุรีและย่านธุรกิจหลัก จราจรหนาแน่นตลอดทั้งวัน" },
   { icon: Umbrella, title: "Pattaya & Bang Saen", descEn: "Cover major tourist destinations and leisure zones, reaching both Thai and international visitors", descTh: "ครอบคลุมแหล่งท่องเที่ยวสำคัญ เข้าถึงนักท่องเที่ยวไทยและต่างชาติ" },
-  { icon: Factory,  title: "Sri Racha EEC",       descEn: "The new economic corridor and high-purchasing-power industrial workforce",                          descTh: "เขตเศรษฐกิจพิเศษ EEC กลุ่มพนักงานอุตสาหกรรมที่มีกำลังซื้อสูง" },
+  { icon: Factory,  title: "Sri Racha",       descEn: "The new economic corridor and high-purchasing-power industrial workforce",                          descTh: "เขตเศรษฐกิจพิเศษ Chonburi กลุ่มพนักงานอุตสาหกรรมที่มีกำลังซื้อสูง" },
 ];
 
 const stats = [
@@ -83,7 +83,7 @@ const services: { icon: LucideIcon; title: string; descEn: string; descTh: strin
 ];
 
 const whyUs: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: Building2, title: "เชี่ยวชาญพื้นที่ EEC",      descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
+  { icon: Building2, title: "เชี่ยวชาญพื้นที่ Chonburi",      descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
   { icon: LineChart, title: "ตัดสินใจด้วยข้อมูลจริง",    descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
   { icon: Wand2,     title: "สตูดิโอครบวงจร",            descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
 ];
@@ -106,12 +106,12 @@ const gallery = [
     src: "/image/locations/sriracha-central-mall.png",
     alt: "ป้าย LED หน้า Central Si Racha ศรีราชา",
     title: "Central Si Racha",
-    sub: "ศรีราชา – ถนนสุขุมวิท EEC",
+    sub: "ศรีราชา – ถนนสุขุมวิท Chonburi",
   },
 ];
 
 const steps = [
-  { step: "01", titleEn: "Choose Location",  titleTh: "เลือกทำเลที่ใช่",   descEn: "Browse our EEC-wide network and pick the billboard or zone that matches your target audience.",                      descTh: "เลือกป้ายหรือโซนที่ตรงกับกลุ่มเป้าหมายของคุณจากเครือข่ายทั่ว EEC" },
+  { step: "01", titleEn: "Choose Location",  titleTh: "เลือกทำเลที่ใช่",   descEn: "Browse our Chonburi network and pick the billboard or zone that matches your target audience.",                      descTh: "เลือกป้ายหรือโซนที่ตรงกับกลุ่มเป้าหมายของคุณจากเครือข่ายทั่ว Chonburi" },
   { step: "02", titleEn: "Request a Quote",  titleTh: "ขอใบเสนอราคา",     descEn: "Tell us your campaign details and we will prepare the best package and time slots for your budget.",                  descTh: "แจ้งรายละเอียดแคมเปญ ทีมเราจะจัดทำแพ็กเกจและช่วงเวลาที่คุ้มค่าที่สุดให้คุณ" },
   { step: "03", titleEn: "Submit Ad Files",  titleTh: "ส่งไฟล์งานโฆษณา", descEn: "Upload your artwork for our team to check quality, colour calibration, and display standards.",                       descTh: "ส่งไฟล์งานให้ทีมตรวจสอบคุณภาพ ความถูกต้องของสี และมาตรฐานการแสดงผล" },
   { step: "04", titleEn: "Launch Campaign",  titleTh: "เปิดแคมเปญ",       descEn: "Your ad goes live on schedule. We provide a full post-campaign performance report.",                                  descTh: "โฆษณาขึ้นป้ายตามกำหนด พร้อมรับรายงานสรุปผลแคมเปญจากทีมงาน" },
@@ -231,7 +231,7 @@ function StatsDataSection({ items }: { items: { label: string; to: number; suffi
 const STATS = [
   { to: 10,  suffix: "+",  labelEn: "Billboard Locations",  labelTh: "จุดป้ายในเครือข่าย" },
   { to: 1,   suffix: "M+", labelEn: "Vehicles Per Day",     labelTh: "ยานพาหนะต่อวัน" },
-  { to: 100, suffix: "%",  labelEn: "EEC Zone Coverage",    labelTh: "ครอบคลุมพื้นที่ EEC" },
+  { to: 100, suffix: "%",  labelEn: "Chonburi Coverage",    labelTh: "ครอบคลุมพื้นที่ Chonburi" },
   { to: 35,  suffix: "M+", labelEn: "Monthly Impressions",  labelTh: "Impressions ต่อเดือน" },
 ];
 
@@ -331,7 +331,7 @@ function StatsSection({ t }: { t: (en: string, th: string) => string }) {
 }
 
 const tickerLocations = [
-  "PATTAYA CENTRAL", "JOMTIEN BEACH", "SRI RACHA EEC", "BANG SAEN",
+  "PATTAYA CENTRAL", "JOMTIEN BEACH", "SRI RACHA Chonburi", "BANG SAEN",
   "LAEM CHABANG PORT", "CHONBURI CITY", "AMATA CITY", "RAYONG",
   "PATTAYA GATEWAY", "MAP TA PHUT",
 ];
@@ -716,7 +716,7 @@ export default function Home() {
                 style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
               />
               <span className="text-primary font-label-md text-label-md tracking-widest uppercase">
-                {t("Eastern Economic Corridor Pioneer", "ผู้นำสื่อโฆษณา EEC ชลบุรี–พัทยา")}
+                {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
               </span>
             </div>
           </div>
@@ -871,8 +871,8 @@ export default function Home() {
                 }}
               >
                 {t(
-                  "Media108 is a digital advertising media network built for businesses in Chonburi, Pattaya, Bang Saen, Sri Racha and the EEC area. We don't just sell space on LED screens — we help brands choose the right location, understand their audience, and plan advertising effectively with a vision to elevate local media to international standards.",
-                  "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่ให้บริการธุรกิจในชลบุรี พัทยา บางแสน ศรีราชา และพื้นที่ EEC เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยวางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และออกแบบแคมเปญให้วัดผลได้จริง"
+                  "Media108 is a digital advertising media network built for businesses in Chonburi, Pattaya, Bang Saen, Sri Racha and the Chonburi. We don't just sell space on LED screens — we help brands choose the right location, understand their audience, and plan advertising effectively with a vision to elevate local media to international standards.",
+                  "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่ให้บริการธุรกิจในชลบุรี พัทยา บางแสน ศรีราชา และพื้นที่ Chonburi เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยวางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และออกแบบแคมเปญให้วัดผลได้จริง"
                 )}
               </p>
 
@@ -973,7 +973,7 @@ export default function Home() {
                       <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-on-surface font-label-md text-[13px] leading-tight">บริษัท มีเดีย108 จำกัด</p>
-                        <p className="text-on-surface-variant text-[11px] mt-0.5">Chonburi, Thailand · EEC Zone</p>
+                        <p className="text-on-surface-variant text-[11px] mt-0.5">Chonburi, Thailand · Chonburi</p>
                       </div>
                     </div>
                   </div>
@@ -1072,7 +1072,7 @@ export default function Home() {
                 <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
                   {t(
                     "The Media108 network covers key routes in Chonburi province — from tourist zones and education zones to business corridors. We select only locations with the best visibility.",
-                    "เครือข่าย Media108 ครอบคลุมเส้นทางหลักในชลบุรี ตั้งแต่โซนท่องเที่ยว ย่านธุรกิจ ไปจนถึงนิคมอุตสาหกรรม EEC เราคัดเลือกเฉพาะทำเลที่มีการมองเห็นสูงสุด"
+                    "เครือข่าย Media108 ครอบคลุมเส้นทางหลักในชลบุรี ตั้งแต่โซนท่องเที่ยว ย่านธุรกิจ ไปจนถึงนิคมอุตสาหกรรม Chonburi เราคัดเลือกเฉพาะทำเลที่มีการมองเห็นสูงสุด"
                   )}
                 </p>
               </div>
@@ -1120,7 +1120,7 @@ export default function Home() {
               <div className="relative z-10 p-8 glass-card rounded-2xl">
                 <h4 className="font-headline-md text-white mb-6">{t("Interactive Network Map", "แผนที่เครือข่ายแบบอินเทอร์แอคทีฟ")}</h4>
                 <p className="text-on-surface-variant mb-8 text-sm">
-                  {t("Explore our billboard network across the EEC region and find the right location for your campaign.", "สำรวจเครือข่ายป้ายโฆษณาทั่วพื้นที่ EEC และเลือกทำเลที่ใช่สำหรับแคมเปญของคุณ")}
+                  {t("Explore our billboard network across Chonburi and find the right location for your campaign.", "สำรวจเครือข่ายป้ายโฆษณาทั่วพื้นที่ Chonburi และเลือกทำเลที่ใช่สำหรับแคมเปญของคุณ")}
                 </p>
                 <button
                   onClick={() => setShowMapModal(true)}
@@ -1519,8 +1519,8 @@ export default function Home() {
               />
               <p className="text-on-surface-variant font-body-md pr-12 leading-relaxed">
                 {t(
-                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
-                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
+                  "Leading the digital outdoor revolution in the Chonburi–Pattaya region. Precision media solutions driven by data and impact.",
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>
@@ -1555,7 +1555,7 @@ export default function Home() {
                   { en: "Pattaya Billboards",   th: "ป้ายพัทยา",            href: "/billboard/pattaya-dolphin-roundabout" },
                   { en: "Si Racha Hub",         th: "ฮับศรีราชา",           href: "/billboard/sriracha-central-mall" },
                   { en: "Bang Saen Network",    th: "เครือข่ายบางแสน",     href: "/billboard/bangsaen-galaxy-junction" },
-                  { en: "EEC Industrial Belt",  th: "เขต EEC อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
+                  { en: "Industrial Zone",  th: "เขต Chonburi อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { en: string; th: string; href: string }[]).map(({ en, th, href }) => (
                   <li key={en}>
                     <Link
@@ -1615,7 +1615,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
               <span>
-                Region: <span className="text-on-surface font-bold">TH-EEC</span>
+                Region: <span className="text-on-surface font-bold">TH-CBI</span>
               </span>
               <span className="flex items-center gap-2">
                 {t("Status", "สถานะ")}: <span className="w-2 h-2 rounded-full bg-green-500 inline-block"></span>{" "}
@@ -1644,7 +1644,7 @@ export default function Home() {
               <div className="flex items-center gap-2">
                 <MapPin size={16} className="text-primary" />
                 <span className="text-white font-label-md text-sm">
-                  {t("Media108 Billboard Network — EEC Region", "เครือข่ายป้ายโฆษณา Media108 — พื้นที่ EEC")}
+                  {t("Media108 Billboard Network — Chonburi Region", "เครือข่ายป้ายโฆษณา Media108 — พื้นที่ Chonburi")}
                 </span>
               </div>
               <div className="flex items-center gap-3">

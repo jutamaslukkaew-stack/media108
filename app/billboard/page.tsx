@@ -165,7 +165,7 @@ export default function BillboardListingPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             ref={mapImgRef}
-            alt="EEC Corridor Map"
+            alt="Chonburi Corridor Map"
             className="w-full h-full object-cover opacity-90"
             src="/image/hero-billboard.png"
           />
@@ -215,7 +215,7 @@ export default function BillboardListingPage() {
             style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.1, animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}
           >
             {t("Choose Your Billboard in", "เลือกทำเลโฆษณาใน")}{" "}
-            <span style={{ color: "#E63946" }}>{t("the EEC Zone", "เครือข่าย EEC")}</span>
+            <span style={{ color: "#E63946" }}>{t("Chonburi", "เครือข่าย Chonburi")}</span>
           </h1>
           <p
             className="font-body-lg text-on-surface-variant max-w-xl p-4 rounded-lg"

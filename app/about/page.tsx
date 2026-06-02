@@ -19,7 +19,7 @@ const leaders = [
     title: "CEO",
     titleTh: "ประธานเจ้าหน้าที่บริหาร",
     bio: "ผู้นำและผู้ก่อตั้ง Media108 ด้วยประสบการณ์กว่า 15 ปีในธุรกิจสื่อโฆษณากลางแจ้งและเครือข่าย DOOH ในภาคตะวันออก",
-    bioEn: "Founder and driving force behind Media108, with 15+ years in outdoor advertising and DOOH networks across the Eastern Economic Corridor.",
+    bioEn: "Founder and driving force behind Media108, with 15+ years in outdoor advertising and DOOH networks across the Chonburi–Pattaya region.",
     img: "/team/ceo.jpg",
     initials: "ฉ",
   },
@@ -92,7 +92,7 @@ export default function AboutPage() {
             >
               {t(
                 "Media108 is Thailand's premier DOOH and billboard network provider. We bridge the gap between brands and their audiences through high-impact, technologically superior media assets located in the nation's most strategic economic corridors.",
-                "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ชั้นนำในพื้นที่ชลบุรี-พัทยา-EEC เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยแบรนด์วางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และวัดผลลัพธ์ได้จริง"
+                "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ชั้นนำในพื้นที่ชลบุรี-พัทยา-Chonburi เราไม่ได้แค่ขายพื้นที่ป้าย แต่ช่วยแบรนด์วางกลยุทธ์สื่อ เลือกทำเลที่แม่นยำ และวัดผลลัพธ์ได้จริง"
               )}
             </p>
             <div
@@ -120,7 +120,7 @@ export default function AboutPage() {
               { value: "16+",    label: t("Years in Market",   "ปีประสบการณ์ด้านสื่อ"),     icon: Calendar     },
               { value: "250+",   label: t("Active Billboards", "ป้ายโฆษณาในเครือข่าย"),    icon: MonitorPlay  },
               { value: "450K+",  label: t("Daily Impressions", "Impressions ต่อวัน"),       icon: Eye          },
-              { value: "85%",    label: t("EEC Market Share",  "ส่วนแบ่งตลาด EEC"),        icon: TrendingUp   },
+              { value: "85%",    label: t("Chonburi Market Share",  "ส่วนแบ่งตลาด Chonburi"),        icon: TrendingUp   },
             ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
@@ -169,7 +169,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── EEC Corridor ── */}
+      {/* ── Chonburi Corridor ── */}
       <section className="py-32 px-6 md:px-margin-desktop relative">
         <div className="max-w-container-max mx-auto">
           <div className="flex flex-col md:flex-row gap-16 items-center">
@@ -178,7 +178,7 @@ export default function AboutPage() {
               <div className="aspect-square glass-card rounded-2xl overflow-hidden relative group">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt="Eastern Economic Corridor"
+                  alt="Chonburi–Pattaya region"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
                 />
@@ -194,12 +194,12 @@ export default function AboutPage() {
             <div className="w-full md:w-1/2 order-1 md:order-2">
               <h2 className="font-headline-xl text-headline-xl text-white mb-8">
                 {t("Our Home Ground:", "พื้นที่ที่เราเชี่ยวชาญ:")}{" "}
-                <span className="text-primary">{t("The EEC Zone.", "เขต EEC ชลบุรี–ระยอง")}</span>
+                <span className="text-primary">{t("The Chonburi.", "เขต Chonburi ชลบุรี–ระยอง")}</span>
               </h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant mb-8">
                 {t(
-                  "We recognized early that Chonburi and the Eastern Economic Corridor (EEC) represent the beating heart of Thailand's future economy. By concentrating our highest-fidelity digital assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic of industrial leaders, international tourists, and growing middle-class residents.",
-                  "ชลบุรีและเขต EEC คือศูนย์กลางเศรษฐกิจที่เติบโตเร็วที่สุดของไทย Media108 วางเครือข่ายป้ายโฆษณาในทุกจุดยุทธศาสตร์ของพื้นที่นี้ ให้แบรนด์เข้าถึงทั้งนักท่องเที่ยว คนทำงาน และผู้บริหารในย่านอุตสาหกรรมได้ในจุดเดียว"
+                  "We recognized early that Chonburi and the Chonburi–Pattaya region represent the beating heart of Thailand's future economy. By concentrating our highest-fidelity digital assets in this zone, we offer advertisers exclusive access to a high-net-worth demographic of industrial leaders, international tourists, and growing middle-class residents.",
+                  "ชลบุรีและเขต Chonburi คือศูนย์กลางเศรษฐกิจที่เติบโตเร็วที่สุดของไทย Media108 วางเครือข่ายป้ายโฆษณาในทุกจุดยุทธศาสตร์ของพื้นที่นี้ ให้แบรนด์เข้าถึงทั้งนักท่องเที่ยว คนทำงาน และผู้บริหารในย่านอุตสาหกรรมได้ในจุดเดียว"
                 )}
               </p>
               <div className="grid grid-cols-2 gap-8">
@@ -209,7 +209,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h4 className="font-data-mono text-3xl text-primary mb-2">85%</h4>
-                  <p className="font-body-md text-on-surface-variant">{t("Market Share in EEC Region", "ส่วนแบ่งตลาดในภูมิภาค EEC")}</p>
+                  <p className="font-body-md text-on-surface-variant">{t("Market Share in Chonburi Region", "ส่วนแบ่งตลาดในภูมิภาค Chonburi")}</p>
                 </div>
               </div>
             </div>
@@ -392,7 +392,7 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="max-w-2xl text-center md:text-left">
               <h2 className="font-headline-xl text-headline-xl text-white mb-6">
-                {t("Ready to grow your brand in Chonburi & EEC?", "พร้อมขยายแบรนด์ในชลบุรีและ EEC แล้วหรือยัง?")}
+                {t("Ready to grow your brand in Chonburi & Chonburi?", "พร้อมขยายแบรนด์ในชลบุรีและ Chonburi แล้วหรือยัง?")}
               </h2>
               <p className="font-body-lg text-white/80">
                 {t(
@@ -432,8 +432,8 @@ export default function AboutPage() {
               </div>
               <p className="text-on-surface-variant font-body-md leading-relaxed">
                 {t(
-                  "Leading the digital outdoor revolution in the Eastern Economic Corridor. Precision media solutions driven by data and impact.",
-                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
+                  "Leading the digital outdoor revolution in the Chonburi–Pattaya region. Precision media solutions driven by data and impact.",
+                  "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
                 )}
               </p>
             </div>
@@ -460,7 +460,7 @@ export default function AboutPage() {
                   { label: t("Pattaya Billboards",  "ป้ายพัทยา"),            href: "/billboard/pattaya-dolphin-roundabout" },
                   { label: t("Si Racha Hub",        "ฮับศรีราชา"),           href: "/billboard/sriracha-central-mall" },
                   { label: t("Bang Saen Network",   "เครือข่ายบางแสน"),     href: "/billboard/bangsaen-galaxy-junction" },
-                  { label: t("EEC Industrial Belt", "แถบอุตสาหกรรม EEC"),   href: "/billboard/chonburi-tech-college-sukhumvit" },
+                  { label: t("Industrial Zone", "แถบอุตสาหกรรม Chonburi"),   href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { label: string; href: string }[]).map((item) => (
                   <li key={item.label}>
                     <Link href={item.href} className="text-on-surface-variant hover:text-primary transition-colors font-body-md">{item.label}</Link>
@@ -495,7 +495,7 @@ export default function AboutPage() {
               <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </div>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
-              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span>{t("Region:", "ภูมิภาค:")} <span className="text-on-surface font-bold">TH-CBI</span></span>
               <span className="flex items-center gap-2">
                 {t("Status:", "สถานะ:")} <span className="w-2 h-2 rounded-full bg-green-500 inline-block" /> {t("Optimal", "ปกติ")}
               </span>

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ป้ายโฆษณา LED – ทำเลพรีเมียมชลบุรี พัทยา EEC",
+  title: "ป้ายโฆษณา LED – ทำเลพรีเมียมชลบุรี พัทยา Chonburi",
   description:
-    "เลือกทำเลป้าย LED พรีเมียมของ Media108 ในชลบุรี พัทยา ศรีราชา จอมเทียน และเขต EEC ด้วยข้อมูล Traffic ผู้ชม และ Audience จริงทุกป้าย",
+    "เลือกทำเลป้าย LED พรีเมียมของ Media108 ในชลบุรี พัทยา ศรีราชา จอมเทียน และเขต Chonburi ด้วยข้อมูล Traffic ผู้ชม และ Audience จริงทุกป้าย",
   openGraph: {
     title:       "ป้ายโฆษณา LED พรีเมียม | Media108",
-    description: "ทำเลป้าย LED ชลบุรี พัทยา EEC ครอบคลุมทราฟฟิกกว่า 1 ล้านคนต่อวัน",
+    description: "ทำเลป้าย LED ชลบุรี พัทยา Chonburi ครอบคลุมทราฟฟิกกว่า 1 ล้านคนต่อวัน",
     url:         "/billboard",
   },
   alternates: { canonical: "/billboard" },

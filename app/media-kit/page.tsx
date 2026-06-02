@@ -381,7 +381,7 @@ export default function MediaKitPage() {
                 <span className="text-primary">Media</span><span className="text-white">108</span>
               </div>
               <p className="font-body-md text-body-md text-on-surface-variant">
-                {t("Leading outdoor advertising network across Chonburi–Pattaya EEC.", "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา")}
+                {t("Leading outdoor advertising network across Chonburi–Pattaya.", "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา")}
               </p>
             </div>
 
@@ -413,7 +413,7 @@ export default function MediaKitPage() {
                   { en: "Pattaya Billboards",  th: "ป้ายพัทยา",            href: "/billboard/pattaya-dolphin-roundabout" },
                   { en: "Si Racha Hub",        th: "ฮับศรีราชา",           href: "/billboard/sriracha-central-mall" },
                   { en: "Bang Saen Network",   th: "เครือข่ายบางแสน",     href: "/billboard/bangsaen-galaxy-junction" },
-                  { en: "EEC Industrial Belt", th: "เขต EEC อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
+                  { en: "Industrial Zone", th: "เขต Chonburi อุตสาหกรรม",  href: "/billboard/chonburi-tech-college-sukhumvit" },
                 ] as { en: string; th: string; href: string }[]).map((l) => (
                   <Link key={l.en} className="text-on-surface-variant hover:text-primary transition-colors text-sm" href={l.href}>
                     {t(l.en, l.th)}
@@ -452,7 +452,7 @@ export default function MediaKitPage() {
               <br /><span className="text-xs opacity-60">เลขทะเบียน 0205548033971</span>
             </p>
             <div className="flex items-center gap-6 text-on-surface-variant font-label-md text-sm">
-              <span>Region: <span className="text-on-surface font-bold">TH-EEC</span></span>
+              <span>Region: <span className="text-on-surface font-bold">TH-CBI</span></span>
               <span className="flex items-center gap-2">
                 {t("Status", "สถานะ")}:{" "}
                 <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />{" "}

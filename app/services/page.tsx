@@ -16,7 +16,7 @@ import {
 /* ── Service cards data ─────────────────────────────────── */
 const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
   { icon: LayoutGrid,        title: "พื้นที่โฆษณาบนจอ LED",           descEn: "Reserve ad space on single or multiple LED billboards in prime strategic locations.",                       descTh: "จองพื้นที่โฆษณาบนจอ LED เดี่ยวหรือหลายจุดในทำเลยุทธศาสตร์ที่คัดสรรมาแล้ว" },
-  { icon: MousePointerClick, title: "แคมเปญ Digital Out-of-Home",       descEn: "Run coordinated multi-billboard campaigns to maximise brand awareness across the region.",              descTh: "รันแคมเปญพร้อมกันหลายป้าย เพื่อสร้างการรับรู้แบรนด์ในวงกว้างทั่วพื้นที่ EEC" },
+  { icon: MousePointerClick, title: "แคมเปญ Digital Out-of-Home",       descEn: "Run coordinated multi-billboard campaigns to maximise brand awareness across the region.",              descTh: "รันแคมเปญพร้อมกันหลายป้าย เพื่อสร้างการรับรู้แบรนด์ในวงกว้างทั่วพื้นที่ Chonburi" },
   { icon: Palette,           title: "ออกแบบกราฟิกโฆษณา",              descEn: "Design high-impact artworks optimised for LED billboard display and road-visibility standards.",         descTh: "ออกแบบกราฟิกที่เหมาะกับจอ LED กลางแจ้ง มองเห็นชัดเจนจากถนน ดึงดูดสายตาผู้ผ่านไปมา" },
   { icon: Sparkles,          title: "Motion Graphic สำหรับ LED",        descEn: "Create fluid, attention-grabbing animations built to the technical specs of LED outdoor displays.",     descTh: "สร้างภาพเคลื่อนไหวที่ลื่นไหลและโดดเด่น ออกแบบตามข้อกำหนดทางเทคนิคของจอ LED กลางแจ้ง" },
   { icon: Film,              title: "ผลิตวิดีโอโฆษณา",                 descEn: "Full-cycle video production from script to final cut — built for both LED screens and digital platforms.", descTh: "ผลิตวิดีโอโฆษณาครบวงจร ตั้งแต่เขียนบทจนถึงตัดต่อสุดท้าย เหมาะทั้งจอ LED และสื่อออนไลน์" },
@@ -303,7 +303,7 @@ export default function ServicesPage() {
             <p className="text-on-surface-variant font-body-md text-sm mb-6 leading-relaxed opacity-70">
               {t(
                 "Elevate your brand through precision digital out-of-home media and quality-driven production.",
-                "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ EEC ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
+                "เครือข่ายสื่อโฆษณา LED ชั้นนำในพื้นที่ Chonburi ชลบุรี–พัทยา เชื่อมแบรนด์สู่กลุ่มเป้าหมายด้วยข้อมูลจราจรจริง"
               )}
             </p>
             <div className="flex gap-4">
