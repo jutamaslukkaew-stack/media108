@@ -359,14 +359,21 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {data.nearby.map((place) => {
                   const PlaceIcon = iconMap[place.icon] ?? MapPin;
+                  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}${data.mapLat && data.mapLng ? `&center=${data.mapLat},${data.mapLng}` : ""}`;
                   return (
-                  <div key={place.name} className="flex items-start gap-4">
-                    <PlaceIcon size={20} className="text-primary-container mt-0.5 flex-shrink-0" />
+                  <a
+                    key={place.name}
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 group rounded-xl p-3 -m-3 hover:bg-white/5 transition-colors cursor-pointer"
+                  >
+                    <PlaceIcon size={20} className="text-primary-container mt-0.5 flex-shrink-0 group-hover:text-primary transition-colors" />
                     <div>
-                      <p className="font-bold text-white">{place.name}</p>
+                      <p className="font-bold text-white group-hover:text-primary transition-colors underline-offset-2 group-hover:underline">{place.name}</p>
                       <p className="text-sm text-outline">{place.distance}</p>
                     </div>
-                  </div>
+                  </a>
                   );
                 })}
               </div>
