@@ -684,12 +684,12 @@ function BillboardDetail({ data }: { data: BillboardData }) {
               </button>
             </div>
 
-            {/* Map iframe – satellite / aerial view */}
+            {/* Map iframe – satellite / aerial view (Bing Maps – ไม่ต้องใช้ API Key) */}
             <div className="aspect-video bg-surface-container">
               {data.mapLat && data.mapLng ? (
                 <iframe
                   title={`แผนที่ทางอากาศ ${data.title}`}
-                  src={`https://maps.google.com/maps?q=${data.mapLat},${data.mapLng}&z=18&t=k&output=embed`}
+                  src={`https://www.bing.com/maps/embed?cp=${data.mapLat}~${data.mapLng}&lvl=18&typ=a&style=h&src=SHELL&FORM=MBEDV8`}
                   className="w-full h-full border-0"
                   allowFullScreen
                   loading="lazy"
@@ -706,10 +706,10 @@ function BillboardDetail({ data }: { data: BillboardData }) {
             {/* Footer */}
             <div className="flex items-center justify-between px-5 py-3 bg-surface-container-lowest">
               <span className="text-xs text-on-surface-variant uppercase tracking-widest font-bold">
-                {t("Aerial View – Google Maps Satellite", "มุมมองทางอากาศ – Google Maps Satellite")}
+                {t("Aerial View – Bing Maps Satellite", "มุมมองทางอากาศ – Bing Maps")}
               </span>
               <a
-                href={`https://maps.google.com/?q=${data.mapLat},${data.mapLng}&t=k`}
+                href={`https://www.google.com/maps?q=${data.mapLat},${data.mapLng}&t=k`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-primary hover:text-primary-container transition-colors flex items-center gap-1"
