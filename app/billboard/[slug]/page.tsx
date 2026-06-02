@@ -366,13 +366,17 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                     href={mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 group rounded-xl p-3 -m-3 hover:bg-white/5 transition-colors cursor-pointer"
+                    onClick={(e) => { e.preventDefault(); window.open(mapsUrl, '_blank', 'noopener,noreferrer'); }}
+                    className="flex items-center justify-between gap-4 group rounded-xl border border-white/10 p-4 hover:border-primary-container/60 hover:bg-white/5 transition-all cursor-pointer"
                   >
-                    <PlaceIcon size={20} className="text-primary-container mt-0.5 flex-shrink-0 group-hover:text-primary transition-colors" />
-                    <div>
-                      <p className="font-bold text-white group-hover:text-primary transition-colors underline-offset-2 group-hover:underline">{place.name}</p>
-                      <p className="text-sm text-outline">{place.distance}</p>
+                    <div className="flex items-center gap-3">
+                      <PlaceIcon size={20} className="text-primary-container flex-shrink-0 group-hover:text-primary transition-colors" />
+                      <div>
+                        <p className="font-bold text-white group-hover:text-primary transition-colors">{place.name}</p>
+                        <p className="text-sm text-outline">{place.distance}</p>
+                      </div>
                     </div>
+                    <ArrowUpRight size={16} className="text-outline group-hover:text-primary-container flex-shrink-0 transition-colors" />
                   </a>
                   );
                 })}
