@@ -353,27 +353,70 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           </div>
         </section>
 
-        {/* ── 4. Performance Data ── */}
-        <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
-          <h2 className="font-headline-lg text-headline-lg text-white mb-8">{t("Performance Data", "ข้อมูลประสิทธิภาพ")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { labelEn: "Daily Traffic",   labelTh: "ยานพาหนะต่อวัน",      value: data.carsPerDay,                         subEn: "Estimated daily vehicle count", subTh: "จำนวนยานพาหนะโดยประมาณต่อวัน", accent: true },
-              { labelEn: "Avg. Speed",     labelTh: "ความเร็วเฉลี่ย",       value: data.avgSpeed,                           subEn: "Longer exposure per pass",      subTh: "เวลาที่มองเห็นป้ายนานขึ้น",     accent: false },
-              { labelEn: "Viewing Time",   labelTh: "เวลามองเห็นป้าย",      value: data.viewingDuration,                    subEn: "Clear line-of-sight",           subTh: "เส้นสายตาชัดเจนจากถนน",         accent: false },
-              { labelEn: "Peak Hours",     labelTh: "ช่วงจราจรหนาแน่น",    value: data.peakHours.split("–")[0].trim(),     subEn: "Rush hour peak exposure",       subTh: "การมองเห็นสูงสุดช่วงชั่วโมงเร่งด่วน", accent: false },
-            ].map((item) => (
-              <div
-                key={item.labelEn}
-                className={`sr sr-up glass-card p-8 rounded-2xl ${item.accent ? "border-l-4 border-l-primary-container" : ""}`}
-              >
-                <p className="text-outline text-xs uppercase tracking-widest mb-4">{t(item.labelEn, item.labelTh)}</p>
-                <p className="font-data-mono text-3xl text-white mb-2">{item.value}</p>
-                <p className="text-sm text-on-surface-variant">{t(item.subEn, item.subTh)}</p>
+        {/* ── 4. Performance Data (ข้อมูลจริงจาก spec ป้าย) ── */}
+        {(() => {
+          // ดึง spec จากข้อมูลป้าย
+          const opHoursSpec  = data.specs.find(s => s.label === "Operating Hours");
+          const spotsSpec    = data.specs.find(s => s.label === "Total Spots");
+          const loopSpec     = data.specs.find(s => s.label === "Loop Length");
+
+          // คำนวณรอบโฆษณาต่อวันจากชั่วโมงออกอากาศ
+          const loopsPerDay = (() => {
+            if (!opHoursSpec?.value) return "–";
+            const m = opHoursSpec.value.match(/(\d+):(\d+)\s*[–\-]\s*(\d+):(\d+)/);
+            if (!m) return "–";
+            const startMins = parseInt(m[1]) * 60 + parseInt(m[2]);
+            const endRaw    = parseInt(m[3]);
+            const endMins   = (endRaw === 0 ? 24 : endRaw) * 60 + parseInt(m[4]);
+            const totalMins = endMins - startMins;
+            return `~${Math.round(totalMins / 2).toLocaleString()} รอบ`;
+          })();
+
+          const cards = [
+            {
+              labelEn: "Ad Spot Duration", labelTh: "ระยะเวลาต่อ Spot",
+              value:   loopSpec?.value ?? "15 Seconds",
+              subEn:   "Per slot in each rotation", subTh: "ต่อ 1 สล็อตในแต่ละรอบ",
+              accent:  true,
+            },
+            {
+              labelEn: "Slots Per Loop",   labelTh: "สล็อตต่อรอบ",
+              value:   spotsSpec?.value ?? "8 Shared",
+              subEn:   "Shared advertisers per rotation", subTh: "จำนวนผู้โฆษณาสูงสุดต่อ 1 รอบ",
+              accent:  false,
+            },
+            {
+              labelEn: "Broadcast Hours",  labelTh: "เวลาออกอากาศ",
+              value:   opHoursSpec?.value ?? "–",
+              subEn:   "Daily on-air window", subTh: "ช่วงเวลาออกอากาศแต่ละวัน",
+              accent:  false,
+            },
+            {
+              labelEn: "Loops Per Day",    labelTh: "รอบโฆษณาต่อวัน",
+              value:   loopsPerDay,
+              subEn:   "Your ad appears this many times daily", subTh: "โฆษณาของคุณขึ้นจำนวนนี้ต่อวัน",
+              accent:  false,
+            },
+          ];
+
+          return (
+            <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
+              <h2 className="font-headline-lg text-headline-lg text-white mb-8">{t("Broadcast Facts", "ข้อมูลการออกอากาศ")}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {cards.map((item) => (
+                  <div
+                    key={item.labelEn}
+                    className={`sr sr-up glass-card p-8 rounded-2xl ${item.accent ? "border-l-4 border-l-primary-container" : ""}`}
+                  >
+                    <p className="text-outline text-xs uppercase tracking-widest mb-4">{t(item.labelEn, item.labelTh)}</p>
+                    <p className="font-data-mono text-3xl text-white mb-2">{item.value}</p>
+                    <p className="text-sm text-on-surface-variant">{t(item.subEn, item.subTh)}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </section>
+          );
+        })()}
 
         {/* ── 5. Audience Insights ── */}
         <section className="py-14 bg-surface-container-low">
