@@ -879,18 +879,20 @@ export default function Home() {
               {/* Feature chips — stagger pop-in */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { icon: BadgeCheck, labelEn: "Smart City Network",   labelTh: "เครือข่ายสื่อ Smart City",   delay: "0.45s" },
-                  { icon: TrendingUp, labelEn: "Data-Driven Planning", labelTh: "วางกลยุทธ์ด้วยข้อมูลจริง",  delay: "0.55s" },
-                ].map(({ icon: Icon, labelEn, labelTh, delay }) => (
-                  <div
+                  { icon: BadgeCheck, labelEn: "Smart City Network",   labelTh: "เครือข่ายสื่อ Smart City",  href: "/network", delay: "0.45s" },
+                  { icon: TrendingUp, labelEn: "Data-Driven Planning", labelTh: "วางกลยุทธ์ด้วยข้อมูลจริง", href: "/billboard", delay: "0.55s" },
+                ].map(({ icon: Icon, labelEn, labelTh, href, delay }) => (
+                  <a
                     key={labelEn}
-                    className="group flex items-center gap-4 p-4 rounded-xl border cursor-default"
+                    href={href}
+                    className="group flex items-center gap-4 p-4 rounded-xl border cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.03)",
                       borderColor: "rgba(255,255,255,0.08)",
                       opacity: introVisible ? 1 : 0,
                       transform: introVisible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
                       transition: `opacity 0.6s ease ${delay}, transform 0.6s cubic-bezier(0.34,1.56,0.64,1) ${delay}, border-color 200ms ease, background 200ms ease`,
+                      textDecoration: "none",
                     }}
                     onMouseEnter={e => {
                       (e.currentTarget as HTMLElement).style.borderColor = "rgba(230,57,70,0.4)";
@@ -901,15 +903,9 @@ export default function Home() {
                       (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
                     }}
                   >
-                    <Icon
-                      size={22}
-                      className="text-primary flex-shrink-0 transition-transform duration-200"
-                      style={{ transition: "transform 200ms cubic-bezier(0.34,1.56,0.64,1)" }}
-                      onMouseEnter={e => { (e.currentTarget as SVGElement).style.transform = "scale(1.2) rotate(-5deg)"; }}
-                      onMouseLeave={e => { (e.currentTarget as SVGElement).style.transform = "scale(1) rotate(0deg)"; }}
-                    />
+                    <Icon size={22} className="text-primary flex-shrink-0" />
                     <span className="text-on-surface font-label-md text-[13px]">{t(labelEn, labelTh)}</span>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
