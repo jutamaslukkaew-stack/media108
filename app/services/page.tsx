@@ -342,19 +342,19 @@ export default function ServicesPage() {
         <section className="py-14 px-margin-desktop max-w-container-max mx-auto text-center">
           <div className="sr sr-up max-w-3xl mx-auto">
             <h2 className="font-headline-xl text-headline-xl mb-6 text-white">
-              {t("Need a media plan tailored specifically for you?", "ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?")}
+              {t("Ready to advertise on LED billboards in Chonburi–Pattaya?", "พร้อมให้แบรนด์ของคุณขึ้นจอ LED ในชลบุรี–พัทยาแล้วหรือยัง?")}
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-10">
               {t(
-                "We don't just sell space — we help you plan so that every second on screen is meaningful and delivers maximum return on investment.",
-                "เราไม่ได้แค่ขายพื้นที่ป้าย เราช่วยวางกลยุทธ์สื่อทั้งหมดให้คุณ เพื่อให้ทุกวินาทีบนจอ LED สร้างผลลัพธ์ที่วัดได้จริง"
+                "We have 10 strategic LED billboard locations across Bangsen, Chonburi, Sriracha and Pattaya — plus in-house creative services including graphic design, motion graphics, product photography and video production.",
+                "เรามีป้าย LED 10 จุดในทำเลยุทธศาสตร์ทั่วบางแสน ชลบุรี ศรีราชา และพัทยา พร้อมทีมครีเอทีฟในบริษัท ทั้งออกแบบกราฟิก ทำ Motion Graphic ถ่ายภาพสินค้า และผลิตวิดีโอโฆษณา"
               )}
             </p>
             <Link
               href="/contact"
               className="inline-block bg-primary-container text-white px-12 py-5 rounded-lg font-headline-md text-headline-md hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all active:scale-95"
             >
-              {t("Start Your Project", "เริ่มต้นโครงการของคุณ")}
+              {t("Request a Quote", "ขอใบเสนอราคา")}
             </Link>
           </div>
         </section>
