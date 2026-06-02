@@ -181,7 +181,7 @@ export default function ServicesPage() {
       <main>
 
         {/* ── Hero ── */}
-        <section className="relative h-[600px] flex items-center px-margin-desktop overflow-hidden">
+        <section className="relative flex items-center px-margin-desktop overflow-hidden pt-28 pb-16">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -238,32 +238,32 @@ export default function ServicesPage() {
         </section>
 
         {/* ── Services Grid ── */}
-        <section id="services" className="py-24 px-margin-desktop max-w-container-max mx-auto">
-          <div className="sr sr-up mb-16">
+        <section id="services" className="py-14 px-margin-desktop max-w-container-max mx-auto">
+          <div className="sr sr-up mb-8">
             <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Professional Services", "บริการระดับมืออาชีพ")}</h2>
             <div className="h-1 w-24 bg-primary rounded-full" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((svc, i) => (
               <div
                 key={svc.title}
-                className={`sr sr-scale sr-d${Math.min(i % 3 + 1, 5)} service-card glass-card p-8 rounded-xl flex flex-col transition-all duration-300 hover:border-primary-container/30`}
+                className={`sr sr-scale sr-d${Math.min(i % 3 + 1, 5)} service-card glass-card p-6 rounded-xl flex flex-col transition-all duration-300 hover:border-primary-container/30`}
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                  <svc.icon size={22} className="text-primary" />
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <svc.icon size={20} className="text-primary" />
                 </div>
-                <h3 className="font-headline-md text-headline-md mb-3 text-white">{svc.title}</h3>
-                <p className="font-body-md text-on-surface-variant">{t(svc.descEn, svc.descTh)}</p>
+                <h3 className="font-headline-md text-headline-md mb-2 text-white">{svc.title}</h3>
+                <p className="font-body-md text-on-surface-variant text-sm">{t(svc.descEn, svc.descTh)}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ── Packages ── */}
-        <section id="packages" className="py-24 bg-surface-container-low border-y border-white/5">
+        <section id="packages" className="py-14 bg-surface-container-low border-y border-white/5">
           <div className="max-w-container-max mx-auto px-margin-desktop">
-            <div className="sr sr-up text-center mb-16">
+            <div className="sr sr-up text-center mb-8">
               <h2 className="font-headline-xl text-headline-xl mb-4 text-white">{t("Recommended Packages", "แพ็กเกจแนะนำสำหรับธุรกิจของคุณ")}</h2>
               <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
                 {t(
@@ -339,7 +339,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ── Strategic CTA ── */}
-        <section className="py-24 px-margin-desktop max-w-container-max mx-auto text-center">
+        <section className="py-14 px-margin-desktop max-w-container-max mx-auto text-center">
           <div className="sr sr-up max-w-3xl mx-auto">
             <h2 className="font-headline-xl text-headline-xl mb-6 text-white">
               {t("Need a media plan tailored specifically for you?", "ต้องการแผนสื่อที่ตอบโจทย์เฉพาะคุณ?")}
