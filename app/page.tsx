@@ -229,10 +229,10 @@ function StatsDataSection({ items }: { items: { label: string; to: number; suffi
 
 /* ── StatsSection Component ── */
 const STATS = [
-  { to: 10,  suffix: "+",  labelEn: "Billboard Locations",  labelTh: "จุดป้ายในเครือข่าย" },
-  { to: 1,   suffix: "M+", labelEn: "Vehicles Per Day",     labelTh: "ยานพาหนะต่อวัน" },
-  { to: 100, suffix: "%",  labelEn: "Chonburi Coverage",    labelTh: "ครอบคลุมพื้นที่ Chonburi" },
-  { to: 35,  suffix: "M+", labelEn: "Monthly Impressions",  labelTh: "Impressions ต่อเดือน" },
+  { to: 10, suffix: "+",  labelEn: "Billboard Locations", labelTh: "จุดป้ายในเครือข่าย" },
+  { to: 4,  suffix: "",   labelEn: "Key Cities",          labelTh: "เมืองหลักที่ครอบคลุม" },
+  { to: 8,  suffix: "",   labelEn: "Slots Per Loop",      labelTh: "สล็อตต่อรอบโฆษณา" },
+  { to: 15, suffix: "s",  labelEn: "Seconds Per Slot",    labelTh: "วินาทีต่อสล็อต" },
 ];
 
 function StatsSection({ t }: { t: (en: string, th: string) => string }) {
