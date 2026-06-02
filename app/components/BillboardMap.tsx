@@ -90,11 +90,11 @@ export default function BillboardMap({ billboards, t }: Props) {
             <div style="display:flex;gap:8px;margin-bottom:12px;">
               <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:8px;padding:8px;text-align:center;">
                 <div style="font-size:13px;font-weight:700;color:#E63946;">${bb.carsPerDay}</div>
-                <div style="font-size:10px;color:#94a3b8;margin-top:2px;">ยานพาหนะ/วัน</div>
+                <div style="font-size:10px;color:#94a3b8;margin-top:2px;">Vehicles/day</div>
               </div>
               <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:8px;padding:8px;text-align:center;">
                 <div style="font-size:13px;font-weight:700;color:#E63946;">${bb.price !== "ขอใบเสนอราคา" ? bb.price : "POA"}</div>
-                <div style="font-size:10px;color:#94a3b8;margin-top:2px;">เริ่มต้น/เดือน</div>
+                <div style="font-size:10px;color:#94a3b8;margin-top:2px;">From/month</div>
               </div>
             </div>
             <a href="/billboard/${bb.slug}"

@@ -18,7 +18,7 @@ const BillboardMap = dynamic(() => import("../components/BillboardMap"), {
       className="w-full rounded-2xl flex items-center justify-center"
       style={{ height: "620px", background: "#141d3f", border: "1px solid rgba(255,255,255,0.1)" }}
     >
-      <div className="text-on-surface-variant animate-pulse">กำลังโหลดแผนที่…</div>
+      <div className="text-on-surface-variant animate-pulse">Loading map…</div>
     </div>
   ),
 });

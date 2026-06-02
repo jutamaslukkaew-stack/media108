@@ -1163,7 +1163,8 @@ export default function Home() {
               <div key={s.labelTh} className="sr sr-up glass-card rounded-2xl p-6 text-center flex flex-col gap-2">
                 <p className="font-data-mono text-3xl md:text-4xl text-primary-container font-black">{s.value}</p>
                 <p className="text-on-surface font-bold text-sm">{t(s.labelEn, s.labelTh)}</p>
-                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">ที่มา: {s.src}</p>
+                {/* eslint-disable-next-line */}
+                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source","ที่มา")}: {s.src}</p>
               </div>
             ))}
           </div>
@@ -1208,7 +1209,8 @@ export default function Home() {
                   <p className="text-white font-bold text-lg mb-2">{t(item.titleEn, item.titleTh)}</p>
                   <p className="text-on-surface-variant text-sm leading-relaxed">{t(item.bodyEn, item.bodyTh)}</p>
                 </div>
-                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">ที่มา: {item.src}</p>
+                {/* eslint-disable-next-line */}
+                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source","ที่มา")}: {item.src}</p>
               </div>
             ))}
           </div>

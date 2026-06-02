@@ -147,7 +147,7 @@ export default function BillboardDetailMap({ lat, lng, title, nearby }: Props) {
         .bindPopup(
           `<div style="font-family:sans-serif;padding:4px 2px;">
             <div style="font-size:14px;font-weight:700;color:#fff;">${emoji} ${place.name}</div>
-            <div style="font-size:12px;color:#94a3b8;margin-top:2px;">ห่าง ${place.distance} จากป้าย</div>
+            <div style="font-size:12px;color:#94a3b8;margin-top:2px;">${place.distance} from billboard</div>
             <a href="https://www.google.com/maps/search/${encodeURIComponent(place.name)}/@${lat},${lng},16z"
                target="_blank"
                style="display:inline-block;margin-top:8px;padding:5px 12px;background:#E63946;color:white;

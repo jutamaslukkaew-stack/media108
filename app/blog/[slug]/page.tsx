@@ -6,11 +6,13 @@ import { notFound } from "next/navigation";
 import Navbar from "../../components/Navbar";
 import GlobalCTABar from "../../components/GlobalCTABar";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useLanguage } from "../../context/LanguageContext";
 import { getPostBySlug, getAllPosts } from "../../data/posts";
 import { Calendar, Clock, ArrowLeft, ArrowRight, Tag } from "lucide-react";
 
 export default function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   useScrollReveal();
+  const { t } = useLanguage();
   const { slug } = use(params);
   const post = getPostBySlug(slug);
 
@@ -39,13 +41,13 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           <div className="relative max-w-3xl mx-auto px-margin-desktop pt-12 pb-10">
             {/* Back */}
             <Link href="/blog" className="inline-flex items-center gap-2 text-outline hover:text-white text-sm mb-8 transition-colors">
-              <ArrowLeft size={14} /> {" บทความทั้งหมด"}
+              <ArrowLeft size={14} /> {" "}{t("All Articles", "บทความทั้งหมด")}
             </Link>
 
             {/* Meta */}
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="bg-primary/10 border border-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-full">
-                {post.category}
+                {t(post.categoryEn, post.category)}
               </span>
               <span className="flex items-center gap-1.5 text-outline text-xs"><Calendar size={12} /> {post.date}</span>
               <span className="flex items-center gap-1.5 text-outline text-xs"><Clock size={12} /> {post.readTime}</span>
@@ -53,7 +55,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
 
             {/* Title */}
             <h1 className="font-headline-xl text-headline-xl text-white mb-6 leading-tight">
-              {post.titleTh}
+              {t(post.titleEn, post.titleTh)}
             </h1>
 
             {/* Excerpt */}
@@ -85,23 +87,23 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
           {/* CTA Box */}
           <div className="mt-10 glass-card rounded-2xl p-8 border border-primary-container/20 bg-primary-container/5">
             <h3 className="font-headline-md text-white mb-3">
-              สนใจลงโฆษณาป้าย LED ในชลบุรี–พัทยา?
+              {t("Interested in LED Billboard Advertising in Chonburi–Pattaya?", "สนใจลงโฆษณาป้าย LED ในชลบุรี–พัทยา?")}
             </h3>
             <p className="text-on-surface-variant text-sm mb-6">
-              ทีม Media108 พร้อมให้คำแนะนำและจัดทำใบเสนอราคาให้ฟรี ไม่มีข้อผูกมัด
+              {t("Our team is ready to advise and prepare a free quote — no commitment required.", "ทีม Media108 พร้อมให้คำแนะนำและจัดทำใบเสนอราคาให้ฟรี ไม่มีข้อผูกมัด")}
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
                 className="bg-primary-container text-white font-bold px-6 py-3 rounded-lg text-sm hover:bg-primary transition-colors"
               >
-                ขอใบเสนอราคาฟรี →
+                {t("Request Free Quote →", "ขอใบเสนอราคาฟรี →")}
               </Link>
               <Link
                 href="/billboard"
                 className="border border-white/20 text-white font-bold px-6 py-3 rounded-lg text-sm hover:bg-white/5 transition-colors"
               >
-                ดูทำเลป้ายทั้งหมด
+                {t("View All Billboard Locations", "ดูทำเลป้ายทั้งหมด")}
               </Link>
             </div>
           </div>
@@ -110,7 +112,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
         {/* Related posts */}
         {related.length > 0 && (
           <section className="max-w-container-max mx-auto px-margin-desktop mt-16">
-            <h2 className="font-headline-lg text-white mb-6">บทความที่เกี่ยวข้อง</h2>
+            <h2 className="font-headline-lg text-white mb-6">{t("Related Articles", "บทความที่เกี่ยวข้อง")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {related.map((p) => (
                 <Link key={p.slug} href={`/blog/${p.slug}`} className="group block">
@@ -122,12 +124,12 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
                       className="w-24 h-20 object-cover rounded-xl flex-shrink-0"
                     />
                     <div>
-                      <span className="text-primary text-xs font-bold uppercase tracking-widest">{p.category}</span>
+                      <span className="text-primary text-xs font-bold uppercase tracking-widest">{t(p.categoryEn, p.category)}</span>
                       <h3 className="text-white text-sm font-bold mt-1 group-hover:text-primary-container transition-colors line-clamp-2">
-                        {p.titleTh}
+                        {t(p.titleEn, p.titleTh)}
                       </h3>
                       <span className="text-primary-container text-xs flex items-center gap-1 mt-2">
-                        อ่านต่อ <ArrowRight size={11} />
+                        {t("Read", "อ่านต่อ")} <ArrowRight size={11} />
                       </span>
                     </div>
                   </div>

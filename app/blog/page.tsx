@@ -8,11 +8,17 @@ import { useLanguage } from "../context/LanguageContext";
 import { getAllPosts } from "../data/posts";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 
-const categories = ["ทั้งหมด", "คู่มือโฆษณา", "ท่องเที่ยว & โรงแรม", "SME & ธุรกิจท้องถิ่น", "อสังหาริมทรัพย์"];
-
 export default function BlogPage() {
   useScrollReveal();
   const { t } = useLanguage();
+
+  const categories = [
+    t("All", "ทั้งหมด"),
+    t("Advertising Guide", "คู่มือโฆษณา"),
+    t("Tourism & Hotel", "ท่องเที่ยว & โรงแรม"),
+    t("SME & Local Business", "SME & ธุรกิจท้องถิ่น"),
+    t("Real Estate", "อสังหาริมทรัพย์"),
+  ];
   const posts = getAllPosts();
 
   return (
@@ -51,7 +57,7 @@ export default function BlogPage() {
               <button
                 key={cat}
                 className={`text-xs px-4 py-2 rounded-full border font-bold transition-all ${
-                  cat === "ทั้งหมด"
+                  cat === t("All", "ทั้งหมด")
                     ? "bg-primary-container border-primary-container text-white"
                     : "border-white/10 text-outline hover:text-white hover:border-white/30"
                 }`}
@@ -80,10 +86,10 @@ export default function BlogPage() {
                   </div>
                   <div className="p-8 lg:p-10 flex flex-col justify-center">
                     <span className="text-primary text-xs font-bold uppercase tracking-widest mb-3">
-                      {posts[0].category}
+                      {t(posts[0].categoryEn, posts[0].category)}
                     </span>
                     <h2 className="font-headline-lg text-headline-lg text-white mb-4 group-hover:text-primary-container transition-colors">
-                      {posts[0].titleTh}
+                      {t(posts[0].titleEn, posts[0].titleTh)}
                     </h2>
                     <p className="text-on-surface-variant text-sm leading-relaxed mb-6 line-clamp-3">
                       {posts[0].excerpt}
@@ -119,10 +125,10 @@ export default function BlogPage() {
                   </div>
                   <div className="p-6 flex flex-col flex-1">
                     <span className="text-primary text-xs font-bold uppercase tracking-widest mb-2">
-                      {post.category}
+                      {t(post.categoryEn, post.category)}
                     </span>
                     <h3 className="font-headline-md text-white mb-3 group-hover:text-primary-container transition-colors line-clamp-2">
-                      {post.titleTh}
+                      {t(post.titleEn, post.titleTh)}
                     </h3>
                     <p className="text-on-surface-variant text-sm leading-relaxed mb-4 line-clamp-2 flex-1">
                       {post.excerpt}
