@@ -288,7 +288,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
                 style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.48s both" }}
               >
                 <Link href="/contact#form" className="bg-primary-container hover:brightness-110 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all shadow-[0_0_20px_rgba(230,57,70,0.3)]">
-                  {t("Request Immediate Quote", "ขอใบเสนอราคาทันที")}
+                  {t("Request a Quote", "ขอใบเสนอราคา")}
                   <ArrowRight size={18} />
                 </Link>
                 <Link href="/media-kit" className="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center gap-2 transition-all">
