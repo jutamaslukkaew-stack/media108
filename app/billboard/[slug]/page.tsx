@@ -308,8 +308,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 2. Visual Performance ── */}
-        <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
-          <div className="flex justify-between items-end mb-12">
+        <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
+          <div className="flex justify-between items-end mb-8">
             <div>
               <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Visual Performance", "คุณภาพภาพในทุกสภาพแสง")}</h2>
               <p className="text-outline">{t("Brilliant clarity 24/7 — day or night, rain or shine.", "คมชัดตลอด 24 ชั่วโมง ไม่ว่าจะกลางวัน กลางคืน หรือในวันที่มีฝน")}</p>
@@ -354,8 +354,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 4. Performance Data ── */}
-        <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
-          <h2 className="font-headline-lg text-headline-lg text-white mb-12">{t("Performance Data", "ข้อมูลประสิทธิภาพ")}</h2>
+        <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
+          <h2 className="font-headline-lg text-headline-lg text-white mb-8">{t("Performance Data", "ข้อมูลประสิทธิภาพ")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { labelEn: "Daily Traffic",   labelTh: "ยานพาหนะต่อวัน",      value: data.carsPerDay,                         subEn: "Estimated daily vehicle count", subTh: "จำนวนยานพาหนะโดยประมาณต่อวัน", accent: true },
@@ -376,9 +376,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 5. Audience Insights ── */}
-        <section className="py-24 bg-surface-container-low">
+        <section className="py-14 bg-surface-container-low">
           <div className="max-w-container-max mx-auto px-margin-desktop">
-            <div className="flex flex-col md:flex-row gap-24">
+            <div className="flex flex-col md:flex-row gap-12">
               <div className="sr sr-left flex-1 space-y-8">
                 <h2 className="font-headline-lg text-headline-lg text-white">
                   {t("Audience", "กลุ่มผู้ชม")} <span className="text-primary-container">{t("Breakdown", "โดยละเอียด")}</span>
@@ -418,7 +418,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 6. The Sales Story ── */}
-        <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
+        <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {([
               { icon: BookOpen,    titleEn: "About This Location",    titleTh: "เกี่ยวกับทำเลนี้",       body: data.locationStory },
@@ -439,9 +439,9 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 7. Technical Specifications ── */}
-        <section className="py-24 bg-surface-container-highest">
+        <section className="py-14 bg-surface-container-highest">
           <div className="max-w-container-max mx-auto px-margin-desktop">
-            <h2 className="font-headline-lg text-headline-lg text-white mb-12">{t("Technical Specifications", "ข้อมูลจำเพาะทางเทคนิค")}</h2>
+            <h2 className="font-headline-lg text-headline-lg text-white mb-8">{t("Technical Specifications", "ข้อมูลจำเพาะทางเทคนิค")}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border-glass border border-border-glass rounded-2xl overflow-hidden">
               {data.specs.map((spec) => (
                 <div key={spec.label} className="bg-surface p-8">
@@ -462,7 +462,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         </section>
 
         {/* ── 8. Pricing ── */}
-        <section className="py-24 max-w-container-max mx-auto px-margin-desktop">
+        <section className="py-14 max-w-container-max mx-auto px-margin-desktop">
           <div className="text-center mb-16">
             <h2 className="font-headline-lg text-headline-lg text-white mb-4">{t("Pricing", "ราคาโฆษณา")}</h2>
             <p className="text-on-surface-variant">{t("Choose the format that fits your campaign and budget.", "เลือกรูปแบบที่เหมาะกับแคมเปญและงบประมาณของคุณ")}</p>
@@ -548,8 +548,8 @@ function BillboardDetail({ data }: { data: BillboardData }) {
         )}
 
         {/* ── 9. Related Billboards ── */}
-        <section className="py-24 px-margin-desktop max-w-container-max mx-auto">
-          <div className="flex justify-between items-end mb-12">
+        <section className="py-14 px-margin-desktop max-w-container-max mx-auto">
+          <div className="flex justify-between items-end mb-8">
             <div>
               <h2 className="font-headline-lg text-headline-lg text-white mb-2">{t("Related Locations", "ป้ายใกล้เคียงในเครือข่าย")}</h2>
               <p className="text-on-surface-variant">{t("Boost your campaign reach with nearby billboards in our network", "เพิ่มการเข้าถึงแคมเปญด้วยป้ายโฆษณาใกล้เคียงในเครือข่าย Media108")}</p>
@@ -657,7 +657,7 @@ function BillboardDetail({ data }: { data: BillboardData }) {
       )}
 
       {/* ── Footer ── */}
-      <footer className="bg-surface-container-lowest border-t border-white/10 py-24 pb-36">
+      <footer className="bg-surface-container-lowest border-t border-white/10 py-14 pb-36">
         <div className="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter">
           <div>
             <div className="text-2xl font-black tracking-tight mb-6">
