@@ -8,6 +8,7 @@ import { useLanguage } from "../context/LanguageContext";
 import {
   Calendar, MonitorPlay, Eye, TrendingUp, Rocket, Cpu,
   BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Globe, Mail,
+  MapPin, BadgeCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -117,10 +118,10 @@ export default function AboutPage() {
           {/* Right — stats panel */}
           <div className="flex-shrink-0 grid grid-cols-2 gap-4 w-full lg:w-auto lg:min-w-[340px]">
             {([
-              { value: "16+",    label: t("Years in Market",   "ปีประสบการณ์ด้านสื่อ"),     icon: Calendar     },
-              { value: "250+",   label: t("Active Billboards", "ป้ายโฆษณาในเครือข่าย"),    icon: MonitorPlay  },
-              { value: "450K+",  label: t("Daily Impressions", "Impressions ต่อวัน"),       icon: Eye          },
-              { value: "85%",    label: t("Chonburi Market Share",  "ส่วนแบ่งตลาด Chonburi"),        icon: TrendingUp   },
+              { value: "20+",    label: t("Years in Business",  "ปีที่ดำเนินธุรกิจ"),        icon: Calendar     },
+              { value: "10",     label: t("Billboard Locations","จุดป้ายในเครือข่าย"),      icon: MonitorPlay  },
+              { value: "4",      label: t("Cities Covered",     "เมืองหลักที่ครอบคลุม"),   icon: MapPin       },
+              { value: "2548",   label: t("Est. (DBD Registered)","ปีจดทะเบียน (กรมพัฒน์ฯ)"), icon: BadgeCheck   },
             ] as { value: string; label: string; icon: LucideIcon }[]).map((s) => (
               <div
                 key={s.label}
@@ -204,12 +205,12 @@ export default function AboutPage() {
               </p>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <h4 className="font-data-mono text-3xl text-primary mb-2">450K+</h4>
-                  <p className="font-body-md text-on-surface-variant">{t("Daily Traffic Impressions", "Impressions จากจราจรต่อวัน")}</p>
+                  <h4 className="font-data-mono text-3xl text-primary mb-2">20+</h4>
+                  <p className="font-body-md text-on-surface-variant">{t("Years in Business (Est. 2005)", "ปีที่ดำเนินธุรกิจ (จดทะเบียน 2548)")}</p>
                 </div>
                 <div>
-                  <h4 className="font-data-mono text-3xl text-primary mb-2">85%</h4>
-                  <p className="font-body-md text-on-surface-variant">{t("Market Share in Chonburi Region", "ส่วนแบ่งตลาดในภูมิภาค Chonburi")}</p>
+                  <h4 className="font-data-mono text-3xl text-primary mb-2">10</h4>
+                  <p className="font-body-md text-on-surface-variant">{t("Strategic Locations", "จุดป้ายยุทธศาสตร์ในชลบุรี")}</p>
                 </div>
               </div>
             </div>
