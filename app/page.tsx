@@ -51,10 +51,10 @@ const featuredBillboards = [
   },
 ];
 
-const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: MapPin,   title: "Chonburi Hub",       descEn: "Strategic billboards in the city center and key business districts with high-volume daily traffic",   descTh: "ป้ายกลางเมืองชลบุรีและย่านธุรกิจหลัก จราจรหนาแน่นตลอดทั้งวัน" },
-  { icon: Umbrella, title: "Pattaya & Bang Saen", descEn: "Cover major tourist destinations and leisure zones, reaching both Thai and international visitors", descTh: "ครอบคลุมแหล่งท่องเที่ยวสำคัญ เข้าถึงนักท่องเที่ยวไทยและต่างชาติ" },
-  { icon: Factory,  title: "Sri Racha",       descEn: "The new economic corridor and high-purchasing-power industrial workforce",                          descTh: "เขตเศรษฐกิจพิเศษ Chonburi กลุ่มพนักงานอุตสาหกรรมที่มีกำลังซื้อสูง" },
+const coverageAreas: { icon: LucideIcon; title: string; descEn: string; descTh: string; href: string }[] = [
+  { icon: MapPin,   title: "Chonburi Hub",       href: "/billboard/chonburi-tech-college-sukhumvit", descEn: "Strategic billboards in the city center and key business districts with high-volume daily traffic",   descTh: "ป้ายกลางเมืองชลบุรีและย่านธุรกิจหลัก จราจรหนาแน่นตลอดทั้งวัน" },
+  { icon: Umbrella, title: "Pattaya & Bang Saen", href: "/billboard/pattaya-dolphin-roundabout",      descEn: "Cover major tourist destinations and leisure zones, reaching both Thai and international visitors", descTh: "ครอบคลุมแหล่งท่องเที่ยวสำคัญ เข้าถึงนักท่องเที่ยวไทยและต่างชาติ" },
+  { icon: Factory,  title: "Sri Racha",           href: "/billboard/sriracha-robinson-junction",      descEn: "The new economic corridor and high-purchasing-power industrial workforce",                          descTh: "เขตเศรษฐกิจพิเศษ Chonburi กลุ่มพนักงานอุตสาหกรรมที่มีกำลังซื้อสูง" },
 ];
 
 const stats = [
@@ -1073,18 +1073,20 @@ export default function Home() {
               </div>
               <div className="space-y-6">
                 {coverageAreas.map((area, i) => (
-                  <div
+                  <Link
                     key={area.title}
-                    className={`sr sr-left sr-d${i + 2} flex items-center gap-4 p-5 glass-card rounded-lg hover:bg-primary/5 transition-colors cursor-pointer group`}
+                    href={area.href}
+                    className={`sr sr-left sr-d${i + 2} flex items-center gap-4 p-5 glass-card rounded-lg hover:bg-primary/5 hover:border-primary/30 transition-all group`}
                   >
-                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 group-hover:scale-110">
+                    <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 group-hover:scale-110 flex-shrink-0">
                       <area.icon size={20} />
                     </div>
-                    <div>
-                      <h5 className="font-headline-md text-primary text-xl">{area.title}</h5>
+                    <div className="flex-1">
+                      <h5 className="font-headline-md text-primary text-xl group-hover:text-primary-container transition-colors">{area.title}</h5>
                       <p className="text-on-surface-variant text-sm">{t(area.descEn, area.descTh)}</p>
                     </div>
-                  </div>
+                    <ArrowRight size={16} className="text-outline group-hover:text-primary-container flex-shrink-0 transition-colors" />
+                  </Link>
                 ))}
               </div>
             </div>
