@@ -75,11 +75,11 @@ const audienceRatios = [
   { label: "วัยทำงาน / นักศึกษา",          pct: "20%", barClass: "bg-white/40",          width: "20%" },
 ];
 
-const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
-  { icon: Monitor,      title: "LED Billboard",    descEn: "Reserve ad space on high-resolution LED billboards in prime locations across Chonburi and Pattaya.",       descTh: "จองพื้นที่โฆษณาบนจอ LED ความละเอียดสูงในทำเลยุทธศาสตร์ทั่วชลบุรีและพัทยา" },
-  { icon: Film,         title: "Video Ads",         descEn: "Produce compelling video ads calibrated for LED brightness and colour accuracy outdoors.",                 descTh: "ผลิตวิดีโอโฆษณาที่ปรับแสงและสีให้คมชัดบนจอ LED กลางแจ้งโดยเฉพาะ" },
-  { icon: Paintbrush,   title: "Motion Graphic",    descEn: "Create 2D/3D motion graphics designed to grab attention and build brand recall at speed.",                descTh: "สร้างสรรค์ภาพเคลื่อนไหว 2D/3D ที่โดดเด่น ดึงดูดสายตา และสร้างการจดจำแบรนด์" },
-  { icon: CalendarDays, title: "Campaign Strategy",  descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
+const services: { icon: LucideIcon; title: string; descEn: string; descTh: string; href: string }[] = [
+  { icon: Monitor,      title: "LED Billboard",    href: "/billboard", descEn: "Reserve ad space on high-resolution LED billboards in prime locations across Chonburi and Pattaya.",       descTh: "จองพื้นที่โฆษณาบนจอ LED ความละเอียดสูงในทำเลยุทธศาสตร์ทั่วชลบุรีและพัทยา" },
+  { icon: Film,         title: "Video Ads",         href: "/services",  descEn: "Produce compelling video ads calibrated for LED brightness and colour accuracy outdoors.",                 descTh: "ผลิตวิดีโอโฆษณาที่ปรับแสงและสีให้คมชัดบนจอ LED กลางแจ้งโดยเฉพาะ" },
+  { icon: Paintbrush,   title: "Motion Graphic",    href: "/services",  descEn: "Create 2D/3D motion graphics designed to grab attention and build brand recall at speed.",                descTh: "สร้างสรรค์ภาพเคลื่อนไหว 2D/3D ที่โดดเด่น ดึงดูดสายตา และสร้างการจดจำแบรนด์" },
+  { icon: CalendarDays, title: "Campaign Strategy",  href: "/services",  descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
 ];
 
 const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string; href: string }[] = [
@@ -1261,12 +1261,15 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
             {services.map((svc, i) => (
-              <div key={svc.title}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group cursor-default`}>
-                <svc.icon size={44} className="service-icon-hover text-primary mb-6 block transition-colors duration-300" />
-                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
-                <p className="text-on-surface-variant font-body-md">{t(svc.descEn, svc.descTh)}</p>
-              </div>
+              <Link key={svc.title} href={svc.href}
+                className={`sr sr-scale sr-d${i + 1} glass-card p-8 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group flex flex-col`}>
+                <svc.icon size={40} className="text-primary mb-5 block transition-colors duration-300 group-hover:text-primary-container" />
+                <h4 className="font-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
+                <p className="text-on-surface-variant font-body-md text-sm flex-1">{t(svc.descEn, svc.descTh)}</p>
+                <div className="flex items-center gap-2 mt-5 text-primary text-xs font-bold group-hover:gap-3 transition-all">
+                  {t("Learn more", "ดูเพิ่มเติม")} <ArrowRight size={12} />
+                </div>
+              </Link>
             ))}
           </div>
           <div className="sr sr-up sr-d5 mt-16 flex flex-col sm:flex-row justify-center gap-6">
