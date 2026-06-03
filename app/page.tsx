@@ -561,31 +561,7 @@ export default function Home() {
               }}
             />
 
-            {/* ── Layer 5a: Billboard edge bloom — wide soft spread ── */}
-            <div
-              className="absolute top-0 right-0 bottom-0 pointer-events-none"
-              style={{
-                width: "100px",
-                background:
-                  "linear-gradient(270deg, rgba(230,57,70,0.20) 0%, rgba(200,50,70,0.08) 50%, transparent 100%)",
-                animation: "edge-bloom 4.5s ease-in-out infinite",
-              }}
-            />
-
-            {/* ── Layer 5b: Billboard edge bloom — sharp bright line ── */}
-            <div
-              className="absolute pointer-events-none"
-              style={{
-                top: "6%",
-                right: 0,
-                bottom: "6%",
-                width: "3px",
-                background:
-                  "linear-gradient(180deg, transparent 0%, rgba(255,100,80,0.7) 22%, rgba(255,235,180,0.95) 50%, rgba(255,100,80,0.7) 78%, transparent 100%)",
-                filter: "blur(3px)",
-                animation: "edge-bloom 3s ease-in-out 0.6s infinite",
-              }}
-            />
+            {/* edge-bloom removed */}
 
             {/* ── Layer 6: Floating dust particles in the light beam ── */}
             {(
@@ -653,18 +629,7 @@ export default function Home() {
 
           {/* TV Center Flash Line removed */}
 
-          {/* LED scan line — sweeps top→bottom like a display refresh (starts after TV turns on) */}
-          <div
-            className="absolute left-0 right-0 h-[1px] pointer-events-none"
-            style={{
-              top: 0,
-              background:
-                "linear-gradient(90deg, transparent 0%, rgba(230,57,70,0.15) 15%, rgba(255,255,255,0.55) 50%, rgba(230,57,70,0.15) 85%, transparent 100%)",
-              boxShadow: "0 0 10px 1px rgba(230,57,70,0.4)",
-              animation: "led-scan 5s cubic-bezier(0.4,0,0.6,1) 2.4s infinite",
-              zIndex: 3,
-            }}
-          />
+          {/* LED scan line removed */}
         </div>
 
         {/* ── Main Content ── */}
@@ -677,15 +642,7 @@ export default function Home() {
               animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) both" : "none",
             }}
           >
-            {/* Signal rings emanating from badge */}
-            <span
-              className="absolute inset-0 rounded-full border border-primary/50 pointer-events-none"
-              style={{ animation: "broadcast-ring 2.4s ease-out 1.2s infinite" }}
-            />
-            <span
-              className="absolute inset-0 rounded-full border border-primary/30 pointer-events-none"
-              style={{ animation: "broadcast-ring 2.4s ease-out 1.8s infinite" }}
-            />
+            {/* broadcast-ring removed */}
             <div className="bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full flex items-center gap-2.5 relative z-10">
               {/* Live broadcast dot */}
               <span
