@@ -712,10 +712,10 @@ export default function Home() {
 
         {/* ── Location Ticker Bar ── */}
         <div
-          className="absolute bottom-0 left-0 right-0 z-20 overflow-hidden border-t border-white/5"
+          className="absolute bottom-4 left-4 right-4 md:left-10 md:right-10 z-20 overflow-hidden border border-white/10 rounded-xl"
           style={{
-            background: "rgba(6,17,51,0.6)",
-            backdropFilter: "blur(8px)",
+            background: "rgba(6,17,51,0.75)",
+            backdropFilter: "blur(12px)",
             animation: heroReady ? "hero-entry 0.6s ease-out 0.7s both" : "none",
           }}
         >
