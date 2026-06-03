@@ -79,7 +79,6 @@ const services: { icon: LucideIcon; title: string; descEn: string; descTh: strin
   { icon: Monitor,      title: "LED Billboard",    href: "/billboard", descEn: "Reserve ad space on high-resolution LED billboards in prime locations across Chonburi and Pattaya.",       descTh: "จองพื้นที่โฆษณาบนจอ LED ความละเอียดสูงในทำเลยุทธศาสตร์ทั่วชลบุรีและพัทยา" },
   { icon: Film,         title: "Video Ads",         href: "/services",  descEn: "Produce compelling video ads calibrated for LED brightness and colour accuracy outdoors.",                 descTh: "ผลิตวิดีโอโฆษณาที่ปรับแสงและสีให้คมชัดบนจอ LED กลางแจ้งโดยเฉพาะ" },
   { icon: Paintbrush,   title: "Motion Graphic",    href: "/services",  descEn: "Create 2D/3D motion graphics designed to grab attention and build brand recall at speed.",                descTh: "สร้างสรรค์ภาพเคลื่อนไหว 2D/3D ที่โดดเด่น ดึงดูดสายตา และสร้างการจดจำแบรนด์" },
-  { icon: CalendarDays, title: "Campaign Strategy",  href: "/services",  descEn: "Build a full media strategy — choosing the right locations, time slots, and formats to maximise ROI.",   descTh: "วางกลยุทธ์สื่อครบวงจร เลือกทำเล ช่วงเวลา และรูปแบบที่คุ้มค่าที่สุดสำหรับงบประมาณของคุณ" },
 ];
 
 const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string; href: string }[] = [
@@ -258,7 +257,7 @@ function StatsSection({ t }: { t: (en: string, th: string) => string }) {
   return (
     <section
       ref={sectionRef}
-      className="py-10 md:py-24 relative z-10 bg-surface border-y border-border-glass overflow-hidden"
+      className="py-10 md:py-16 relative z-10 bg-surface border-y border-border-glass overflow-hidden"
     >
       {/* Top scan-line accent */}
       <div
@@ -280,7 +279,7 @@ function StatsSection({ t }: { t: (en: string, th: string) => string }) {
           {STATS.map((stat, i) => (
             <div
               key={stat.labelEn}
-              className={`text-center p-8 ${i < 3 ? "md:border-r border-white/10" : ""}`}
+              className={`text-center py-10 px-4 ${i < 3 ? "md:border-r border-white/10" : ""}`}
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(32px)",
@@ -289,7 +288,7 @@ function StatsSection({ t }: { t: (en: string, th: string) => string }) {
             >
               {/* Number */}
               <div
-                className="font-data-mono text-5xl mb-2 font-black"
+                className="font-data-mono text-7xl md:text-8xl mb-3 font-black"
                 style={{
                   color: "#E63946",
                   textShadow: visible ? "0 0 24px rgba(230,57,70,0.55), 0 0 8px rgba(230,57,70,0.35)" : "none",
@@ -633,7 +632,7 @@ export default function Home() {
         </div>
 
         {/* ── Main Content ── */}
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop py-10 md:py-24 flex flex-col items-center text-center">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop pt-10 pb-24 md:py-24 flex flex-col items-center text-center">
 
           {/* Badge with broadcast signal rings */}
           <div
@@ -1065,126 +1064,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── 6. ทำไมต้องโฆษณาในชลบุรี ── */}
-      <section className="bg-surface-container-highest py-10 md:py-28">
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-
-          {/* หัวข้อ */}
-          <div className="sr sr-up text-center mb-16">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Why Chonburi", "ทำไมต้องชลบุรี")}</span>
-              <span className="w-5 h-[1px] bg-primary-container" />
-            </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">
-              {t("Market You Can't Ignore", "ตลาดที่ไม่ควรมองข้าม")}
-            </h2>
-            <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent mx-auto rounded-full" />
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-6">
-              {t(
-                "Chonburi is Thailand's industrial and tourism powerhouse — a high-purchasing-power market that brands need to reach.",
-                "ชลบุรีคือศูนย์กลางอุตสาหกรรมและท่องเที่ยวของไทย — ตลาดกำลังซื้อสูงที่แบรนด์ไม่ควรพลาด"
-              )}
-            </p>
-          </div>
-
-          {/* ข้อมูลจังหวัดชลบุรี */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {[
-              { value: "1.5M+", labelTh: "ประชากรในจังหวัด",      labelEn: "Residents",         src: "กรมการปกครอง 2566" },
-              { value: "อันดับ 3", labelTh: "GPP ของประเทศไทย",   labelEn: "Thailand GDP Rank", src: "สภาพัฒน์" },
-              { value: "10M+",  labelTh: "นักท่องเที่ยว/ปี",      labelEn: "Tourists / Year",   src: "ททท. 2566" },
-              { value: "9",     labelTh: "นิคมอุตสาหกรรมในพื้นที่", labelEn: "Industrial Estates", src: "กนอ." },
-            ].map((s) => (
-              <div key={s.labelTh} className="sr sr-up glass-card rounded-2xl p-6 text-center flex flex-col gap-2">
-                <p className="font-data-mono text-3xl md:text-4xl text-primary-container font-black">{s.value}</p>
-                <p className="text-on-surface font-bold text-sm">{t(s.labelEn, s.labelTh)}</p>
-                {/* eslint-disable-next-line */}
-                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source","ที่มา")}: {s.src}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* ทำไมต้อง OOH */}
-          <div className="sr sr-up text-center mb-10">
-            <h3 className="font-headline-lg text-headline-lg text-on-surface mb-2">
-              {t("Why Out-of-Home Advertising?", "ทำไมต้องสื่อโฆษณานอกบ้าน?")}
-            </h3>
-            <p className="text-on-surface-variant text-sm">{t("Global research from Nielsen & OAAA", "ข้อมูลจากงานวิจัยระดับโลก Nielsen & OAAA")}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            {[
-              {
-                stat: "71%",
-                titleTh: "คนจำโฆษณา OOH ได้",
-                titleEn: "Notice OOH Ads",
-                bodyTh: "ผู้บริโภคสังเกตเห็นและจดจำป้ายโฆษณานอกบ้านได้ สูงกว่าสื่อหลายประเภท",
-                bodyEn: "Consumers notice and recall out-of-home ads at high rates.",
-                src: "Nielsen",
-              },
-              {
-                stat: "4×",
-                titleTh: "เพิ่ม Online Search",
-                titleEn: "Drives Online Search",
-                bodyTh: "OOH สร้าง Online Search ได้มากกว่าสื่อดั้งเดิมอื่นถึง 4 เท่าต่อเงินที่ใช้",
-                bodyEn: "OOH drives 4x more online search per dollar than other traditional media.",
-                src: "Nielsen",
-              },
-              {
-                stat: "80%",
-                titleTh: "ตัดสินใจซื้อหลังเห็นป้าย",
-                titleEn: "Influenced Purchase Decision",
-                bodyTh: "ผู้บริโภคส่วนใหญ่ที่เห็นป้าย OOH มีการค้นหาข้อมูลหรือตัดสินใจซื้อตามมา",
-                bodyEn: "Most consumers who see OOH ads follow up with a search or purchase.",
-                src: "OAAA",
-              },
-            ].map((item) => (
-              <div key={item.stat} className="sr sr-up glass-card rounded-2xl p-8 flex flex-col gap-4 border border-white/5">
-                <p className="font-data-mono text-5xl text-primary-container font-black">{item.stat}</p>
-                <div>
-                  <p className="text-white font-bold text-lg mb-2">{t(item.titleEn, item.titleTh)}</p>
-                  <p className="text-on-surface-variant text-sm leading-relaxed">{t(item.bodyEn, item.bodyTh)}</p>
-                </div>
-                {/* eslint-disable-next-line */}
-                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source","ที่มา")}: {item.src}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* ขั้นตอนการจอง */}
-          <div className="sr sr-up mt-16 glass-card rounded-2xl p-8 md:p-12">
-            <h3 className="font-headline-lg text-headline-lg text-on-surface text-center mb-10">
-              {t("Book in 3 Simple Steps", "จองโฆษณาง่าย ๆ 3 ขั้นตอน")}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { step: "01", titleTh: "เลือกทำเล",     titleEn: "Choose Location",    descTh: "เลือกป้ายที่ตรงกับกลุ่มเป้าหมายของคุณจาก 10 ทำเลทั่วชลบุรี–พัทยา", descEn: "Pick from 10 strategic locations across Chonburi–Pattaya." },
-                { step: "02", titleTh: "ส่งไฟล์โฆษณา",  titleEn: "Submit Your Creative", descTh: "ส่งไฟล์วิดีโอหรือภาพนิ่งตาม spec ที่กำหนด ทีมงานช่วยตรวจสอบให้ฟรี", descEn: "Send your video or image file. Our team reviews it for free." },
-                { step: "03", titleTh: "ออกอากาศทันที", titleEn: "Go Live",              descTh: "โฆษณาของคุณจะเริ่มออกอากาศตามวันและเวลาที่นัดหมาย", descEn: "Your ad goes live on the agreed date and time." },
-              ].map((s, i) => (
-                <div key={s.step} className="flex gap-5 items-start">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary-container/20 border border-primary-container/40 flex items-center justify-center font-data-mono text-primary-container font-black text-lg">
-                    {s.step}
-                  </div>
-                  <div>
-                    <p className="text-white font-bold mb-1">{t(s.titleEn, s.titleTh)}</p>
-                    <p className="text-on-surface-variant text-sm leading-relaxed">{t(s.descEn, s.descTh)}</p>
-                  </div>
-                  {i < 2 && <div className="hidden md:block" />}
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-10">
-              <a href="/contact" className="inline-flex items-center gap-2 bg-primary-container text-white font-bold px-8 py-3 rounded-xl hover:bg-primary transition-colors text-sm">
-                {t("Request a Quote", "ขอใบเสนอราคา")} →
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── 7. Services Overview ── */}
+      {/* ── 6. Services Overview ── */}
       <section className="bg-surface-container py-10 md:py-32" id="services">
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-16 text-center md:text-left">

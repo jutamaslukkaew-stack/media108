@@ -85,32 +85,32 @@ export default function NetworkPage() {
               style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
             >
               <div className="w-12 h-px bg-primary/40" />
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary-fixed-dim font-medium font-label-md">{t("Global Standards", "มาตรฐานระดับโลก")}</span>
+              <span className="text-[10px] uppercase tracking-[0.4em] text-primary-fixed-dim font-medium font-label-md">{t("Media Network", "เครือข่ายสื่อโฆษณา")}</span>
               <div className="w-12 h-px bg-primary/40" />
             </div>
             <h1
               className="font-display-lg mb-10 uppercase leading-[1.1] text-white"
               style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 200, letterSpacing: "0.2em", animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
             >
-              {t("Systematic", "เชิงระบบ")}{" "}
-              <span className="font-black text-primary-container">{t("Media", "สื่อ")}</span>
+              {t("Billboards", "ป้ายโฆษณา")}{" "}
+              <span className="font-black text-primary-container">{t("LED", "LED")}</span>
               <br className="hidden md:block" />
-              {" "}{t("Network Strategy", "กลยุทธ์เครือข่าย")}
+              {" "}{t("Across Chonburi", "ทั่วชลบุรี–พัทยา")}
             </h1>
             <p
               className="font-body-lg text-on-surface/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
             >
               {t(
-                "Engineering high-frequency visibility through curated media ecosystems. We don't just place ads; we design visual dominance.",
-                "เครือข่ายป้ายโฆษณาที่คัดเลือกทำเลอย่างเป็นระบบ ให้แบรนด์ของคุณมองเห็นได้บ่อยที่สุดในจุดที่กลุ่มเป้าหมายสัญจรผ่านทุกวัน"
+                "LED billboards in Chonburi's busiest locations — so your brand is seen by the right people, every single day.",
+                "ป้าย LED ในทำเลที่คนผ่านเยอะที่สุดของชลบุรี ให้แบรนด์คุณอยู่ตรงหน้าลูกค้าทุกวัน"
               )}
             </p>
             <div
               className="flex flex-wrap justify-center gap-8 mb-16"
               style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.44s both" }}
             >
-              {[t("Campaign-Driven", "ขับเคลื่อนด้วยแคมเปญ"), t("High Frequency", "ความถี่สูง"), t("Targeted Reach", "เข้าถึงเป้าหมาย")].map((label) => (
+              {[t("10+ Locations", "10+ ทำเล"), t("Daily Impressions", "คนเห็นทุกวัน"), t("Book Online", "จองได้ทันที")].map((label) => (
                 <div key={label} className="flex items-center gap-2 group cursor-default">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
                   <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-on-surface/50 group-hover:text-on-surface transition-colors font-label-md">

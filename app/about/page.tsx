@@ -422,6 +422,92 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── ทำไมต้องชลบุรี ── */}
+      <section className="bg-surface-container-highest py-10 md:py-20 px-6 md:px-margin-desktop">
+        <div className="max-w-container-max mx-auto">
+
+          <div className="sr sr-up text-center mb-16">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="w-5 h-[1px] bg-primary-container" />
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Why Chonburi", "ทำไมต้องชลบุรี")}</span>
+              <span className="w-5 h-[1px] bg-primary-container" />
+            </div>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">
+              {t("Market You Can't Ignore", "ตลาดที่ไม่ควรมองข้าม")}
+            </h2>
+            <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent mx-auto rounded-full" />
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-6">
+              {t(
+                "Chonburi is Thailand's industrial and tourism powerhouse — a high-purchasing-power market that brands need to reach.",
+                "ชลบุรีคือศูนย์กลางอุตสาหกรรมและท่องเที่ยวของไทย — ตลาดกำลังซื้อสูงที่แบรนด์ไม่ควรพลาด"
+              )}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            {[
+              { value: "1.5M+", labelTh: "ประชากรในจังหวัด",        labelEn: "Residents",          src: "กรมการปกครอง 2566" },
+              { value: "อันดับ 3", labelTh: "GPP ของประเทศไทย",     labelEn: "Thailand GDP Rank",  src: "สภาพัฒน์" },
+              { value: "10M+",  labelTh: "นักท่องเที่ยว/ปี",        labelEn: "Tourists / Year",    src: "ททท. 2566" },
+              { value: "9",     labelTh: "นิคมอุตสาหกรรมในพื้นที่", labelEn: "Industrial Estates", src: "กนอ." },
+            ].map((s) => (
+              <div key={s.labelTh} className="sr sr-up glass-card rounded-2xl p-6 text-center flex flex-col gap-2">
+                <p className="font-data-mono text-3xl md:text-4xl text-primary-container font-black">{s.value}</p>
+                <p className="text-on-surface font-bold text-sm">{t(s.labelEn, s.labelTh)}</p>
+                {/* eslint-disable-next-line */}
+                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source", "ที่มา")}: {s.src}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="sr sr-up text-center mb-10">
+            <h3 className="font-headline-lg text-headline-lg text-on-surface mb-2">
+              {t("Why Out-of-Home Advertising?", "ทำไมต้องสื่อโฆษณานอกบ้าน?")}
+            </h3>
+            <p className="text-on-surface-variant text-sm">{t("Global research from Nielsen & OAAA", "ข้อมูลจากงานวิจัยระดับโลก Nielsen & OAAA")}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                stat: "71%",
+                titleTh: "คนจำโฆษณา OOH ได้",
+                titleEn: "Notice OOH Ads",
+                bodyTh: "ผู้บริโภคสังเกตเห็นและจดจำป้ายโฆษณานอกบ้านได้ สูงกว่าสื่อหลายประเภท",
+                bodyEn: "Consumers notice and recall out-of-home ads at high rates.",
+                src: "Nielsen",
+              },
+              {
+                stat: "4×",
+                titleTh: "เพิ่ม Online Search",
+                titleEn: "Drives Online Search",
+                bodyTh: "OOH สร้าง Online Search ได้มากกว่าสื่อดั้งเดิมอื่นถึง 4 เท่าต่อเงินที่ใช้",
+                bodyEn: "OOH drives 4x more online search per dollar than other traditional media.",
+                src: "Nielsen",
+              },
+              {
+                stat: "80%",
+                titleTh: "ตัดสินใจซื้อหลังเห็นป้าย",
+                titleEn: "Influenced Purchase Decision",
+                bodyTh: "ผู้บริโภคส่วนใหญ่ที่เห็นป้าย OOH มีการค้นหาข้อมูลหรือตัดสินใจซื้อตามมา",
+                bodyEn: "Most consumers who see OOH ads follow up with a search or purchase.",
+                src: "OAAA",
+              },
+            ].map((item) => (
+              <div key={item.stat} className="sr sr-up glass-card rounded-2xl p-8 flex flex-col gap-4 border border-white/5">
+                <p className="font-data-mono text-5xl text-primary-container font-black">{item.stat}</p>
+                <div>
+                  <p className="text-white font-bold text-lg mb-2">{t(item.titleEn, item.titleTh)}</p>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{t(item.bodyEn, item.bodyTh)}</p>
+                </div>
+                {/* eslint-disable-next-line */}
+                <p className="text-outline text-[10px] uppercase tracking-widest mt-auto">{t("Source", "ที่มา")}: {item.src}</p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
       <GlobalCTABar />
 
       {/* ── Footer ── */}
