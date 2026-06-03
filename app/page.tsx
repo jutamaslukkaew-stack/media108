@@ -640,17 +640,7 @@ export default function Home() {
             />
           </div>
 
-          {/* ── TV Static Noise ── flickers fast at startup, then gone */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 4px), " +
-                "repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 6px)",
-              animation: "tv-static-flicker 2.4s ease-out 0.25s both",
-              zIndex: 5,
-            }}
-          />
+          {/* TV Static Noise removed */}
 
           {/* ── TV Black Vignette ── lifts off as screen expands */}
           <div
@@ -661,20 +651,7 @@ export default function Home() {
             }}
           />
 
-          {/* ── TV Center Flash Line ── bright horizontal line at startup */}
-          <div
-            className="absolute inset-x-0 top-1/2 pointer-events-none"
-            style={{
-              height: "3px",
-              background:
-                "linear-gradient(90deg, transparent 0%, rgba(200,220,255,0.8) 15%, white 50%, rgba(200,220,255,0.8) 85%, transparent 100%)",
-              boxShadow:
-                "0 0 18px 6px rgba(255,255,255,0.7), 0 0 50px 16px rgba(180,210,255,0.35)",
-              animation: "tv-line-flash 2.0s cubic-bezier(0.16,1,0.3,1) 0.25s both",
-              transformOrigin: "center",
-              zIndex: 6,
-            }}
-          />
+          {/* TV Center Flash Line removed */}
 
           {/* LED scan line — sweeps top→bottom like a display refresh (starts after TV turns on) */}
           <div
@@ -713,7 +690,7 @@ export default function Home() {
               {/* Live broadcast dot */}
               <span
                 className="w-2 h-2 rounded-full bg-[#E63946] block flex-shrink-0"
-                style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
+                
               />
               <span className="text-primary font-label-md text-label-md tracking-widest uppercase">
                 {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
@@ -790,7 +767,7 @@ export default function Home() {
             <div className="flex items-center gap-1.5 flex-shrink-0 mr-4 pr-4 border-r border-white/10">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-[#E63946]"
-                style={{ animation: "live-blink 1.2s ease-in-out infinite" }}
+                
               />
               <span className="text-[10px] font-bold tracking-[0.18em] text-[#E63946] uppercase">
                 On Air
@@ -950,7 +927,7 @@ export default function Home() {
                     <div className="flex items-center gap-2">
                       <span
                         className="w-1.5 h-1.5 rounded-full bg-[#E63946]"
-                        style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
+                        
                       />
                       <span className="text-[10px] font-bold tracking-[0.15em] text-[#E63946] uppercase">Live Location</span>
                     </div>
@@ -1429,7 +1406,7 @@ export default function Home() {
             <div className="flex items-center gap-2 mb-4 md:justify-start justify-center">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-white"
-                style={{ animation: "live-blink 1.6s ease-in-out infinite" }}
+                
               />
               <span className="text-white/70 font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Free Download", "ดาวน์โหลดฟรี")}</span>
             </div>
