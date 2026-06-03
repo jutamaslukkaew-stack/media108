@@ -731,10 +731,10 @@ export default function Home() {
               </span>
             </div>
             {/* Scrolling locations — doubled for seamless loop */}
-            <div className="overflow-hidden flex-1">
+            <div className="overflow-hidden flex-1" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
               <div
                 className="flex gap-0 whitespace-nowrap"
-                style={{ animation: "ticker-scroll 24s linear infinite" }}
+                style={{ animation: "ticker-scroll 40s linear infinite" }}
               >
                 {[...tickerLocations, ...tickerLocations].map((loc, i) => (
                   <span key={i} className="inline-flex items-center gap-4 px-6">
