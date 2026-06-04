@@ -10,8 +10,9 @@ import {
   LayoutGrid, MousePointerClick, Palette, Sparkles, Film, Plane,
   Camera, Share2, Target, Store, Coffee, HeartPulse, Briefcase,
   Hotel, Utensils, Map, Building2, Home, HardHat, Ticket, PartyPopper,
-  Trophy, Globe, Radio, CheckCircle, type LucideIcon,
+  Trophy, Globe, Radio, CheckCircle, ArrowRight, type LucideIcon,
 } from "lucide-react";
+import { getAllPosts } from "../data/posts";
 
 /* ── Service cards data ─────────────────────────────────── */
 const services: { icon: LucideIcon; title: string; descEn: string; descTh: string }[] = [
@@ -356,6 +357,49 @@ export default function ServicesPage() {
             >
               {t("Request a Quote", "ขอใบเสนอราคา")}
             </Link>
+          </div>
+        </section>
+
+        {/* ── บทความที่เกี่ยวข้อง ── */}
+        <section className="py-14 px-margin-desktop bg-surface-container-highest border-t border-white/5">
+          <div className="max-w-container-max mx-auto">
+            <div className="mb-10">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-5 h-[1px] bg-primary-container" />
+                <span className="text-primary text-[11px] tracking-[0.2em] uppercase font-bold">{t("Resources", "คู่มือและบทความ")}</span>
+              </div>
+              <h2 className="font-headline-lg text-headline-lg text-on-surface">
+                {t("Learn Before You Book", "อ่านก่อนตัดสินใจลงโฆษณา")}
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {getAllPosts().map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="glass-card rounded-2xl overflow-hidden flex flex-col group hover:border-primary/30 border border-white/5 transition-all"
+                >
+                  <div className="overflow-hidden">
+                    {/* eslint-disable-next-line */}
+                    <img
+                      src={post.coverImage}
+                      alt={post.titleTh}
+                      className="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1 gap-3">
+                    <span className="text-[10px] uppercase tracking-widest text-primary font-bold">{t(post.categoryEn, post.category)}</span>
+                    <p className="text-white font-bold text-sm leading-snug group-hover:text-primary-container transition-colors">
+                      {t(post.titleEn, post.titleTh)}
+                    </p>
+                    <p className="text-on-surface-variant text-xs leading-relaxed line-clamp-2 flex-1">{post.excerpt}</p>
+                    <div className="flex items-center gap-1 text-primary text-xs font-bold mt-auto">
+                      {t("Read more", "อ่านต่อ")} <ArrowRight size={12} />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

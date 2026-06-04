@@ -80,16 +80,16 @@ export default function ContactPage() {
             className="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight text-white"
             style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
           >
-            {t("Talk to Our", "พูดคุยกับ")}{" "}
-            <span className="text-primary italic">{t("Media Strategy Team", "ทีมวางกลยุทธ์สื่อของเรา")}</span>
+            {t("Interested in Our Billboards?", "สนใจจองป้ายสื่อโฆษณา")}{" "}
+            <span className="text-primary italic">{t("Contact Us", "ติดต่อเรา")}</span>
           </h1>
           <p
             className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto"
             style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
           >
             {t(
-              "Bridge the gap between your brand and millions of urban eyes. Our experts are ready to curate your global media footprint.",
-              "บอกเราถึงเป้าหมายและงบประมาณของคุณ ทีมงานจะช่วยออกแบบกลยุทธ์สื่อและเลือกทำเลที่เหมาะสมที่สุดให้ฟรี"
+              "Tell us your location and duration — we'll send you a quote within 1 business day.",
+              "บอกทำเลที่สนใจและระยะเวลาที่ต้องการ ทีมเราจะส่งใบเสนอราคาให้ภายใน 1 วันทำการ"
             )}
           </p>
         </div>
@@ -293,12 +293,14 @@ export default function ContactPage() {
             {/* Quick links grid */}
             <div className="sr sr-right sr-d2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {([
-                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                              bodyTh: "062-563-6199",                              span: false },
-                { icon: Mail,       titleEn: "Email",   titleTh: "อีเมล",    bodyEn: "media.108.company@gmail.com",               bodyTh: "media.108.company@gmail.com",               span: false },
-                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงานกับเรา",  bodyEn: "Join the Media108 team",   bodyTh: "มาร่วมเป็นส่วนหนึ่งของทีม Media108",  span: true, arrow: true },
-              ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean }[]).map((item) => (
-                <div
+                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                              bodyTh: "062-563-6199",                              span: false, href: "tel:0625636199" },
+                { icon: Mail,       titleEn: "Email",   titleTh: "อีเมล",    bodyEn: "media.108.company@gmail.com",               bodyTh: "media.108.company@gmail.com",               span: false, href: "mailto:media.108.company@gmail.com" },
+                { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงานกับเรา",  bodyEn: "Join the Media108 team",   bodyTh: "มาร่วมเป็นส่วนหนึ่งของทีม Media108",  span: true, arrow: true, href: "mailto:media.108.company@gmail.com" },
+              ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean; href: string }[]).map((item) => (
+                <a
                   key={item.titleEn}
+                  href={item.href}
+                  target={item.href.startsWith("mailto") ? "_blank" : undefined}
                   className={`glass-card p-6 rounded-xl hover:bg-white/5 transition-colors group cursor-pointer ${
                     item.span ? "col-span-1 sm:col-span-2" : ""
                   }`}
@@ -313,7 +315,7 @@ export default function ContactPage() {
                       <ArrowRight size={20} className="text-on-surface-variant group-hover:translate-x-2 transition-transform" />
                     )}
                   </div>
-                </div>
+                </a>
               ))}
             </div>
 
@@ -406,12 +408,16 @@ export default function ContactPage() {
               </h5>
               <div className="flex gap-3">
                 <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer"
-                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-[#06C755]/20 transition-colors">
-                  <Globe size={20} className="text-primary" />
+                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-[#06C755]/20 transition-colors" title="LINE OA">
+                  <MessageCircle size={20} className="text-primary" />
                 </a>
                 <a href="mailto:media.108.company@gmail.com"
-                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors">
+                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors" title="Email">
                   <Mail size={20} className="text-primary" />
+                </a>
+                <a href="tel:0625636199"
+                  className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors" title="โทรศัพท์">
+                  <PhoneCall size={20} className="text-primary" />
                 </a>
               </div>
             </div>
