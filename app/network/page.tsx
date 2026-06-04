@@ -10,11 +10,11 @@ import {
   MonitorPlay, FileText, ArrowRight, Mail, type LucideIcon,
 } from "lucide-react";
 
-const statsBase: { value: string; labelEn: string; labelTh: string; icon: LucideIcon }[] = [
-  { value: "10",    labelEn: "Active Locations",   labelTh: "จุดป้ายในเครือข่าย",    icon: MapPin     },
-  { value: "3",     labelEn: "Network Zones",      labelTh: "โซนเครือข่ายหลัก",     icon: Network    },
-  { value: "8",     labelEn: "Ad Slots / Loop",    labelTh: "สล็อตโฆษณาต่อรอบ",    icon: Eye        },
-  { value: "20+",   labelEn: "Years in Business",  labelTh: "ปีที่ดำเนินธุรกิจ",    icon: BadgeCheck },
+const statsBase: { value: string; labelEn: string; labelTh: string; icon: LucideIcon; href: string }[] = [
+  { value: "10",    labelEn: "Active Locations",   labelTh: "จุดป้ายในเครือข่าย",    icon: MapPin,     href: "/billboard"  },
+  { value: "3",     labelEn: "Network Zones",      labelTh: "โซนเครือข่ายหลัก",     icon: Network,    href: "#networks"   },
+  { value: "8",     labelEn: "Ad Slots / Loop",    labelTh: "สล็อตโฆษณาต่อรอบ",    icon: Eye,        href: "/media-kit"  },
+  { value: "20+",   labelEn: "Years in Business",  labelTh: "ปีที่ดำเนินธุรกิจ",    icon: BadgeCheck, href: "/about"      },
 ];
 
 const networksBase: { icon: LucideIcon; titleEn: string; titleTh: string; count: string; subEn: string; subTh: string; descEn: string; descTh: string; tagEn: string; tagTh: string; color: string }[] = [
@@ -69,173 +69,144 @@ export default function NetworkPage() {
       <main className="pt-20 pb-24">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-32 overflow-hidden bg-surface-container-lowest">
-          <div className="absolute inset-0 z-0 radial-glow-bg opacity-60" />
+        <section className="relative flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop pt-20 pb-16 overflow-hidden bg-surface-container-lowest">
           <div className="absolute inset-0 z-0 mix-blend-overlay opacity-20">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              alt="Network Grid"
-              className="w-full h-full object-cover"
-              src="/image/hero network.png"
-            />
+            <img alt="Network Grid" className="w-full h-full object-cover" src="/image/hero network.png" />
           </div>
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <div
-              className="inline-flex items-center gap-3 mb-8 opacity-80"
-              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.05s both" }}
-            >
-              <div className="w-12 h-px bg-primary/40" />
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary-fixed-dim font-medium font-label-md">{t("Media Network", "เครือข่ายสื่อโฆษณา")}</span>
-              <div className="w-12 h-px bg-primary/40" />
+          <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="w-5 h-[1px] bg-primary-container" />
+              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Media Network", "เครือข่ายสื่อโฆษณา")}</span>
+              <span className="w-5 h-[1px] bg-primary-container" />
             </div>
-            <h1
-              className="font-display-lg mb-10 uppercase leading-[1.1] text-white"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 200, letterSpacing: "0.2em", animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both" }}
-            >
-              {t("Billboards", "ป้ายโฆษณา")}{" "}
-              <span className="font-black text-primary-container">{t("LED", "LED")}</span>
-              <br className="hidden md:block" />
-              {" "}{t("Across Chonburi", "ทั่วชลบุรี–พัทยา")}
+            <h1 className="font-headline-xl text-headline-xl text-white mb-6 leading-tight">
+              {t("LED Billboards", "ป้ายโฆษณา LED")}{" "}
+              <span className="text-primary-container">{t("Across Chonburi–Pattaya", "ทั่วชลบุรี–พัทยา")}</span>
             </h1>
-            <p
-              className="font-body-lg text-on-surface/60 mb-16 max-w-2xl mx-auto leading-relaxed font-light"
-              style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.32s both" }}
-            >
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
               {t(
                 "LED billboards in Chonburi's busiest locations — so your brand is seen by the right people, every single day.",
                 "ป้าย LED ในทำเลที่คนผ่านเยอะที่สุดของชลบุรี ให้แบรนด์คุณอยู่ตรงหน้าลูกค้าทุกวัน"
               )}
             </p>
-            <div
-              className="flex flex-wrap justify-center gap-8 mb-16"
-              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.44s both" }}
-            >
-              {[t("10+ Locations", "10+ ทำเล"), t("Daily Impressions", "คนเห็นทุกวัน"), t("Book Online", "จองได้ทันที")].map((label) => (
-                <div key={label} className="flex items-center gap-2 group cursor-default">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/60 group-hover:bg-primary transition-colors" />
-                  <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-on-surface/50 group-hover:text-on-surface transition-colors font-label-md">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-            {/* CTA buttons */}
-            <div
-              className="flex flex-wrap justify-center gap-4"
-              style={{ animation: "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.54s both" }}
-            >
-              <Link
-                href="/billboard"
-                className="px-8 py-4 rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] text-white hover:brightness-110 transition-all font-label-md"
-                style={{ background: "#E63946", boxShadow: "0 0 24px rgba(230,57,70,0.35)" }}
-              >
-                {t("Browse Inventory", "ดูรายการป้าย")}
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/billboard" className="bg-primary-container text-white px-8 py-4 rounded-lg font-label-md font-bold hover:brightness-110 active:scale-95 transition-all">
+                {t("View All Billboards", "ดูรายการป้าย")}
               </Link>
-              <Link
-                href="/contact#form"
-                className="px-8 py-4 rounded-lg font-bold text-[11px] uppercase tracking-[0.2em] text-white border border-white/20 hover:bg-white/10 transition-all font-label-md"
-              >
-                {t("Request Proposal", "ขอใบเสนอราคา")}
+              <Link href="/contact#form" className="border border-white/20 text-white px-8 py-4 rounded-lg font-label-md hover:bg-white/10 transition-all">
+                {t("Request Quote", "ขอใบเสนอราคา")}
               </Link>
             </div>
           </div>
+        </section>
 
-          {/* Floating stats bar inside hero at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 z-20">
-            <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-12">
-              <div
-                className="grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-2xl"
-                style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
-              >
-                {statsBase.map((s, i) => (
+        {/* ── Stats ── */}
+        <section className="bg-surface border-y border-border-glass py-14">
+          <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+            <div className="grid grid-cols-2 md:grid-cols-4">
+              {statsBase.map((s, i) => (
+                <a
+                  key={s.labelEn}
+                  href={s.href}
+                  className={`relative text-center py-10 px-4 group cursor-pointer transition-all hover:bg-white/5 ${i < 3 ? "md:border-r border-white/10" : ""} ${i < 2 ? "border-b md:border-b-0 border-white/10" : ""}`}
+                >
+                  {/* glow on hover */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ background: "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(230,57,70,0.08) 0%, transparent 100%)" }} />
+                  <s.icon size={24} className="text-primary mx-auto mb-4 group-hover:scale-110 transition-transform" />
                   <div
-                    key={s.labelEn}
-                    className="flex flex-col items-center justify-center gap-2 py-8 px-6 text-center"
+                    className="font-data-mono font-black text-primary-container leading-none mb-3"
                     style={{
-                      backdropFilter: "blur(16px)",
-                      background: i % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.05)",
+                      fontSize: "clamp(3rem, 8vw, 5rem)",
+                      textShadow: "0 0 32px rgba(230,57,70,0.5)",
                     }}
                   >
-                    <s.icon size={20} className="text-primary/60" />
-                    <span className="text-white font-black font-display-lg text-2xl md:text-3xl leading-none">{s.value}</span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-on-surface/40 font-label-md">{t(s.labelEn, s.labelTh)}</span>
+                    {s.value}
                   </div>
-                ))}
-              </div>
+                  <div className="text-[11px] uppercase tracking-[0.15em] text-primary underline underline-offset-4 font-bold">{t(s.labelEn, s.labelTh)}</div>
+                </a>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ── Network Segments ── */}
-        <section className="py-14 px-margin-mobile md:px-margin-desktop bg-surface">
+        <section id="networks" className="py-14 px-margin-mobile md:px-margin-desktop bg-surface">
           <div className="max-w-container-max mx-auto">
             <div className="sr sr-up text-center mb-8">
-              <span className="text-[10px] uppercase tracking-[0.4em] text-primary font-semibold mb-4 block font-label-md">{t("Coverage", "ความครอบคลุม")}</span>
-              <h2
-                className="font-display-lg uppercase text-white mb-6"
-                style={{ fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", fontWeight: 300, letterSpacing: "0.1em" }}
-              >
-                {t("Three Strategic", "สาม")}{" "}<span className="font-black text-primary-container">{t("Networks", "เครือข่ายเชิงกลยุทธ์")}</span>
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <span className="w-5 h-[1px] bg-primary-container" />
+                <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Coverage", "ความครอบคลุม")}</span>
+                <span className="w-5 h-[1px] bg-primary-container" />
+              </div>
+              <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">
+                {t("3 Networks, Every Target", "3 เครือข่าย ครอบคลุมทุกกลุ่มเป้าหมาย")}
               </h2>
-              <p className="text-on-surface-variant/60 font-light max-w-xl mx-auto">
+              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto">
                 {t(
-                  "Orchestrated inventory designed to meet specific demographic objectives across Chonburi.",
-                  "แบ่งเครือข่ายป้ายเป็น 3 กลุ่มตามกลุ่มเป้าหมาย เพื่อให้แคมเปญของคุณเข้าถึงคนที่ใช่ในทำเลที่ใช่"
+                  "We split our billboard network into 3 zones by audience — so your campaign reaches the right people in the right area.",
+                  "แบ่งป้ายเป็น 3 โซนตามกลุ่มผู้ชม เลือกได้ว่าจะเข้าถึงใคร ที่ไหน"
                 )}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {networksBase.map((net, i) => (
                 <div
                   key={net.titleEn}
-                  className={`sr sr-scale sr-d${i + 1} group relative rounded-2xl p-10 flex flex-col gap-6 transition-all duration-500 hover:-translate-y-1`}
-                  style={{
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    backdropFilter: "blur(8px)",
-                  }}
+                  className={`sr sr-scale sr-d${i + 1} group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1`}
+                  style={{ border: `1px solid ${net.color}25`, background: "rgba(6,17,51,0.6)", backdropFilter: "blur(12px)" }}
                 >
-                  {/* Tag */}
-                  <span
-                    className="absolute top-6 right-6 text-[9px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 rounded-full font-label-md"
-                    style={{ background: `${net.color}18`, color: net.color, border: `1px solid ${net.color}30` }}
-                  >
-                    {t(net.tagEn, net.tagTh)}
-                  </span>
+                  {/* Top color bar */}
+                  <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${net.color}, transparent)` }} />
 
-                  {/* Icon */}
-                  <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center"
-                    style={{ background: `${net.color}15`, border: `1px solid ${net.color}25` }}
-                  >
-                    <net.icon size={24} style={{ color: net.color }} />
-                  </div>
+                  <div className="p-7 flex flex-col gap-5 flex-1">
+                    {/* Icon + Tag row */}
+                    <div className="flex items-center justify-between">
+                      <div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center"
+                        style={{ background: `${net.color}18`, border: `1px solid ${net.color}30` }}
+                      >
+                        <net.icon size={22} style={{ color: net.color }} />
+                      </div>
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full font-label-md"
+                        style={{ background: `${net.color}15`, color: net.color, border: `1px solid ${net.color}25` }}
+                      >
+                        {t(net.tagEn, net.tagTh)}
+                      </span>
+                    </div>
 
-                  {/* Text */}
-                  <div className="flex-1">
-                    <h3 className="font-display-lg text-white text-lg font-bold uppercase tracking-wide mb-3">
+                    {/* Title */}
+                    <h3 className="font-headline-lg text-headline-lg text-white leading-tight">
                       {t(net.titleEn, net.titleTh)}
                     </h3>
-                    <p className="text-on-surface-variant/60 text-sm font-light leading-relaxed">
+
+                    {/* Description */}
+                    <p className="text-on-surface-variant text-sm leading-relaxed flex-1">
                       {t(net.descEn, net.descTh)}
                     </p>
-                  </div>
 
-                  {/* Count */}
-                  <div className="pt-6 border-t border-white/5 flex items-end justify-between">
-                    <div>
-                      <div className="text-3xl font-black text-white font-display-lg leading-none mb-1">{net.count}</div>
-                      <div className="text-[10px] uppercase tracking-[0.2em] font-label-md" style={{ color: net.color }}>{t(net.subEn, net.subTh)}</div>
+                    {/* Count + CTA */}
+                    <div className="pt-5 border-t flex items-center justify-between" style={{ borderColor: `${net.color}20` }}>
+                      <div>
+                        <div
+                          className="font-data-mono font-black leading-none mb-1"
+                          style={{ fontSize: "2.5rem", color: net.color, textShadow: `0 0 20px ${net.color}60` }}
+                        >
+                          {net.count}
+                        </div>
+                        <div className="text-[10px] uppercase tracking-widest font-label-md text-on-surface-variant">{t(net.subEn, net.subTh)}</div>
+                      </div>
+                      <Link
+                        href="/billboard"
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all group-hover:translate-x-1"
+                        style={{ color: net.color, background: `${net.color}12`, border: `1px solid ${net.color}25` }}
+                      >
+                        {t("Explore", "ดูป้าย")}
+                        <ArrowRight size={14} />
+                      </Link>
                     </div>
-                    <Link
-                      href="/billboard"
-                      className="flex items-center gap-1 text-[10px] uppercase tracking-[0.15em] font-bold font-label-md transition-colors"
-                      style={{ color: `${net.color}99` }}
-                    >
-                      {t("Explore", "สำรวจ")}
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
                   </div>
                 </div>
               ))}
@@ -244,82 +215,67 @@ export default function NetworkPage() {
         </section>
 
         {/* ── CTA Banner ── */}
-        <section className="py-10 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+        <section className="pt-6 pb-0 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
           <div className="max-w-container-max mx-auto">
-            <div
-              className="relative rounded-3xl overflow-hidden"
-              style={{ minHeight: "480px", boxShadow: "0 40px 100px rgba(0,0,0,0.6)" }}
-            >
-              {/* Background image */}
+            <div className="relative rounded-3xl overflow-hidden" style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.6)" }}>
+              {/* Background */}
               <div className="absolute inset-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="Chonburi Corridor Billboard"
-                  src="/image/hero network.png"
-                  className="w-full h-full object-cover"
-                />
-                {/* Dark + red gradient overlay */}
-                <div className="absolute inset-0" style={{ background: "linear-gradient(105deg, rgba(6,17,51,0.97) 0%, rgba(6,17,51,0.88) 40%, rgba(187,21,44,0.55) 75%, rgba(230,57,70,0.4) 100%)" }} />
-                {/* Bottom fade */}
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(2,11,46,0.7) 0%, transparent 60%)" }} />
+                <img alt="Billboard" src="/image/hero network.png" className="w-full h-full object-cover" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(6,17,51,0.92) 0%, rgba(6,17,51,0.75) 100%)" }} />
+                <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 70% at 80% 50%, rgba(230,57,70,0.3) 0%, transparent 70%)" }} />
               </div>
 
-              {/* Decorative red glow */}
-              <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none" style={{ background: "radial-gradient(ellipse at 80% 40%, rgba(230,57,70,0.25) 0%, transparent 65%)" }} />
-
               {/* Content */}
-              <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-12 p-12 md:p-20 h-full" style={{ minHeight: "480px" }}>
-                {/* Left text */}
-                <div className="sr sr-left flex-1">
-                  <div className="inline-flex items-center gap-3 mb-8">
-                    <div className="w-8 h-px bg-primary/60" />
-                    <span className="text-[10px] uppercase tracking-[0.4em] text-primary/80 font-semibold font-label-md">{t("Ready to Dominate", "พร้อมครองตลาด")}</span>
+              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-10 md:p-16">
+                {/* Text */}
+                <div className="flex-1 text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+                    <span className="w-5 h-[1px] bg-primary-container" />
+                    <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Ready to advertise?", "สนใจลงโฆษณา?")}</span>
                   </div>
-                  <h3
-                    className="font-display-lg text-white uppercase leading-tight mb-6"
-                    style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 800, letterSpacing: "0.05em" }}
-                  >
-                    {t("Start Your Brand's", "ให้แบรนด์ของคุณ")}<br />
-                    <span style={{ color: "#E63946" }}>{t("Chonburi Presence", "ปรากฏทั่ว Chonburi")}</span> {t("Now.", "วันนี้เลย")}
+                  <h3 className="text-white font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
+                    {t("Your brand. Every road.", "ให้ลูกค้าเห็นแบรนด์คุณ")}<br />
+                    <span style={{ color: "#E63946" }}>{t("Across Chonburi–Pattaya", "ทุกวัน ทุกเส้นทาง")}</span>
                   </h3>
-                  <p className="text-white/60 font-light leading-relaxed max-w-md mb-10">
+                  <p className="text-white/70 text-base leading-relaxed mb-8 max-w-lg">
                     {t(
-                      "Secure your brand's visibility at Thailand's highest-traffic DOOH locations. First-mover advantage in the fastest-growing economic zone in Southeast Asia.",
-                      "จอง ป้ายโฆษณา LED ในทำเลจราจรหนาแน่นที่สุดของ Chonburi ก่อนใคร เพิ่มการมองเห็นแบรนด์ในเขตเศรษฐกิจที่เติบโตเร็วที่สุดของไทย"
+                      "Pick your billboard, send your artwork — we'll have your ad live within days. No complicated process.",
+                      "เลือกป้ายที่ใช่ ส่งไฟล์โฆษณา แล้วปล่อยให้ทำเลทำงานแทนคุณ — ง่าย รวดเร็ว ได้ผลจริง"
                     )}
                   </p>
-                  {/* Mini stats row */}
-                  <div className="flex flex-wrap gap-8">
+
+                  {/* Mini stats */}
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-8 mb-2">
                     {[
-                      { v: "10", l: t("Locations", "จุดป้าย") },
+                      { v: "10+", l: t("Locations", "จุดป้าย") },
                       { v: "4", l: t("Cities", "เมืองหลัก") },
                       { v: "20+", l: t("Years", "ปีประสบการณ์") },
                     ].map((s) => (
-                      <div key={s.l}>
-                        <div className="text-white font-black text-xl font-display-lg leading-none">{s.v}</div>
-                        <div className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-label-md mt-1">{s.l}</div>
+                      <div key={s.l} className="text-center lg:text-left">
+                        <div className="font-data-mono font-black text-white leading-none mb-1" style={{ fontSize: "2rem", textShadow: "0 0 20px rgba(230,57,70,0.5)" }}>{s.v}</div>
+                        <div className="text-white/50 text-[10px] uppercase tracking-widest">{s.l}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Right buttons */}
-                <div className="sr sr-right flex-shrink-0 flex flex-col gap-4 w-full lg:w-auto">
+                {/* Buttons */}
+                <div className="flex flex-col gap-4 w-full lg:w-64">
                   <Link
                     href="/billboard"
-                    className="flex items-center justify-center gap-3 px-10 py-5 bg-white text-[#bb152c] rounded-xl font-label-md text-[12px] uppercase tracking-[0.15em] font-black hover:scale-105 transition-all text-center"
-                    style={{ boxShadow: "0 8px 32px rgba(255,255,255,0.15)" }}
+                    className="flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm text-white hover:brightness-110 active:scale-95 transition-all"
+                    style={{ background: "#E63946", boxShadow: "0 4px 24px rgba(230,57,70,0.5)" }}
                   >
                     <MonitorPlay size={18} />
-                    {t("View Inventory", "ดูรายการป้าย")}
+                    {t("View All Billboards", "ดูรายการป้ายทั้งหมด")}
                   </Link>
                   <Link
                     href="/contact#form"
-                    className="flex items-center justify-center gap-3 px-10 py-5 rounded-xl font-label-md text-[12px] uppercase tracking-[0.15em] font-bold text-white transition-all text-center"
-                    style={{ border: "1px solid rgba(255,255,255,0.25)", background: "rgba(255,255,255,0.07)", backdropFilter: "blur(8px)" }}
+                    className="flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm text-white border border-white/25 hover:bg-white/10 active:scale-95 transition-all"
                   >
                     <FileText size={18} />
-                    {t("Request Proposal", "ขอใบเสนอราคา")}
+                    {t("Request a Quote", "ขอใบเสนอราคาฟรี")}
                   </Link>
                 </div>
               </div>
@@ -330,7 +286,7 @@ export default function NetworkPage() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="bg-surface-container-lowest border-t border-border-glass pt-20 pb-28">
+      <footer className="bg-surface-container-lowest border-t border-border-glass pt-10 pb-24">
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-16">
             <div className="md:col-span-1">

@@ -318,21 +318,12 @@ export default function ServicesPage() {
                     ))}
                   </ul>
 
-                  {pkg.recommended ? (
-                    <Link
-                      href="/contact"
-                      className="block w-full py-4 rounded-lg bg-primary-container text-white font-label-md text-label-md uppercase tracking-wider font-bold text-center hover:shadow-[0_0_20px_rgba(230,57,70,0.5)] hover:-translate-y-px transition-all"
-                    >
-                      {t("Enquire Now", "สอบถามข้อมูล")}
-                    </Link>
-                  ) : (
-                    <Link
-                      href="/contact"
-                      className="block w-full py-4 rounded-lg border border-white/20 hover:bg-white/10 transition-all font-label-md text-label-md uppercase tracking-wider text-white text-center"
-                    >
-                      {t("Choose This Package", "เลือกแพ็กเกจนี้")}
-                    </Link>
-                  )}
+                  <Link
+                    href="/contact"
+                    className="block w-full py-4 rounded-lg bg-primary-container text-white font-label-md text-label-md uppercase tracking-wider font-bold text-center hover:brightness-110 active:scale-95 transition-all"
+                  >
+                    {t("Choose This Package", "เลือกแพ็กเกจนี้")}
+                  </Link>
                 </div>
               ))}
             </div>

@@ -67,7 +67,10 @@
       "WebFetch(domain:mis.doh.go.th)",
       "WebFetch(domain:www.tomtom.com)",
       "WebFetch(domain:www.ieat.go.th)",
-      "WebFetch(domain:www.onep.go.th)"
+      "WebFetch(domain:www.onep.go.th)",
+      "Bash(pkill -f \"next dev\")",
+      "Read(//tmp/**)",
+      "Bash(xargs kill -9)"
     ]
   }
 }
