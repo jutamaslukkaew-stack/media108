@@ -10,7 +10,7 @@ import {
   LayoutGrid, MousePointerClick, Palette, Sparkles, Film, Plane,
   Camera, Share2, Target, Store, Coffee, HeartPulse, Briefcase,
   Hotel, Utensils, Map, Building2, Home, HardHat, Ticket, PartyPopper,
-  Trophy, Globe, Radio, CheckCircle, ArrowRight, type LucideIcon,
+  Trophy, CheckCircle, ArrowRight, MessageCircle, PhoneCall, type LucideIcon,
 } from "lucide-react";
 import { getAllPosts } from "../data/posts";
 
@@ -421,14 +421,22 @@ export default function ServicesPage() {
               )}
             </p>
             <div className="flex gap-4">
-              {[Globe, Radio].map((Icon, idx) => (
-                <div
-                  key={idx}
-                  className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors text-on-surface-variant"
-                >
-                  <Icon size={20} />
-                </div>
-              ))}
+              <a
+                href="https://lin.ee/NXKWYdJ"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LINE OA"
+                className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors text-on-surface-variant"
+              >
+                <MessageCircle size={20} />
+              </a>
+              <a
+                href="tel:0625636199"
+                title="โทรศัพท์"
+                className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors text-on-surface-variant"
+              >
+                <PhoneCall size={20} />
+              </a>
             </div>
           </div>
 
