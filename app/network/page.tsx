@@ -227,44 +227,28 @@ export default function NetworkPage() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 p-10 md:p-16">
-                {/* Text */}
-                <div className="flex-1 text-center lg:text-left">
-                  <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+              <div className="relative z-10 flex flex-col items-center text-center gap-8 p-10 md:p-16">
+                <div>
+                  <div className="flex items-center justify-center gap-2 mb-4">
                     <span className="w-5 h-[1px] bg-primary-container" />
                     <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Ready to advertise?", "สนใจลงโฆษณา?")}</span>
+                    <span className="w-5 h-[1px] bg-primary-container" />
                   </div>
-                  <h3 className="text-white font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>
-                    {t("Your brand. Every road.", "ให้ลูกค้าเห็นแบรนด์คุณ")}<br />
-                    <span style={{ color: "#E63946" }}>{t("Across Chonburi–Pattaya", "ทุกวัน ทุกเส้นทาง")}</span>
+                  <h3 className="text-white font-black leading-tight mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+                    {t("Your brand seen by thousands", "ให้คนเห็นแบรนด์คุณทุกวัน")}<br />
+                    <span style={{ color: "#E63946" }}>{t("across Chonburi–Pattaya", "ทั่วชลบุรี–พัทยา")}</span>
                   </h3>
-                  <p className="text-white/70 text-base leading-relaxed mb-8 max-w-lg">
+                  <p className="text-white/70 text-base leading-relaxed max-w-xl mx-auto">
                     {t(
-                      "Pick your billboard, send your artwork — we'll have your ad live within days. No complicated process.",
-                      "เลือกป้ายที่ใช่ ส่งไฟล์โฆษณา แล้วปล่อยให้ทำเลทำงานแทนคุณ — ง่าย รวดเร็ว ได้ผลจริง"
+                      "Pick your billboard, send your artwork — go live within days.",
+                      "เลือกทำเลที่ใช่ ส่งไฟล์โฆษณา ขึ้นป้ายได้ภายในไม่กี่วัน"
                     )}
                   </p>
-
-                  {/* Mini stats */}
-                  <div className="flex flex-wrap justify-center lg:justify-start gap-8 mb-2">
-                    {[
-                      { v: "10+", l: t("Locations", "จุดป้าย") },
-                      { v: "4", l: t("Cities", "เมืองหลัก") },
-                      { v: "20+", l: t("Years", "ปีประสบการณ์") },
-                    ].map((s) => (
-                      <div key={s.l} className="text-center lg:text-left">
-                        <div className="font-data-mono font-black text-white leading-none mb-1" style={{ fontSize: "2rem", textShadow: "0 0 20px rgba(230,57,70,0.5)" }}>{s.v}</div>
-                        <div className="text-white/50 text-[10px] uppercase tracking-widest">{s.l}</div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
-
-                {/* Buttons */}
-                <div className="flex flex-col gap-4 w-full lg:w-64">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/billboard"
-                    className="flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm text-white hover:brightness-110 active:scale-95 transition-all"
+                    className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm text-white hover:brightness-110 active:scale-95 transition-all"
                     style={{ background: "#E63946", boxShadow: "0 4px 24px rgba(230,57,70,0.5)" }}
                   >
                     <MonitorPlay size={18} />
@@ -272,7 +256,7 @@ export default function NetworkPage() {
                   </Link>
                   <Link
                     href="/contact#form"
-                    className="flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm text-white border border-white/25 hover:bg-white/10 active:scale-95 transition-all"
+                    className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-sm text-white border border-white/25 hover:bg-white/10 active:scale-95 transition-all"
                   >
                     <FileText size={18} />
                     {t("Request a Quote", "ขอใบเสนอราคาฟรี")}

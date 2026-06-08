@@ -84,8 +84,8 @@ export default function AboutPage() {
               className="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-8 leading-tight"
               style={{ animation: "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}
             >
-              {t("Strategic Outdoor Media", "สื่อโฆษณากลางแจ้งเชิงกลยุทธ์")}{" "}
-              <span className="text-primary">{t("Across Eastern Thailand.", "ทั่วภาคตะวันออกของไทย")}</span>
+              {t("LED Billboard Network", "เครือข่ายป้ายโฆษณา LED")}{" "}
+              <span className="text-primary">{t("Across Chonburi–Pattaya", "ทั่วชลบุรี–พัทยา")}</span>
             </h1>
             <p
               className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-10 max-w-xl"

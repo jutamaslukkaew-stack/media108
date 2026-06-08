@@ -7,7 +7,7 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useLanguage } from "../context/LanguageContext";
 import {
   Store, Globe, Building2, Ticket, Maximize2, Ruler, Aperture,
-  BarChart2, Map, FileText, CloudDownload, Video, CheckCircle, Mail, Phone, MessageCircle,
+  FileText, CloudDownload, Video, CheckCircle, Mail, Phone, MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 
@@ -75,22 +75,6 @@ const coverageFeatures: {
   descEn: string;
   descTh: string;
 }[] = [
-  {
-    icon: BarChart2,
-    iconBg: "bg-primary/20",
-    iconColor: "text-primary",
-    title: "Reach & Frequency",
-    descEn: "Measure real viewer counts and exposure frequency — precise data for every campaign.",
-    descTh: "วัดจำนวนผู้เห็นโฆษณาจริงและความถี่ในการเข้าถึง เพื่อวิเคราะห์ประสิทธิภาพแคมเปญได้แม่นยำ",
-  },
-  {
-    icon: Map,
-    iconBg: "bg-secondary/20",
-    iconColor: "text-secondary",
-    title: "Traffic Heatmaps",
-    descEn: "Traffic heatmaps showing audience density by time — helping you pick the highest-impact slots.",
-    descTh: "แผนที่ความหนาแน่นจราจรแยกตามช่วงเวลา ช่วยเลือก Slot โฆษณาที่ให้ผลสูงสุด",
-  },
 ];
 
 export default function MediaKitPage() {
@@ -309,61 +293,6 @@ export default function MediaKitPage() {
                   )}
                 </span>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Coverage & Insight Reports ── */}
-        <section className="py-24 px-margin-desktop max-w-container-max mx-auto bg-surface-container-low overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-8">
-              <h2 className="font-headline-xl text-headline-xl text-white">
-                {t("Coverage & Audience Insights", "รายงานผลและข้อมูลเชิงลึกกลุ่มผู้ชม")}
-              </h2>
-              <p className="font-body-lg text-body-lg text-on-surface-variant">
-                {t(
-                  'We don\'t just provide ad space — we provide "data" for the best decision-making. Our coverage reports include precise insights to measure campaign success.',
-                  "เราไม่ได้ให้แค่พื้นที่ป้ายโฆษณา แต่ให้ข้อมูลจราจรและกลุ่มผู้ชมที่ช่วยให้คุณตัดสินใจได้อย่างมั่นใจ พร้อมรายงานสรุปผลแคมเปญหลังสิ้นสุดการลงโฆษณา"
-                )}
-              </p>
-              <div className="space-y-6">
-                {coverageFeatures.map((feat) => (
-                  <div
-                    key={feat.title}
-                    className="sr sr-left glass-card p-6 rounded-xl flex items-center gap-6 hover:bg-surface-container-high transition-all"
-                  >
-                    <div className={`w-12 h-12 rounded-lg ${feat.iconBg} flex items-center justify-center ${feat.iconColor} shrink-0`}>
-                      <feat.icon size={22} />
-                    </div>
-                    <div>
-                      <h4 className="font-headline-md text-[18px] text-white mb-1">{feat.title}</h4>
-                      <p className="text-on-surface-variant text-sm">{t(feat.descEn, feat.descTh)}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: dashboard mockup */}
-            <div className="sr sr-right relative">
-              <div className="glass-card rounded-2xl p-4 shadow-2xl relative z-10 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt="Analytics dashboard mockup"
-                  className="w-full h-[400px] object-cover rounded-xl"
-                  src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-2xl" />
-                <div className="absolute bottom-10 left-10 right-10">
-                  <div className="flex justify-between items-end">
-                    <div className="bg-primary-container px-4 py-2 rounded text-white font-data-mono text-sm">
-                      {t("LIVE REPORTING", "รายงานแบบสด")}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute -top-12 -right-12 w-64 h-64 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
             </div>
           </div>
         </section>
