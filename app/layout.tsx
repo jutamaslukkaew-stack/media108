@@ -59,10 +59,10 @@ export default function RootLayout({
   return (
     <html
       lang="th"
-      className={`dark ${montserrat.variable} ${inter.variable}`}
+      className={`${montserrat.variable} ${inter.variable}`}
     >
       <head>
-        <meta name="theme-color" content="#020b2e" />
+        <meta name="theme-color" content="#FFFFFF" />
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="bg-background text-on-background antialiased">

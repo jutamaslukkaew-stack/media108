@@ -1065,57 +1065,41 @@ export default function Home() {
       </section>
 
       {/* ── 6. Services Overview ── */}
-      <section className="bg-surface-container py-10 md:py-20" id="services">
-        <div className="max-w-5xl mx-auto px-6 md:px-10">
-          {/* Header */}
-          <div className="sr sr-up mb-12 text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
+      <section className="bg-surface-container py-10 md:py-32" id="services">
+        <div className="max-w-container-max mx-auto px-margin-desktop">
+          <div className="sr sr-up mb-16 text-center md:text-left">
+            <div className="flex items-center gap-2 md:justify-start justify-center mb-3">
               <span className="w-5 h-[1px] bg-primary-container" />
               <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("What We Do", "สิ่งที่เราทำ")}</span>
-              <span className="w-5 h-[1px] bg-primary-container" />
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-4">{t("Our Services", "บริการของเรา")}</h2>
-            <p className="text-on-surface-variant font-body-lg max-w-xl mx-auto">
-              {t("Everything you need to advertise on LED billboards in Chonburi", "ครบทุกอย่างที่ต้องการสำหรับการลงโฆษณาป้าย LED ในชลบุรี")}
-            </p>
+            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Services Overview", "บริการของเรา")}</h2>
+            <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent rounded-full" />
           </div>
-
-          {/* 3 cards — equal width */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
             {services.map((svc, i) => (
               <Link key={svc.title} href={svc.href}
-                className={`sr sr-scale sr-d${i + 1} group relative flex flex-col rounded-2xl overflow-hidden border border-white/8 hover:border-primary/40 transition-all duration-300 hover:-translate-y-1`}
-                style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(8px)" }}
-              >
-                {/* Top accent bar */}
-                <div className="h-[3px] w-full bg-gradient-to-r from-primary via-primary-container to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="p-8 flex flex-col flex-1">
-                  {/* Icon */}
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all">
-                    <svc.icon size={26} className="text-primary group-hover:text-primary-container transition-colors" />
-                  </div>
-                  {/* Title */}
-                  <h4 className="font-headline-lg text-headline-lg text-white mb-3 group-hover:text-primary-container transition-colors">{svc.title}</h4>
-                  {/* Desc */}
-                  <p className="text-on-surface-variant text-sm leading-relaxed flex-1">{t(svc.descEn, svc.descTh)}</p>
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 mt-6 text-primary text-[11px] font-bold uppercase tracking-wider group-hover:gap-3 transition-all">
-                    {t("Learn more", "ดูรายละเอียด")} <ArrowRight size={13} />
-                  </div>
+                className={`sr sr-scale sr-d${i + 1} glass-card p-8 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group flex flex-col`}>
+                {/* Icon with circular button style */}
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
+                  <svc.icon size={28} className="text-primary transition-colors duration-300 group-hover:text-primary-container" />
+                </div>
+                <h4 className="font-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
+                <p className="text-on-surface-variant font-body-md text-sm flex-1">{t(svc.descEn, svc.descTh)}</p>
+                <div className="flex items-center gap-2 mt-5 text-primary text-xs font-bold group-hover:gap-3 transition-all">
+                  {t("Learn more", "ดูเพิ่มเติม")} <ArrowRight size={12} />
                 </div>
               </Link>
             ))}
           </div>
-
-          {/* Buttons */}
-          <div className="sr sr-up sr-d5 mt-12 flex flex-col sm:flex-row justify-center gap-4">
+          <div className="sr sr-up sr-d5 mt-16 flex flex-col sm:flex-row justify-center gap-6">
             <Link href="/services"
-              className="bg-primary-container text-white px-10 py-4 rounded-lg font-label-md font-bold hover:brightness-110 active:scale-95 transition-all text-center">
+              className="bg-[#E63946] text-white px-12 py-5 rounded-lg font-label-md shadow-xl hover:bg-[#d1323f] hover:-translate-y-0.5 transition-all text-center"
+              style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
               {t("View All Services", "ดูบริการทั้งหมด")}
             </Link>
             <Link href="/contact#form"
-              className="border border-white/20 text-white px-10 py-4 rounded-lg font-label-md hover:bg-white/5 transition-all text-center">
-              {t("Contact Sales", "ติดต่อฝ่ายขาย")}
+              className="bg-transparent border border-white/20 text-white px-12 py-5 rounded-lg font-label-md hover:bg-white/5 hover:border-white/40 transition-all text-center">
+              {t("Consult Our Sales Team", "ปรึกษาแคมเปญกับทีมขาย")}
             </Link>
           </div>
         </div>
