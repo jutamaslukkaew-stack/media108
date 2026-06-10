@@ -36,131 +36,76 @@ export default function Navbar({ activePage = "home" }: NavbarProps) {
       id="main-nav"
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? "bg-white/98 backdrop-blur-md shadow-[0_1px_0_0_#E8E8E8] py-2"
-          : "bg-white border-b border-[#E8E8E8] py-0"
+          ? "bg-[#061133]/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(255,255,255,0.08)] py-2"
+          : "bg-[#061133] border-b border-white/10 py-0"
       }`}
     >
-      <div className="flex items-center h-16 w-full max-w-container-max mx-auto px-margin-desktop">
-
-        {/* Logo */}
+      {/* ── Desktop row ── */}
+      <div className="hidden md:flex items-center h-16 w-full max-w-container-max mx-auto px-margin-desktop">
         <Link href="/" className="flex items-center shrink-0 mr-12">
-          <span className="text-[#E63946] font-black text-xl tracking-tight uppercase font-[family-name:var(--font-montserrat)]">MEDIA</span>
-          <span className="text-[#111111] font-black text-xl tracking-tight font-[family-name:var(--font-montserrat)]">108</span>
+          <span className="text-[#ffb3b1] font-black text-xl tracking-tight uppercase font-[family-name:var(--font-montserrat)]">MEDIA</span>
+          <span className="text-white font-black text-xl tracking-tight font-[family-name:var(--font-montserrat)]">108</span>
         </Link>
 
-        {/* Nav links */}
-        <div className="hidden md:flex items-center gap-7 flex-1">
+        <div className="flex items-center justify-evenly flex-1 px-4">
           {navLinks.map((link) => {
             const isActive = activePage === link.page;
             return (
-              <Link
-                key={link.page}
-                href={link.href}
+              <Link key={link.page} href={link.href}
                 className={`relative text-[13px] font-semibold tracking-wide whitespace-nowrap transition-colors pb-0.5 ${
-                  isActive
-                    ? "text-[#E63946]"
-                    : "text-[#333333] hover:text-[#111111]"
+                  isActive ? "text-[#E63946]" : "text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
-                {isActive && (
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-[#E63946] rounded-full" />
-                )}
+                {isActive && <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-[#E63946] rounded-full" />}
               </Link>
             );
           })}
         </div>
 
-        {/* Right: Language + CTA */}
-        <div className="hidden md:flex items-center gap-3 ml-auto">
-          <div className="flex items-center rounded border border-[#DDDDDD] overflow-hidden text-[11px] font-bold tracking-widest">
-            <button
-              onClick={() => setLang("th")}
-              className={`px-3 py-1.5 transition-all ${
-                lang === "th"
-                  ? "bg-[#111111] text-white"
-                  : "text-[#777777] hover:bg-[#F5F5F5]"
-              }`}
-            >
-              TH
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={`px-3 py-1.5 transition-all ${
-                lang === "en"
-                  ? "bg-[#111111] text-white"
-                  : "text-[#777777] hover:bg-[#F5F5F5]"
-              }`}
-            >
-              EN
-            </button>
+        <div className="flex items-center gap-3 ml-auto">
+          <div className="flex items-center rounded border border-[#ffb3b1]/40 overflow-hidden text-[11px] font-bold tracking-widest">
+            <button onClick={() => setLang("th")} className={`px-3 py-1.5 transition-all ${lang === "th" ? "bg-[#ffb3b1] text-[#061133]" : "text-white/50 hover:bg-[#ffb3b1]/10"}`}>TH</button>
+            <button onClick={() => setLang("en")} className={`px-3 py-1.5 transition-all ${lang === "en" ? "bg-[#ffb3b1] text-[#061133]" : "text-white/50 hover:bg-[#ffb3b1]/10"}`}>EN</button>
           </div>
-
-          <Link
-            href="/contact#form"
-            className="bg-[#E63946] text-white px-5 py-2 text-[12px] font-bold uppercase tracking-widest hover:bg-[#c9313d] active:scale-95 transition-all duration-200 whitespace-nowrap"
-          >
+          <Link href="/contact#form" className="bg-[#E63946] text-white px-5 py-2 text-[12px] font-bold uppercase tracking-widest hover:bg-[#c9313d] active:scale-95 transition-all duration-200 whitespace-nowrap rounded">
             {t("Contact Sales", "ติดต่อฝ่ายขาย")}
           </Link>
         </div>
+      </div>
 
-        {/* Mobile */}
-        <div className="md:hidden flex items-center gap-3 ml-auto">
-          <div className="flex items-center rounded border border-[#DDDDDD] overflow-hidden text-[10px] font-bold">
-            <button
-              onClick={() => setLang("th")}
-              className={`px-2 py-1.5 transition-all ${lang === "th" ? "bg-[#111111] text-white" : "text-[#777777]"}`}
-            >
-              TH
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={`px-2 py-1.5 transition-all ${lang === "en" ? "bg-[#111111] text-white" : "text-[#777777]"}`}
-            >
-              EN
-            </button>
-          </div>
-          <button
-            onClick={() => setMobileOpen((p) => !p)}
-            className="text-[#111111] p-1"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+      {/* ── Mobile row 1: Logo + TH/EN ── */}
+      <div className="md:hidden flex items-center justify-between px-4 h-12">
+        <Link href="/" className="flex items-center">
+          <span className="text-[#ffb3b1] font-black text-lg tracking-tight uppercase font-[family-name:var(--font-montserrat)]">MEDIA</span>
+          <span className="text-white font-black text-lg tracking-tight font-[family-name:var(--font-montserrat)]">108</span>
+        </Link>
+        <div className="flex items-center rounded border border-white/20 overflow-hidden text-[10px] font-bold">
+          <button onClick={() => setLang("th")} className={`px-2.5 py-1.5 transition-all ${lang === "th" ? "bg-white text-[#061133]" : "text-white/50"}`}>TH</button>
+          <button onClick={() => setLang("en")} className={`px-2.5 py-1.5 transition-all ${lang === "en" ? "bg-white text-[#061133]" : "text-white/50"}`}>EN</button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-[#E8E8E8] bg-white">
-          <div className="flex flex-col px-5 py-3 gap-0.5">
-            {navLinks.map((link) => {
-              const isActive = activePage === link.page;
-              return (
-                <Link
-                  key={link.page}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`py-3 px-3 text-sm font-medium transition-all border-l-2 ${
-                    isActive
-                      ? "text-[#E63946] border-[#E63946] bg-[#FEF2F2]"
-                      : "text-[#333333] border-transparent hover:text-[#111111] hover:bg-[#F7F7F7]"
-                  }`}
-                >
+      {/* ── Mobile row 2: All nav tabs, full width ── */}
+      <div className="md:hidden border-t border-white/10">
+        <div className="grid w-full" style={{ gridTemplateColumns: `repeat(${navLinks.length}, 1fr)` }}>
+          {navLinks.map((link) => {
+            const isActive = activePage === link.page;
+            return (
+              <Link key={link.page} href={link.href}
+                className={`relative flex flex-col items-center justify-center py-2 text-center transition-colors ${
+                  isActive ? "text-[#E63946]" : "text-white/60"
+                }`}
+              >
+                <span className="text-[10px] font-semibold leading-tight px-0.5 break-keep">
                   {link.label}
-                </Link>
-              );
-            })}
-            <Link
-              href="/contact#form"
-              onClick={() => setMobileOpen(false)}
-              className="mt-3 text-center bg-[#E63946] text-white px-6 py-3 text-sm font-bold uppercase tracking-widest hover:bg-[#c9313d] transition-all"
-            >
-              {t("Contact Sales", "ติดต่อฝ่ายขาย")}
-            </Link>
-          </div>
+                </span>
+                {isActive && <span className="absolute bottom-0 left-1 right-1 h-0.5 bg-[#E63946] rounded-full" />}
+              </Link>
+            );
+          })}
         </div>
-      )}
+      </div>
     </nav>
   );
 }

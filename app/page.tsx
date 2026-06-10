@@ -88,25 +88,11 @@ const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: strin
 ];
 
 const gallery = [
-  {
-    src: "/image/locations/pattaya-dolphin-roundabout.png",
-    alt: "ป้าย LED วงเวียนปลาโลมา Terminal 21 พัทยา กลางวัน",
-    title: "วงเวียนปลาโลมา พัทยา",
-    sub: "พัทยาเหนือ – ตรงข้าม Terminal 21",
-  },
-  {
-    src: "/image/locations/bangsaen-galaxy-junction-night.png",
-    alt: "ป้าย LED แยกแกแล็คซี่ บางแสน กลางคืน",
-    title: "โดดเด่นยามค่ำคืน",
-    sub: "แยกแกแล็คซี่ – ทางลงหาดบางแสน",
-    border: true,
-  },
-  {
-    src: "/image/locations/sriracha-central-mall.png",
-    alt: "ป้าย LED หน้า Central Si Racha ศรีราชา",
-    title: "Central Si Racha",
-    sub: "ศรีราชา – ถนนสุขุมวิท Chonburi",
-  },
+  { src: "/image/services/service-1.png", alt: "LED Billboard Creative 1", title: "LED Billboard", sub: "ป้าย LED กลางแจ้ง" },
+  { src: "/image/services/service-2.png", alt: "LED Billboard Creative 2", title: "Video Ads", sub: "ผลิตวิดีโอโฆษณา" },
+  { src: "/image/services/service-3.png", alt: "LED Billboard Creative 3", title: "Motion Graphic", sub: "งาน 2D/3D" },
+  { src: "/image/services/service-5.png", alt: "LED Billboard Creative 5", title: "Prime Location", sub: "ทำเลยุทธศาสตร์" },
+  { src: "/image/services/service-6.png", alt: "LED Billboard Creative 6", title: "เครือข่ายชลบุรี", sub: "Chonburi Network" },
 ];
 
 const steps = [
@@ -642,13 +628,9 @@ export default function Home() {
             }}
           >
             {/* broadcast-ring removed */}
-            <div className="bg-primary/10 border border-primary/30 px-4 py-1.5 rounded-full flex items-center gap-2.5 relative z-10">
-              {/* Live broadcast dot */}
-              <span
-                className="w-2 h-2 rounded-full bg-[#E63946] block flex-shrink-0"
-                
-              />
-              <span className="text-primary font-label-md text-label-md tracking-widest uppercase">
+            <div className="bg-white/10 border border-white/30 px-4 py-1.5 rounded-full flex items-center gap-2.5 relative z-10">
+              <span className="w-2 h-2 rounded-full bg-[#E63946] block flex-shrink-0" />
+              <span className="text-white font-label-md text-label-md tracking-widest uppercase">
                 {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
               </span>
             </div>
@@ -656,20 +638,20 @@ export default function Home() {
 
           {/* H1 — staggered entrance */}
           <h1
-            className="font-display-lg text-display-lg mb-8 max-w-4xl text-on-surface"
+            className="font-display-lg text-display-lg mb-8 max-w-4xl text-white"
             style={{
               animation: heroReady
                 ? "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both"
                 : "none",
             }}
           >
-            {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}{" "}
-            <span className="text-primary-container">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
+            {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}<br />
+            <span className="text-[#E63946] whitespace-nowrap">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
           </h1>
 
           {/* Description */}
           <p
-            className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12"
+            className="font-body-lg text-body-lg text-white/80 max-w-2xl mb-12"
             style={{
               animation: heroReady
                 ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both"
@@ -1065,42 +1047,117 @@ export default function Home() {
       </section>
 
       {/* ── 6. Services Overview ── */}
-      <section className="bg-surface-container py-10 md:py-32" id="services">
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="sr sr-up mb-16 text-center md:text-left">
-            <div className="flex items-center gap-2 md:justify-start justify-center mb-3">
-              <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("What We Do", "สิ่งที่เราทำ")}</span>
+      <section className="relative py-10 md:py-24 overflow-hidden" id="services"
+        style={{ background: "linear-gradient(180deg, #0a1230 0%, #061133 100%)" }}>
+
+        <div className="absolute inset-0 network-grid-bg opacity-20 pointer-events-none" />
+
+        <div className="relative z-10 max-w-container-max mx-auto px-margin-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:min-h-[560px]" style={{ alignItems: "stretch" }}>
+
+            {/* Left — dark info card */}
+            <div className="sr sr-left lg:col-span-2 rounded-2xl p-10 flex flex-col justify-between"
+              style={{ background: "linear-gradient(145deg,#0f1d4a 0%,#0a1230 100%)", border: "1px solid rgba(230,57,70,0.2)" }}>
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-5 h-[1px] bg-[#E63946]" />
+                  <span className="text-[#E63946] font-label-md text-[11px] tracking-[0.2em] uppercase">{t("What We Do", "สิ่งที่เราทำ")}</span>
+                </div>
+                <h2 className="font-headline-xl text-white mb-4" style={{ fontSize: "36px", lineHeight: 1.15 }}>
+                  {t("Services Overview", "บริการของเรา")}
+                </h2>
+                <p className="text-white/50 text-sm leading-relaxed mb-8">
+                  {t("From LED billboards to motion graphics — everything your brand needs for impactful outdoor advertising.", "ตั้งแต่ป้าย LED จนถึง Motion Graphic ครบทุกอย่างที่แบรนด์ต้องการสำหรับโฆษณากลางแจ้ง")}
+                </p>
+                {/* Services list — clickable */}
+                <div className="space-y-0 divide-y divide-white/8 mb-6">
+                  {[
+                    { icon: services[0].icon, title: services[0].title, href: services[0].href, stat: "10+", unit: t("Locations","ทำเล"), accent: "#E63946" },
+                    { icon: services[1].icon, title: services[1].title, href: services[1].href, stat: "HD",  unit: t("Quality","คุณภาพ"), accent: "#ff9060" },
+                    { icon: services[2].icon, title: services[2].title, href: services[2].href, stat: "2D/3D", unit: t("Creative","สร้างสรรค์"), accent: "#a070ff" },
+                  ].map((svc) => (
+                    <Link key={svc.title} href={svc.href}
+                      className="flex items-center justify-between py-4 group hover:bg-white/3 -mx-2 px-2 rounded-lg transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                          style={{ background: `${svc.accent}18`, border: `1px solid ${svc.accent}35` }}>
+                          <svc.icon size={16} style={{ color: svc.accent }} />
+                        </div>
+                        <p className="text-white font-semibold text-sm group-hover:text-white/90">{svc.title}</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-right">
+                          <p className="font-black text-lg" style={{ color: svc.accent }}>{svc.stat}</p>
+                          <p className="text-white/30 text-[10px]">{svc.unit}</p>
+                        </div>
+                        <ArrowRight size={14} className="text-white/20 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Divider */}
+                <div className="border-t border-white/10 pt-6 mb-4">
+                  <p className="text-[#E63946] font-label-md text-[10px] tracking-[0.2em] uppercase mb-4">{t("How to Start","วิธีลงโฆษณา")}</p>
+                  <div className="space-y-2">
+                    {steps.map((s) => (
+                      <Link key={s.step} href="/contact#form"
+                        className="flex items-center gap-3 group hover:bg-white/3 -mx-2 px-2 py-1.5 rounded-lg transition-colors">
+                        <div className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                          style={{ background: "rgba(230,57,70,0.15)", border: "1px solid rgba(230,57,70,0.3)" }}>
+                          <span className="text-[#E63946] font-mono text-[9px] font-bold">{s.step}</span>
+                        </div>
+                        <p className="text-white/70 text-xs font-medium group-hover:text-white/90 transition-colors">{t(s.titleEn, s.titleTh)}</p>
+                        <ArrowRight size={12} className="text-white/0 group-hover:text-white/30 ml-auto transition-colors" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 mt-6">
+                <Link href="/services"
+                  className="w-full text-center bg-[#E63946] text-white py-3 rounded-lg font-label-md text-sm font-bold hover:bg-[#d1323f] transition-all hover:-translate-y-0.5">
+                  {t("View All Services", "ดูบริการทั้งหมด")} →
+                </Link>
+                <Link href="/contact#form"
+                  className="w-full text-center bg-white/5 border border-white/15 text-white/70 text-sm py-3 rounded-lg hover:bg-white/10 hover:text-white transition-all">
+                  {t("Reserve Now", "จองป้ายโฆษณา")}
+                </Link>
+              </div>
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("Services Overview", "บริการของเรา")}</h2>
-            <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-[#E63946] to-transparent rounded-full" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
-            {services.map((svc, i) => (
-              <Link key={svc.title} href={svc.href}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-8 rounded-xl hover:bg-primary/5 transition-all duration-300 border-t-2 border-t-transparent hover:border-t-primary group flex flex-col`}>
-                {/* Icon with circular button style */}
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary/20 group-hover:border-primary/40 transition-all duration-300">
-                  <svc.icon size={28} className="text-primary transition-colors duration-300 group-hover:text-primary-container" />
-                </div>
-                <h4 className="font-headline-md text-on-surface mb-3 group-hover:text-primary transition-colors duration-300">{svc.title}</h4>
-                <p className="text-on-surface-variant font-body-md text-sm flex-1">{t(svc.descEn, svc.descTh)}</p>
-                <div className="flex items-center gap-2 mt-5 text-primary text-xs font-bold group-hover:gap-3 transition-all">
-                  {t("Learn more", "ดูเพิ่มเติม")} <ArrowRight size={12} />
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="sr sr-up sr-d5 mt-16 flex flex-col sm:flex-row justify-center gap-6">
-            <Link href="/services"
-              className="bg-[#E63946] text-white px-12 py-5 rounded-lg font-label-md shadow-xl hover:bg-[#d1323f] hover:-translate-y-0.5 transition-all text-center"
-              style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              {t("View All Services", "ดูบริการทั้งหมด")}
-            </Link>
-            <Link href="/contact#form"
-              className="bg-transparent border border-white/20 text-white px-12 py-5 rounded-lg font-label-md hover:bg-white/5 hover:border-white/40 transition-all text-center">
-              {t("Consult Our Sales Team", "ปรึกษาแคมเปญกับทีมขาย")}
-            </Link>
+
+            {/* Right — 2×2 photo grid, full height */}
+            <div className="sr sr-right lg:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-full">
+              {[
+                { src: "/image/services/service-1.png", href: "/billboard", label: services[0].title, sub: t("LED Billboard · Pattaya","ป้าย LED พัทยา"), accent: "#E63946", tag: t("LED","LED") },
+                { src: "/image/services/service-2.png", href: "/services",  label: services[1].title, sub: t("Video Production","ผลิตวิดีโอโฆษณา"),   accent: "#ff9060", tag: t("VIDEO","วิดีโอ") },
+                { src: "/image/services/service-3.png", href: "/services",  label: services[2].title, sub: t("2D/3D Animation","งาน 2D/3D"),            accent: "#a070ff", tag: t("MOTION","Motion") },
+                { src: "/image/services/service-4.png", href: "/billboard", label: t("Prime Locations","ทำเลยุทธศาสตร์"),   sub: t("Chonburi Network","เครือข่ายชลบุรี"),  accent: "#ffb3b1", tag: t("NETWORK","เครือข่าย") },
+              ].map((card, i) => (
+                <Link key={i} href={card.href}
+                  className={`sr sr-scale sr-d${i+1} group relative overflow-hidden rounded-xl min-h-[160px]`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={card.src} alt={card.label}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                  {/* Top badge */}
+                  <div className="absolute top-3 left-3">
+                    <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded"
+                      style={{ color: card.accent, background: `${card.accent}25`, border: `1px solid ${card.accent}40` }}>
+                      {card.tag}
+                    </span>
+                  </div>
+                  {/* Bottom info */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white font-semibold text-sm leading-tight">{card.label}</p>
+                    <p className="text-white/50 text-[11px] mt-0.5">{card.sub}</p>
+                  </div>
+                  {/* Hover glow border */}
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+                    style={{ boxShadow: `inset 0 0 0 1.5px ${card.accent}60` }} />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1143,7 +1200,7 @@ export default function Home() {
       </section>
 
       {/* ── 9. Photo Gallery ── */}
-      <section className="bg-surface-container-lowest py-10 md:py-32">
+      <section className="py-10 md:py-24" style={{ background: "#061133" }}>
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-16 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1160,114 +1217,111 @@ export default function Home() {
               )}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {gallery.map((photo, i) => (
-              <div key={photo.alt}
-                className={`sr sr-scale sr-d${i + 1} relative group overflow-hidden rounded-xl aspect-[4/5] shadow-2xl ${photo.border ? "border-2 border-primary/20" : ""}`}
-                style={{ transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${i * 0.12}s, transform 0.7s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.12}s` }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img alt={photo.alt}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  src={photo.src} />
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-8">
-                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                    <p className="text-white font-headline-md mb-1">{photo.title}</p>
-                    <p className="text-primary font-label-md text-xs uppercase tracking-widest">{photo.sub}</p>
+          {/* Masonry 2-column layout */}
+          <div className="grid grid-cols-2 gap-3">
+            {/* Left column */}
+            <div className="flex flex-col gap-3">
+              {[gallery[0], gallery[2], gallery[4]].map((photo, i) => (
+                <div key={photo.alt}
+                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden rounded-lg`}
+                  style={{ aspectRatio: i % 2 === 0 ? "4/3" : "3/4", background: "#061133" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt={photo.alt} src={photo.src}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="text-white/40 text-[9px] uppercase tracking-widest">{photo.sub}</p>
+                    <p className="text-white font-semibold text-sm">{photo.title}</p>
                   </div>
                 </div>
-                {/* Corner accent */}
-                <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            ))}
+              ))}
+            </div>
+            {/* Right column — offset start */}
+            <div className="flex flex-col gap-3 mt-10">
+              {[gallery[1], gallery[3]].map((photo, i) => (
+                <div key={photo.alt}
+                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden rounded-lg`}
+                  style={{ aspectRatio: i % 2 === 0 ? "3/4" : "4/3", background: "#061133" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img alt={photo.alt} src={photo.src}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="text-white/40 text-[9px] uppercase tracking-widest">{photo.sub}</p>
+                    <p className="text-white font-semibold text-sm">{photo.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── 10. How to Buy Ads ── */}
-      <section className="bg-surface-container py-10 md:py-32 border-t border-border-glass">
-        <div className="max-w-container-max mx-auto px-margin-desktop">
-          <div className="sr sr-up mb-20 text-center">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <span className="w-5 h-[1px] bg-primary-container" />
-              <span className="text-primary font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Get Started", "เริ่มต้น")}</span>
-              <span className="w-5 h-[1px] bg-primary-container" />
-            </div>
-            <h2 className="font-headline-xl text-headline-xl text-on-surface mb-3">{t("How to Buy Ads", "วิธีลงโฆษณา")}</h2>
-            <div className="h-[2px] w-0 expand-bar bg-gradient-to-r from-transparent via-[#E63946] to-transparent rounded-full mx-auto" />
-            <p className="text-on-surface-variant mt-8 font-body-lg">
-              {t("Four simple steps to launch your outdoor advertising campaign with us.", "4 ขั้นตอนง่ายๆ เพื่อเริ่มแคมเปญโฆษณากลางแจ้งกับ Media108")}
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
-            {steps.map((s, i) => (
-              <div key={s.step}
-                className={`sr sr-up sr-d${i + 1} relative z-10 p-8 glass-card rounded-xl hover:border-primary/50 transition-all group`}>
-                {/* Connector line */}
-                {i < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-full w-full h-[1px] bg-gradient-to-r from-primary/30 to-transparent z-0" />
-                )}
-                <div className="step-number font-display-lg text-8xl leading-none mb-4 opacity-10 group-hover:opacity-25 transition-opacity duration-500">
-                  {s.step}
-                </div>
-                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{t(s.titleEn, s.titleTh)}</h4>
-                <p className="text-on-surface-variant font-body-md leading-relaxed">{t(s.descEn, s.descTh)}</p>
-              </div>
-            ))}
-          </div>
-          <div className="sr sr-scale sr-d5 mt-20 flex justify-center">
-            <Link href="/contact#form"
-              className="px-16 py-6 bg-[#E63946] text-white rounded-lg font-label-md text-label-md glow-button transition-all hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-2xl uppercase tracking-widest"
-              style={{ transition: "all 250ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              {t("Reserve Your Billboard Now", "จองป้ายโฆษณาได้เลย")}
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ── 11. Media Kit CTA ── */}
-      <section className="bg-primary-container py-10 md:py-24 relative overflow-hidden">
-        {/* Animated background pattern */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+      <section className="relative py-10 md:py-24 overflow-hidden border-y border-white/8"
+        style={{ background: "linear-gradient(180deg, #0a1230 0%, #061133 100%)" }}>
+
+        {/* Red glow left */}
+        <div className="absolute -left-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 65%)" }} />
+        {/* Red glow right */}
+        <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(255,83,91,0.08) 0%, transparent 65%)" }} />
+
+        {/* Dot grid */}
+        <div className="absolute inset-0 pointer-events-none opacity-25"
+          style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
+
         {/* Floating icon */}
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none"
-          style={{ animation: "spin-slow 20s linear infinite" }}>
-          <FileDown size={350} className="text-white rotate-12" />
+        <div className="absolute top-0 right-8 w-64 h-full opacity-[0.04] pointer-events-none flex items-center"
+          style={{ animation: "spin-slow 25s linear infinite" }}>
+          <FileDown size={300} className="text-white" />
         </div>
-        {/* Shimmer strip */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-white/20" />
-        <div className="max-w-container-max mx-auto px-margin-desktop text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-12 relative z-10">
-          <div className="sr sr-left max-w-2xl">
-            <div className="flex items-center gap-2 mb-4 md:justify-start justify-center">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-white"
-                
-              />
-              <span className="text-white/70 font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Free Download", "ดาวน์โหลดฟรี")}</span>
+
+        {/* Top accent line */}
+        <div className="absolute top-0 left-0 right-0 h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.5), transparent)" }} />
+
+        <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+
+            <div className="sr sr-left max-w-2xl">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#E63946]" />
+                <span className="text-[#E63946] font-label-md text-[11px] tracking-[0.2em] uppercase">{t("Free Download", "ดาวน์โหลดฟรี")}</span>
+              </div>
+              <h2 className="font-headline-xl text-headline-xl text-white mb-6">
+                {t("Download Our Media Kit", "ดาวน์โหลด Media Kit ของเรา")}
+              </h2>
+              <p className="text-white/60 font-body-lg leading-relaxed">
+                {t(
+                  "Want detailed location information, pricing, packages, and audience statistics? Download our Media Kit or request a custom quotation designed specifically for your business.",
+                  "ดูข้อมูลทำเล แพ็กเกจ ราคา และสถิติกลุ่มผู้ชมแบบละเอียดได้ใน Media Kit ดาวน์โหลดฟรี หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ"
+                )}
+              </p>
             </div>
-            <h2 className="font-headline-xl text-headline-xl text-white mb-6">{t("Download Our Media Kit", "ดาวน์โหลด Media Kit ของเรา")}</h2>
-            <p className="text-white/90 font-body-lg leading-relaxed">
-              {t(
-                "Want detailed location information, pricing, packages, and audience statistics? Download our Media Kit or request a custom quotation designed specifically for your business.",
-                "ดูข้อมูลทำเล แพ็กเกจ ราคา และสถิติกลุ่มผู้ชมแบบละเอียดได้ใน Media Kit ดาวน์โหลดฟรี หรือขอใบเสนอราคาที่ออกแบบเฉพาะสำหรับธุรกิจของคุณ"
-              )}
-            </p>
-          </div>
-          <div className="sr sr-right sr-d2 flex flex-col sm:flex-row gap-6 w-full md:w-auto">
-            <Link href="/media-kit"
-              className="bg-white text-primary-container px-12 py-5 rounded-lg font-label-md text-label-md font-bold flex items-center justify-center shadow-2xl hover:-translate-y-1 active:scale-95"
-              style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
-              <Download size={18} className="mr-3 inline" /> {t("DOWNLOAD MEDIA KIT", "ดาวน์โหลด MEDIA KIT")}
-            </Link>
-            <Link href="/contact#form"
-              className="bg-transparent border-2 border-white text-white px-12 py-5 rounded-lg font-label-md text-label-md font-bold hover:bg-white/10 active:scale-95 text-center hover:-translate-y-0.5"
-              style={{ transition: "all 200ms ease" }}>
-              {t("REQUEST QUOTATION", "ขอใบเสนอราคา")}
-            </Link>
+
+            <div className="sr sr-right sr-d2 flex flex-col sm:flex-row gap-4 w-full md:w-auto flex-shrink-0">
+              <Link href="/media-kit"
+                className="bg-[#E63946] text-white px-10 py-4 rounded-lg font-label-md font-bold flex items-center justify-center gap-3 hover:bg-[#d1323f] hover:-translate-y-0.5 active:scale-95 shadow-lg shadow-[#E63946]/20"
+                style={{ transition: "all 200ms cubic-bezier(0.34,1.56,0.64,1)" }}>
+                <Download size={16} /> {t("DOWNLOAD MEDIA KIT", "ดาวน์โหลด MEDIA KIT")}
+              </Link>
+              <Link href="/contact#form"
+                className="bg-white/5 border border-white/20 text-white px-10 py-4 rounded-lg font-label-md font-bold hover:bg-white/10 hover:border-white/40 active:scale-95 text-center hover:-translate-y-0.5"
+                style={{ transition: "all 200ms ease" }}>
+                {t("REQUEST QUOTATION", "ขอใบเสนอราคา")}
+              </Link>
+            </div>
           </div>
         </div>
+
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px]"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(230,57,70,0.3), transparent)" }} />
       </section>
 
       {/* ── 12. Contact & Footer ── */}
