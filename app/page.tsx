@@ -84,7 +84,6 @@ const services: { icon: LucideIcon; title: string; descEn: string; descTh: strin
 const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: string; descTh: string; href: string }[] = [
   { icon: Building2, titleEn: "Chonburi Local Experts",    titleTh: "เชี่ยวชาญพื้นที่ Chonburi",  href: "/network",   descEn: "Deep local expertise across Chonburi and the Eastern region — covering every strategic location with strong purchasing power.",   descTh: "เข้าใจพื้นที่ชลบุรีและภาคตะวันออกอย่างลึกซึ้ง ครอบคลุมทุกทำเลยุทธศาสตร์ที่มีกำลังซื้อสูง" },
   { icon: LineChart, titleEn: "Data-Driven Decisions",     titleTh: "ตัดสินใจด้วยข้อมูลจริง",     href: "/billboard", descEn: "Real traffic and audience data — helping you pick the most effective locations and squeeze every baht from your media budget.",    descTh: "วิเคราะห์ข้อมูลจราจรและกลุ่มผู้ชมจริง ช่วยเลือกทำเลที่ได้ผลสูงสุดและใช้งบประมาณให้คุ้มค่าทุกบาท" },
-  { icon: Wand2,     titleEn: "Full Creative Studio",      titleTh: "สตูดิโอครบวงจร",              href: "/services",  descEn: "In-house creative team handling Motion Graphics and Anamorphic 3D — from concept to launch, all under one roof.",               descTh: "ทีมครีเอทีฟและโปรดักชันในองค์กร ทั้ง Motion Graphic และ Anamorphic 3D ตั้งแต่ไอเดียจนถึงงานจริง" },
 ];
 
 const gallery = [
@@ -329,11 +328,43 @@ export default function Home() {
   const [introVisible, setIntroVisible] = useState(false);
   const [showMapModal, setShowMapModal] = useState(false);
 
+  // Slideshow state
+  const SLIDE_DURATION = 5000;
+  const heroSlides = [
+    { src: "/image/hero homej.png",                                          kenBurns: "scale(1.12) translate(0px,0px)",      kenBurnsEnd: "scale(1.0) translate(-8px,-4px)"  },
+    { src: "/image/locations/pattaya-dolphin-roundabout-night.png",          kenBurns: "scale(1.08) translate(6px,4px)",      kenBurnsEnd: "scale(1.18) translate(-6px,-4px)" },
+    { src: "/image/locations/bangsaen-galaxy-junction-night.png",            kenBurns: "scale(1.15) translate(-8px,0px)",     kenBurnsEnd: "scale(1.05) translate(6px,4px)"   },
+    { src: "/image/locations/sriracha-central-mall-night.png",               kenBurns: "scale(1.1) translate(4px,-6px)",      kenBurnsEnd: "scale(1.2) translate(-4px,4px)"   },
+    { src: "/image/locations/pattaya-central-junction-night.png",            kenBurns: "scale(1.18) translate(-4px,4px)",     kenBurnsEnd: "scale(1.06) translate(6px,-4px)"  },
+  ];
+  const [slideIdx, setSlideIdx] = useState(0);
+  const [prevIdx, setPrevIdx] = useState<number | null>(null);
+  const [slideProgress, setSlideProgress] = useState(0);
+  const slideTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const progressRef = useRef<NodeJS.Timeout | null>(null);
+
   useEffect(() => {
     // Trigger entrance animations after mount
     const t = requestAnimationFrame(() => setHeroReady(true));
     return () => cancelAnimationFrame(t);
   }, []);
+
+  // Slideshow auto-advance
+  useEffect(() => {
+    setSlideProgress(0);
+    const step = 50;
+    progressRef.current = setInterval(() => {
+      setSlideProgress(p => Math.min(p + (step / SLIDE_DURATION) * 100, 100));
+    }, step);
+    slideTimerRef.current = setTimeout(() => {
+      setPrevIdx(slideIdx);
+      setSlideIdx(i => (i + 1) % heroSlides.length);
+    }, SLIDE_DURATION);
+    return () => {
+      if (slideTimerRef.current) clearTimeout(slideTimerRef.current);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [slideIdx]);
 
   // Intersection Observer — Company Introduction
   useEffect(() => {
@@ -412,7 +443,7 @@ export default function Home() {
       <Navbar activePage="home" />
 
       {/* ── 1. Hero Banner ── */}
-      <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center pt-20 overflow-hidden">
+      <section className="relative h-[60vh] md:h-[85vh] overflow-hidden">
 
         {/* ── Background Layer ── */}
         <div className="absolute inset-0 z-0">
@@ -426,16 +457,30 @@ export default function Home() {
               animation: "tv-expand 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              ref={heroImgRef}
-              alt="ป้าย LED Media108 กลางคืน – Pattaya Sukhumvit DOOH Billboard"
-              className="w-full h-full object-cover"
-              style={{ willChange: "transform" }}
-              src="/image/hero homej.png"
-              fetchPriority="high"
-              decoding="async"
-            />
+            {/* ── Slideshow images ── */}
+            {heroSlides.map((slide, i) => (
+              <div key={slide.src} className="absolute inset-0"
+                style={{
+                  opacity: i === slideIdx ? 1 : i === prevIdx ? 0 : 0,
+                  transition: i === prevIdx ? "opacity 1.2s ease" : i === slideIdx ? "opacity 1.2s ease" : "none",
+                  zIndex: i === slideIdx ? 2 : i === prevIdx ? 1 : 0,
+                }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  ref={i === 0 ? heroImgRef : undefined}
+                  alt="ป้าย LED Media108"
+                  className="w-full h-full object-cover"
+                  src={slide.src}
+                  fetchPriority={i === 0 ? "high" : "low"}
+                  decoding="async"
+                  style={{
+                    transform: i === slideIdx ? slide.kenBurnsEnd : slide.kenBurns,
+                    transition: i === slideIdx ? `transform ${SLIDE_DURATION + 400}ms ease-out` : "none",
+                    willChange: "transform",
+                  }}
+                />
+              </div>
+            ))}
             <div className="absolute inset-0 hero-gradient" />
 
             {/* Dot-matrix overlay — billboard pixel feel */}
@@ -617,77 +662,13 @@ export default function Home() {
           {/* LED scan line removed */}
         </div>
 
-        {/* ── Main Content ── */}
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-margin-desktop pt-10 pb-24 md:py-24 flex flex-col items-center text-center">
-
-          {/* Badge with broadcast signal rings */}
-          <div
-            className="relative inline-flex items-center mb-8"
-            style={{
-              animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) both" : "none",
-            }}
-          >
-            {/* broadcast-ring removed */}
-            <div className="bg-white/10 border border-white/30 px-4 py-1.5 rounded-full flex items-center gap-2.5 relative z-10">
-              <span className="w-2 h-2 rounded-full bg-[#E63946] block flex-shrink-0" />
-              <span className="text-white font-label-md text-label-md tracking-widest uppercase">
-                {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
-              </span>
-            </div>
-          </div>
-
-          {/* H1 — staggered entrance */}
-          <h1
-            className="font-display-lg text-display-lg mb-8 max-w-4xl text-white"
-            style={{
-              animation: heroReady
-                ? "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both"
-                : "none",
-            }}
-          >
-            {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}<br />
-            <span className="text-[#E63946] whitespace-nowrap">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
-          </h1>
-
-          {/* Description */}
-          <p
-            className="font-body-lg text-body-lg text-white/80 max-w-2xl mb-12"
-            style={{
-              animation: heroReady
-                ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both"
-                : "none",
-            }}
-          >
-            {t(
-              "Media108 is a LED & Digital Out-of-Home advertising platform that helps brands reach their target audience through verified locations, real data, and measurable campaigns.",
-              "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่เชื่อมแบรนด์สู่กลุ่มเป้าหมายผ่านทำเลยุทธศาสตร์ ข้อมูลจราจรจริง และแคมเปญที่วัดผลได้"
-            )}
-          </p>
-
-          {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-6"
-            style={{
-              animation: heroReady
-                ? "hero-scale-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s both"
-                : "none",
-            }}
-          >
-            <Link
-              href="/contact#form"
-              className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md text-label-md glow-button flex items-center justify-center transition-all hover:-translate-y-0.5 active:scale-95"
-              style={{ transition: "transform 150ms ease, box-shadow 150ms ease" }}
-            >
-              {t("Request Quotation", "ขอใบเสนอราคา")}{" "}
-              <ArrowRight size={16} className="ml-2 inline" />
-            </Link>
-            <Link
-              href="/billboard"
-              className="bg-transparent border border-white/20 text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-white/10 active:scale-95"
-              style={{ transition: "all 200ms ease" }}
-            >
-              {t("View All Locations", "ดูทำเลทั้งหมด")}
-            </Link>
+        {/* ── Minimal overlay: logo badge only ── */}
+        <div className="absolute top-24 left-1/2 -translate-x-1/2 z-20">
+          <div className="bg-black/30 border border-white/20 px-4 py-1.5 rounded-full flex items-center gap-2.5 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] animate-pulse block flex-shrink-0" />
+            <span className="text-white/80 font-label-md text-[11px] tracking-widest uppercase">
+              {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
+            </span>
           </div>
         </div>
 
@@ -730,6 +711,74 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ── Slide Controls ── */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3">
+          {/* Dot indicators */}
+          <div className="flex items-center gap-2.5">
+            {heroSlides.map((_, i) => (
+              <button key={i} onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i); }}
+                className="relative transition-all duration-400"
+                style={{ width: i === slideIdx ? 28 : 8, height: 8, borderRadius: 4, background: i === slideIdx ? "#E63946" : "rgba(255,255,255,0.35)", overflow: "hidden" }}>
+                {i === slideIdx && (
+                  <div className="absolute inset-0 origin-left rounded"
+                    style={{ background: "rgba(255,255,255,0.5)", transform: `scaleX(${slideProgress / 100})`, transition: "transform 0.05s linear" }} />
+                )}
+              </button>
+            ))}
+          </div>
+          {/* Slide counter */}
+          <div className="text-white/40 font-mono text-[10px] tracking-widest">
+            {String(slideIdx + 1).padStart(2,"0")} / {String(heroSlides.length).padStart(2,"0")}
+          </div>
+        </div>
+
+        {/* ── Prev / Next arrows ── */}
+        <button onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i => (i - 1 + heroSlides.length) % heroSlides.length); }}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/15 active:scale-90"
+          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+        <button onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i => (i + 1) % heroSlides.length); }}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/15 active:scale-90"
+          style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </button>
+
+      </section>
+
+      {/* ── Hero Intro — text section below slideshow ── */}
+      <section className="relative py-16 md:py-24 text-center overflow-hidden"
+        style={{ background: "linear-gradient(180deg,#061133 0%,#0a1230 100%)" }}>
+        {/* Red glow */}
+        <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: "linear-gradient(90deg,transparent,rgba(230,57,70,0.4),transparent)" }} />
+        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] pointer-events-none"
+          style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(230,57,70,0.1) 0%,transparent 70%)" }} />
+
+        <div className="relative z-10 max-w-container-max mx-auto px-margin-desktop">
+          <h1 className="font-display-lg text-display-lg text-white mb-6 max-w-4xl mx-auto"
+            style={{ animation: heroReady ? "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both" : "none" }}>
+            {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}<br />
+            <span className="text-[#E63946] whitespace-nowrap">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
+          </h1>
+          <p className="font-body-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+            style={{ animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s both" : "none" }}>
+            {t(
+              "Media108 is a LED & Digital Out-of-Home advertising platform that helps brands reach their target audience through verified locations, real data, and measurable campaigns.",
+              "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่เชื่อมแบรนด์สู่กลุ่มเป้าหมายผ่านทำเลยุทธศาสตร์ ข้อมูลจราจรจริง และแคมเปญที่วัดผลได้"
+            )}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center"
+            style={{ animation: heroReady ? "hero-scale-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both" : "none" }}>
+            <Link href="/contact#form"
+              className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md glow-button flex items-center justify-center hover:-translate-y-0.5 active:scale-95 transition-all">
+              {t("Request Quotation", "ขอใบเสนอราคา")} <ArrowRight size={16} className="ml-2" />
+            </Link>
+            <Link href="/billboard"
+              className="bg-white/5 border border-white/20 text-white px-8 py-4 rounded-lg font-label-md hover:bg-white/10 active:scale-95 transition-all">
+              {t("View All Locations", "ดูทำเลทั้งหมด")}
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ── 2. Company Introduction ── */}
@@ -1180,18 +1229,36 @@ export default function Home() {
               )}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {whyUs.map((item, i) => (
               <Link key={item.titleEn} href={item.href}
-                className={`sr sr-scale sr-d${i + 1} glass-card p-10 rounded-xl border-l-4 border-l-primary/30 hover:border-l-primary transition-all duration-300 shadow-lg group flex flex-col`}>
-                {/* Icon with circular button style */}
-                <div className="w-14 h-14 rounded-2xl bg-primary-container/10 border border-primary-container/20 flex items-center justify-center mb-6 group-hover:bg-primary-container/20 group-hover:border-primary-container/40 transition-all duration-300">
-                  <item.icon size={28} className="text-primary-container transition-colors duration-300 group-hover:text-primary" />
+                className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden rounded-2xl flex flex-col p-10 transition-all duration-300`}
+                style={{ background: "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)", border: "1px solid rgba(255,255,255,0.08)" }}>
+
+                {/* Accent glow on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse 80% 60% at 0% 100%, rgba(230,57,70,0.08) 0%, transparent 70%)" }} />
+
+                {/* Top accent bar */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                  style={{ background: "linear-gradient(90deg, #E63946, rgba(230,57,70,0.3), transparent)", opacity: 0.6 }} />
+                <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "linear-gradient(90deg, #E63946, rgba(255,83,91,0.5), transparent)" }} />
+
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(230,57,70,0.12)", border: "1px solid rgba(230,57,70,0.25)" }}>
+                  <item.icon size={30} className="text-[#E63946] transition-colors duration-300" />
                 </div>
-                <h4 className="font-headline-md text-on-surface mb-4 group-hover:text-primary transition-colors duration-300">{t(item.titleEn, item.titleTh)}</h4>
-                <p className="text-on-surface-variant font-body-md leading-relaxed flex-1">{t(item.descEn, item.descTh)}</p>
-                <div className="flex items-center gap-2 mt-6 text-primary-container text-sm font-bold group-hover:gap-3 transition-all">
-                  {t("Learn more", "ดูข้อมูลเพิ่มเติม")} <ArrowRight size={14} />
+
+                <h4 className="text-white font-bold text-2xl mb-4 group-hover:text-[#ffb3b1] transition-colors duration-300">
+                  {t(item.titleEn, item.titleTh)}
+                </h4>
+                <p className="text-white/55 text-sm leading-relaxed flex-1">
+                  {t(item.descEn, item.descTh)}
+                </p>
+                <div className="flex items-center gap-2 mt-8 text-[#E63946] text-sm font-bold group-hover:gap-3 transition-all">
+                  {t("Learn more", "ดูข้อมูลเพิ่มเติม")} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}
@@ -1229,11 +1296,7 @@ export default function Home() {
                   <img alt={photo.alt} src={photo.src}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="text-white/40 text-[9px] uppercase tracking-widest">{photo.sub}</p>
-                    <p className="text-white font-semibold text-sm">{photo.title}</p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               ))}
             </div>
@@ -1247,11 +1310,7 @@ export default function Home() {
                   <img alt={photo.alt} src={photo.src}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <p className="text-white/40 text-[9px] uppercase tracking-widest">{photo.sub}</p>
-                    <p className="text-white font-semibold text-sm">{photo.title}</p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               ))}
             </div>
