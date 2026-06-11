@@ -87,11 +87,11 @@ const whyUs: { icon: LucideIcon; titleEn: string; titleTh: string; descEn: strin
 ];
 
 const gallery = [
-  { src: "/image/services/service-1.png", alt: "LED Billboard Creative 1", title: "LED Billboard", sub: "ป้าย LED กลางแจ้ง" },
-  { src: "/image/services/service-2.png", alt: "LED Billboard Creative 2", title: "Video Ads", sub: "ผลิตวิดีโอโฆษณา" },
-  { src: "/image/services/service-3.png", alt: "LED Billboard Creative 3", title: "Motion Graphic", sub: "งาน 2D/3D" },
-  { src: "/image/services/service-5.png", alt: "LED Billboard Creative 5", title: "Prime Location", sub: "ทำเลยุทธศาสตร์" },
-  { src: "/image/services/service-6.png", alt: "LED Billboard Creative 6", title: "เครือข่ายชลบุรี", sub: "Chonburi Network" },
+  { src: "/image/services/new-1.png", alt: "Ocean Square 3D Billboard Pattaya" },
+  { src: "/image/services/new-2.png", alt: "Bangsaen Beach Billboard" },
+  { src: "/image/services/new-3.png", alt: "Drive Further Billboard Chonburi" },
+  { src: "/image/services/new-4.png", alt: "MG4 Electric Billboard" },
+  { src: "/image/services/new-9.png", alt: "Savor Cylinder Billboard Pattaya Night" },
 ];
 
 const steps = [
@@ -1175,35 +1175,19 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — 2×2 photo grid, full height */}
-            <div className="sr sr-right lg:col-span-3 grid grid-cols-2 grid-rows-2 gap-4 h-full">
+            {/* Right — 2×2 photo grid, full height, no text */}
+            <div className="sr sr-right lg:col-span-3 grid grid-cols-2 grid-rows-2 h-full" style={{ gap: "2px", background: "#061133" }}>
               {[
-                { src: "/image/services/service-1.png", href: "/billboard", label: services[0].title, sub: t("LED Billboard · Pattaya","ป้าย LED พัทยา"), accent: "#E63946", tag: t("LED","LED") },
-                { src: "/image/services/service-2.png", href: "/services",  label: services[1].title, sub: t("Video Production","ผลิตวิดีโอโฆษณา"),   accent: "#ff9060", tag: t("VIDEO","วิดีโอ") },
-                { src: "/image/services/service-3.png", href: "/services",  label: services[2].title, sub: t("2D/3D Animation","งาน 2D/3D"),            accent: "#a070ff", tag: t("MOTION","Motion") },
-                { src: "/image/services/service-4.png", href: "/billboard", label: t("Prime Locations","ทำเลยุทธศาสตร์"),   sub: t("Chonburi Network","เครือข่ายชลบุรี"),  accent: "#ffb3b1", tag: t("NETWORK","เครือข่าย") },
+                { src: "/image/services/new-1.png", href: "/billboard" },
+                { src: "/image/services/new-2.png", href: "/billboard" },
+                { src: "/image/services/new-9.png", href: "/services"  },
+                { src: "/image/services/new-3.png", href: "/billboard" },
               ].map((card, i) => (
                 <Link key={i} href={card.href}
-                  className={`sr sr-scale sr-d${i+1} group relative overflow-hidden rounded-xl min-h-[160px]`}>
+                  className={`sr sr-scale sr-d${i+1} group relative overflow-hidden min-h-[160px]`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={card.src} alt={card.label}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                  {/* Top badge */}
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded"
-                      style={{ color: card.accent, background: `${card.accent}25`, border: `1px solid ${card.accent}40` }}>
-                      {card.tag}
-                    </span>
-                  </div>
-                  {/* Bottom info */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="text-white font-semibold text-sm leading-tight">{card.label}</p>
-                    <p className="text-white/50 text-[11px] mt-0.5">{card.sub}</p>
-                  </div>
-                  {/* Hover glow border */}
-                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                    style={{ boxShadow: `inset 0 0 0 1.5px ${card.accent}60` }} />
+                  <img src={card.src} alt=""
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </Link>
               ))}
             </div>
@@ -1267,7 +1251,7 @@ export default function Home() {
       </section>
 
       {/* ── 9. Photo Gallery ── */}
-      <section className="py-10 md:py-24" style={{ background: "#061133" }}>
+      <section className="py-10 md:py-24" style={{ background: "#040d1f" }}>
         <div className="max-w-container-max mx-auto px-margin-desktop">
           <div className="sr sr-up mb-16 text-center">
             <div className="flex items-center justify-center gap-2 mb-3">
@@ -1285,32 +1269,30 @@ export default function Home() {
             </p>
           </div>
           {/* Masonry 2-column layout */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2" style={{ gap: "2px" }}>
             {/* Left column */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col" style={{ gap: "2px" }}>
               {[gallery[0], gallery[2], gallery[4]].map((photo, i) => (
                 <div key={photo.alt}
-                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden rounded-lg`}
+                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden`}
                   style={{ aspectRatio: i % 2 === 0 ? "4/3" : "3/4", background: "#061133" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img alt={photo.alt} src={photo.src}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               ))}
             </div>
             {/* Right column — offset start */}
-            <div className="flex flex-col gap-3 mt-10">
+            <div className="flex flex-col mt-8" style={{ gap: "2px" }}>
               {[gallery[1], gallery[3]].map((photo, i) => (
                 <div key={photo.alt}
-                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden rounded-lg`}
+                  className={`sr sr-scale sr-d${i + 1} group relative overflow-hidden`}
                   style={{ aspectRatio: i % 2 === 0 ? "3/4" : "4/3", background: "#061133" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img alt={photo.alt} src={photo.src}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ filter: "brightness(1.05) saturate(1.4) contrast(1.05)" }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
               ))}
             </div>

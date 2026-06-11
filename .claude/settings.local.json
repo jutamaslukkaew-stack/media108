@@ -70,7 +70,12 @@
       "WebFetch(domain:www.onep.go.th)",
       "Bash(pkill -f \"next dev\")",
       "Read(//tmp/**)",
-      "Bash(xargs kill -9)"
+      "Bash(xargs kill -9)",
+      "Bash(cp 'ChatGPT Image 11 มิ.ย. 2569 11_58_49 \\(1\\).png' /Users/pannaphat/media108/public/image/services/new-1.png)",
+      "Bash(cp 'ChatGPT Image 11 มิ.ย. 2569 11_58_50 \\(2\\).png' /Users/pannaphat/media108/public/image/services/new-2.png)",
+      "Bash(cp 'ChatGPT Image 11 มิ.ย. 2569 11_58_50 \\(4\\).png' /Users/pannaphat/media108/public/image/services/new-3.png)",
+      "Bash(cp 'ChatGPT Image 11 มิ.ย. 2569 12_00_33 \\(1\\).png' /Users/pannaphat/media108/public/image/services/new-4.png)",
+      "Bash(cp 'ChatGPT Image 11 มิ.ย. 2569 12_00_34 \\(2\\).png' /Users/pannaphat/media108/public/image/services/new-5.png)"
     ]
   }
 }
