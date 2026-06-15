@@ -442,333 +442,92 @@ export default function Home() {
     <>
       <Navbar activePage="home" />
 
-      {/* ── 1. Hero Banner ── */}
-      <section className="relative h-[60vh] md:h-[85vh] overflow-hidden">
+      {/* ── 1. Hero Banner — photo + shader, no text ── */}
+      <section className="relative h-[60vh] md:h-[75vh] overflow-hidden">
 
-        {/* ── Background Layer ── */}
+        {/* Photo slideshow */}
         <div className="absolute inset-0 z-0">
-
-          {/* ── TV Power-On Wrapper ──
-               clip-path starts as a razor-thin center line and expands
-               to fill the entire screen, with brightness/saturation shift  */}
-          <div
-            className="absolute inset-0"
-            style={{
-              animation: "tv-expand 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both",
-            }}
-          >
-            {/* ── Slideshow images ── */}
+          <div className="absolute inset-0" style={{ animation: "tv-expand 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both" }}>
             {heroSlides.map((slide, i) => (
               <div key={slide.src} className="absolute inset-0"
-                style={{
-                  opacity: i === slideIdx ? 1 : i === prevIdx ? 0 : 0,
-                  transition: i === prevIdx ? "opacity 1.2s ease" : i === slideIdx ? "opacity 1.2s ease" : "none",
-                  zIndex: i === slideIdx ? 2 : i === prevIdx ? 1 : 0,
-                }}>
+                style={{ opacity: i === slideIdx ? 1 : 0, transition: "opacity 1.2s ease", zIndex: i === slideIdx ? 2 : i === prevIdx ? 1 : 0 }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  ref={i === 0 ? heroImgRef : undefined}
-                  alt="ป้าย LED Media108"
-                  className="w-full h-full object-cover"
-                  src={slide.src}
-                  fetchPriority={i === 0 ? "high" : "low"}
-                  decoding="async"
-                  style={{
-                    transform: i === slideIdx ? slide.kenBurnsEnd : slide.kenBurns,
-                    transition: i === slideIdx ? `transform ${SLIDE_DURATION + 400}ms ease-out` : "none",
-                    willChange: "transform",
-                  }}
-                />
+                <img ref={i === 0 ? heroImgRef : undefined} alt="ป้าย LED Media108"
+                  className="w-full h-full object-cover" src={slide.src}
+                  fetchPriority={i === 0 ? "high" : "low"} decoding="async"
+                  style={{ transform: i === slideIdx ? slide.kenBurnsEnd : slide.kenBurns, transition: i === slideIdx ? `transform ${SLIDE_DURATION + 400}ms ease-out` : "none", willChange: "transform" }} />
               </div>
             ))}
-            <div className="absolute inset-0 hero-gradient" />
-
-            {/* Dot-matrix overlay — billboard pixel feel */}
-            <div className="absolute inset-0 hero-dot-matrix pointer-events-none" />
-
-            {/* Ambient glow orb — pulsing red radial */}
-            <div className="absolute inset-0 hero-glow-orb pointer-events-none" />
-
-            {/* ══════════════════════════════════════════
-                3D VOLUMETRIC LIGHT SYSTEM
-                Layer order (back → front):
-                  1. Cool depth haze     — receding background
-                  2. Warm billboard src  — LED panel light source
-                  3. Chromatic corners   — RGB depth fringe
-                  4. Volumetric rays     — god-ray cones
-                  5. Edge bloom          — LED border bleed
-                  6. Floating dust       — particles in the beam
-            ══════════════════════════════════════════ */}
-
-            {/* ── Layer 1: Cool depth haze (left) — things far away are blue ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 100% 70% at 4% 55%, rgba(8,18,72,0.55) 0%, transparent 58%)",
-              }}
-            />
-
-            {/* ── Layer 2a: Primary warm light source — billboard panel (upper right) ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 65% 85% at 88% 36%, rgba(230,57,70,0.28) 0%, rgba(200,50,70,0.10) 40%, transparent 58%)",
-                animation: "atmos-drift 9s ease-in-out infinite",
-              }}
-            />
-
-            {/* ── Layer 2b: Secondary warm fill — mid-scene spill ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 48% 55% at 60% 65%, rgba(255,85,40,0.13) 0%, transparent 62%)",
-                animation: "atmos-drift 14s ease-in-out 5s infinite",
-              }}
-            />
-
-            {/* ── Layer 2c: Cyan accent — opposite color for RGB depth ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 38% 42% at 12% 78%, rgba(0,185,220,0.09) 0%, transparent 65%)",
-                animation: "atmos-drift 18s ease-in-out 8s infinite",
-              }}
-            />
-
-            {/* ── Layer 3: Chromatic corner fringe (RGB depth cue) ── */}
-            {/* Top-left: blue cast — deepest in scene */}
-            <div
-              className="absolute top-0 left-0 pointer-events-none"
-              style={{
-                width: "50%", height: "50%",
-                background:
-                  "radial-gradient(ellipse at top left, rgba(20,100,255,0.08) 0%, transparent 65%)",
-              }}
-            />
-            {/* Bottom-right: red cast — closest to light source */}
-            <div
-              className="absolute bottom-0 right-0 pointer-events-none"
-              style={{
-                width: "42%", height: "42%",
-                background:
-                  "radial-gradient(ellipse at bottom right, rgba(255,45,75,0.11) 0%, transparent 65%)",
-              }}
-            />
-
-            {/* ── Layer 4a: Volumetric Ray — primary cone from billboard ── */}
-            <div
-              className="absolute pointer-events-none"
-              style={{
-                top: 0,
-                right: "7%",
-                width: "52%",
-                height: "100%",
-                background:
-                  "linear-gradient(168deg, rgba(255,95,65,0.11) 0%, rgba(230,57,70,0.07) 28%, transparent 62%)",
-                transformOrigin: "top right",
-                animation: "vol-ray-breathe 7s ease-in-out infinite",
-                mixBlendMode: "screen",
-              }}
-            />
-
-            {/* ── Layer 4b: Volumetric Ray — secondary softer cone ── */}
-            <div
-              className="absolute pointer-events-none"
-              style={{
-                top: 0,
-                right: "23%",
-                width: "40%",
-                height: "88%",
-                background:
-                  "linear-gradient(155deg, rgba(255,55,88,0.06) 0%, rgba(180,38,60,0.03) 42%, transparent 72%)",
-                transformOrigin: "top center",
-                animation: "vol-ray-breathe 11s ease-in-out 3.5s infinite",
-                mixBlendMode: "screen",
-              }}
-            />
-
-            {/* edge-bloom removed */}
-
-            {/* ── Layer 6: Floating dust particles in the light beam ── */}
-            {(
-              [
-                { left: "34%", bottom: "11%", size: 2.0, delay: 0.0, dur: 4.2, anim: "dust-rise-r", warm: true  },
-                { left: "61%", bottom: "17%", size: 1.5, delay: 1.3, dur: 5.1, anim: "dust-rise-l", warm: false },
-                { left: "75%", bottom: "7%",  size: 2.5, delay: 0.7, dur: 3.8, anim: "dust-rise-r", warm: true  },
-                { left: "48%", bottom: "23%", size: 1.0, delay: 2.2, dur: 6.3, anim: "dust-rise-l", warm: true  },
-                { left: "84%", bottom: "27%", size: 2.0, delay: 1.9, dur: 4.7, anim: "dust-rise-r", warm: false },
-                { left: "23%", bottom: "15%", size: 1.5, delay: 3.1, dur: 5.5, anim: "dust-rise-l", warm: false },
-                { left: "68%", bottom: "5%",  size: 1.8, delay: 0.4, dur: 4.9, anim: "dust-rise-r", warm: true  },
-              ] as const
-            ).map((p, i) => (
-              <div
-                key={`dust-${i}`}
-                className="absolute rounded-full pointer-events-none"
-                style={{
-                  left: p.left,
-                  bottom: p.bottom,
-                  width:  `${p.size}px`,
-                  height: `${p.size}px`,
-                  background: p.warm
-                    ? "rgba(255,165,100,0.95)"
-                    : "rgba(175,220,255,0.90)",
-                  boxShadow: p.warm
-                    ? `0 0 ${p.size * 5}px ${p.size * 2}px rgba(255,100,45,0.65)`
-                    : `0 0 ${p.size * 5}px ${p.size * 2}px rgba(90,180,255,0.55)`,
-                  animation: `${p.anim} ${p.dur}s ease-out ${p.delay}s infinite`,
-                }}
-              />
-            ))}
-
-            {/* ── Lens-Pull Vignette — edges close in like a gravity well ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 62% 62% at 50% 50%, transparent 0%, rgba(6,17,51,0.78) 100%)",
-                animation: "vignette-pulse 9s ease-in-out infinite",
-              }}
-            />
-
-            {/* ── Center Lure — glowing focal node that draws the eye inward ── */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse 32% 32% at 50% 50%, rgba(255,210,190,0.10) 0%, transparent 70%)",
-                animation: "center-lure 9s ease-in-out infinite",
-                mixBlendMode: "screen",
-              }}
-            />
-          </div>
-
-          {/* TV Static Noise removed */}
-
-          {/* ── TV Black Vignette ── lifts off as screen expands */}
-          <div
-            className="absolute inset-0 bg-black pointer-events-none"
-            style={{
-              animation: "tv-black-lift 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both",
-              zIndex: 4,
-            }}
-          />
-
-          {/* TV Center Flash Line removed */}
-
-          {/* LED scan line removed */}
-        </div>
-
-        {/* ── Minimal overlay: logo badge only ── */}
-        <div className="absolute top-24 left-1/2 -translate-x-1/2 z-20">
-          <div className="bg-black/30 border border-white/20 px-4 py-1.5 rounded-full flex items-center gap-2.5 backdrop-blur-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] animate-pulse block flex-shrink-0" />
-            <span className="text-white/80 font-label-md text-[11px] tracking-widest uppercase">
-              {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
-            </span>
+            <div className="absolute inset-0 bg-black pointer-events-none"
+              style={{ animation: "tv-black-lift 2.2s cubic-bezier(0.16,1,0.3,1) 0.25s both", zIndex: 4 }} />
           </div>
         </div>
 
-        {/* ── Location Ticker Bar ── */}
-        <div
-          className="absolute bottom-4 left-4 right-4 md:left-10 md:right-10 z-20 overflow-hidden border border-white/10 rounded-xl"
-          style={{
-            background: "rgba(6,17,51,0.75)",
-            backdropFilter: "blur(12px)",
-            animation: heroReady ? "hero-entry 0.6s ease-out 0.7s both" : "none",
-          }}
-        >
-          <div className="flex items-center gap-0 py-2.5 px-4">
-            {/* "ON AIR" badge */}
-            <div className="flex items-center gap-1.5 flex-shrink-0 mr-4 pr-4 border-r border-white/10">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-[#E63946]"
-                
-              />
-              <span className="text-[10px] font-bold tracking-[0.18em] text-[#E63946] uppercase">
-                On Air
-              </span>
-            </div>
-            {/* Scrolling locations — doubled for seamless loop */}
-            <div className="overflow-hidden flex-1" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
-              <div
-                className="flex gap-0 whitespace-nowrap"
-                style={{ animation: "ticker-scroll 40s linear infinite" }}
-              >
-                {[...tickerLocations, ...tickerLocations].map((loc, i) => (
-                  <span key={i} className="inline-flex items-center gap-4 px-6">
-                    <span className="text-[11px] font-bold tracking-[0.14em] text-white/60 uppercase">
-                      {loc}
-                    </span>
-                    <span className="text-white/20 text-[8px]">◆</span>
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* Bottom gradient fade */}
+        <div className="absolute inset-x-0 bottom-0 h-40 z-20 pointer-events-none"
+          style={{ background: "linear-gradient(to top, #061133 0%, transparent 100%)" }} />
+
+        {/* Slide dots */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5">
+          {heroSlides.map((_, i) => (
+            <button key={i} onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i); }}
+              style={{ width: i === slideIdx ? 28 : 8, height: 8, borderRadius: 4, background: i === slideIdx ? "#E63946" : "rgba(255,255,255,0.35)", overflow: "hidden" }}
+              className="relative transition-all duration-400">
+              {i === slideIdx && (
+                <div className="absolute inset-0 origin-left rounded"
+                  style={{ background: "rgba(255,255,255,0.5)", transform: `scaleX(${slideProgress / 100})`, transition: "transform 0.05s linear" }} />
+              )}
+            </button>
+          ))}
         </div>
 
-        {/* ── Slide Controls ── */}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-3">
-          {/* Dot indicators */}
-          <div className="flex items-center gap-2.5">
-            {heroSlides.map((_, i) => (
-              <button key={i} onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i); }}
-                className="relative transition-all duration-400"
-                style={{ width: i === slideIdx ? 28 : 8, height: 8, borderRadius: 4, background: i === slideIdx ? "#E63946" : "rgba(255,255,255,0.35)", overflow: "hidden" }}>
-                {i === slideIdx && (
-                  <div className="absolute inset-0 origin-left rounded"
-                    style={{ background: "rgba(255,255,255,0.5)", transform: `scaleX(${slideProgress / 100})`, transition: "transform 0.05s linear" }} />
-                )}
-              </button>
-            ))}
-          </div>
-          {/* Slide counter */}
-          <div className="text-white/40 font-mono text-[10px] tracking-widest">
-            {String(slideIdx + 1).padStart(2,"0")} / {String(heroSlides.length).padStart(2,"0")}
-          </div>
-        </div>
-
-        {/* ── Prev / Next arrows ── */}
+        {/* Prev/Next */}
         <button onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i => (i - 1 + heroSlides.length) % heroSlides.length); }}
-          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/15 active:scale-90"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/15 transition-all"
           style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <button onClick={() => { setPrevIdx(slideIdx); setSlideIdx(i => (i + 1) % heroSlides.length); }}
-          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:bg-white/15 active:scale-90"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/15 transition-all"
           style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)" }}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
-
       </section>
 
-      {/* ── Hero Intro — text section below slideshow ── */}
-      <section className="relative py-16 md:py-24 text-center overflow-hidden"
-        style={{ background: "linear-gradient(180deg,#061133 0%,#0a1230 100%)" }}>
-        {/* Red glow */}
-        <div className="absolute inset-x-0 top-0 h-[1px]" style={{ background: "linear-gradient(90deg,transparent,rgba(230,57,70,0.4),transparent)" }} />
-        <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[600px] h-[300px] pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at 50% 0%,rgba(230,57,70,0.1) 0%,transparent 70%)" }} />
+      {/* ── Hero Text + CTA ── */}
+      <section className="relative text-center overflow-hidden py-14 md:py-20"
+        style={{ background: "linear-gradient(180deg, #061133 0%, #0a1230 100%)" }}>
+
 
         <div className="relative z-10 max-w-container-max mx-auto px-margin-desktop">
-          <h1 className="font-display-lg text-display-lg text-white mb-6 max-w-4xl mx-auto"
-            style={{ animation: heroReady ? "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both" : "none" }}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2.5 bg-white/5 border border-white/15 px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm"
+            style={{ animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both" : "none" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] animate-pulse" />
+            <span className="text-white/70 font-label-md text-[11px] tracking-widest uppercase">
+              {t("Chonburi–Pattaya Media Leader", "ผู้นำสื่อโฆษณา Chonburi ชลบุรี–พัทยา")}
+            </span>
+          </div>
+
+          {/* H1 */}
+          <h1 className="font-display-lg text-display-lg text-white mb-5 max-w-4xl mx-auto"
+            style={{ animation: heroReady ? "hero-entry 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" : "none" }}>
             {t("Strategic Outdoor Advertising Across", "สื่อโฆษณากลางแจ้งที่ครอบคลุม")}<br />
-            <span className="text-[#E63946] whitespace-nowrap">{t("Chonburi's Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
+            <span className="text-[#E63946] whitespace-nowrap">{t("Chonburi\'s Prime Locations", "ทุกทำเลยุทธศาสตร์ชลบุรี")}</span>
           </h1>
-          <p className="font-body-lg text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
-            style={{ animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.25s both" : "none" }}>
+
+          {/* Description */}
+          <p className="font-body-lg text-white/60 max-w-2xl mx-auto mb-8 leading-relaxed"
+            style={{ animation: heroReady ? "hero-entry 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s both" : "none" }}>
             {t(
               "Media108 is a LED & Digital Out-of-Home advertising platform that helps brands reach their target audience through verified locations, real data, and measurable campaigns.",
               "Media108 คือเครือข่ายสื่อโฆษณา LED และ DOOH ที่เชื่อมแบรนด์สู่กลุ่มเป้าหมายผ่านทำเลยุทธศาสตร์ ข้อมูลจราจรจริง และแคมเปญที่วัดผลได้"
             )}
           </p>
+
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center"
-            style={{ animation: heroReady ? "hero-scale-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both" : "none" }}>
+            style={{ animation: heroReady ? "hero-scale-in 0.7s cubic-bezier(0.16,1,0.3,1) 0.5s both" : "none" }}>
             <Link href="/contact#form"
               className="bg-[#E63946] text-white px-8 py-4 rounded-lg font-label-md glow-button flex items-center justify-center hover:-translate-y-0.5 active:scale-95 transition-all">
               {t("Request Quotation", "ขอใบเสนอราคา")} <ArrowRight size={16} className="ml-2" />
@@ -777,6 +536,27 @@ export default function Home() {
               className="bg-white/5 border border-white/20 text-white px-8 py-4 rounded-lg font-label-md hover:bg-white/10 active:scale-95 transition-all">
               {t("View All Locations", "ดูทำเลทั้งหมด")}
             </Link>
+          </div>
+        </div>
+
+        {/* Ticker Bar */}
+        <div className="mt-12 mx-4 md:mx-10 overflow-hidden border border-white/10 rounded-xl"
+          style={{ background: "rgba(255,255,255,0.04)", backdropFilter: "blur(8px)" }}>
+          <div className="flex items-center py-2.5 px-4">
+            <div className="flex items-center gap-1.5 flex-shrink-0 mr-4 pr-4 border-r border-white/10">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E63946] animate-pulse" />
+              <span className="text-[10px] font-bold tracking-[0.18em] text-[#E63946] uppercase">On Air</span>
+            </div>
+            <div className="overflow-hidden flex-1" style={{ maskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)" }}>
+              <div className="flex whitespace-nowrap" style={{ animation: "ticker-scroll 40s linear infinite" }}>
+                {[...tickerLocations, ...tickerLocations].map((loc, i) => (
+                  <span key={i} className="inline-flex items-center gap-4 px-6">
+                    <span className="text-[11px] font-bold tracking-[0.14em] text-white/60 uppercase">{loc}</span>
+                    <span className="text-white/20 text-[8px]">◆</span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
