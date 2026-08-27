@@ -422,7 +422,7 @@ export default function ServicesPage() {
                 <MessageCircle size={20} />
               </a>
               <a
-                href="tel:0625636199"
+                href="tel:0802399353"
                 title="โทรศัพท์"
                 className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary cursor-pointer transition-colors text-on-surface-variant"
               >
@@ -460,7 +460,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-4">
             <h4 className="text-primary font-label-md text-label-md uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
             <a href="mailto:media.108.company@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">media.108.company@gmail.com</a>
-            <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
+            <a href="tel:+66802399353" className="text-on-surface-variant hover:text-primary transition-colors text-sm">080-239-9353</a>
             <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-primary transition-colors text-sm">LINE: @media108</a>
             <p className="text-on-surface-variant text-sm">800/108 ถ.สุขุมวิท ต.แสนสุข อ.เมืองชลบุรี จ.ชลบุรี</p>
           </div>

@@ -293,7 +293,7 @@ export default function ContactPage() {
             {/* Quick links grid */}
             <div className="sr sr-right sr-d2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {([
-                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "062-563-6199",                              bodyTh: "062-563-6199",                              span: false, href: "tel:0625636199" },
+                { icon: PhoneCall,  titleEn: "Phone",   titleTh: "โทรศัพท์",  bodyEn: "080-239-9353",                              bodyTh: "080-239-9353",                              span: false, href: "tel:0802399353" },
                 { icon: Mail,       titleEn: "Email",   titleTh: "อีเมล",    bodyEn: "media.108.company@gmail.com",               bodyTh: "media.108.company@gmail.com",               span: false, href: "mailto:media.108.company@gmail.com" },
                 { icon: Briefcase,  titleEn: "Careers", titleTh: "ร่วมงานกับเรา",  bodyEn: "Join the Media108 team",   bodyTh: "มาร่วมเป็นส่วนหนึ่งของทีม Media108",  span: true, arrow: true, href: "mailto:media.108.company@gmail.com" },
               ] as { icon: LucideIcon; titleEn: string; titleTh: string; bodyEn: string; bodyTh: string; span: boolean; arrow?: boolean; href: string }[]).map((item) => (
@@ -415,7 +415,7 @@ export default function ContactPage() {
                   className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors" title="Email">
                   <Mail size={20} className="text-primary" />
                 </a>
-                <a href="tel:0625636199"
+                <a href="tel:0802399353"
                   className="w-10 h-10 rounded bg-surface-container flex items-center justify-center hover:bg-primary/20 transition-colors" title="โทรศัพท์">
                   <PhoneCall size={20} className="text-primary" />
                 </a>

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "ติดต่อเรา – ขอใบเสนอราคาสื่อโฆษณา DOOH",
   description:
-    "ติดต่อ Media108 เพื่อขอใบเสนอราคาสื่อโฆษณา DOOH และป้าย LED ในชลบุรี พัทยา Chonburi โทร 062-563-6199 หรือ LINE @media108",
+    "ติดต่อ Media108 เพื่อขอใบเสนอราคาสื่อโฆษณา DOOH และป้าย LED ในชลบุรี พัทยา Chonburi โทร 080-239-9353 หรือ LINE @media108",
   openGraph: {
     title:       "ติดต่อ Media108 – ขอใบเสนอราคา",
     description: "ขอใบเสนอราคาสื่อโฆษณา DOOH ป้าย LED ชลบุรี พัทยา Chonburi",

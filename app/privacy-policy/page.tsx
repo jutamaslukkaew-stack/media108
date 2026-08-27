@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
           </section>
           <section>
             <h2 className="text-white font-bold text-lg mb-3">6. ติดต่อ</h2>
-            <p>Media108 | โทร: <a href="tel:+66625636199" className="text-primary">062-563-6199</a> | LINE: <a href="https://lin.ee/NXKWYdJ" className="text-primary" target="_blank" rel="noopener noreferrer">@media108</a></p>
+            <p>Media108 | โทร: <a href="tel:+66802399353" className="text-primary">080-239-9353</a> | LINE: <a href="https://lin.ee/NXKWYdJ" className="text-primary" target="_blank" rel="noopener noreferrer">@media108</a></p>
           </section>
         </div>
 

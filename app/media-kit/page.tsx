@@ -362,8 +362,8 @@ export default function MediaKitPage() {
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+66625636199" className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-sm">
-                    <Globe size={14} className="shrink-0" /> 062-563-6199
+                  <a href="tel:+66802399353" className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors text-sm">
+                    <Globe size={14} className="shrink-0" /> 080-239-9353
                   </a>
                 </li>
                 <li>

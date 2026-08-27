@@ -724,14 +724,14 @@ function BillboardDetail({ data }: { data: BillboardData }) {
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Contact", "ติดต่อ")}</h4>
             <a href="mailto:media.108.company@gmail.com" className="text-on-surface-variant hover:text-primary transition-colors text-sm">media.108.company@gmail.com</a>
-            <a href="tel:+66625636199" className="text-on-surface-variant hover:text-primary transition-colors text-sm">062-563-6199</a>
+            <a href="tel:+66802399353" className="text-on-surface-variant hover:text-primary transition-colors text-sm">080-239-9353</a>
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-primary-container font-bold text-xs uppercase tracking-widest mb-2">{t("Social", "โซเชียล")}</h4>
             <div className="flex gap-4">
               <a href="https://lin.ee/NXKWYdJ" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-[#06C755] hover:text-white transition-all text-sm font-bold">LN</a>
               <a href="mailto:media.108.company@gmail.com" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">@</a>
-              <a href="tel:+66625636199" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">☎</a>
+              <a href="tel:+66802399353" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-on-surface-variant hover:bg-primary-container hover:text-white transition-all text-sm font-bold">☎</a>
             </div>
           </div>
         </div>
