@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --font-montserrat: "Montserrat";
+  --font-inter: "Inter";
+}
+
 @theme {
   /* ── Brand Colors ── */
   --color-background:               #061133;

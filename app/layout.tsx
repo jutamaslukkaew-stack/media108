@@ -1,22 +1,7 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { LanguageProvider } from "./context/LanguageContext";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["600", "700", "900"],
-  variable: "--font-montserrat",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://media108.com";
 const GA_ID    = process.env.NEXT_PUBLIC_GA_ID;
@@ -57,13 +42,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="th"
-      className={`${montserrat.variable} ${inter.variable}`}
-    >
+    <html lang="th">
       <head>
         <meta name="theme-color" content="#FFFFFF" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;900&display=swap"
+        />
       </head>
       <body className="bg-background text-on-background antialiased">
         <LanguageProvider>{children}</LanguageProvider>
